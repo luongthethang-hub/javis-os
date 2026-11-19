@@ -429,9 +429,16 @@ def _steps_and_teams(mp):
           str(evs))
     _reset()
 
-    # Source wiring: both step runners build their engine through `_step_run`, and `_mk` reads the mark.
+    # Graph and unguarded sequential steps keep sign-in fallback. Guarded steps
+    # must not retry implicitly inside a model stage, where the guard cannot count it.
+    import inspect
+
+    graph_step = inspect.getsource(main._run_workflow_step)
+    sequential = inspect.getsource(main._execute_workflow_raw)
+    check("wiring: graph workflow steps go through _step_run", "async for ev in _step_run(" in graph_step)
+    check("wiring: only unguarded sequential steps go through _step_run",
+          "build().query(cur_prompt) if guarded else _step_run(build, cur_prompt)" in sequential)
     src = (SERVER / "main.py").read_text(encoding="utf-8")
-    check("wiring: both workflow step runners go through _step_run", src.count("async for ev in _step_run(") == 2)
     mk = src[src.index("    def _mk(sysprompt, model=None"):src.index("    def _agent_sysprompt(aslug")]
     check("wiring: _mk sends an ungated step off a signed-out card, and keeps a gated one on its safety rail",
           "_signed_out_until(prov)" in mk and "tools is not None and not signed_out" in mk)
