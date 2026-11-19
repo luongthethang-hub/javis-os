@@ -1,0 +1,48 @@
+{
+  "reminders": [
+    {
+      "id": "r_4830354778",
+      "text": "Mỗi 4 giờ, thực hiện một lượt tự học theo cấu hình Tự học của Javis trên các cuộc trò chuyện mới kể từ lần chạy trước (tối đa 4 giờ gần nhất). Chỉ tổng hợp thông tin bền vững về người dùng/công việc vào Memory, kiến thức/quy trình tái sử dụng vào Wiki, và chỉ đề xuất cải thiện Skill/Agent/Workflow khi có bằng chứng lặp lại. Không tự ghi thay đổi, không tạo thông tin chưa được xác nhận, không lưu dữ liệu nhạy cảm, không sửa hoặc xóa kiến thức cũ, không nâng cấp mã nguồn, không đăng hay gửi nội dung ra ngoài. Trình bày kết quả để chủ duyệt; nếu không có gì mới thì báo ngắn gọn và dừng.",
+      "mode": "task",
+      "due_at": 1795093200.0,
+      "chat_id": "",
+      "repeat_min": 0,
+      "cron": "0 */4 * * *",
+      "script": "",
+      "label": "Mỗi 8 giờ, thực hiện một lượt tự học theo cấu hình Tự học của Javis trên các cuộ",
+      "status": "pending",
+      "muc_quyen": "suggest",
+      "remember_last": true,
+      "speak": false,
+      "call": false,
+      "created_by": "dashboard",
+      "created_at": 1794936989.801824,
+      "fired_at": 1795078829.3474164,
+      "result": "Lượt tự học 16:00 (19/11): **1 đề xuất Wiki** từ nhật ký 12:00–16:00.\n\n• **Wiki:** Bổ sung checklist CI đã đề xuất: chỉ coi PR sẵn sàng để merge khi tất cả job bắt buộc của commit mới nhất đều đạt. Test cục bộ đạt hoặc CI còn job đang chạy không đủ. Nguồn: trao đổi lúc 12:12.\n\n• **Memory:** Đã xác minh quy tắc phối hợp hai chiều với ChatGPT Desktop lúc 14:00 có trong bộ nhớ, không cần lưu trùng. Chưa đủ bằng chứng lặp lại để đề xuất đổi Skill/Agent/Workflow.\n\nKhông đọc được cấu hình Tự học trong chế độ chỉ đọc, nên mình rà soát theo tiêu chí của lịch nhắc. Không ghi, sửa, xóa hay gửi gì ra ngoài.",
+      "error": "",
+      "last_slot": 1795078800.0
+    },
+    {
+      "id": "r_98304ae112",
+      "text": "Đánh giá hằng tuần kết quả tự học và các báo cáo, thay đổi liên quan trong Brain Default trong 7 ngày qua. Tóm tắt kết quả, vấn đề, bằng chứng và đề xuất ưu tiên; phân biệt việc đã thực hiện với đề xuất chưa duyệt. Chỉ đọc và báo cáo, không tự thay đổi hệ thống hoặc thực hiện hành động ra ngoài. Nêu rõ nếu thiếu dữ liệu.",
+      "mode": "task",
+      "due_at": 1795179600.0,
+      "chat_id": "web:73b7d347c5d946dbb39d1beff8b90c5a",
+      "repeat_min": 0,
+      "cron": "0 20 * * 5",
+      "script": "",
+      "label": "Đánh giá tự học hằng tuần",
+      "status": "pending",
+      "muc_quyen": "suggest",
+      "remember_last": false,
+      "speak": false,
+      "call": false,
+      "created_by": "javis_schedule",
+      "created_at": 1795051728.4823053,
+      "fired_at": 0.0,
+      "result": "",
+      "error": ""
+    }
+  ],
+  "updated": 1795078829.348411
+}
