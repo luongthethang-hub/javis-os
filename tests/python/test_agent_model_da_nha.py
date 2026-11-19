@@ -149,11 +149,30 @@ check("mọi lời gọi sysprompt đều bóc đủ 4 phần", bool(calls) and 
     and len(n.targets[0].elts) == 4 for n in calls))
 check("mọi chỗ bóc tuple đều lấy cả provider",
       src.count("agent_model, agent_prov = ") + src.count("v_model, v_prov = ") == 4)
-check("mọi chỗ dựng engine đều truyền provider xuống",
-      # 0.107.0: the step engine also gets the step's own `tools:` as a 4th argument.
-      # #1302: each call continues with the assistant's own reasoning level (`**_step_reasoning_kw(...)`), so the
-      # argument list no longer closes right after the provider.
-      src.count("mk(sysprompt, agent_model, agent_prov, step_extra,") + src.count("mk(v_sys, v_model, v_prov,") == 4)
+def workflow_calls(function, callee):
+    return [n for n in ast.walk(function) if isinstance(n, ast.Call)
+            and isinstance(n.func, ast.Name) and n.func.id == callee]
+
+
+def passes_args(call, *names):
+    return [arg.id if isinstance(arg, ast.Name) else None
+            for arg in call.args[:len(names)]] == list(names)
+
+
+functions = {n.name: n for n in ast.parse(src).body if isinstance(n, ast.AsyncFunctionDef)}
+for function, callee in (("_run_workflow_step", "mk"), ("_execute_workflow_raw", "engine")):
+    engine_calls = workflow_calls(functions[function], callee)
+    check(f"{function}: author and verifier both pass the provider to {callee}",
+          len(engine_calls) == 2
+          and any(passes_args(n, "sysprompt", "agent_model", "agent_prov", "step_extra") for n in engine_calls)
+          and any(passes_args(n, "v_sys", "v_model", "v_prov") for n in engine_calls))
+
+sequential = functions["_execute_workflow_raw"]
+factory = next(n for n in sequential.body if isinstance(n, ast.FunctionDef) and n.name == "engine")
+for callee in ("_mk", "_workflow_supplied_data_engine"):
+    forwarding = workflow_calls(factory, callee)
+    check(f"sequential factory passes the provider to {callee}",
+          len(forwarding) == 1 and passes_args(forwarding[0], "system", "model", "provider"))
 check("router đổi model thì bỏ nhà cũ (không ép model Claude qua nhà khác)",
       'agent_prov = ""' in src)
 

@@ -19,6 +19,7 @@ import os
 import json
 import math
 import asyncio
+from contextlib import aclosing
 import dataclasses
 import glob
 import hashlib
@@ -172,6 +173,7 @@ import turn_ledger            # chat turns in flight, on disk: a restart cuts th
 import quota_scheduler        # sổ cái TPM dùng chung (Việc 6)
 import model_limits           # hạn mức GỢI Ý theo provider, để khai quota profile cho canary
 import model_router           # Phase 12: chọn model theo từng bước, lọc năng lực trước
+import execution_guard
 import workflow_graph          # Phase 10: workflow -> capability graph (thuần dữ liệu)
 import workflow_runtime        # Phase 10: chạy graph có checkpoint/resume
 import write_path_runtime    # Phase 9: write có xác nhận, idempotency và reconcile
@@ -14327,7 +14329,26 @@ async def execute_workflow_graph(brain, slug, input="", tools=None, session_id="
                "task_id": result.task_id, "reason": result.stop_reason}
 
 
-async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id="", mode=None):
+def _workflow_supplied_data_engine(system, model, provider, *, reasoning=""):
+    """Reuse the text-only builder, with no fallback to a tool-enabled engine."""
+    settings = cfgmod.read_settings() or {}
+    if not model and not provider:
+        spec = _effective_main(settings)
+        model, provider = spec.get("model", ""), spec.get("provider", "")
+    provider = _agent_model_provider(model, provider)
+    base = _reply_policy_sandbox_engine(system, "workflow-text", cwd_name="workflow_text_cwd")
+    try:
+        eng = team_engine.build({"provider": provider, "model": model}, base, "workflow-text", settings)
+    except team_engine.TeamEngineUnavailable as exc:
+        raise execution_guard.GuardError("text_only_provider_unavailable:" + provider) from exc
+    _apply_step_reasoning(eng, reasoning, codex=provider == aux_engine.CODEX)
+    _step_plan_account(eng, provider)
+    if not eng.is_available():
+        raise execution_guard.GuardError("text_only_provider_unavailable:" + provider)
+    return eng
+
+
+async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id="", mode=None, *, guarded_meta=None):
     """Chạy workflow nhiều agent tuần tự, YIELD event dict (KHÔNG bọc SSE). Dùng CHUNG cho:
       - /workflows/run  : user bấm ở Studio (full quyền, stream SSE).
       - dispatcher Kanban: chạy nền không người xem → truyền tools=SAFE_FILE_TOOLS để agent
@@ -14338,29 +14359,34 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""
     if not wf_file.exists():
         yield {"type": "error", "content": "workflow not found"}
         return
-    # Phase 10 canary: mặc định allocation 0 nên vòng lặp cũ vẫn là đường duy nhất.
-    # Lỗi ở đường mới không được cướp lượt chạy - rơi về runner cũ.
-    emitted = False
-    try:
-        async for event in execute_workflow_graph(brain, slug, input, tools, session_id, mode):
-            emitted = True
-            yield event
-        if emitted:
-            return
-    except Exception as _wf_exc:
-        print(f"[workflow graph] {type(_wf_exc).__name__}", file=__import__('sys').stderr)
-        if emitted:
-            # Đã phát event ra client rồi thì chạy lại bằng runner cũ là CHẠY HAI LẦN.
-            # Báo lỗi và dừng, để người dùng quyết định chạy lại.
-            yield {"type": "error",
-                   "content": localefmt.chu(
-                       "Workflow dừng giữa chừng ở đường mới. Không tự chạy lại "
-                       "để tránh làm hai lần; bạn chạy lại nếu cần.",
-                       "The workflow stopped halfway on the new path. It will not rerun by itself "
-                       "to avoid doing the work twice; run it again if needed.")}
-            return
-    meta, _ = _read_md(wf_file)
-    steps = meta.get("steps", []) or []
+    guarded = guarded_meta is not None
+    if guarded:
+        meta = guarded_meta
+    else:
+        # Phase 10 canary: mặc định allocation 0 nên vòng lặp cũ vẫn là đường duy nhất.
+        # Lỗi ở đường mới không được cướp lượt chạy - rơi về runner cũ.
+        emitted = False
+        try:
+            async for event in execute_workflow_graph(brain, slug, input, tools, session_id, mode):
+                emitted = True
+                yield event
+            if emitted:
+                return
+        except Exception as _wf_exc:
+            print(f"[workflow graph] {type(_wf_exc).__name__}", file=__import__('sys').stderr)
+            if emitted:
+                # Đã phát event ra client rồi thì chạy lại bằng runner cũ là CHẠY HAI LẦN.
+                # Báo lỗi và dừng, để người dùng quyết định chạy lại.
+                yield {"type": "error",
+                       "content": localefmt.chu(
+                           "Workflow dừng giữa chừng ở đường mới. Không tự chạy lại "
+                           "để tránh làm hai lần; bạn chạy lại nếu cần.",
+                           "The workflow stopped halfway on the new path. It will not rerun by itself "
+                           "to avoid doing the work twice; run it again if needed.")}
+                return
+        meta, _ = _read_md(wf_file)
+    steps = (meta.get("contract_steps", meta.get("steps")) if guarded else meta.get("steps")) or []
+    text_only = guarded and meta.get("supplied_data_only") is True
     vault_root = str(_brain_root(brain))
     try:
         # Agent workflow chạy cwd=brain, agent nền có MCP rỗng → chỉ nạp skill NATIVE từ
@@ -14370,7 +14396,12 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""
     except Exception:
         pass
 
-    _mk, _agent_sysprompt, _log, _learn = _workflow_agent_helpers(brain, tools, mode)
+    _mk, _agent_sysprompt, _log, _learn = _workflow_agent_helpers(brain, [] if text_only else tools, mode)
+
+    def engine(system, model, provider, extra=(), **reasoning):
+        if text_only:
+            return _workflow_supplied_data_engine(system, model, provider, **reasoning)
+        return _mk(system, model, provider, extra, **reasoning)
 
     yield {"type": "start", "workflow": meta.get("name", slug), "steps": len(steps)}
     prev = ""
@@ -14395,18 +14426,27 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""
             loi_engine = ""
             # áp model agent đã chọn. `_step_run` builds the engine itself: a plan card that lost its sign-in runs the
             # step again elsewhere (2026-11-12).
-            async for ev in _step_run(
-                    lambda: _mk(sysprompt, agent_model, agent_prov, step_extra,
-                                **_step_reasoning_kw(_agent_sysprompt, agent_slug)), cur_prompt):
-                if ev["type"] == "text":
-                    yield {"type": "step_text", "i": i, "content": ev["content"]}
-                elif ev["type"] == "tool_call":
-                    yield {"type": "step_tool", "i": i, "tool": ev["name"]}
-                elif ev["type"] == "final":
-                    out = ev.get("content") or out
-                elif ev["type"] == "error":
-                    loi_engine = ev["content"] or loi_engine
-                    yield {"type": "step_error", "i": i, "content": ev["content"]}
+            def build():
+                return engine(sysprompt, agent_model, agent_prov, step_extra,
+                              **_step_reasoning_kw(_agent_sysprompt, agent_slug))
+
+            # Do not retry implicitly inside a guarded model stage.
+            stream = build().query(cur_prompt) if guarded else _step_run(build, cur_prompt)
+            async with aclosing(stream) as events:
+                async for ev in events:
+                    if ev["type"] == "text":
+                        yield {"type": "step_text", "i": i, "content": ev["content"]}
+                    elif ev["type"] == "tool_call":
+                        if text_only:
+                            raise execution_guard.GuardError("unexpected_tool_call")
+                        yield {"type": "step_tool", "i": i, "tool": ev["name"]}
+                    elif ev["type"] == "final":
+                        out = ev.get("content") or out
+                        if guarded:
+                            yield execution_guard.usage_event(ev, i, "author")
+                    elif ev["type"] == "error":
+                        loi_engine = ev["content"] or loi_engine
+                        yield {"type": "step_error", "i": i, "content": ev["content"]}
 
             # Chốt "bước này hỏng hay không" NGAY ĐÂY, trước cả vòng kiểm chứng. Trước 0.59.2
             # engine báo lỗi xong vẫn chảy thẳng xuống `step_done` ở cuối, nên một bước chết
@@ -14417,6 +14457,10 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""
             if loi_buoc:
                 break
 
+            if guarded:
+                first = out.splitlines()[0].strip() if out.strip() else ""
+                if not first or (step.get("require_first_line") and first != step["require_first_line"]):
+                    raise execution_guard.GuardError("author_output_contract_failed")
             if not verify_slug:
                 break
 
@@ -14434,18 +14478,28 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""
                 f"KẾT QUẢ CẦN KIỂM CHỨNG:\n{out}\n\n"
                 "Đánh giá kết quả có ĐẠT nhiệm vụ không. Trả JSON như hướng dẫn."
             )
-            vcli = _mk(v_sys, v_model, v_prov,   # agent kiểm chứng cũng dùng model của nó
-                       **_step_reasoning_kw(_agent_sysprompt, verify_slug))
+            vcli = engine(v_sys, v_model, v_prov,
+                          **_step_reasoning_kw(_agent_sysprompt, verify_slug))
             v_out = ""
             v_err = ""
-            async for ev in vcli.query(v_prompt):
-                if ev["type"] == "final":
-                    v_out = ev.get("content") or v_out
-                elif ev["type"] == "error":
-                    v_err = ev.get("content") or v_err or "engine error"
+            async with aclosing(vcli.query(v_prompt)) as events:
+                async for ev in events:
+                    if ev["type"] == "final":
+                        v_out = ev.get("content") or v_out
+                        if guarded:
+                            yield execution_guard.usage_event(ev, i, "verify")
+                    elif ev["type"] == "error":
+                        v_err = ev.get("content") or v_err or "engine error"
+                    elif guarded and ev["type"] == "tool_call":
+                        if text_only:
+                            raise execution_guard.GuardError("unexpected_tool_call")
+                        yield {"type": "step_tool", "i": i, "tool": ev["name"]}
+                    elif guarded and ev["type"] == "text":
+                        yield {"type": "step_text", "i": i, "content": ev["content"]}
             passed, reason, fixes = _workflow_verdict(v_out, v_err)
             yield {"type": "step_verify_result", "i": i, "passed": passed, "reason": reason, "attempt": attempt}
-            _log(verify_slug, f"[kiểm chứng bước của {agent_name}] {task_f}", v_out)
+            if not text_only:
+                _log(verify_slug, f"[kiểm chứng bước của {agent_name}] {task_f}", v_out)
             verified = passed
             if passed or attempt >= max_retries:
                 break
@@ -14479,17 +14533,20 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""
             # done and its output flowed on as {{prev}}, and the run ended "done" (workflow_runs
             # 6901e404f7d64f..., 11/10: Biên tập viên verified=False, run done). The verdict did
             # not even reach the next step. Stop here and hand the run to a person.
-            out = _learn(agent_slug, out)
-            _log(agent_slug, task_f, out)
+            if not text_only:
+                out = _learn(agent_slug, out)
+                _log(agent_slug, task_f, out)
             msg = _verify_failed_message(i + 1, agent_name, attempt + 1, reason)
             yield {"type": "step_error", "i": i, "content": msg}
             yield {"type": "error", "i": i, "agent": agent_name, "content": msg,
                    "needs_input": True}
             return
-        out = _learn(agent_slug, out)   # bóc JAVIS_LESSON + ghi bộ nhớ trước khi out thành {{prev}}
+        if not text_only:
+            out = _learn(agent_slug, out)   # bóc JAVIS_LESSON + ghi bộ nhớ trước khi out thành {{prev}}
         prev = out
         yield {"type": "step_done", "i": i, "agent": agent_name, "output": out, "verified": verified}
-        _log(agent_slug, task_f, out)
+        if not text_only:
+            _log(agent_slug, task_f, out)
     yield {"type": "done", "result": prev}
 
 
@@ -14510,39 +14567,40 @@ async def _ghi_lich_su(gen, *, brain, slug, name, input, source, session_id, run
                                source=source or "other", session_id=session_id or "")
     ket = None
     try:
-        async for ev in gen:
-            t = ev.get("type")
-            if t == "start":
-                ev = dict(ev, run_id=rid)
-            elif t == "step_start":
-                _aslug = str(ev.get("agent_slug") or "")
-                _akey = ""
-                if _aslug:
-                    try:   # the assistant's lasting key: a later assistant reusing the slug does not inherit the run
-                        _akey = await asyncio.to_thread(_agent_jobs_key, brain, _aslug) or ""
-                    except Exception:  # noqa: BLE001
-                        _akey = ""
-                st.ghi_buoc(rid, int(ev.get("i", 0)), agent=ev.get("agent", ""), task=ev.get("task", ""),
-                            agent_slug=_aslug, agent_key=_akey)
-            elif t == "step_done":
-                st.ghi_buoc(rid, int(ev.get("i", 0)), output=ev.get("output", ""), verified=ev.get("verified"))
-            elif t == "step_error":
-                st.ghi_buoc(rid, int(ev.get("i", 0)), error=ev.get("content", ""))
-            elif t == "wait_user":
-                ket = "waiting"
-                st.ket_thuc(rid, "waiting", task_id=str(ev.get("task_id") or ""))
-            elif t == "error":
-                ket = "error"
-                st.ket_thuc(rid, "error", error=str(ev.get("content") or ""))
-            elif t == "done":
-                ket = "done"
-                st.ket_thuc(rid, "done", output=str(ev.get("result") or ""))
-                try:  # 0.341.0: a finished run is a workflow episode for automatic learning
-                    await asyncio.to_thread(_auto_learner().observe_workflow, _brain_key(brain), slug, rid,
-                                            input or "", str(ev.get("result") or ""), session_id or "", source or "")
-                except Exception as _e:  # noqa: BLE001
-                    print(f"[auto-learning workflow] {type(_e).__name__}: {_e}", file=sys.stderr)
-            yield ev
+        async with aclosing(gen) as events:
+            async for ev in events:
+                t = ev.get("type")
+                if t == "start":
+                    ev = dict(ev, run_id=rid)
+                elif t == "step_start":
+                    _aslug = str(ev.get("agent_slug") or "")
+                    _akey = ""
+                    if _aslug:
+                        try:   # the assistant's lasting key: a later assistant reusing the slug does not inherit the run
+                            _akey = await asyncio.to_thread(_agent_jobs_key, brain, _aslug) or ""
+                        except Exception:  # noqa: BLE001
+                            _akey = ""
+                    st.ghi_buoc(rid, int(ev.get("i", 0)), agent=ev.get("agent", ""), task=ev.get("task", ""),
+                                agent_slug=_aslug, agent_key=_akey)
+                elif t == "step_done":
+                    st.ghi_buoc(rid, int(ev.get("i", 0)), output=ev.get("output", ""), verified=ev.get("verified"))
+                elif t == "step_error":
+                    st.ghi_buoc(rid, int(ev.get("i", 0)), error=ev.get("content", ""))
+                elif t == "wait_user":
+                    ket = "waiting"
+                    st.ket_thuc(rid, "waiting", task_id=str(ev.get("task_id") or ""))
+                elif t == "error":
+                    ket = "error"
+                    st.ket_thuc(rid, "error", error=str(ev.get("content") or ""))
+                elif t == "done":
+                    ket = "done"
+                    st.ket_thuc(rid, "done", output=str(ev.get("result") or ""))
+                    try:  # 0.341.0: a finished run is a workflow episode for automatic learning
+                        await asyncio.to_thread(_auto_learner().observe_workflow, _brain_key(brain), slug, rid,
+                                                input or "", str(ev.get("result") or ""), session_id or "", source or "")
+                    except Exception as _e:  # noqa: BLE001
+                        print(f"[auto-learning workflow] {type(_e).__name__}: {_e}", file=sys.stderr)
+                yield ev
     finally:
         if ket is None:
             try:
@@ -14619,12 +14677,28 @@ async def execute_workflow(brain, slug, input="", tools=None, session_id="", sou
                    f"The workflow '{meta.get('name', slug)}' is switched off, so it does not "
                    "run in the background. Switch it on in Studio, then rerun this job.")}
         return
-    async for ev in _ghi_lich_su(
-            _execute_workflow_raw(brain, slug, input, tools, session_id, mode),
-            brain=_brain_key(brain), slug=slug, name=meta.get("name", slug),
-            input=input if input_luu is None else input_luu,
-            source=source, session_id=session_id):
-        yield ev
+    async def events():
+        try:
+            policy = execution_guard.preflight(meta, _agents_dir(brain), input, tools)
+        except (execution_guard.GuardError, OSError, UnicodeError) as exc:
+            reason = str(exc) if isinstance(exc, execution_guard.GuardError) else "agent_unavailable"
+            yield {"type": "error", "content": "execution_guard:" + reason, "needs_input": True}
+            return
+        raw = _execute_workflow_raw(brain, slug, input, tools, session_id, mode,
+                                    guarded_meta=meta) if policy else _execute_workflow_raw(
+                                        brain, slug, input, tools, session_id, mode)
+        if policy:
+            raw = execution_guard.guarded_events(raw, policy)
+        async with aclosing(raw) as stream:
+            async for ev in stream:
+                yield ev
+
+    history = _ghi_lich_su(events(), brain=_brain_key(brain), slug=slug, name=meta.get("name", slug),
+                          input=input if input_luu is None else input_luu,
+                          source=source, session_id=session_id)
+    async with aclosing(history) as stream:
+        async for ev in stream:
+            yield ev
 
 
 def workflow_capability_guard(node, route_entry, approved: bool) -> str:
