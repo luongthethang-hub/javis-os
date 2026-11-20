@@ -1,6 +1,6 @@
 ---
 name: Hoạt hình & Video
-description: Dựng hoặc ghép MP4/MOV từ Telegram và tệp cục bộ bằng FFmpeg, xuất video ngắn, lập quy trình hoạt hình 2D/3D và motion graphics.
+description: Tiếp nhận MP4/MOV, duyệt dựng theo mốc, xuất video bằng FFmpeg và lập quy trình hoạt hình 2D/3D, motion graphics.
 group: Nội dung
 ---
 
@@ -10,16 +10,19 @@ group: Nội dung
 
 Kích hoạt khi người dùng muốn cắt, ghép hoặc xuất video từ tệp có sẵn, kể cả yêu cầu tiếp nối sau khi gửi clip qua Telegram. Cũng áp dụng khi chọn công cụ, dựng cảnh, tạo video/GIF/hoạt hình web.
 
+Khi chủ gửi tệp video không kèm yêu cầu riêng hoặc muốn biên tập video content, mở `references/quy-trinh-bien-tap-studio.md` và bắt đầu tiếp nhận. Các cổng duyệt trong đó áp dụng cả khi gọi qua quy trình **Dựng video và trả MP4**. Chỉ dựng sau khi brief và phương án được chốt; dừng đúng mốc cần duyệt. Hướng dẫn FFmpeg bên dưới dùng để thực hiện từng phần đã được phép.
+
 ## Dựng nhanh trong chat riêng Telegram
 
 - Gửi một clip MP4/MOV tối đa 20 MB kèm `/dungvideo 00:05-00:30 9:16 pad keep`, hoặc dùng lệnh khi trả lời trực tiếp vào clip gốc. Javis cắt đoạn, kiểm tra MP4 và trả tệp trong cùng chat.
 - Có thể bỏ tùy chọn để lấy phong cách đã lưu. `pad` giữ hình và thêm viền, `crop` cắt giữa để lấp khung, `keep` giữ âm, `mute` tắt âm. Tỷ lệ hỗ trợ gồm 9:16, 16:9, 1:1 và original.
 - Khi chủ nói muốn dùng cùng kiểu cho các clip sau, hướng dẫn dùng `/phongcachvideo 9:16 crop keep`. Chỉ lưu các lựa chọn chủ xác nhận. Tham số của một lệnh dựng chỉ áp dụng cho clip đó.
+- Dùng `/phongcachvideo ghi Ưu tiên giữ trọn thao tác tay trước khi chuyển cảnh` để lưu góp ý biên tập đã xác nhận. Trợ lý Biên tập Video ngắn dùng ghi chú này khi được gọi trong chat riêng của chủ.
 - Các yêu cầu chọn cảnh tự do, ghép nhiều clip hoặc phụ đề theo lời nói cần một lượt biên tập chuyên biệt. Chỉ báo đã bàn giao sau khi có tệp đầu ra kiểm chứng được.
 
 ## Quy trình
 
-1. Chốt đầu ra: video dựng sẵn, hoạt hình web tương tác, GIF, giải thích toán, cảnh 3D hay hoạt hình game. Ghi rõ nền tảng, tỉ lệ khung hình, độ dài và phong cách. Nếu thiếu, đề xuất mặc định ngắn, dễ xem và dễ sửa.
+1. Chốt đầu ra: video dựng sẵn, hoạt hình web tương tác, GIF, giải thích toán, cảnh 3D hay hoạt hình game. Ghi rõ nền tảng, tỉ lệ khung hình, độ dài và phong cách. Nếu thiếu, đề xuất mặc định để chủ chọn.
 2. Chọn một công cụ chính theo mục đích. Không cài cả danh sách và không phối nhiều thư viện làm cùng một việc.
 3. Trước khi cài thư viện vào dự án, kiểm tra README, phiên bản, giấy phép, môi trường cần có và cách xuất hiện hành. Xin người dùng duyệt cài phần mềm hoặc thay đổi dự án.
 4. Làm storyboard/nhịp cảnh ngắn; dựng một đoạn thử 3–5 giây để kiểm tra phong cách và chuyển động trước khi mở rộng.
@@ -51,10 +54,22 @@ Kích hoạt khi người dùng muốn cắt, ghép hoặc xuất video từ t�
 - Kiểm tra `ffmpeg` và `ffprobe` trong PATH. Nếu chúng chưa có trong PATH của tiến trình hiện tại, tìm bản WinGet dưới `$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Gyan.FFmpeg_*\ffmpeg-*\bin\` rồi gọi executable bằng đường dẫn đầy đủ.
 - Dùng `ffprobe` đọc metadata; trích một số khung hình bằng `ffmpeg` và xem contact sheet trước khi viết nội dung bám footage. Không suy diễn lời thoại hoặc sự kiện không nhìn/nghe được.
 - Khi có quyền chạy lệnh cục bộ, FFmpeg có thể cắt, ghép, đổi kích thước, cân chỉnh âm lượng và chèn chữ/phụ đề. Không ghi đè footage nguồn; xuất bản nháp vào thư mục riêng trong `attachments/` của Brain đang hoạt động.
+- Với bản cắt hoặc ghép chuẩn, gọi `python skills/video-animation-toolkit/scripts/render_mp4.py <kế-hoạch.json>` từ brain. Dùng đường dẫn tuyệt đối đến script gốc trong brain nếu thư mục hiện hành khác. Ví dụ kế hoạch tối thiểu:
+
+  ```json
+  {"clips":[{"path":"inbox/telegram/clip.mp4","start":0.5,"end":5}],"ratio":"9:16","fit":"pad","audio":"keep"}
+  ```
+
+  `clips` chứa 1 đến 20 đoạn theo thứ tự dựng. Bỏ mốc để lấy từ đầu hoặc đến hết cảnh. Hỗ trợ `9:16`, `16:9`, `1:1`, `pad`/`crop`, `keep`/`mute` và `subtitles` (đường dẫn SRT UTF-8 trong brain, mốc theo bản ghép). Nếu có đoạn không có âm thanh và đang dùng `keep`, đoạn đó được đệm yên lặng. Đường dẫn MP4 do chương trình trả về là tệp đã qua ffprobe và giải mã toàn bộ, nằm trong `attachments/video-production/`. Chọn tên kế hoạch riêng mỗi lượt. Nếu cần cấu hình xuất ngoài các tùy chọn trên, dùng FFmpeg trực tiếp và thực hiện cùng bước kiểm tra.
 - Với FFmpeg 9 trên máy này, truyền đồ thị ghép qua `-filter_complex`. Tùy chọn cũ `-filter_complex_script` không có trong bản cài.
-- Sau khi xuất, kiểm tra file bằng `ffprobe` và xem khung hình ở đầu, giữa, cuối. Nếu quyền terminal hoặc công cụ không khả dụng, bàn giao edit brief và nêu rõ chưa render; không thử thay bằng điều khiển preview trình duyệt.
+- Sau khi xuất, kiểm tra `ffprobe` và xem khung hình đầu, giữa, cuối cùng các điểm cắt quan trọng. Khi cần, báo rõ khâu xem hình hoặc nghe tiếng nào chưa thực hiện được. Dùng quyền terminal có sẵn, không cần thao tác giao diện để chạy FFmpeg. Nếu bị chặn hoặc thiếu công cụ, nêu thông báo lỗi và bàn giao phần đã làm được.
 - Không tải video lên dịch vụ ngoài và không xuất bản bài đăng nếu chưa được yêu cầu.
 
 ## Bàn giao
 
-Nêu công cụ chính và lý do, các bước thực hiện, định dạng đầu ra và điều gì cần người dùng chọn. Khi đã tạo video, đưa đường dẫn file và ghi rõ độ phân giải, tỉ lệ, thời lượng và fps.
+Trả MP4 trong cuộc trò chuyện yêu cầu, với link Markdown tương đối từ brain trong dashboard. Nếu yêu cầu đến từ Telegram, dùng cơ chế đính kèm tệp của lượt đó và chỉ xác nhận đã gửi khi có bằng chứng. Chỉ dùng kênh khác nếu chủ yêu cầu. Kèm thời lượng, khung hình, fps và nếu còn điểm cần duyệt, ghi ngắn gọn sau link.
+
+## Bài học sau mỗi lần dựng
+
+- Yêu cầu của video hiện tại được ưu tiên. Chỉ áp dụng mặc định lâu dài khi chủ dặn dùng cho các video sau. Trong chat trực tiếp với Biên tập Video ngắn, khi chủ dặn rõ, phát `JAVIS_RULE: ...` để Javis lưu luật. Trên Telegram, `/phongcachvideo` tiếp tục quản lý preset dựng nhanh và góp ý đã xác nhận của chủ.
+- Khi có một bài học tái dùng được từ bản dựng, phản hồi hoặc lỗi đã sửa, phát tối đa hai dòng `JAVIS_LESSON: ...` theo cơ chế của Javis. Ghi điều có thể áp dụng lần sau, dựa trên kết quả thực tế. Không coi quyết định cho một clip hay tự đánh giá của trợ lý là gu đã được xác nhận.

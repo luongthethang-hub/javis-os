@@ -1,0 +1,2 @@
+# Style
+Keep checks crisp.

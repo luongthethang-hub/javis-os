@@ -2,14 +2,15 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 22 agents · 13 skills · 4 workflows (0 bật) · 0 loops (0 bật) · 29 plugins (28 chạy)
+**Tổng quan:** 23 agents · 13 skills · 6 workflows (1 bật) · 0 loops (0 bật) · 30 plugins (28 chạy)
 
 ## Agents
-- **Biên tập Video ngắn** (`bien-tap-video-ngan`) - Phân tích tư liệu và dựng video ngắn từ tệp cục bộ khi có công cụ và quyền chạy. · skills: video-animation-toolkit
+- **Biên tập Video ngắn** (`bien-tap-video-ngan`) - Phân tích tư liệu và dựng video ngắn từ tệp cục bộ khi có công cụ và quyền chạy. · skills: video-animation-toolkit · tags: Nội dung, Video
 - **Chuyên viên Cơ bản và Vĩ mô** (`chuyen-vien-co-ban-vi-mo`) - Theo dõi tin tức, lịch kinh tế và bối cảnh vĩ mô để nói cái gì có thể làm gãy kế hoạch giao dịch. · tags: tai-chinh, vi-mo, tin-tuc
 - **Chuyên viên Dòng tiền và Tâm lý** (`chuyen-vien-dong-tien-tam-ly`) - Đọc khối lượng, funding, hợp đồng mở, tỷ lệ long short và độ căng của đám đông để cảnh báo bẫy thanh khoản. · tags: tai-chinh, dong-tien, tam-ly-thi-truong
 - **Điều phối AI Company** (`dieu-phoi-ai-company`) - Điều phối yêu cầu đa phòng ban trong Brain này, chọn năng lực Javis phù hợp và tổng hợp đầu ra có kiểm soát. · skills: van-hanh-ai-company-on-dinh, chuyen-viec-sang-app-desktop · tags: ai, dieu-phoi, van-hanh
 - **Điều phối Kế hoạch Ngày** (`dieu-phoi-ke-hoach-ngay`) - Biến ưu tiên đã chọn thành kế hoạch ngày có trình tự, mốc kiểm tra và điều kiện hoàn thành. · tags: van-hanh, nang-suat
+- **Ghi biên bản Red/Blue Team** (`ghi-bien-ban-red-blue`) - Ghi lại điểm bất đồng giữa red team và blue team, phán quyết cuối và bài học rút ra sau mỗi vòng phản biện. · tags: ai, kiem-duyet, bien-ban
 - **Giám đốc Đầu tư (CIO)** (`giam-doc-dau-tu`) - Chủ trì phiên họp đầu tư, cân mọi quan điểm, chốt đúng một trạng thái hành động kèm phiếu lệnh. · tags: tai-chinh, lanh-dao, quyet-dinh
 - **Giám đốc Marketing ngành đào tạo lái xe** (`giam-doc-marketing-nganh-dao-tao-lai-xe`) - Xây dựng chiến lược marketing và nội dung giúp thu hút học viên phù hợp cho dịch vụ dạy lái xe số tự động.
 - **Javis Core** (`javis-core`) - Trợ lý hệ thống nhận báo cáo và hỗ trợ công việc trong brain này.
@@ -37,22 +38,25 @@
 - **Notes** (`notes`) - Lưu tin nhắn hiện tại nguyên văn vào sources/ (kèm ảnh), tự chưng cất lên wiki nếu note đáng.
 - **Query Wiki** (`query-wiki`) - Khai thác tri thức trong Second Brain: tổng hợp, so sánh, giả thuyết. Trả lời có trích dẫn.
 - **Tách phiên thông minh** (`tach-phien-thong-minh`) - Nén ngữ cảnh có kiểm chứng và tạo bàn giao để tiếp tục trong phiên mới.
-- **Vận hành AI Company ổn định** (`van-hanh-ai-company-on-dinh`) - Kiểm tra đầu vào, chọn luồng Content, EA hoặc nghiên cứu thị trường và bàn giao lỗi có giới hạn.
+- **Vận hành AI Company ổn định** (`van-hanh-ai-company-on-dinh`) - Điều phối AI Company chịu lỗi nhiều tầng bằng checkpoint, phân loại lỗi, chuyển nguồn có giới hạn và khôi phục an toàn.
 ### Marketing
 - **HTML sang Webcake** (`html-to-webcake`) - Chuyển trang HTML thành file .pke mở được trong trình dựng Webcake, giữ đúng màu, cỡ chữ, ảnh và bố cục của bản gốc.
 ### Năng suất
 - **Tiết kiệm token Terminal (RTK)** (`token-saver-rtk`) - Dùng RTK để rút gọn đầu ra lệnh Terminal trong tác vụ kỹ thuật; giữ đủ chi tiết khi cần xác minh.
 ### Nội dung
-- **Hoạt hình & Video** (`video-animation-toolkit`) - Dựng hoặc ghép MP4/MOV từ Telegram và tệp cục bộ bằng FFmpeg, xuất video ngắn, lập quy trình hoạt hình 2D/3D và motion graphics.
+- **Hoạt hình & Video** (`video-animation-toolkit`) - Tiếp nhận MP4/MOV, duyệt dựng theo mốc, xuất video bằng FFmpeg và lập quy trình hoạt hình 2D/3D, motion graphics.
 ### Security
 - **Security Audit** (`security-audit`) - Rà soát bảo mật mã nguồn, API, dịch vụ: tìm lỗ hổng có bằng chứng, kiểm chứng độc lập từng lỗi, báo cáo kèm cách sửa. Từ Cloudflare.
 ### Tài chính
 - **Họp hội đồng đầu tư** (`hop-hoi-dong-dau-tu`) - Chạy một phiên họp phân tích thị trường đủ 6 pha, ra phiếu lệnh và biên bản.
 
 ## Workflows
+### AI
+- **Red/Blue Team Review - AI Company** (`red-blue-team-review`) - off · 3 bước [phan-bien-cheo---chatgpt -> nghien-cuu-kiem-chung -> ghi-bien-ban-red-blue] · Vòng phản biện đối kháng 3 bước cho mọi đầu ra của AI Company - red attack, blue patch, biên bản phán quyết.
 ### Năng suất
 - **Kế hoạch ngày thực dụng** (`ke-hoach-ngay-thuc-dung`) - off · 3 bước [phan-tich-uu-tien-ngay -> dieu-phoi-ke-hoach-ngay -> kiem-tra-kha-thi-ngay] · Biến danh sách việc và mục tiêu thành kế hoạch ngày ngắn, khả thi và có bước chốt cuối ngày.
 ### Nội dung
+- **Dựng video và trả MP4** (`dung-video-tra-mp4`) - active · 1 bước [bien-tap-video-ngan] · Tiếp nhận video, chốt brief và phương án, duyệt từng mốc dựng rồi trả MP4 đã kiểm tra.
 - **Sản xuất Content & Video ngắn** (`san-xuat-content-video-ngan`) - off · 0 bước [] · Tạo bản nháp content đào tạo lái xe, kiểm duyệt có giới hạn và bàn giao chờ chủ duyệt.
 ### Tài chính
 - **Phát triển EA - bản vá và phản biện** (`phat-trien-ea-ban-va`) - off · 0 bước [] · Kiểm tra Task Card, soạn bản vá EA và phản biện; không chạy MT5 hoặc đặt lệnh.
@@ -91,6 +95,7 @@ _(chưa có)_
 - **Nhật ký dùng tool** (`tool-audit`) - bundled/tắt · tools: javis_tool_stats · hooks: post_tool_call · Đếm số lần MỖI tool được engine gọi (qua hook post_tool_call) và cho xem thống kê tool hay dùng. Đây là ví dụ minh hoạ cơ chế HOOK của plugin. Mặc định TẮT - bật qua POST /plugins/toggle (slug=tool-audit) để thử.
 - **Tin thoại** (`voice-note`) - bundled/chạy · tools: javis_voice_note · Javis ghi một đoạn nói ngắn (tối đa 1000 ký tự) thành file mp3 trong attachments/voice/ rồi nhúng vào câu trả lời. Khung chat hiện trình phát, Telegram nhận file âm thanh. Dùng giọng Edge miễn phí theo ngôn ngữ của câu.
 - **Đọc video YouTube** (`youtube-read`) - bundled/chạy · tools: javis_youtube_read · Đọc lời thoại (phụ đề) của video YouTube từ link để tóm tắt. Tự đổi qua 6 kiểu trình phát rồi tới yt-dlp khi YouTube chặn máy chủ. Không cần đăng nhập, không cần API key.
+- **Debate Engine - Red/Blue Team** (`debate-engine`) - vault/tắt · tools: debate_engine · hooks: post_tool_call · Đưa lượt rà soát Red/Blue vào Kanban, kiểm tra ngân sách ước tính và tự ngắt khi thất bại liên tiếp.
 
 ## Cờ sức khoẻ
-- Agent chưa workflow nào dùng: bien-tap-video-ngan, chuyen-vien-co-ban-vi-mo, chuyen-vien-dong-tien-tam-ly, dieu-phoi-ai-company, giam-doc-dau-tu, giam-doc-marketing-nganh-dao-tao-lai-xe, javis-core, kiem-chung-du-lieu, kiem-duyet-chuan-bi-dang, ky-su-ea---claude, nghien-cuu-kiem-chung, nhat-ky-thuc-thi, phan-bien-cheo---chatgpt, phan-bien-noi-dung, phan-tich-thi-truong-an-toan, quan-tri-rui-ro, thu-ky-hoi-dong, tro-ly-content-ca-nhan, truong-phong-nghien-cuu
+- Agent chưa workflow nào dùng: chuyen-vien-co-ban-vi-mo, chuyen-vien-dong-tien-tam-ly, dieu-phoi-ai-company, giam-doc-dau-tu, giam-doc-marketing-nganh-dao-tao-lai-xe, javis-core, kiem-chung-du-lieu, kiem-duyet-chuan-bi-dang, ky-su-ea---claude, nhat-ky-thuc-thi, phan-bien-noi-dung, phan-tich-thi-truong-an-toan, quan-tri-rui-ro, thu-ky-hoi-dong, tro-ly-content-ca-nhan, truong-phong-nghien-cuu

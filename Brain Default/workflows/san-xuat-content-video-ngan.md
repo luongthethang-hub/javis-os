@@ -29,4 +29,4 @@ contract_steps:
 updated: '2026-11-19'
 ---
 
-MVP chạy thủ công, chỉ chữ và chỉ dùng brief đầu vào. Giám đốc Marketing chịu trách nhiệm định hướng và chốt brief khi cần. Mỗi lượt gồm Trợ lý Content viết, Phản biện nội dung rà và Kiểm duyệt & Chuẩn bị đăng bàn giao; tối đa một lượt sửa rồi rà lại. Gọi Nghiên cứu & Kiểm chứng theo yêu cầu xác minh riêng. Khi cần dựng tệp thật, giao Biên tập Video ngắn trong tác vụ riêng với tệp và công cụ phù hợp. Các ngưỡng là cấu hình vận hành ban đầu, không phải hạn mức của nhà cung cấp.
+MVP chạy thủ công, chỉ chữ và chỉ dùng brief đầu vào. Giám đốc Marketing chịu trách nhiệm định hướng và chốt brief khi cần. Mỗi lượt gồm Trợ lý Content viết, Phản biện nội dung rà và Kiểm duyệt & Chuẩn bị đăng bàn giao; tối đa một lượt sửa rồi rà lại. Gọi Nghiên cứu & Kiểm chứng theo yêu cầu xác minh riêng. Khi cần dựng tệp thật, chuyển brief đã chốt và đường dẫn tư liệu sang quy trình [[workflows/dung-video-tra-mp4|Dựng video và trả MP4]]. Các ngưỡng là cấu hình vận hành ban đầu, không phải hạn mức của nhà cung cấp.

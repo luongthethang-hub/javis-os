@@ -12,3 +12,4 @@
 - [Nhờ ChatGPT Desktop và Claude Desktop xử lý việc Javis bị chặn](facts/nho-va-app-desktop-chatgpt-claude.md) - Từ 19/11/2026 có `handoff.ps1` gửi prompt và đọc trả lời tự động cho cả 2 app; luật chạy không cần hỏi lại đã ghi vào AGENTS.md; kèm bảng chia việc và các giới hạn hạn mức đã đo.
 - [Quy tắc làm việc và MQL](facts/quy-tac-lam-viec-va-mql.md) - Ưu tiên đúng, kiểm chứng, an toàn và patch thực dụng; với MQL4/MQL5 dùng Task Card, regression cố định, LKG và shadow mode khi phù hợp.
 - [Ưu tiên chất lượng, chi phí và AI Company](facts/uu-tien-chat-luong-chi-phi-va-ai-company.md) - Ưu tiên chất lượng và tiết kiệm, phát triển bốn mảng AI Company, chuyển nguồn an toàn và content đào tạo lái xe.
+- [Gửi video là bắt đầu tiếp nhận biên tập](facts/quy-trinh-bien-tap-video-studio.md) - Khi chủ gửi tệp video, mặc định mở `skills/video-animation-toolkit/references/quy-trinh-bien-tap-studio.md`; xác nhận brief, chốt phương án, duyệt từng mốc rồi mới xuất MP4.

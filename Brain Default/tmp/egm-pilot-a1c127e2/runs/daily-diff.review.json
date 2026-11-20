@@ -1,0 +1,19 @@
+{
+  "verdict": "CHANGES",
+  "findings": [
+    {
+      "scope": "DIFF",
+      "severity": "high",
+      "reference": "DailyRisk.mqh, AllowNewEntry, !restored branch",
+      "problem": "The helper allows new entries before same-day risk state has been restored. This bypasses the drawdown guard after a restart and can increase exposure when the account is already above its limit.",
+      "example": "AllowNewEntry(6.0, 5.0, false) must return false, as it did before the change. The new code returns true."
+    },
+    {
+      "scope": "DIFF",
+      "severity": "high",
+      "reference": "DailyRisk.mqh, AllowNewEntry, drawdown comparison",
+      "problem": "The inclusive comparison allows new entries at the drawdown limit. The Task Card and the last known good code require drawdown to be strictly below the limit.",
+      "example": "AllowNewEntry(5.0, 5.0, true) must return false. The new code returns true."
+    }
+  ]
+}

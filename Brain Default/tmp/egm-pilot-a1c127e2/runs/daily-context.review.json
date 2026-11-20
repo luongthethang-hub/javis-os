@@ -1,0 +1,33 @@
+{
+  "verdict": "CHANGES",
+  "findings": [
+    {
+      "scope": "SPEC",
+      "severity": "medium",
+      "reference": "Task Card lines 3 and 5",
+      "problem": "The contract says entries are allowed below the limit, but the acceptance matrix skips equality. An implementation that admits entries at the cap can pass the listed threshold cases.",
+      "example": "With restored state and a limit of 5, assert that 4.99 permits an entry and that 5 and 5.01 both deny it."
+    },
+    {
+      "scope": "SPEC",
+      "severity": "medium",
+      "reference": "Task Card lines 3\u20135",
+      "problem": "The card calls for restoration before entry evaluation but leaves the outcome of an entry request during pending restoration implicit. The restart case also leaves the prior lock state and expected exit behavior unspecified.",
+      "example": "Restart on the same broker day after triggering the lock. Before restoration completes, assert that an entry request is denied and an otherwise eligible exit can proceed. After restoration, assert that the entry lock persists."
+    },
+    {
+      "scope": "DIFF",
+      "severity": "high",
+      "reference": "DailyRisk.mqh, unrestored branch",
+      "problem": "Returning true while state is unrestored bypasses the drawdown guard and permits new exposure during restart, even if the account was already locked for the day.",
+      "example": "Assert that AllowNewEntry(6, 5, false) returns false, as it did before the change. The new code returns true."
+    },
+    {
+      "scope": "DIFF",
+      "severity": "high",
+      "reference": "DailyRisk.mqh, final comparison",
+      "problem": "Changing the strict comparison to an inclusive comparison permits new exposure at the drawdown cap.",
+      "example": "Assert that AllowNewEntry(5, 5, true) returns false, as it did before the change. The new code returns true."
+    }
+  ]
+}

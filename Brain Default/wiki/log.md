@@ -6,3 +6,7 @@ Nhật ký thời gian (append-only). Mỗi entry: `## [YYYY-MM-DD] loại | ti�
 
 Đã tạo:
 - [[Phân loại tri thức đa nhãn có provenance]]
+
+## [2026-11-20] update | Duyệt đề xuất tự học 00:00
+
+- Thêm [[Phản biện bản vá EA trong phiên mới]] từ [[reports/ai-company/kiem-thu-egm-lite-2026-11-19]] theo phê duyệt của chủ.
