@@ -18201,11 +18201,14 @@ async def _self_upgrade_versions() -> tuple:
 
 def _update_work_busy() -> bool:
     """One process-wide drain signal for both owner-requested and automatic updates."""
+    import coding_terminal
+
     return bool(
         update_activity.busy() or luot_dang_chay.has_any_turn() or _CHAT_RUNTIME.snapshot()
         or _VOICE_BG_TASKS or _CHAT_JOBS.has_running_work() or tasks_feature.has_running_work()
         or reminders_feature.has_running_work() or loop_feature._running
-        or tien_trinh_nen.dang_chay() or _TEAM_API.has_running_work()
+        or tien_trinh_nen.dang_chay() or coding_terminal.has_running_work()
+        or any(session["song"] for session in terminal.KHO.danh_sach()) or _TEAM_API.has_running_work()
         or _PULSE_TICK_BUSY[0] or _RESONANCE_TICK_BUSY[0] or _AUTO_LEARNING_BUSY[0] or _AUTO_BG_BUSY[0]
     )
 
