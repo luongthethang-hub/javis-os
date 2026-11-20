@@ -388,6 +388,9 @@ class RemindersFeature:
         self.router = self._make_router()
 
     # ── store (JSON trong brain) ──
+    def has_running_work(self) -> bool:
+        return bool(self._dang_chay) or any(not task.done() for task in self._viec_nen)
+
     def _path(self, brain: str) -> Path:
         return Path(self.deps.brain_root(brain)) / "Javis" / "reminders.json"
 

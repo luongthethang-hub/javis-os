@@ -131,6 +131,7 @@ import core_loop        # Javis Core's improvement loop: one loop, many knobs
 import tool_pins        # the tools a brain calls most are shown directly (one knob of that loop)
 import job_tune         # the owner's side of that loop, from chat (tool javis_tune)
 import self_upgrade     # improvement on the owner's request: backup, undo, own code, update (tool javis_improve)
+import update_activity
 import phien_am       # từ tiếng Anh -> cách đọc kiểu Việt (đọc loa + so âm câu nghe được)
 import voice_privacy
 voice_privacy.install()
@@ -252,6 +253,7 @@ import voice_persona  # a voice call from a partner's chat speaks as that partne
 import voice_call     # nút mic là gọi Javis: tự chọn ChatGPT Live / Live API / Cơ bản (0.65.18)
 
 app = FastAPI(title="Javis OS")
+app.add_middleware(update_activity.WorkRequests)
 _CHAT_RUNTIME = ChatRuntime()
 # 16/11/2026: a chat job that is over closes its row in the ledger of turns in flight (kept during shutdown).
 _CHAT_RUNTIME.on_finish = turn_ledger.end
@@ -14653,6 +14655,7 @@ async def _close_cut_workflow_runs():
 _WORKFLOW_UNATTENDED_SOURCES = ("kanban", "reminder", "loop", "webhook")
 
 
+@update_activity.track
 async def execute_workflow(brain, slug, input="", tools=None, session_id="", source="other",
                            input_luu=None, mode=None):
     """Chạy workflow và GHI LỊCH SỬ. Mọi chỗ gọi (trang Cộng sự, Kanban, nhắc hẹn) đi qua đây.
@@ -14787,6 +14790,7 @@ async def _execute_workflow_resume_raw(brain, slug, task_id, node_id, code, tool
                "task_id": task_id, "reason": result.stop_reason}
 
 
+@update_activity.track
 async def execute_workflow_resume(brain, slug, task_id, node_id, code, tools=None,
                                   session_id="", source="other"):
     """Chạy tiếp lần đang chờ duyệt, ghi vào ĐÚNG bản ghi lịch sử đang `waiting`."""
@@ -17319,8 +17323,11 @@ async def _start_scheduler():
     asyncio.create_task(_security_alert_loop())
     async def _scheduler_loop():
         while True:
+            await asyncio.sleep(30)
+            if update_activity.blocked():
+                continue
+            activity = update_activity.begin()
             try:
-                await asyncio.sleep(30)
                 # 1) Multi-loop tự cải thiện: mỗi tick chọn TỐI ĐA 1 loop đến hạn
                 #    (quá hạn lâu nhất), chạy tuần tự qua lock toàn cục.
                 try:
@@ -17385,6 +17392,12 @@ async def _start_scheduler():
                         await _bao_cao_tuan_neu_toi_gio()
                 except Exception as nse:
                     print(f"[ngan sach tick] {type(nse).__name__}: {nse}", file=__import__('sys').stderr)
+                # 3d) An opted-in install checks for a Javis release in the background. Detection only queues the
+                # update; self_upgrade waits without a deadline until every live chat, Kanban worker and team turn ends.
+                try:
+                    await _auto_update_tick()
+                except Exception as aue:
+                    print(f"[auto update tick] {type(aue).__name__}: {aue}", file=__import__('sys').stderr)
                 # 4) Đồng bộ GitHub tự động (2 CHIỀU): đủ interval → kéo về + hoà nhập + đẩy lên
                 try:
                     bcfg = cfgmod.read_settings().get("backup", {}) or {}
@@ -17460,6 +17473,8 @@ async def _start_scheduler():
                     print(f"[purge gc] {type(pe).__name__}: {pe}", file=__import__('sys').stderr)
             except Exception as e:
                 print(f"[scheduler] {type(e).__name__}: {e}", file=__import__('sys').stderr)
+            finally:
+                update_activity.end(activity)
     asyncio.create_task(_scheduler_loop())
     try:
         # Gói khai `compat.app` nhưng `git pull` / `git reset --hard` không bao giờ chạy lại
@@ -17853,18 +17868,22 @@ async def _latest_remote_version(cur: str = ""):
     đó đã cũ hơn một phút thì tải lại, để bấm "Kiểm tra lại" không phải chờ hết 10 phút.
     """
     latest, err = None, None
+    repo, branch = update_state.release_source()
     try:
         import httpx
-        url = f"https://raw.githubusercontent.com/{GITHUB_REPO}/main/VERSION"
+        url = f"https://raw.githubusercontent.com/{repo}/{branch}/VERSION"
         async with httpx.AsyncClient(timeout=8) as client:
             r = await client.get(url)
             if r.status_code == 200:
-                latest = (r.text or "").strip() or None
+                release = (r.text or "").strip()
+                latest = release if re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", release) else None
             else:
                 err = localefmt.chu(f"VERSION chưa có trên nhánh main (HTTP {r.status_code})",
                                     f"VERSION is not on the main branch yet (HTTP {r.status_code})")
     except Exception as e:
         err = f"{type(e).__name__}: {e}"
+    if repo.lower() != GITHUB_REPO.lower() or branch != "main":
+        return latest, err
     try:
         cu = time.monotonic() - (_CL_REMOTE.get("at") or 0) > 60
         rels, _ = await _cl_remote_releases(refresh=bool(cu and not _ver_newer(latest, cur)))
@@ -18051,6 +18070,11 @@ async def _update_core():
     import datetime as _dt
     now = lambda: _dt.datetime.now().isoformat(timespec="seconds")
 
+    mode = _deploy_mode()
+    repo, branch = update_state.release_source()
+    if mode == "docker" and (repo.lower(), branch) != (GITHUB_REPO.lower(), "main"):
+        return JSONResponse({"ok": False, "error": "A custom GitHub update source requires a native install."},
+                            status_code=400)
     st = _read_update_state()
     if st.get("phase") in _UPDATE_ACTIVE and _update_recent(st.get("started_at")):
         return JSONResponse({"ok": False, "error": localefmt.chu("Đang cập nhật rồi, chờ chút.",
@@ -18063,9 +18087,12 @@ async def _update_core():
                          "old_version": None, "old_sha": None, "target_version": None,
                          "started_at": now(), "finished_at": None})
 
-    mode = _deploy_mode()
     cur = _read_version()
-    latest, _err = await _latest_remote_version(cur)
+    try:
+        latest, _err = await _latest_remote_version(cur)
+    except Exception:
+        _write_update_state({"phase": "idle"})
+        raise
 
     if mode == "docker":
         # 0.267.0 (a user's VPS stuck on 0.206.0): an image built on a PC and loaded onto the VPS is in no registry, so
@@ -18105,6 +18132,8 @@ async def _update_core():
                     f"sau khi phát hành). Thử lại sau ít phút.",
                     f"v{latest} was just released and its Docker image is still building (usually 2 to 5 "
                     f"minutes after release). Try again in a few minutes.")}, status_code=409)
+        if not _claim_update_idle():
+            return _update_deferred_response()
         token = os.getenv("WATCHTOWER_TOKEN", "")
         started_at = now()
         _write_update_state({"phase": "restarting", "old_version": cur, "target_version": latest,
@@ -18129,6 +18158,8 @@ async def _update_core():
                 "'git clone' or update manually."),
             "manual": "./update.sh"}, status_code=400)
     old_sha = _git_head(root)
+    if not _claim_update_idle():
+        return _update_deferred_response()
     _write_update_state({"phase": "preparing", "old_version": cur, "old_sha": old_sha,
                          "target_version": latest, "result": None, "error": None, "stashed": False,
                          "started_at": now(), "finished_at": None})
@@ -18168,7 +18199,58 @@ async def _self_upgrade_versions() -> tuple:
     return cur, latest
 
 
-self_upgrade.wire(start=_self_upgrade_start, versions=_self_upgrade_versions, turn_busy=luot_dang_chay.has_turn)
+def _update_work_busy() -> bool:
+    """One process-wide drain signal for both owner-requested and automatic updates."""
+    return bool(
+        update_activity.busy() or luot_dang_chay.has_any_turn() or _CHAT_RUNTIME.snapshot()
+        or _VOICE_BG_TASKS or _CHAT_JOBS.has_running_work() or tasks_feature.has_running_work()
+        or reminders_feature.has_running_work() or loop_feature._running
+        or tien_trinh_nen.dang_chay() or _TEAM_API.has_running_work()
+        or _PULSE_TICK_BUSY[0] or _RESONANCE_TICK_BUSY[0] or _AUTO_LEARNING_BUSY[0] or _AUTO_BG_BUSY[0]
+    )
+
+
+def _claim_update_idle() -> bool:
+    """Recheck after asynchronous preparation, then close admission in the same loop turn."""
+    try:
+        if not _update_work_busy():
+            def still_updating():
+                state = _read_update_state()
+                return not state or (
+                    state.get("phase") in _UPDATE_ACTIVE and _update_recent(state.get("started_at"))
+                )
+            update_activity.close_admission(still_updating)
+            return True
+    except Exception as ex:
+        print(f"[update activity] {type(ex).__name__}: {ex}", file=sys.stderr)
+    _write_update_state({"phase": "idle"})
+    return False
+
+
+def _update_deferred_response():
+    return JSONResponse({"ok": False, "deferred": True, "error": localefmt.chu(
+        "Javis còn việc đang chạy. Hãy cập nhật sau khi các phiên hoàn thành.",
+        "Javis still has running work. Update after the active sessions finish.",
+    )}, status_code=409)
+
+
+_AUTO_UPDATE_LAST = [0.0]
+_AUTO_UPDATE_INTERVAL_S = 10 * 60
+
+
+async def _auto_update_tick() -> None:
+    settings = cfgmod.read_settings()
+    if not bool((settings.get("updates") or {}).get("auto_install")):
+        return
+    now = time.monotonic()
+    if now - _AUTO_UPDATE_LAST[0] < _AUTO_UPDATE_INTERVAL_S:
+        return
+    _AUTO_UPDATE_LAST[0] = now
+    await self_upgrade.schedule_update()
+
+
+self_upgrade.wire(start=_self_upgrade_start, versions=_self_upgrade_versions,
+                  turn_busy=luot_dang_chay.has_turn, work_busy=_update_work_busy)
 
 
 # ============================================================
@@ -19844,6 +19926,7 @@ def _voice_quota_frame(prov) -> dict:
 
 
 @app.websocket("/ws/voice-live")
+@update_activity.track
 async def voice_live_ws(ws: WebSocket, session_id: str = Query(""), brain: str = Query("brain"),
                         lang: str = Query("vi-VN")):
     """Nghe nói thẳng (Voice V2 bậc Live): trình duyệt đẩy PCM16 16 kHz, nhận PCM16 24 kHz.
@@ -19855,6 +19938,9 @@ async def voice_live_ws(ws: WebSocket, session_id: str = Query(""), brain: str =
     When the call ends (the browser sends "stop" on every hang-up, silence and path change, so it is not a cancel), a
     handoff the main brain is still working on keeps running and posts its answer to the chat (issue 1315).
     """
+    if update_activity.blocked():
+        await ws.close(code=1013)
+        return
     if cfgmod.gate_active() and not cfgmod.valid_session(ws.cookies.get("javis_session", "")):
         await ws.close(code=1008)
         return
@@ -22903,8 +22989,12 @@ async def _chat_socket(ws):
             # closed, the page reconnected and its `hello` sent the unconfirmed message again: the same error, the
             # same close, every 3 seconds, and the held message survived F5 and restarts in localStorage. Now the
             # failure is logged, this page is told the message was not taken, and the socket keeps serving the rest.
+            activity = update_activity.begin()
             try:
                 action = payload.get("action")
+                if update_activity.blocked() and action not in {"ping", "ui_result", "stop"}:
+                    await _real_ws.close(code=1013, reason="Javis is applying an update")
+                    return
                 if action == "reset":
                     continue                        # client tự quản phiên; reset KHÔNG còn giết lượt nào
                 if action == "typing":
@@ -23262,6 +23352,8 @@ async def _chat_socket(ws):
                 raise
             except Exception as _exc:  # noqa: BLE001 - see the comment above the try
                 await _message_failed(payload, _exc)
+            finally:
+                update_activity.end(activity)
     except WebSocketDisconnect:
         pass
     finally:
@@ -23380,8 +23472,12 @@ async def terminal_close(session: str = Form(...)):
 
 
 @app.websocket("/ws/terminal")
+@update_activity.track
 async def terminal_ws(ws: WebSocket, session: str = Query(""), brain: str = Query("brain"),
                       cols: int = Query(80), rows: int = Query(24)):
+    if update_activity.blocked():
+        await ws.close(code=1013)
+        return
     if cfgmod.gate_active() and not cfgmod.valid_session(ws.cookies.get("javis_session", "")):
         await ws.close(code=1008)
         return
@@ -26524,6 +26620,7 @@ def _tg_turn_account(sess, prov: str):
     return acc if isinstance(acc, str) and acc else None
 
 
+@update_activity.track
 async def _tg_answer(text, meta=None, progress=None, channel="telegram", bot=None,
                      phien_kho="", ghi_kho=True, agent=None, project_id=""):
     """Vỏ ngoài một lượt KHÔNG-WEBSOCKET: khớp phiên trong kho -> chạy engine -> LƯU lượt.
@@ -26560,6 +26657,9 @@ async def _tg_answer(text, meta=None, progress=None, channel="telegram", bot=Non
     before the prompt is built, as the dashboard's project panel does. Kept on the conversation, so
     later turns without it stay in that project.
     """
+    if update_activity.blocked():
+        return localefmt.chu("Javis đang khởi động lại để cập nhật. Bạn thử lại sau ít giây.",
+                             "Javis is restarting for an update. Please retry shortly.")
     # Gỡ ký tự vô hình (tag U+E0000, ghi đè hướng chữ, zero-width...) ngay ở cửa chung của mọi kênh: người lạ
     # giấu lệnh vào đó, model đọc được còn chủ thì không thấy. Gỡ TRƯỚC khi ghi kho vì vòng tự học đọc lại kho (0.83.2).
     if isinstance(text, str):

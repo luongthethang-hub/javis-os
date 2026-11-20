@@ -20,6 +20,7 @@ import importlib.util
 import os
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 os.environ["JAVIS_STATE_DIR"] = tempfile.mkdtemp(prefix="javis-self-upgrade-")
 
@@ -27,6 +28,8 @@ import mcp_hub  # noqa: E402
 import plugins_host  # noqa: E402
 import self_upgrade as SU  # noqa: E402
 import turn_context  # noqa: E402
+import update_activity as activity  # noqa: E402
+import update_state  # noqa: E402
 
 fails = []
 
@@ -163,16 +166,21 @@ finally:
         setattr(github_repos, k, v)
 
 # ═════ tự cập nhật ═════
-calls = {"start": 0, "busy": [True, True, False]}
+calls = {"start": 0, "busy": [True, RuntimeError("activity probe unavailable"), True, False, True, False]}
 
 
 async def _start():
     calls["start"] += 1
+    if calls["start"] == 1:
+        return {"ok": False, "deferred": True}
     return {"ok": True, "mode": "native"}
 
 
-def _busy(chat_id):
-    return calls["busy"].pop(0) if calls["busy"] else False
+def _busy():
+    value = calls["busy"].pop(0) if calls["busy"] else False
+    if isinstance(value, Exception):
+        raise value
+    return value
 
 
 async def _no_sleep(_s):
@@ -180,7 +188,7 @@ async def _no_sleep(_s):
 
 
 async def scenario():
-    SU.wire(start=_start, versions=lambda: _v("0.562.0", "0.562.0"), turn_busy=_busy)
+    SU.wire(start=_start, versions=lambda: _v("0.562.0", "0.562.0"), work_busy=_busy)
     same = await SU.schedule_update("web:s1", sleep=_no_sleep)
     SU.wire(versions=lambda: _v("0.562.0", "0.563.0"))
     ok = await SU.schedule_update("web:s1", sleep=_no_sleep, poll_s=0.01)
@@ -194,13 +202,58 @@ async def _v(a, b):
 
 
 same, ok, again = asyncio.run(scenario())
-check("chưa có bản mới hơn: không cập nhật, nói rõ chờ Release", not same["ok"] and "Release" in same["error"]
-      and calls["start"] in (0, 1), same)
+check("chưa có bản mới hơn: không cập nhật, nói rõ chờ Release", not same["ok"] and "Release" in same["error"], same)
 check("có bản mới: hẹn cập nhật, trả bản hiện tại và bản mới", ok["ok"] and ok["latest"] == "0.563.0", ok)
 check("hẹn hai lần: không chạy đôi", again.get("already") or again.get("ok"), again)
-check("cập nhật chạy SAU khi lượt chat kết thúc, đúng một lần", calls["start"] == 1 and calls["busy"] == [], calls)
+check("an unavailable probe and a new turn during preparation both defer restart",
+      calls["start"] == 2 and calls["busy"] == [] and SU.last_update()["ok"], calls)
 check("so phiên bản theo số", SU._newer("0.563.0", "0.562.9") and not SU._newer("0.562.0", "0.562.0")
       and SU._newer("1.0.0", "0.999.9"))
+
+async def activity_scenario():
+    seen = []
+    release = asyncio.Event()
+    entered = asyncio.Event()
+
+    async def app(_scope, _receive, _send):
+        entered.set()
+        await release.wait()
+
+    async def send(message):
+        seen.append(message)
+
+    requests = activity.WorkRequests(app)
+    scope = {"type": "http", "method": "POST", "path": "/chat/stream"}
+    task = asyncio.create_task(requests(scope, None, send))
+    await entered.wait()
+    assert activity.busy()
+    release.set()
+    await task
+    assert not activity.busy()
+    state = {"updating": True}
+    activity.close_admission(lambda: state["updating"])
+    await requests(scope, None, send)
+    assert seen[0]["status"] == 503
+    state["updating"] = False
+    await requests(scope, None, send)
+    assert not activity.blocked()
+    return True
+
+
+check("active request remains tracked until its stream finishes and admission reopens after maintenance",
+      asyncio.run(activity_scenario()))
+with patch.object(update_state.cfgmod, "read_settings",
+                  return_value={"updates": {"repository": "owner/fork", "branch": "javis-release"}}):
+    check("an explicit fork and branch are used as the update source",
+          update_state.release_source() == ("owner/fork", "javis-release"))
+with patch.object(update_state.cfgmod, "read_settings",
+                  return_value={"updates": {"repository": "https://example.org/repo"}}):
+    try:
+        update_state.release_repo()
+    except ValueError:
+        check("update source rejects arbitrary URLs", True)
+    else:
+        check("update source rejects arbitrary URLs", False)
 
 # ═════ công cụ javis_improve ═════
 spec = importlib.util.spec_from_file_location("javis_improve_plugin", ROOT / "system/plugins/javis-improve/plugin.py")
@@ -258,9 +311,13 @@ out = call({"op": "update"}, owner)
 check("tool: chủ bảo cập nhật mà chưa có bản mới thì nói rõ", out.startswith("ERROR") and "Release" in out, out)
 
 src = (ROOT / "server" / "main.py").read_text(encoding="utf-8")
-check("main: nối đường cập nhật của nút Cập nhật, phiên bản và lượt đang chạy",
-      "self_upgrade.wire(start=_self_upgrade_start, versions=_self_upgrade_versions, turn_busy=luot_dang_chay.has_turn)"
-      in src and "res = await _update_core()" in src and "return await _update_core()" in src)
+check("main: nối đường cập nhật của nút Cập nhật, phiên bản và toàn bộ việc đang chạy",
+      "work_busy=_update_work_busy" in src and "luot_dang_chay.has_any_turn()" in src
+      and "tasks_feature.has_running_work()" in src and "has_running_work()" in src
+      and "res = await _update_core()" in src and "return await _update_core()" in src)
+check("main: tự kiểm tra bản mới khi chủ đã bật và chỉ xếp một lượt cập nhật",
+      'get("auto_install")' in src and "await _auto_update_tick()" in src
+      and "await self_upgrade.schedule_update()" in src)
 check("prompt trợ lý: chủ bảo cải tiến thì dùng javis_improve, không ai bảo thì chỉ đề xuất",
       "CHỦ bảo cải tiến" in src and "`javis_improve`" in src)
 claude_md = (ROOT / "CLAUDE.md").read_text(encoding="utf-8")

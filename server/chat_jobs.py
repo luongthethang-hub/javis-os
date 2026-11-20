@@ -118,6 +118,9 @@ class ChatJobs:
         task.add_done_callback(self._tasks.discard)
         return job_id, ""
 
+    def has_running_work(self) -> bool:
+        return any(not task.done() for task in self._tasks)
+
     async def _run(self, job_id: str, runner: Callable[[], Awaitable[dict]]) -> None:
         try:
             payload = await runner()

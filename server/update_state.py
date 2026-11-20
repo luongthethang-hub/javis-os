@@ -7,6 +7,23 @@ import config as cfgmod
 
 STATE_DIR = cfgmod.STATE_DIR
 STATE_FILE = STATE_DIR / "update_state.json"
+OFFICIAL_REPO = "blogminhquy/javis-os"
+
+
+def release_source() -> tuple[str, str]:
+    """Resolve the same GitHub repository for discovery and native installation."""
+    cfg = cfgmod.read_settings().get("updates") or {}
+    repo = str(cfg.get("repository") or OFFICIAL_REPO).strip()
+    branch = str(cfg.get("branch") or "main").strip()
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9-]*/[A-Za-z0-9_][A-Za-z0-9_.-]*", repo):
+        raise ValueError("updates.repository must be a GitHub owner/repository name")
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]*", branch):
+        raise ValueError("updates.branch must be a simple Git branch name")
+    return repo, branch
+
+
+def release_repo() -> str:
+    return release_source()[0]
 
 
 def ver_tuple(s):

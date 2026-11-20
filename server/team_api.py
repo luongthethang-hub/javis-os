@@ -30,6 +30,7 @@ import localefmt
 import resonance_store as RS
 import task_store
 import team_store
+import update_activity
 from team_runner import TeamRunner, run_io
 from team_store import TeamError
 
@@ -236,6 +237,11 @@ class TeamApi:
     def runner(self) -> TeamRunner:
         with self._init_lock:
             return self._make_runner()
+
+    def has_running_work(self) -> bool:
+        return any(not task.done() for task in self._bg) or (
+            self.exists() and self.runner().has_running_work()
+        )
 
     def _make_runner(self) -> TeamRunner:
         if self._runner is None:
@@ -451,8 +457,11 @@ class TeamApi:
         self._last_remind = 0.0
         self._last_reconcile = 0.0
 
+    @update_activity.track
     async def tick(self) -> None:
         """Một vòng: phục hồi (một lần, nếu cần), nhận việc đầu hàng, mỗi giờ nhắc việc chặn quá 24 giờ."""
+        if update_activity.blocked():
+            return
         if not hasattr(self, "_recovered"):
             self.prime()
         if not self.exists():
