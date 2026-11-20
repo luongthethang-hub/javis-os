@@ -11,6 +11,7 @@ from _paths import ROOT, SERVER  # noqa: E402,F401
 import asyncio
 import os
 import tempfile
+from unittest.mock import patch
 
 os.environ.setdefault("JAVIS_STATE_DIR", tempfile.mkdtemp(prefix="javis-banmoi-"))
 
@@ -27,7 +28,7 @@ def check(name, cond):
 
 
 GH = {"VERSION": "0.64.66\n", "CHANGELOG": None, "loi_version": False}
-DEM = {"changelog": 0}
+DEM = {"changelog": 0, "version_url": ""}
 
 
 def _changelog(*ver):
@@ -51,6 +52,7 @@ class _FakeClient:
 
     async def get(self, url, **k):
         if url.endswith("/VERSION"):
+            DEM["version_url"] = url
             if GH["loi_version"]:
                 raise httpx.ConnectError("mất mạng")
             return _Resp(200, GH["VERSION"])
@@ -121,7 +123,15 @@ try:
     # ---- 7. Nút cập nhật dùng CÙNG nguồn khi ghi phiên bản đích ----
     src = (SERVER / "main.py").read_text(encoding="utf-8")
     check("main.py không còn tự đọc VERSION ở chỗ khác ngoài _latest_remote_version",
-          src.count("/main/VERSION") == 1)
+          src.count("/VERSION\"") == 1)
+
+    dat_lai()
+    GH.update({"VERSION": "0.64.67\n", "CHANGELOG": _changelog("0.64.68")})
+    with patch.object(main.update_state, "release_source", return_value=("owner/fork", "javis-release")):
+        version, error = asyncio.run(main._latest_remote_version("0.64.66"))
+    check("the version check uses the configured release branch without consulting upstream's changelog",
+          version == "0.64.67" and error is None and DEM["changelog"] == 0
+          and DEM["version_url"] == "https://raw.githubusercontent.com/owner/fork/javis-release/VERSION")
 finally:
     httpx.AsyncClient, main._read_version = _goc_client, _goc_ver
 

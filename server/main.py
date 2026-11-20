@@ -253,7 +253,6 @@ import voice_persona  # a voice call from a partner's chat speaks as that partne
 import voice_call     # nút mic là gọi Javis: tự chọn ChatGPT Live / Live API / Cơ bản (0.65.18)
 
 app = FastAPI(title="Javis OS")
-app.add_middleware(update_activity.WorkRequests)
 _CHAT_RUNTIME = ChatRuntime()
 # 16/11/2026: a chat job that is over closes its row in the ledger of turns in flight (kept during shutdown).
 _CHAT_RUNTIME.on_finish = turn_ledger.end
@@ -301,6 +300,7 @@ _REGISTRY_SHADOW_TASKS = set()
 import nen_phan_hoi
 import bot_shield
 app.add_middleware(nen_phan_hoi.NenPhanHoi)
+app.add_middleware(update_activity.WorkRequests)
 # CORS KHÔNG dùng '*' nữa: dashboard cùng-origin (không cần CORS). Chống trang web độc ĐỌC API qua trình duyệt;
 # phần chống GHI/CSRF ở _csrf_guard bên dưới.
 # Vá bảo mật 2026-11-05: cửa CORS cho MỌI localhost:<cổng> (để tiện dev) giờ chỉ mở khi JAVIS_DEV_CORS=1. Trên
@@ -14655,7 +14655,7 @@ async def _close_cut_workflow_runs():
 _WORKFLOW_UNATTENDED_SOURCES = ("kanban", "reminder", "loop", "webhook")
 
 
-@update_activity.track
+@update_activity.track_stream
 async def execute_workflow(brain, slug, input="", tools=None, session_id="", source="other",
                            input_luu=None, mode=None):
     """Chạy workflow và GHI LỊCH SỬ. Mọi chỗ gọi (trang Cộng sự, Kanban, nhắc hẹn) đi qua đây.
@@ -14790,7 +14790,7 @@ async def _execute_workflow_resume_raw(brain, slug, task_id, node_id, code, tool
                "task_id": task_id, "reason": result.stop_reason}
 
 
-@update_activity.track
+@update_activity.track_stream
 async def execute_workflow_resume(brain, slug, task_id, node_id, code, tools=None,
                                   session_id="", source="other"):
     """Chạy tiếp lần đang chờ duyệt, ghi vào ĐÚNG bản ghi lịch sử đang `waiting`."""
@@ -19929,7 +19929,6 @@ def _voice_quota_frame(prov) -> dict:
 
 
 @app.websocket("/ws/voice-live")
-@update_activity.track
 async def voice_live_ws(ws: WebSocket, session_id: str = Query(""), brain: str = Query("brain"),
                         lang: str = Query("vi-VN")):
     """Nghe nói thẳng (Voice V2 bậc Live): trình duyệt đẩy PCM16 16 kHz, nhận PCM16 24 kHz.
@@ -19941,9 +19940,6 @@ async def voice_live_ws(ws: WebSocket, session_id: str = Query(""), brain: str =
     When the call ends (the browser sends "stop" on every hang-up, silence and path change, so it is not a cancel), a
     handoff the main brain is still working on keeps running and posts its answer to the chat (issue 1315).
     """
-    if update_activity.blocked():
-        await ws.close(code=1013)
-        return
     if cfgmod.gate_active() and not cfgmod.valid_session(ws.cookies.get("javis_session", "")):
         await ws.close(code=1008)
         return
@@ -23480,12 +23476,8 @@ async def terminal_close(session: str = Form(...)):
 
 
 @app.websocket("/ws/terminal")
-@update_activity.track
 async def terminal_ws(ws: WebSocket, session: str = Query(""), brain: str = Query("brain"),
                       cols: int = Query(80), rows: int = Query(24)):
-    if update_activity.blocked():
-        await ws.close(code=1013)
-        return
     if cfgmod.gate_active() and not cfgmod.valid_session(ws.cookies.get("javis_session", "")):
         await ws.close(code=1008)
         return

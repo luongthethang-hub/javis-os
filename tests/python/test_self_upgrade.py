@@ -234,9 +234,32 @@ async def activity_scenario():
     activity.close_admission(lambda: state["updating"])
     await requests(scope, None, send)
     assert seen[0]["status"] == 503
+    voice = {"type": "websocket", "path": "/ws/voice-live"}
+    await requests(voice, None, send)
+    assert seen[-1] == {"type": "websocket.close", "code": 1013}
     state["updating"] = False
-    await requests(scope, None, send)
+    entered.clear()
+    release.clear()
+    task = asyncio.create_task(requests(voice, None, send))
+    await entered.wait()
     assert not activity.blocked()
+    assert activity.busy()
+    release.set()
+    await task
+    assert not activity.busy()
+    closed = []
+
+    @activity.track_stream
+    async def workflow():
+        try:
+            yield "working"
+        finally:
+            closed.append(True)
+
+    events = workflow()
+    assert await anext(events) == "working" and activity.busy()
+    await events.aclose()
+    assert closed == [True] and not activity.busy()
     return True
 
 
