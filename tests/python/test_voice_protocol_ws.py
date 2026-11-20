@@ -9,6 +9,7 @@ import unittest
 import uuid
 from pathlib import Path
 import sessions
+import update_activity
 import voice_turn_protocol as vp
 
 
@@ -37,7 +38,7 @@ class VoiceProtocolWS(unittest.IsolatedAsyncioTestCase):
             runtime=types.SimpleNamespace(get_job=lambda sid:jobs.get(sid),register_job=lambda sid,task,*a,**k:jobs.update({sid:task}))
             cfg=types.SimpleNamespace(read_settings=lambda:{'model':{}})
             reg=types.SimpleNamespace(cancel=lambda sid:False)
-            namespace=dict(_real_ws=Socket(),json=json,store=store,voice_turn_protocol=vp,
+            namespace=dict(_real_ws=Socket(),json=json,store=store,voice_turn_protocol=vp,update_activity=update_activity,
                 _CHAT_RUNTIME=runtime,cfgmod=cfg,_chat_provider_for_session=lambda *a:('test','api','key','test'),
                 _brain_key=lambda x:x,_cung_brain=lambda a,b:a==b,_brain_ui_value=lambda x:x,
                 _brain_root=lambda x:x,Path=Path,send_raw=send,send_client=send,sys=__import__('sys'),uuid=uuid,

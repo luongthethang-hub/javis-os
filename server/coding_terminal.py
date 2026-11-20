@@ -674,6 +674,12 @@ _NEN: Dict[str, TienTrinh] = {}
 _NEN_KHOA = threading.Lock()
 
 
+def has_running_work() -> bool:
+    """Detached commands also count as active on Windows."""
+    with _NEN_KHOA:
+        return any(process.dang_chay for process in _NEN.values())
+
+
 def _don_nen() -> None:
     moc = time.time() - DON_SAU_GIAY
     with _NEN_KHOA:

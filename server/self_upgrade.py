@@ -35,15 +35,15 @@ from pathlib import Path
 from typing import Any, Awaitable, Callable, Iterable, Optional
 
 from config import STATE_DIR
+from update_state import OFFICIAL_REPO as SOURCE_REPO, release_source
 
-SOURCE_REPO = "blogminhquy/javis-os"        # the repo every install updates from (updater.release_source)
 STORE_DIR = STATE_DIR / "self_upgrade"
 OWNER_SCHEDULED = ("kanban", "reminder")     # background work the owner set up runs with the owner's word
 MAX_CHARS = 200_000
 DIFF_LINES = 60
 HISTORY_KEEP = 300
 SKILL_DESC_MAX = 150                         # the skill router cuts descriptions at 150 characters (CLAUDE.md)
-UPDATE_WAIT_S = 180.0                        # wait at most this long for the current turn to end before updating
+UPDATE_WAIT_S = 180.0                        # legacy per-chat wait when no whole-system busy callback is wired
 
 # Areas of the brain an owner-requested improvement may change, by the first path parts.
 _AREAS = (("agents",), ("skills",), ("workflows",), ("Javis", "loops"), ("memory",))
@@ -51,7 +51,7 @@ _AREAS = (("agents",), ("skills",), ("workflows",), ("Javis", "loops"), ("memory
 _DENY_NAMES = {"learning.json", "forgotten.json"}
 
 _LOCK = threading.RLock()
-_UPDATE: dict = {"start": None, "versions": None, "turn_busy": None, "task": None}
+_UPDATE: dict = {"start": None, "versions": None, "turn_busy": None, "work_busy": None, "task": None}
 
 
 class ImproveError(ValueError):
@@ -343,39 +343,47 @@ def history(brain_root: str, limit: int = 10) -> list:
 # ── Javis's own code ───────────────────────────────────────────────────────────────────────────────────────────────
 
 def source_status(sid: str, brain_root: str) -> dict:
-    """Is GitHub connected, and is the official repo attached to this chat (with its worktree)?"""
+    """Is GitHub connected, and is the configured update repository attached to this chat?"""
     import github_repos
+    repo_name, release_branch = release_source()
     st = github_repos.status()
     attached = None
     if sid:
         for r in github_repos.session_repos(sid, brain_root):
-            if str(r.get("full_name") or "").lower() == SOURCE_REPO.lower():
+            if str(r.get("full_name") or "").lower() == repo_name.lower():
                 attached = r
-    return {"repo": SOURCE_REPO, "connected": bool(st.get("connected")), "has_git": bool(st.get("has_git")),
-            "attached": attached}
+    return {"repo": repo_name, "release_branch": release_branch, "connected": bool(st.get("connected")),
+            "has_git": bool(st.get("has_git")), "attached": attached}
 
 
 def attach_source(sid: str, brain_root: str) -> dict:
-    """Attach the official repo to this chat next to whatever it already has. Returns its row (worktree, branch)."""
+    """Attach the configured update repository and use its release branch as the base."""
     import github_repos
+    repo_name, release_branch = release_source()
     if not sid:
         raise ImproveError(_c("Chỉ gắn được trong một khung chat web (chưa rõ mã phiên).",
                               "Only inside a web chat (no session id)."))
     st = github_repos.status()
     if not st.get("connected"):
         raise ImproveError(_c("GitHub chưa kết nối. Vào trang Kết nối, thẻ GitHub, dán token có quyền vào repository "
-                              f"{SOURCE_REPO} (Contents, Pull requests, Workflows: Read and write).",
+                              f"{repo_name} (Contents, Pull requests, Workflows: Read and write).",
                               "GitHub is not connected. On the Connections page, GitHub card, paste a token with access "
-                              f"to {SOURCE_REPO} (Contents, Pull requests, Workflows: Read and write)."))
+                              f"to {repo_name} (Contents, Pull requests, Workflows: Read and write)."))
     have = [r["full_name"] for r in github_repos.session_repos(sid, brain_root) if r.get("full_name")]
-    if SOURCE_REPO.lower() not in {h.lower() for h in have}:
+    if repo_name.lower() not in {h.lower() for h in have}:
         try:
-            github_repos.attach(sid, brain_root, brain_root, have + [SOURCE_REPO])
+            github_repos.attach(sid, brain_root, brain_root, have + [repo_name])
         except github_repos.RepoError as e:
             raise ImproveError(str(e))
     got = source_status(sid, brain_root)
     if not got["attached"]:
         raise ImproveError(_c("Gắn repository không thành công.", "Attaching the repository did not work."))
+    if release_branch != "main" and got["attached"].get("base_branch") != release_branch:
+        try:
+            github_repos.set_base(sid, brain_root, repo_name, release_branch)
+        except github_repos.RepoError as e:
+            raise ImproveError(str(e)) from e
+        got = source_status(sid, brain_root)
     if got["attached"].get("can_push") is False:
         got["note"] = _c("Token chỉ có quyền đọc repository này: Javis sửa được trên máy nhưng không đẩy, không mở PR được. "
                          "Cần quyền Contents và Pull requests ghi.", "The token can only read this repository: Javis can edit "
@@ -387,15 +395,17 @@ def attach_source(sid: str, brain_root: str) -> dict:
 
 def wire(start: Optional[Callable[[], Awaitable[dict]]] = None,
          versions: Optional[Callable[[], Awaitable[tuple]]] = None,
-         turn_busy: Optional[Callable[[str], bool]] = None) -> None:
-    """main.py: `start()` = the Update button (returns its JSON), `versions()` = (current, latest),
-    `turn_busy(chat_id)` = a turn is still running in that chat."""
+         turn_busy: Optional[Callable[[str], bool]] = None,
+         work_busy: Optional[Callable[[], bool]] = None) -> None:
+    """Connect update actions and the live-work signals supplied by main.py."""
     if start is not None:
         _UPDATE["start"] = start
     if versions is not None:
         _UPDATE["versions"] = versions
     if turn_busy is not None:
         _UPDATE["turn_busy"] = turn_busy
+    if work_busy is not None:
+        _UPDATE["work_busy"] = work_busy
 
 
 def _newer(a: str, b: str) -> bool:
@@ -436,10 +446,14 @@ async def schedule_update(chat_id: str = "", *, wait_s: float = UPDATE_WAIT_S, p
         return {"ok": True, "current": cur, "latest": latest, "already": True}
 
     async def run():
+        work_busy = _UPDATE.get("work_busy")
         busy = _UPDATE.get("turn_busy")
         waited = 0.0
         await sleep(poll_s)
-        while busy is not None and chat_id and waited < wait_s:
+        # A whole-system update never times out this wait. Restarting while another chat, background job or team turn
+        # is still producing output would interrupt work. The legacy per-chat callback keeps its bounded wait for
+        # embedders that have not wired the process-wide signal yet.
+        while work_busy is None and busy is not None and chat_id and waited < wait_s:
             try:
                 if not busy(chat_id):
                     break
@@ -447,10 +461,22 @@ async def schedule_update(chat_id: str = "", *, wait_s: float = UPDATE_WAIT_S, p
                 break
             await sleep(poll_s)
             waited += poll_s
-        try:
-            res = await _UPDATE["start"]()
-        except Exception as ex:  # noqa: BLE001
-            res = {"ok": False, "error": f"{type(ex).__name__}: {ex}"}
+        while True:
+            while work_busy is not None:
+                try:
+                    if not work_busy():
+                        break
+                except Exception:  # noqa: BLE001
+                    # A broken activity probe does not establish that work has finished.
+                    pass
+                await sleep(poll_s)
+            try:
+                res = await _UPDATE["start"]()
+            except Exception as ex:  # noqa: BLE001
+                res = {"ok": False, "error": f"{type(ex).__name__}: {ex}"}
+            if work_busy is None or not (res or {}).get("deferred"):
+                break
+            await sleep(poll_s)
         _UPDATE["last"] = res
         if not (res or {}).get("ok"):
             print(f"[self_upgrade] update did not start: {(res or {}).get('error')}", flush=True)

@@ -41,6 +41,7 @@ import memory_control
 import plugins_host
 import once_ledger
 import task_store
+import update_activity
 import turn_context
 from task_store import TaskStore, VALID_STATUS, agent_prefix as _agent_prefix
 
@@ -265,6 +266,10 @@ class TasksFeature:
         # Reason given with a cancel of a running job, read by that worker when it stops (`cancel`).
         self._cancel_reasons: dict[str, str] = {}
         self.router = self._make_router()
+
+    def has_running_work(self) -> bool:
+        """Whether this process still owns a live Kanban worker or product verification."""
+        return any(not task.done() for task in list(self._workers.values()) + list(self._verify_jobs))
 
     # ------------------------------------------------------------------
     # Board identity, migration and portable snapshot
@@ -512,7 +517,10 @@ class TasksFeature:
                 candidates.append(task)
         return candidates
 
+    @update_activity.track
     async def _dispatch_available(self) -> None:
+        if update_activity.blocked():
+            return
         self._prune_workers()
         slots = self.max_workers - len(self._workers)
         if slots <= 0:
