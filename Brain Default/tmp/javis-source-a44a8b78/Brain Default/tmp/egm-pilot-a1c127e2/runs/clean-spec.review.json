@@ -1,0 +1,12 @@
+{
+  "verdict": "CHANGES",
+  "findings": [
+    {
+      "scope": "SPEC",
+      "severity": "medium",
+      "reference": "Task Card 2\u20133",
+      "problem": "The acceptance matrix requires agreement with the last known good function but does not explicitly require agreement with the written contract or define what to do if the two disagree. A refactor could pass all eight comparisons while preserving behavior that violates the contract.",
+      "example": "For lock off, quote fresh, and session closed, require false under the written contract. If the last known good function returns true, block rollout until the discrepancy is resolved."
+    }
+  ]
+}

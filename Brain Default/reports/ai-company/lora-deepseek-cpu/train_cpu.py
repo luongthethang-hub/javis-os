@@ -1,10 +1,11 @@
-﻿"""Train a small supervised LoRA adapter on CPU from a local DeepSeek checkpoint."""
+"""Train a small supervised LoRA adapter on CPU from a local DeepSeek checkpoint."""
 import argparse
 import json
 import math
 import random
 import time
 from pathlib import Path
+from types import MethodType
 
 from pilot import ROOT, read_rows
 
@@ -40,13 +41,25 @@ def encode(tokenizer, row):
     return prompt_ids, answer_ids
 
 
+def use_avx2_fp32_linears(model, torch):
+    """Use AVX2 FP32 matrix kernels without storing an FP32 copy of the model."""
+    def linear(layer, hidden):
+        bias = layer.bias.float() if layer.bias is not None else None
+        return torch.nn.functional.linear(hidden.float(), layer.weight.float(), bias).to(hidden.dtype)
+
+    for layer in model.model.modules():
+        if isinstance(layer, torch.nn.Linear):
+            layer.forward = MethodType(linear, layer)
+
+
 def train_cpu(args, rows):
+    import psutil
     import torch
     from peft import LoraConfig, TaskType, get_peft_model
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
-    if args.steps < 1 or args.threads < 1:
-        raise ValueError("Steps and threads must be positive")
+    if min(args.steps, args.threads, args.last_layers) < 1:
+        raise ValueError("Steps, threads, and last layers must be positive")
     output = ROOT / args.output
     if output.exists():
         raise FileExistsError(output)
@@ -57,22 +70,35 @@ def train_cpu(args, rows):
     torch.set_num_interop_threads(1)
     dtype = {"bfloat16": torch.bfloat16, "float32": torch.float32}[args.dtype]
     t0 = time.monotonic()
+    process = psutil.Process()
+    print(json.dumps({"event": "loading", "available_mib": psutil.virtual_memory().available // 2**20}), flush=True)
     tokenizer = AutoTokenizer.from_pretrained(source, local_files_only=True, trust_remote_code=False)
     model = AutoModelForCausalLM.from_pretrained(
         source, local_files_only=True, trust_remote_code=False,
-        torch_dtype=dtype, low_cpu_mem_usage=True,
+        dtype=dtype, low_cpu_mem_usage=True,
     )
     model.config.use_cache = False
+    total_layers = model.config.num_hidden_layers
+    if args.last_layers > total_layers:
+        raise ValueError("Requested more adapter layers than the model has")
+    frozen_layers = total_layers - args.last_layers
+    layers = list(range(frozen_layers, total_layers))
+    if args.avx2_fp32:
+        use_avx2_fp32_linears(model, torch)
     model = get_peft_model(model, LoraConfig(
         r=4, lora_alpha=8, lora_dropout=0.0, bias="none",
         task_type=TaskType.CAUSAL_LM, target_modules=["q_proj", "v_proj"],
+        layers_to_transform=layers, layers_pattern="layers",
     ))
     model.train()
     params = [p for p in model.parameters() if p.requires_grad]
     assert params and all(p.device.type == "cpu" for p in model.parameters())
     optimizer = torch.optim.AdamW(params, lr=2e-4, fused=False)
     print(json.dumps({"event": "loaded", "seconds": round(time.monotonic() - t0, 2),
-                      "dtype": args.dtype, "trainable": sum(p.numel() for p in params)}), flush=True)
+                      "dtype": args.dtype, "layers": layers,
+                      "avx2_fp32": args.avx2_fp32,
+                      "trainable": sum(p.numel() for p in params),
+                      "rss_mib": process.memory_info().rss // 2**20}), flush=True)
     encoded = [encode(tokenizer, row) for row in rows]
     rng = random.Random(20261120)
     order = list(range(len(encoded)))
@@ -93,11 +119,15 @@ def train_cpu(args, rows):
         torch.nn.utils.clip_grad_norm_(params, 1.0, error_if_nonfinite=True)
         optimizer.step()
         print(json.dumps({"event": "step", "step": step + 1, "loss": round(value, 5),
-                          "seconds": round(time.monotonic() - t1, 2)}), flush=True)
+                          "seconds": round(time.monotonic() - t1, 2),
+                          "rss_mib": process.memory_info().rss // 2**20,
+                          "available_mib": psutil.virtual_memory().available // 2**20}), flush=True)
     optimizer.zero_grad(set_to_none=True)
     model.save_pretrained(output, safe_serialization=True)
     tokenizer.save_pretrained(output)
+    memory = process.memory_info()
     print(json.dumps({"event": "adapter_saved", "path": str(output),
+                      "peak_rss_mib": getattr(memory, "peak_wset", memory.rss) // 2**20,
                       "seconds": round(time.monotonic() - t0, 2)}), flush=True)
 
 
@@ -108,6 +138,8 @@ def main():
     parser.add_argument("--output", choices=("adapter-smoke", "adapter-pilot"), default="adapter-smoke")
     parser.add_argument("--steps", type=int, default=4)
     parser.add_argument("--threads", type=int, default=4)
+    parser.add_argument("--last-layers", type=int, default=4)
+    parser.add_argument("--avx2-fp32", action="store_true")
     parser.add_argument("--dtype", choices=("bfloat16", "float32"), default="bfloat16")
     args = parser.parse_args()
     train, test = validate_data()

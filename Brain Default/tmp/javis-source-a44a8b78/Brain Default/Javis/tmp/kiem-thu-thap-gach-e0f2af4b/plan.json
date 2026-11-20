@@ -1,0 +1,32 @@
+﻿{
+    "clips":  [
+                  {
+                      "path":  "inbox/telegram/VIDEO_DOWNLOAD_1794729593162_1794730418280.mp4",
+                      "end":  6,
+                      "start":  1
+                  },
+                  {
+                      "path":  "inbox/telegram/VIDEO_DOWNLOAD_1794729593156_1794730418099.mp4",
+                      "end":  6,
+                      "start":  0.5
+                  },
+                  {
+                      "path":  "inbox/telegram/VIDEO_DOWNLOAD_1794729593144_1794730417839.mp4",
+                      "end":  6,
+                      "start":  0.5
+                  },
+                  {
+                      "path":  "inbox/telegram/VIDEO_DOWNLOAD_1794729593137_1794730417683.mp4",
+                      "end":  8,
+                      "start":  1
+                  },
+                  {
+                      "path":  "inbox/telegram/VIDEO_DOWNLOAD_1794729593150_1794730417955.mp4",
+                      "end":  6,
+                      "start":  0.5
+                  }
+              ],
+    "audio":  "mute",
+    "fit":  "pad",
+    "ratio":  "9:16"
+}

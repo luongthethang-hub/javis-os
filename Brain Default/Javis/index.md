@@ -44,7 +44,7 @@
 ### Năng suất
 - **Tiết kiệm token Terminal (RTK)** (`token-saver-rtk`) - Dùng RTK để rút gọn đầu ra lệnh Terminal trong tác vụ kỹ thuật; giữ đủ chi tiết khi cần xác minh.
 ### Nội dung
-- **Hoạt hình & Video** (`video-animation-toolkit`) - Tiếp nhận MP4/MOV, duyệt dựng theo mốc, xuất video bằng FFmpeg và lập quy trình hoạt hình 2D/3D, motion graphics.
+- **Hoạt hình & Video** (`video-animation-toolkit`) - Phân tích video tham chiếu MP4/MOV, dựng và xuất video bằng FFmpeg, lập quy trình hoạt hình 2D/3D và motion graphics.
 ### Security
 - **Security Audit** (`security-audit`) - Rà soát bảo mật mã nguồn, API, dịch vụ: tìm lỗ hổng có bằng chứng, kiểm chứng độc lập từng lỗi, báo cáo kèm cách sửa. Từ Cloudflare.
 ### Tài chính

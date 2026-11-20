@@ -1,6 +1,6 @@
 ---
 name: Hoạt hình & Video
-description: Tiếp nhận MP4/MOV, duyệt dựng theo mốc, xuất video bằng FFmpeg và lập quy trình hoạt hình 2D/3D, motion graphics.
+description: Phân tích video tham chiếu MP4/MOV, dựng và xuất video bằng FFmpeg, lập quy trình hoạt hình 2D/3D và motion graphics.
 group: Nội dung
 ---
 
@@ -11,6 +11,13 @@ group: Nội dung
 Kích hoạt khi người dùng muốn cắt, ghép hoặc xuất video từ tệp có sẵn, kể cả yêu cầu tiếp nối sau khi gửi clip qua Telegram. Cũng áp dụng khi chọn công cụ, dựng cảnh, tạo video/GIF/hoạt hình web.
 
 Khi chủ gửi tệp video không kèm yêu cầu riêng hoặc muốn biên tập video content, mở `references/quy-trinh-bien-tap-studio.md` và bắt đầu tiếp nhận. Các cổng duyệt trong đó áp dụng cả khi gọi qua quy trình **Dựng video và trả MP4**. Chỉ dựng sau khi brief và phương án được chốt; dừng đúng mốc cần duyệt. Hướng dẫn FFmpeg bên dưới dùng để thực hiện từng phần đã được phép.
+
+## Phân tích video tham chiếu bằng CLI cục bộ (thử nghiệm)
+
+- Chỉ dùng khi chủ yêu cầu phân tích clip mẫu, tách cảnh hoặc lập storyboard tham chiếu. Không chạy mặc định khi nhận tệp, không gọi từ `/dungvideo` và không thay các mốc duyệt dựng.
+- Trên máy Windows đã cài thử `rea-video` từ commit `131d1527557d2cccacb64059d47560964235acd7` trong môi trường Python riêng, chạy `python skills/video-animation-toolkit/scripts/analyze_reference.py "attachments/clip-mau.mp4"` từ brain. Nếu terminal đang ở thư mục khác, dùng đường dẫn tuyệt đối đến script trong brain gốc. Script chỉ nhận tệp MP4/MOV trong brain, cần `ffmpeg` và `ffprobe` trong PATH, không cần tài khoản/API key, không bật VLM, OCR, nhận dạng lời nói hoặc tách âm.
+- Khi CLI thành công, đọc `VIDEO.md` và `report.md` trước; mở `storyboard.jpg` hoặc `breakdown.json` để đối chiếu mốc khi cần. Các tệp được lưu riêng từng lượt trong `attachments/video-reference-pilot/`. Xem các phân loại quay thật/AI/3D và điểm tin cậy là giả thuyết, không dùng để xác minh nguồn gốc. Không coi số cảnh là số điểm cắt đã được kiểm chứng thủ công.
+- Nếu CLI lỗi, đọc `cli.log` nếu có, báo rõ phần chưa thực hiện và dùng FFprobe/contact sheet cục bộ nếu phù hợp. Không tự chuyển qua API, không tải clip lên mạng và không tự chạy bản dựng.
 
 ## Dựng nhanh trong chat riêng Telegram
 

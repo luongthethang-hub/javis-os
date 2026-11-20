@@ -1,0 +1,58 @@
+[
+  {
+    "name": "blk.24.attn_q.weight",
+    "quant": "Q4_K",
+    "stock_correlation": 0.99725,
+    "control_equals_stock": false,
+    "tuned_differs_from_control": true
+  },
+  {
+    "name": "blk.24.attn_v.weight",
+    "quant": "Q6_K",
+    "stock_correlation": 0.99976,
+    "control_equals_stock": true,
+    "tuned_differs_from_control": true
+  },
+  {
+    "name": "blk.25.attn_q.weight",
+    "quant": "Q4_K",
+    "stock_correlation": 0.99725,
+    "control_equals_stock": false,
+    "tuned_differs_from_control": true
+  },
+  {
+    "name": "blk.25.attn_v.weight",
+    "quant": "Q6_K",
+    "stock_correlation": 0.99977,
+    "control_equals_stock": true,
+    "tuned_differs_from_control": true
+  },
+  {
+    "name": "blk.26.attn_q.weight",
+    "quant": "Q4_K",
+    "stock_correlation": 0.99722,
+    "control_equals_stock": false,
+    "tuned_differs_from_control": true
+  },
+  {
+    "name": "blk.26.attn_v.weight",
+    "quant": "Q6_K",
+    "stock_correlation": 0.99979,
+    "control_equals_stock": true,
+    "tuned_differs_from_control": true
+  },
+  {
+    "name": "blk.27.attn_q.weight",
+    "quant": "Q4_K",
+    "stock_correlation": 0.99723,
+    "control_equals_stock": false,
+    "tuned_differs_from_control": true
+  },
+  {
+    "name": "blk.27.attn_v.weight",
+    "quant": "Q6_K",
+    "stock_correlation": 0.9998,
+    "control_equals_stock": true,
+    "tuned_differs_from_control": true
+  }
+]

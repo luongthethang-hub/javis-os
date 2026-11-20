@@ -1,0 +1,23 @@
+{
+  "missing": {
+    "parent": "01a1f4bd-a079-7b92-a31f-91f34c270030",
+    "spawn_count": 0,
+    "activities": [],
+    "answer": "INCOMPLETE — `AFTER.txt` is required for the `SendGuard.mqh` review, and the harness read failed with `FileNotFoundError`. No reviewer was launched."
+  },
+  "ready": {
+    "parent": "01a1f4bd-a078-7bb3-a96d-f11dc1efabc7",
+    "spawn_count": 1,
+    "activities": [
+      [
+        "started",
+        "01a1f4bd-e004-7951-a236-bc894a1d6465"
+      ],
+      [
+        "completed",
+        "01a1f4bd-e004-7951-a236-bc894a1d6465"
+      ]
+    ],
+    "child_answer": "- **High:** `MaySend(UNKNOWN, 0, 2)` returns `true`, allowing a duplicate order while the broker’s response is unresolved. `UNKNOWN` must block sending until reconciliation establishes that the broker did not accept the request. [AFTER.txt, line 7](<C:/Users/Admin/JavisOS/brains/Brain Default/tmp/egm-pilot-a1c127e2/protocol-ready/AFTER.txt:7>)\n- **High:** The `>` comparison permits an attempt at `attemptIndex == maxAttempts`, exceeding the configured budget. With `maxAttempts == 1`, both `READY` and `FAILED` incorrectly allow index `1`. [AFTER.txt, line 5](<C:/Users/Admin/JavisOS/brains/Brain Default/tmp/egm-pilot-a1c127e2/protocol-ready/AFTER.txt:5>)\n- **Verification gap:** The supplied captures contain no strict compile result or fixed-scenario comparison against the last known good result. The regression evidence should assert that `READY` at index `0` and `FAILED` with budget remaining are allowed, and that `SENT`, unresolved `UNKNOWN`, and indexes at or above the maximum are denied."
+  }
+}

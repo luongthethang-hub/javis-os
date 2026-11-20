@@ -1,4 +1,4 @@
-﻿"""Prepare synthetic data and evaluate model output through local Ollama."""
+"""Prepare synthetic data and evaluate model output through local Ollama."""
 import argparse
 import json
 import random
@@ -78,33 +78,41 @@ def read_rows(path):
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
 
 
-def evaluate(model, name):
-    cases = read_rows(ROOT / "test.jsonl")
+def evaluate(model, name, mode="chat", limit=None):
+    cases = read_rows(ROOT / "test.jsonl")[:limit]
     result_path = ROOT / f"{name}.jsonl"
     measured = read_rows(result_path) if result_path.exists() else []
-    if any(row["model"] != model for row in measured):
-        raise ValueError("Output already belongs to another model")
+    if any(row["model"] != model or row.get("mode", "chat") != mode for row in measured):
+        raise ValueError("Output already belongs to another model or mode")
     complete = {row["id"] for row in measured}
     with result_path.open("a", encoding="utf-8", newline="\n") as output:
         for case in cases:
             if case["id"] in complete:
                 continue
+            body = {
+                "model": model, "stream": False, "think": False, "keep_alive": "2m",
+                "options": {"temperature": 0, "seed": 20261120, "num_predict": 160, "num_ctx": 512},
+            }
+            if mode == "trained-prefix":
+                endpoint = "generate"
+                body["raw"] = True
+                body["prompt"] = (
+                    "<\uff5cUser\uff5c>" + case["input"]
+                    + "<\uff5cAssistant\uff5c><think>\n\n</think>\n\n"
+                )
+            else:
+                endpoint = "chat"
+                body["messages"] = [{"role": "user", "content": case["input"]}]
             request = urllib.request.Request(
-                "http://127.0.0.1:11434/api/chat",
+                f"http://127.0.0.1:11434/api/{endpoint}",
                 headers={"Content-Type": "application/json"},
-                data=json.dumps({
-                    "model": model,
-                    "messages": [{"role": "user", "content": case["input"]}],
-                    "stream": False,
-                    "think": False,
-                    "keep_alive": "2m",
-                    "options": {"temperature": 0, "seed": 20261120, "num_predict": 160, "num_ctx": 512},
-                }).encode(),
+                data=json.dumps(body).encode(),
             )
             started = time.monotonic()
             with urllib.request.urlopen(request, timeout=45) as response:
                 payload = json.load(response)
-            visible = payload["message"]["content"].strip()
+            answer = payload["response"] if mode == "trained-prefix" else payload["message"]["content"]
+            visible = answer.strip()
             expected = case["expected"]
             if expected == "THIEU":
                 correct_content = bool(re.search(r"\bTHIEU\b", visible, flags=re.IGNORECASE))
@@ -112,7 +120,7 @@ def evaluate(model, name):
                 codes = set(re.findall(r"\b[A-Z]{2}-\d{3}\b", visible.upper()))
                 correct_content = codes == {expected}
             row = {
-                "id": case["id"], "kind": case["kind"], "model": model,
+                "id": case["id"], "kind": case["kind"], "model": model, "mode": mode,
                 "expected": expected, "output": visible, "exact": visible == expected,
                 "content": correct_content, "seconds": round(time.monotonic() - started, 3),
                 "done_reason": payload.get("done_reason"),
@@ -138,11 +146,13 @@ def main():
     parser.add_argument("mode", choices=("prepare", "evaluate"))
     parser.add_argument("--model", default="deepseek-r1:1.5b")
     parser.add_argument("--result", default="baseline")
+    parser.add_argument("--mode", choices=("chat", "trained-prefix"), default="chat")
+    parser.add_argument("--limit", type=int)
     args = parser.parse_args()
     if args.mode == "prepare":
         build_data()
     else:
-        evaluate(args.model, args.result)
+        evaluate(args.model, args.result, args.mode, args.limit)
 
 
 if __name__ == "__main__":

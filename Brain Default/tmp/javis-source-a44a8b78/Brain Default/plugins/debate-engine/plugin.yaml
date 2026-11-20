@@ -1,0 +1,12 @@
+name: Debate Engine - Red/Blue Team
+slug: debate-engine
+version: 1.1.0
+description: Đưa lượt rà soát Red/Blue vào Kanban, kiểm tra ngân sách ước tính và
+  tự ngắt khi thất bại liên tiếp.
+author: javis
+enabled: false
+min_mode: safe
+tools:
+- debate_engine
+hooks:
+- post_tool_call

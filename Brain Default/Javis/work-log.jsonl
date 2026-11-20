@@ -9,3 +9,8 @@
 {"ts": 1795122188.9, "kind": "reminder", "ref": "r_4830354778", "title": "Mỗi 8 giờ, thực hiện một lượt tự học theo cấu hình Tự học của Javis trên các cuộ", "status": "ok", "seconds": 170.7, "mode": "task"}
 {"ts": 1795136436.5, "kind": "reminder", "ref": "r_4830354778", "title": "Mỗi 8 giờ, thực hiện một lượt tự học theo cấu hình Tự học của Javis trên các cuộ", "status": "fail", "seconds": 32.8, "mode": "task"}
 {"ts": 1795150885.1, "kind": "reminder", "ref": "r_4830354778", "title": "Mỗi 8 giờ, thực hiện một lượt tự học theo cấu hình Tự học của Javis trên các cuộ", "status": "ok", "seconds": 76.2, "mode": "task"}
+{"ts": 1795165256.3, "kind": "reminder", "ref": "r_4830354778", "title": "Mỗi 8 giờ, thực hiện một lượt tự học theo cấu hình Tự học của Javis trên các cuộ", "status": "ok", "seconds": 29.4, "mode": "task"}
+{"ts": 1795179631.8, "kind": "reminder", "ref": "r_4830354778", "title": "Mỗi 8 giờ, thực hiện một lượt tự học theo cấu hình Tự học của Javis trên các cuộ", "status": "fail", "seconds": 7.8, "mode": "task"}
+{"ts": 1795179636.5, "kind": "reminder", "ref": "r_98304ae112", "title": "Đánh giá tự học hằng tuần", "status": "fail", "seconds": 12.1, "mode": "task"}
+{"ts": 1795183666.9, "kind": "reminder", "ref": "r_cc3a0eb933", "title": "Theo dõi Graphify và mức tiết kiệm token", "status": "ok", "seconds": 80.1, "mode": "task"}
+{"ts": 1795194050.3, "kind": "reminder", "ref": "r_4830354778", "title": "Mỗi 8 giờ, thực hiện một lượt tự học theo cấu hình Tự học của Javis trên các cuộ", "status": "ok", "seconds": 28.0, "mode": "task"}

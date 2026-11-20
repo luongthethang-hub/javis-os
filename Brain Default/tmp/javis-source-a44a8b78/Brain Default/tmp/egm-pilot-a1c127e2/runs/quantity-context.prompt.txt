@@ -1,0 +1,28 @@
+You are reviewing a synthetic MQL5 change. Identify only material, actionable issues directly supported by the supplied review packet. Consider units, state and boundaries, capital exposure, and whether the Task Card acceptance matrix would catch important errors. Separate a spec gap from a code regression. A verification gate that is explicitly planned is not a defect just because this review packet contains no run log. Treat provided pre-change code as the last known good reference. Review only the assigned scope. Do not use tools, files, prior sessions, or external services. A clean result is allowed.
+Return a JSON object with 'verdict' (PASS or CHANGES) and 'findings' (array with scope SPEC or DIFF, severity, reference, problem, and a concrete example or acceptance test). Do not emit a Markdown code fence.
+
+Review BOTH the Task Card itself for handoff and the diff against the intended behavior. The historical notes are context. Ask whether the Task Card stands on its own.
+
+TASK CARD
+1: Objective: align requested volume with broker minimum, maximum and step. Never exceed requested volume or broker maximum. Zero is the rejection sentinel.
+2: Environment: MQL5, Volume.mqh. Positive request and min <= max. Grid is min + n * step. Symbol metadata may contain a nonpositive step; reject it.
+3: Acceptance: an on-grid request, a between-grid request and a request larger than maximum. Pure function only; caller logs final volume and handles the zero sentinel. Run strict compile and compare tester results with last known good.
+4: Scope: only QuantizeVolume, with no broker calls or order submission.
+
+CONVERSATION NOTES
+Owner said a cap smaller than minimum volume must result in no order. A broker's volume grid is anchored at its minimum. If a market symbol has invalid volume metadata, return zero and capture diagnostics upstream. Author argued rounding up would reduce rejected orders.
+
+DIFF
+--- old/Volume.mqh
++++ new/Volume.mqh
+@@ -1,7 +1,7 @@
+ double QuantizeVolume(double request, double minVolume, double maxVolume, double step)
+ {
+-   if(step <= 0 || request < minVolume)
+-      return 0;
++   if(request < minVolume)
++      return minVolume;
+    double capped = MathMin(request, maxVolume);
+-   return minVolume + MathFloor((capped - minVolume) / step) * step;
++   return minVolume + MathCeil((capped - minVolume) / step) * step;
+ }

@@ -1,0 +1,33 @@
+{
+  "verdict": "CHANGES",
+  "findings": [
+    {
+      "scope": "SPEC",
+      "severity": "medium",
+      "reference": "Task Card lines 2\u20133, reconciliation handoff",
+      "problem": "The card describes when reconciliation permits a retry but does not specify which state the caller passes to the helper after reconciliation confirms non-acceptance. FAILED is defined only as an explicit broker rejection.",
+      "example": "With maxAttempts=2 and attemptIndex=1, UNKNOWN must deny a send while reconciliation is pending. After reconciliation confirms non-acceptance, specify which state the caller passes and verify that the helper allows the retry."
+    },
+    {
+      "scope": "SPEC",
+      "severity": "medium",
+      "reference": "Task Card line 4, acceptance matrix",
+      "problem": "The explicit acceptance cases omit unresolved UNKNOWN and the first index outside the attempt budget, so they do not require coverage of either capital-exposure regression.",
+      "example": "Add explicit deny cases for UNKNOWN at index 1 with maxAttempts=2 and FAILED at index 2 with maxAttempts=2. Verify that FAILED at index 1 remains allowed."
+    },
+    {
+      "scope": "DIFF",
+      "severity": "high",
+      "reference": "SendGuard.mqh, MaySend return predicate",
+      "problem": "The new predicate allows UNKNOWN before reconciliation establishes that the broker did not accept the request. A retry can duplicate an order the broker already accepted.",
+      "example": "MaySend(UNKNOWN, 1, 2) must return false. The changed helper returns true."
+    },
+    {
+      "scope": "DIFF",
+      "severity": "high",
+      "reference": "SendGuard.mqh, MaySend attempt guard",
+      "problem": "The new comparison allows attemptIndex equal to maxAttempts, permitting one extra send beyond the configured budget.",
+      "example": "With maxAttempts=1, only index 0 is eligible. MaySend(FAILED, 1, 1) must return false. The changed helper returns true."
+    }
+  ]
+}

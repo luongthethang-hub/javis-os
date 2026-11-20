@@ -1,0 +1,178 @@
+# Ki?m k? t?ng hunk c?a hai stash
+
+T?ng s? hunk: 87. Th? t? ??i chi?u: stash c? r?i stash m?i.
+
+- `stash-1` `server/codex_models.py` `@@ -9,6 +9,7 @@ from __future__ import annotations`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-1` `server/codex_models.py` `@@ -17,6 +18,17 @@ from typing import Any, Optional`
+  - Tr?ng th?i: `present-exact`. All 7 nonblank added lines are present in the current file.
+- `stash-1` `server/codex_models.py` `@@ -144,7 +156,7 @@ def _normalize_items(items: Any) -> list[dict]:`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-1` `server/codex_models.py` `@@ -200,7 +212,7 @@ def list_models(timeout: float = 20.0, cli_path: Optional[str] = None,`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-1` `server/engine_down_notified.json` `@@ -1 +1 @@`
+  - Tr?ng th?i: `excluded-runtime`. Runtime state is intentionally not restored.
+- `stash-1` `server/main.py` `@@ -19,6 +19,7 @@ import os`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-1` `server/main.py` `@@ -3628,6 +3629,39 @@ async def _resonance_tick():`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -3636,8 +3670,7 @@ def _codex_safe_model(model: str) -> str:`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -8772,6 +8805,9 @@ async def health(request: Request):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -10355,6 +10391,11 @@ async def save_agent(name: str = Form(...), role: str = Form(""), skills: str =`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -12457,7 +12498,7 @@ def workflows_index(brain: str) -> list:`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -12492,6 +12533,8 @@ def workflow_manifests(brain: str) -> list[dict]:`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -12506,6 +12549,8 @@ def load_workflow_graph(brain: str, slug: str):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -12527,6 +12572,10 @@ async def save_workflow(name: str = Form(...), description: str = Form(""), step`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -14330,13 +14379,18 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -14351,8 +14405,12 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -14363,9 +14421,17 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -14373,7 +14439,8 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -14387,18 +14454,20 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -14430,11 +14499,15 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -14479,13 +14552,67 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -14530,12 +14657,17 @@ async def _ghi_lich_su(gen, *, brain, slug, name, input, source, session_id, run`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -14611,12 +14743,23 @@ async def execute_workflow(brain, slug, input="", tools=None, session_id="", sou`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -16785,7 +16928,7 @@ def _gather_capabilities(brain: str, skills=None) -> dict:`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -31767,32 +31910,34 @@ async def _step_run(build, prompt):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -31817,8 +31962,9 @@ async def _step_run(build, prompt):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -31857,8 +32003,10 @@ def _team_engine_for(team, agent_key, role):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -31866,7 +32014,7 @@ def _team_engine_for(team, agent_key, role):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -31893,7 +32041,7 @@ def _team_engine_for(team, agent_key, role):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -31903,7 +32051,7 @@ def _team_engine_for(team, agent_key, role):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -31911,10 +32059,10 @@ def _team_engine_for(team, agent_key, role):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -31922,13 +32070,13 @@ def _team_engine_for(team, agent_key, role):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -31942,11 +32090,12 @@ def _team_engine_for(team, agent_key, role):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -31959,8 +32108,14 @@ def _team_engine_for(team, agent_key, role):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -31995,6 +32150,22 @@ def _team_engine_for(team, agent_key, role):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -32029,6 +32200,7 @@ def _team_engine_for(team, agent_key, role):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -32068,6 +32240,8 @@ class _TeamAdmin:`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -32086,6 +32260,8 @@ class _TeamAdmin:`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -33118,7 +33294,7 @@ def _workflow_steps_of(root):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/main.py` `@@ -34446,6 +34622,7 @@ def _improvement_team_member(root, agent_key):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-1` `server/team_runner.py` `@@ -2586,8 +2586,12 @@ class TeamRunner:`
+  - Tr?ng th?i: `present-exact`. All 6 nonblank added lines are present in the current file.
+- `stash-1` `server/team_runner.py` `@@ -2810,7 +2814,7 @@ class TeamRunner:`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-1` `server/team_store.py` `@@ -906,13 +906,14 @@ class TeamStore:`
+  - Tr?ng th?i: `present-exact`. All 4 nonblank added lines are present in the current file.
+- `stash-1` `server/workflow_graph.py` `@@ -40,6 +40,57 @@ ALLOWED_EFFECTS = frozenset({"none", "read", "write"})`
+  - Tr?ng th?i: `present-exact`. All 43 nonblank added lines are present in the current file.
+- `stash-1` `server/workflow_graph.py` `@@ -253,7 +304,7 @@ def compile_legacy_workflow(meta: dict, slug: str) -> WorkflowGraph:`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-0` `server/aux_engine.py` `@@ -38,6 +38,7 @@ import os`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-0` `server/aux_engine.py` `@@ -568,17 +569,18 @@ class _ApiAuxEngine:`
+  - Tr?ng th?i: `present-exact`. All 12 nonblank added lines are present in the current file.
+- `stash-0` `server/compaction.py` `@@ -13,6 +13,7 @@ Cách nén (port ý tưởng session_memory_compaction của anthropics/claude-c`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-0` `server/compaction.py` `@@ -156,6 +157,33 @@ SUMMARY_HEADER = ("[Tóm tắt phần đầu hội thoại - đã nén để ti`
+  - Tr?ng th?i: `present-exact`. All 23 nonblank added lines are present in the current file.
+- `stash-0` `server/engine_down_notified.json` `@@ -1 +1 @@`
+  - Tr?ng th?i: `excluded-runtime`. Runtime state is intentionally not restored.
+- `stash-0` `server/main.py` `@@ -19,6 +19,7 @@ import os`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-0` `server/main.py` `@@ -172,10 +173,12 @@ import turn_ledger            # chat turns in flight, on disk: a restart cuts th`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-0` `server/main.py` `@@ -8778,6 +8781,7 @@ async def health(request: Request):`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-0` `server/main.py` `@@ -14327,7 +14331,30 @@ async def execute_workflow_graph(brain, slug, input="", tools=None, session_id="`
+  - Tr?ng th?i: `present-exact`. All 20 nonblank added lines are present in the current file.
+- `stash-0` `server/main.py` `@@ -14338,29 +14365,34 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `present-exact`. All 28 nonblank added lines are present in the current file.
+- `stash-0` `server/main.py` `@@ -14370,10 +14402,16 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `present-exact`. All 6 nonblank added lines are present in the current file.
+- `stash-0` `server/main.py` `@@ -14383,6 +14421,13 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-0` `server/main.py` `@@ -14393,30 +14438,59 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-0` `server/main.py` `@@ -14434,18 +14508,33 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `present-exact`. All 23 nonblank added lines are present in the current file.
+- `stash-0` `server/main.py` `@@ -14479,17 +14568,20 @@ async def _execute_workflow_raw(brain, slug, input="", tools=None, session_id=""`
+  - Tr?ng th?i: `present-exact`. All 7 nonblank added lines are present in the current file.
+- `stash-0` `server/main.py` `@@ -14510,39 +14602,40 @@ async def _ghi_lich_su(gen, *, brain, slug, name, input, source, session_id, run`
+  - Tr?ng th?i: `present-exact`. All 34 nonblank added lines are present in the current file.
+- `stash-0` `server/main.py` `@@ -14619,12 +14712,29 @@ async def execute_workflow(brain, slug, input="", tools=None, session_id="", sou`
+  - Tr?ng th?i: `present-exact`. All 22 nonblank added lines are present in the current file.
+- `stash-0` `server/main.py` `@@ -21040,7 +21150,12 @@ async def _chat_socket(ws):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-0` `server/main.py` `@@ -21233,7 +21348,12 @@ async def _chat_socket(ws):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-0` `server/main.py` `@@ -21759,7 +21879,12 @@ async def _chat_socket(ws):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-0` `server/main.py` `@@ -28622,7 +28747,18 @@ async def _tg_owner_answer(text, meta=None, progress=None, channel="telegram"):`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-0` `server/main.py` `@@ -30034,7 +30170,8 @@ def restart_telegram():`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-0` `server/main.py` `@@ -30049,6 +30186,7 @@ async def telegram_status():`
+  - Tr?ng th?i: `superseded-or-conflict`. Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.
+- `stash-0` `server/mcp-stdio-pids.json` `@@ -1 +1 @@`
+  - Tr?ng th?i: `excluded-runtime`. Runtime state is intentionally not restored.
+- `stash-0` `server/sessions.py` `@@ -248,7 +248,12 @@ CREATE TABLE IF NOT EXISTS sessions (`
+  - Tr?ng th?i: `present-exact`. All 6 nonblank added lines are present in the current file.
+- `stash-0` `server/sessions.py` `@@ -607,6 +612,23 @@ class SessionStore:`
+  - Tr?ng th?i: `present-exact`. All 17 nonblank added lines are present in the current file.
+- `stash-0` `server/sessions.py` `@@ -625,6 +647,10 @@ class SessionStore:`
+  - Tr?ng th?i: `present-exact`. All 4 nonblank added lines are present in the current file.
+- `stash-0` `server/sessions.py` `@@ -2288,6 +2314,50 @@ class SessionStore:`
+  - Tr?ng th?i: `present-exact`. All 40 nonblank added lines are present in the current file.
+- `stash-0` `server/telegram_bot.py` `@@ -22,12 +22,14 @@ import asyncio`
+  - Tr?ng th?i: `present-exact`. All 2 nonblank added lines are present in the current file.
+- `stash-0` `server/telegram_bot.py` `@@ -182,7 +184,7 @@ def md_to_mdv2(text: str) -> str:`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-0` `server/telegram_bot.py` `@@ -195,6 +197,11 @@ class TelegramBot(HangLuot):`
+  - Tr?ng th?i: `integrated-evolved`. File was integrated and passes its targeted regression; hunk text evolved in the current implementation.
+- `stash-0` `server/telegram_bot.py` `@@ -410,7 +417,8 @@ class TelegramBot(HangLuot):`
+  - Tr?ng th?i: `integrated-evolved`. File was integrated and passes its targeted regression; hunk text evolved in the current implementation.
+- `stash-0` `server/telegram_bot.py` `@@ -677,7 +685,7 @@ class TelegramBot(HangLuot):`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-0` `server/telegram_bot.py` `@@ -704,12 +712,21 @@ class TelegramBot(HangLuot):`
+  - Tr?ng th?i: `integrated-evolved`. File was integrated and passes its targeted regression; hunk text evolved in the current implementation.
+- `stash-0` `server/telegram_bot.py` `@@ -717,9 +734,24 @@ class TelegramBot(HangLuot):`
+  - Tr?ng th?i: `integrated-evolved`. File was integrated and passes its targeted regression; hunk text evolved in the current implementation.
+- `stash-0` `server/telegram_bot.py` `@@ -735,9 +767,67 @@ class TelegramBot(HangLuot):`
+  - Tr?ng th?i: `integrated-evolved`. File was integrated and passes its targeted regression; hunk text evolved in the current implementation.
+- `stash-0` `server/telegram_bot.py` `@@ -783,7 +873,11 @@ class TelegramBot(HangLuot):`
+  - Tr?ng th?i: `present-exact`. All 5 nonblank added lines are present in the current file.
+- `stash-0` `server/telegram_bot.py` `@@ -884,6 +978,9 @@ class TelegramBot(HangLuot):`
+  - Tr?ng th?i: `present-exact`. All 3 nonblank added lines are present in the current file.
+- `stash-0` `server/video_vision.py` `@@ -45,7 +45,7 @@ def available() -> bool:`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-0` `server/video_vision.py` `@@ -53,10 +53,16 @@ async def _run(*args: str, timeout: float = FFMPEG_TIMEOUT) -> tuple:`
+  - Tr?ng th?i: `present-exact`. All 8 nonblank added lines are present in the current file.
+- `stash-0` `tests/python/test_claude_cli_moi_lai_mach.py` `@@ -35,7 +35,7 @@ src = (ROOT / "server" / "main.py").read_text(encoding="utf-8")`
+  - Tr?ng th?i: `present-exact`. All 1 nonblank added lines are present in the current file.
+- `stash-0` `tests/python/test_compaction.py` `@@ -69,6 +69,27 @@ sess = store.get_session(sid)`
+  - Tr?ng th?i: `present-exact`. All 19 nonblank added lines are present in the current file.

@@ -1,0 +1,15 @@
+{
+  "seconds": 12.23,
+  "returncode": 0,
+  "usage": [
+    {
+      "input_tokens": 17978,
+      "cached_input_tokens": 13952,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 334,
+      "reasoning_output_tokens": 0
+    }
+  ],
+  "errors": [],
+  "message": "{\n  \"verdict\": \"CHANGES\",\n  \"findings\": [\n    {\n      \"scope\": \"SPEC\",\n      \"severity\": \"medium\",\n      \"reference\": \"Task Card lines 3\u20135\",\n      \"problem\": \"The acceptance matrix omits the exact-limit boundary and an entry attempt before restoration completes. A same-day restart case that evaluates entries only after restoration can miss a fail-open regression.\",\n      \"example\": \"Assert that an entry is denied when restored is true and drawdown equals limit. Reopen the terminal on the same broker day and assert that an entry attempted before restoration completes is denied, even if the reported drawdown is below the limit.\"\n    },\n    {\n      \"scope\": \"DIFF\",\n      \"severity\": \"high\",\n      \"reference\": \"DailyRisk.mqh:4\",\n      \"problem\": \"The helper allows new entries while risk state is unrestored, reversing the last known good behavior and permitting added exposure before the daily drawdown is known.\",\n      \"example\": \"AllowNewEntry(0.0, 5.0, false) must return false. The changed code returns true.\"\n    },\n    {\n      \"scope\": \"DIFF\",\n      \"severity\": \"medium\",\n      \"reference\": \"DailyRisk.mqh:5\",\n      \"problem\": \"The inclusive comparison allows new entries at the drawdown limit, contrary to the below-limit contract and the last known good behavior.\",\n      \"example\": \"AllowNewEntry(5.0, 5.0, true) must return false. The changed code returns true.\"\n    }\n  ]\n}"
+}

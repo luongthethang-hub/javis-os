@@ -1,0 +1,878 @@
+{
+  "order": [
+    "stash-1",
+    "stash-0"
+  ],
+  "hunks": [
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/codex_models.py",
+      "hunk": "@@ -9,6 +9,7 @@ from __future__ import annotations",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/codex_models.py",
+      "hunk": "@@ -17,6 +18,17 @@ from typing import Any, Optional",
+      "status": "present-exact",
+      "evidence": "All 7 nonblank added lines are present in the current file.",
+      "added_lines": 11,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/codex_models.py",
+      "hunk": "@@ -144,7 +156,7 @@ def _normalize_items(items: Any) -> list[dict]:",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/codex_models.py",
+      "hunk": "@@ -200,7 +212,7 @@ def list_models(timeout: float = 20.0, cli_path: Optional[str] = None,",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/engine_down_notified.json",
+      "hunk": "@@ -1 +1 @@",
+      "status": "excluded-runtime",
+      "evidence": "Runtime state is intentionally not restored.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -19,6 +19,7 @@ import os",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -3628,6 +3629,39 @@ async def _resonance_tick():",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 33,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -3636,8 +3670,7 @@ def _codex_safe_model(model: str) -> str:",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 1,
+      "removed_lines": 2
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -8772,6 +8805,9 @@ async def health(request: Request):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 3,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -10355,6 +10391,11 @@ async def save_agent(name: str = Form(...), role: str = Form(\"\"), skills: str =",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 5,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -12457,7 +12498,7 @@ def workflows_index(brain: str) -> list:",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -12492,6 +12533,8 @@ def workflow_manifests(brain: str) -> list[dict]:",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 2,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -12506,6 +12549,8 @@ def load_workflow_graph(brain: str, slug: str):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 2,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -12527,6 +12572,10 @@ async def save_workflow(name: str = Form(...), description: str = Form(\"\"), step",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 4,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -14330,13 +14379,18 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 8,
+      "removed_lines": 3
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -14351,8 +14405,12 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 6,
+      "removed_lines": 2
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -14363,9 +14421,17 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 8,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -14373,7 +14439,8 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 2,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -14387,18 +14454,20 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 14,
+      "removed_lines": 12
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -14430,11 +14499,15 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 9,
+      "removed_lines": 5
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -14479,13 +14552,67 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 55,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -14530,12 +14657,17 @@ async def _ghi_lich_su(gen, *, brain, slug, name, input, source, session_id, run",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 7,
+      "removed_lines": 2
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -14611,12 +14743,23 @@ async def execute_workflow(brain, slug, input=\"\", tools=None, session_id=\"\", sou",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 15,
+      "removed_lines": 4
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -16785,7 +16928,7 @@ def _gather_capabilities(brain: str, skills=None) -> dict:",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -31767,32 +31910,34 @@ async def _step_run(build, prompt):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 24,
+      "removed_lines": 22
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -31817,8 +31962,9 @@ async def _step_run(build, prompt):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 3,
+      "removed_lines": 2
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -31857,8 +32003,10 @@ def _team_engine_for(team, agent_key, role):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 3,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -31866,7 +32014,7 @@ def _team_engine_for(team, agent_key, role):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -31893,7 +32041,7 @@ def _team_engine_for(team, agent_key, role):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -31903,7 +32051,7 @@ def _team_engine_for(team, agent_key, role):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -31911,10 +32059,10 @@ def _team_engine_for(team, agent_key, role):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 2,
+      "removed_lines": 2
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -31922,13 +32070,13 @@ def _team_engine_for(team, agent_key, role):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 3,
+      "removed_lines": 3
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -31942,11 +32090,12 @@ def _team_engine_for(team, agent_key, role):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 3,
+      "removed_lines": 2
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -31959,8 +32108,14 @@ def _team_engine_for(team, agent_key, role):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 6,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -31995,6 +32150,22 @@ def _team_engine_for(team, agent_key, role):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 16,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -32029,6 +32200,7 @@ def _team_engine_for(team, agent_key, role):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 1,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -32068,6 +32240,8 @@ class _TeamAdmin:",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 2,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -32086,6 +32260,8 @@ class _TeamAdmin:",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 2,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -33118,7 +33294,7 @@ def _workflow_steps_of(root):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/main.py",
+      "hunk": "@@ -34446,6 +34622,7 @@ def _improvement_team_member(root, agent_key):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 1,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/team_runner.py",
+      "hunk": "@@ -2586,8 +2586,12 @@ class TeamRunner:",
+      "status": "present-exact",
+      "evidence": "All 6 nonblank added lines are present in the current file.",
+      "added_lines": 6,
+      "removed_lines": 2
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/team_runner.py",
+      "hunk": "@@ -2810,7 +2814,7 @@ class TeamRunner:",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/team_store.py",
+      "hunk": "@@ -906,13 +906,14 @@ class TeamStore:",
+      "status": "present-exact",
+      "evidence": "All 4 nonblank added lines are present in the current file.",
+      "added_lines": 4,
+      "removed_lines": 3
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/workflow_graph.py",
+      "hunk": "@@ -40,6 +40,57 @@ ALLOWED_EFFECTS = frozenset({\"none\", \"read\", \"write\"})",
+      "status": "present-exact",
+      "evidence": "All 43 nonblank added lines are present in the current file.",
+      "added_lines": 51,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-1",
+      "oid": "b062994a541d2bb362a836a0811d81eebac92d94",
+      "file": "server/workflow_graph.py",
+      "hunk": "@@ -253,7 +304,7 @@ def compile_legacy_workflow(meta: dict, slug: str) -> WorkflowGraph:",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/aux_engine.py",
+      "hunk": "@@ -38,6 +38,7 @@ import os",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/aux_engine.py",
+      "hunk": "@@ -568,17 +569,18 @@ class _ApiAuxEngine:",
+      "status": "present-exact",
+      "evidence": "All 12 nonblank added lines are present in the current file.",
+      "added_lines": 12,
+      "removed_lines": 11
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/compaction.py",
+      "hunk": "@@ -13,6 +13,7 @@ Cách nén (port ý tưởng session_memory_compaction của anthropics/claude-c",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/compaction.py",
+      "hunk": "@@ -156,6 +157,33 @@ SUMMARY_HEADER = (\"[Tóm tắt phần đầu hội thoại - đã nén để ti",
+      "status": "present-exact",
+      "evidence": "All 23 nonblank added lines are present in the current file.",
+      "added_lines": 27,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/engine_down_notified.json",
+      "hunk": "@@ -1 +1 @@",
+      "status": "excluded-runtime",
+      "evidence": "Runtime state is intentionally not restored.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -19,6 +19,7 @@ import os",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -172,10 +173,12 @@ import turn_ledger            # chat turns in flight, on disk: a restart cuts th",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 2,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -8778,6 +8781,7 @@ async def health(request: Request):",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -14327,7 +14331,30 @@ async def execute_workflow_graph(brain, slug, input=\"\", tools=None, session_id=\"",
+      "status": "present-exact",
+      "evidence": "All 20 nonblank added lines are present in the current file.",
+      "added_lines": 24,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -14338,29 +14365,34 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "present-exact",
+      "evidence": "All 28 nonblank added lines are present in the current file.",
+      "added_lines": 28,
+      "removed_lines": 23
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -14370,10 +14402,16 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "present-exact",
+      "evidence": "All 6 nonblank added lines are present in the current file.",
+      "added_lines": 7,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -14383,6 +14421,13 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 7,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -14393,30 +14438,59 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 42,
+      "removed_lines": 13
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -14434,18 +14508,33 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "present-exact",
+      "evidence": "All 23 nonblank added lines are present in the current file.",
+      "added_lines": 23,
+      "removed_lines": 8
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -14479,17 +14568,20 @@ async def _execute_workflow_raw(brain, slug, input=\"\", tools=None, session_id=\"\"",
+      "status": "present-exact",
+      "evidence": "All 7 nonblank added lines are present in the current file.",
+      "added_lines": 7,
+      "removed_lines": 4
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -14510,39 +14602,40 @@ async def _ghi_lich_su(gen, *, brain, slug, name, input, source, session_id, run",
+      "status": "present-exact",
+      "evidence": "All 34 nonblank added lines are present in the current file.",
+      "added_lines": 34,
+      "removed_lines": 33
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -14619,12 +14712,29 @@ async def execute_workflow(brain, slug, input=\"\", tools=None, session_id=\"\", sou",
+      "status": "present-exact",
+      "evidence": "All 22 nonblank added lines are present in the current file.",
+      "added_lines": 23,
+      "removed_lines": 6
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -21040,7 +21150,12 @@ async def _chat_socket(ws):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 6,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -21233,7 +21348,12 @@ async def _chat_socket(ws):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 6,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -21759,7 +21879,12 @@ async def _chat_socket(ws):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 6,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -28622,7 +28747,18 @@ async def _tg_owner_answer(text, meta=None, progress=None, channel=\"telegram\"):",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 12,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -30034,7 +30170,8 @@ def restart_telegram():",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 2,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/main.py",
+      "hunk": "@@ -30049,6 +30186,7 @@ async def telegram_status():",
+      "status": "superseded-or-conflict",
+      "evidence": "Not copied: overlaps newer current implementation; retained in conflict diff for deliberate review.",
+      "added_lines": 1,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/mcp-stdio-pids.json",
+      "hunk": "@@ -1 +1 @@",
+      "status": "excluded-runtime",
+      "evidence": "Runtime state is intentionally not restored.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/sessions.py",
+      "hunk": "@@ -248,7 +248,12 @@ CREATE TABLE IF NOT EXISTS sessions (",
+      "status": "present-exact",
+      "evidence": "All 6 nonblank added lines are present in the current file.",
+      "added_lines": 6,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/sessions.py",
+      "hunk": "@@ -607,6 +612,23 @@ class SessionStore:",
+      "status": "present-exact",
+      "evidence": "All 17 nonblank added lines are present in the current file.",
+      "added_lines": 17,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/sessions.py",
+      "hunk": "@@ -625,6 +647,10 @@ class SessionStore:",
+      "status": "present-exact",
+      "evidence": "All 4 nonblank added lines are present in the current file.",
+      "added_lines": 4,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/sessions.py",
+      "hunk": "@@ -2288,6 +2314,50 @@ class SessionStore:",
+      "status": "present-exact",
+      "evidence": "All 40 nonblank added lines are present in the current file.",
+      "added_lines": 44,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/telegram_bot.py",
+      "hunk": "@@ -22,12 +22,14 @@ import asyncio",
+      "status": "present-exact",
+      "evidence": "All 2 nonblank added lines are present in the current file.",
+      "added_lines": 2,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/telegram_bot.py",
+      "hunk": "@@ -182,7 +184,7 @@ def md_to_mdv2(text: str) -> str:",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/telegram_bot.py",
+      "hunk": "@@ -195,6 +197,11 @@ class TelegramBot(HangLuot):",
+      "status": "integrated-evolved",
+      "evidence": "File was integrated and passes its targeted regression; hunk text evolved in the current implementation.",
+      "added_lines": 5,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/telegram_bot.py",
+      "hunk": "@@ -410,7 +417,8 @@ class TelegramBot(HangLuot):",
+      "status": "integrated-evolved",
+      "evidence": "File was integrated and passes its targeted regression; hunk text evolved in the current implementation.",
+      "added_lines": 2,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/telegram_bot.py",
+      "hunk": "@@ -677,7 +685,7 @@ class TelegramBot(HangLuot):",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/telegram_bot.py",
+      "hunk": "@@ -704,12 +712,21 @@ class TelegramBot(HangLuot):",
+      "status": "integrated-evolved",
+      "evidence": "File was integrated and passes its targeted regression; hunk text evolved in the current implementation.",
+      "added_lines": 11,
+      "removed_lines": 2
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/telegram_bot.py",
+      "hunk": "@@ -717,9 +734,24 @@ class TelegramBot(HangLuot):",
+      "status": "integrated-evolved",
+      "evidence": "File was integrated and passes its targeted regression; hunk text evolved in the current implementation.",
+      "added_lines": 17,
+      "removed_lines": 2
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/telegram_bot.py",
+      "hunk": "@@ -735,9 +767,67 @@ class TelegramBot(HangLuot):",
+      "status": "integrated-evolved",
+      "evidence": "File was integrated and passes its targeted regression; hunk text evolved in the current implementation.",
+      "added_lines": 58,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/telegram_bot.py",
+      "hunk": "@@ -783,7 +873,11 @@ class TelegramBot(HangLuot):",
+      "status": "present-exact",
+      "evidence": "All 5 nonblank added lines are present in the current file.",
+      "added_lines": 5,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/telegram_bot.py",
+      "hunk": "@@ -884,6 +978,9 @@ class TelegramBot(HangLuot):",
+      "status": "present-exact",
+      "evidence": "All 3 nonblank added lines are present in the current file.",
+      "added_lines": 3,
+      "removed_lines": 0
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/video_vision.py",
+      "hunk": "@@ -45,7 +45,7 @@ def available() -> bool:",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "server/video_vision.py",
+      "hunk": "@@ -53,10 +53,16 @@ async def _run(*args: str, timeout: float = FFMPEG_TIMEOUT) -> tuple:",
+      "status": "present-exact",
+      "evidence": "All 8 nonblank added lines are present in the current file.",
+      "added_lines": 8,
+      "removed_lines": 2
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "tests/python/test_claude_cli_moi_lai_mach.py",
+      "hunk": "@@ -35,7 +35,7 @@ src = (ROOT / \"server\" / \"main.py\").read_text(encoding=\"utf-8\")",
+      "status": "present-exact",
+      "evidence": "All 1 nonblank added lines are present in the current file.",
+      "added_lines": 1,
+      "removed_lines": 1
+    },
+    {
+      "stash": "stash-0",
+      "oid": "31cc1a77fc1e2bf52fa751e1c0d978717fb665e9",
+      "file": "tests/python/test_compaction.py",
+      "hunk": "@@ -69,6 +69,27 @@ sess = store.get_session(sid)",
+      "status": "present-exact",
+      "evidence": "All 19 nonblank added lines are present in the current file.",
+      "added_lines": 21,
+      "removed_lines": 0
+    }
+  ]
+}

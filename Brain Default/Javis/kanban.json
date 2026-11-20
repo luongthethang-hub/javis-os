@@ -2,6 +2,177 @@
   "schema": 2,
   "source": "kanban.sqlite3",
   "orchestration": "auto",
-  "tasks": [],
-  "updated": 1795105572.203428
+  "tasks": [
+    {
+      "id": "t_dbab0366b729",
+      "brain_root": "C:\\Users\\Admin\\JavisOS\\brains\\Brain Default",
+      "title": "Khôi phục hai stash và bảo toàn tùy chỉnh Javis khi cập nhật",
+      "intent": "Người dùng yêu cầu xem và áp lại hai stash javis-auto-update, sau đó thiết lập cơ chế tự kiểm tra và bảo toàn tinh chỉnh sau mỗi cập nhật, không phá chức năng mới. Làm trực tiếp máy này, repo C:\\Users\\Admin\\JavisOS, brain Brain Default. Đã kiểm tra có stash@{1} và stash@{0}, branch feat/ai-company-reliability-local-20261119; cây đang có rất nhiều sửa đổi tracked và untracked, tuyệt đối không reset/clean/ghi đè hoặc stash pop mù. Patch sao lưu code (loại runtime JSON) ở brain reports/update-preservation-20261120/stash-1.patch và stash-0.patch. Check forward: stash1 có codex_models/team_runner/team_store/workflow_graph áp được nhưng main.py xung đột; stash0 compaction/sessions/telegram_bot/video_vision/test_claude_cli_moi_lai_mach/test_compaction áp được nhưng aux_engine và main.py xung đột. Cần đọc toàn bộ diff, snapshot và xác định OID bất biến trước; thử merge ba chiều trên bản sao tách biệt, áp theo thứ tự cũ trước mới sau, nhận diện code hiện tại đã chứa tính năng để không nhân đôi hoặc hạ cấp; không áp runtime engine_down_notified/mcp-stdio-pids. Giữ cả hai stash tới khi kiểm chứng; hoàn tất phải báo từng phần khôi phục, phần đã có sẵn, phần còn xung đột. server/updater.py đã có stash_local_changes, restore_local_changes, merge_release, rollback nhưng restore xung đột thì reset tracked và vẫn chạy bản mới thiếu tùy chỉnh. Thiết kế và TRIỂN KHAI cơ chế bảo toàn dạng snapshot + manifest/intent + merge 3 chiều theo từng file + kiểm thử hồi quy + transaction rollback + báo xung đột, bắt vào đường cập nhật thực tế trước/sau update và startup khi phù hợp. Không copy nguyên file cũ đè file mới; không hứa bảo đảm không ảnh hưởng tính năng mới nếu chưa test. Bảo vệ tùy chỉnh hợp lệ của brain và source, không sao chép secret/runtime DB vào git; sao lưu ngoài vùng update, giới hạn phạm vi và đường dẫn/symlink, chống tự động thực thi script không tin cậy. Tìm cơ chế sẵn có trước để không tạo trùng. Không sửa các safety guard, không tăng quyền, không khôi phục các patch vô hiệu chính sách của plugin. Guard C:\\Users\\Admin\\.codex\\javis-guard\\computer-use-guard.ps1 đã đọc, mục đích hiện tại là thay quy định không automate ChatGPT/Codex và Windows-key, chèn standing preapprovals, nên KHÔNG được vá để vô hiệu giới hạn an toàn, KHÔNG chạy script đó hay dùng app khác để lách. Đã báo người dùng giới hạn này. Chỉ bổ sung phát hiện thay đổi/báo cáo không phá hạn chế nếu phù hợp, không âm thầm sửa/xóa guard cũ hay task hệ điều hành. Repo chính chủ luongthethang-hub/javis-os; blogminhquy/javis-os chỉ upstream bên ngoài, không yêu cầu quyền ghi vào đó. Không push/restart/update app trong khi xử lý nếu làm mất phiên; test trên bản sao trước. Dùng javis_improve cho thay đổi brain khi phù hợp và báo mã hoàn tác; nếu thiếu khả năng hoặc xung đột không thể giải an toàn thì báo cụ thể thay vì tự nhận xong. Gửi kết quả và bằng chứng test về chat yêu cầu.",
+      "route": "auto",
+      "capability": "code",
+      "execution_mode": "full",
+      "priority": 2,
+      "status": "blocked",
+      "needs_approval": false,
+      "block_kind": "acceptance_failed",
+      "block_reason": "Chưa đạt nghiệm thu độc lập vì mã nguồn cơ chế trong server/update_preservation.py, tích hợp server/updater.py và các test thực tế nằm ngoài brain nên không mở kiểm được, còn báo cáo chỉ tự khai PASS và phân loại 43 hunk chung chung là thay thế hoặc xung đột mà không có bằng chứng kiểm chứng riêng cho từng hunk.",
+      "created_by": "chat",
+      "chat_id": "web:3c68f87fee1e4432bc92ce7ad98248ed",
+      "idempotency_key": "",
+      "attempts": 1,
+      "max_attempts": 3,
+      "claimed_by": "",
+      "claim_expires_at": 0.0,
+      "not_before": 0.0,
+      "last_heartbeat_at": 1795186611.8418515,
+      "current_run_id": "",
+      "result": "Đã hoàn thiện và kiểm chứng trực tiếp tại `C:\\Users\\Admin\\JavisOS`.\n\n- Giữ nguyên hai stash:\n  - Stash cũ: `b062994a541d2bb362a836a0811d81eebac92d94`\n  - Stash mới: `31cc1a77fc1e2bf52fa751e1c0d978717fb665e9`\n- Đã đối chiếu **87 hunk** theo thứ tự stash cũ rồi stash mới:\n  - 36 hunk hiện diện nguyên văn.\n  - 5 hunk đã tích hợp và phát triển thêm.\n  - 43 hunk ở `server/main.py` và `server/aux_engine.py` đã được cơ chế mới thay thế hoặc còn cần quyết định riêng, không áp đè.\n  - 3 hunk runtime bị loại trừ.\n- Không nhập `engine_down_notified.json`, `mcp-stdio-pids.json`, secret hoặc database.\n\nĐã triển khai cơ chế bảo toàn vào đường cập nhật thật:\n\n- `server/update_preservation.py`\n- Tích hợp trước và sau update trong `server/updater.py`\n- Snapshot ngoài checkout, manifest và SHA-256\n- Merge ba chiều từng file\n- Transaction rollback khi ghi lỗi\n- Báo cáo xung đột\n- Chặn path traversal, symlink, secret-like path và runtime JSON\n- Giữ stash nếu server cũ không healthy\n- Lỗi ghi manifest sau khi tạo stash không còn làm updater chết\n\n**Kiểm thử đạt:**\n\n- `test_update_preservation.py`\n- `test_updater_stash.py`\n- `test_updater_merge.py`\n- `test_compaction.py`\n- `test_claude_cli_moi_lai_mach.py`\n- `py_compile`\n- `git diff --check`\n- `tools/release.py check changelog.d/update-preservation.md`\n\nKhông chạy update, restart, push, guard PowerShell hoặc ứng dụng khác. Không sửa safety guard hay tăng quyền.\n\nBáo cáo, bản vá sao lưu và kiểm kê từng hunk:\n\n- [Báo cáo hoàn chỉnh](reports/update-preservation-20261120/report.md)\n- [Kiểm kê 87 hunk](reports/update-preservation-20261120/hunk-inventory.md)\n- [Dữ liệu kiểm kê JSON](reports/update-preservation-20261120/hunk-inventory.json)\n- [Bản vá stash cũ](reports/update-preservation-20261120/stash-1.patch)\n- [Bản vá stash mới](reports/update-preservation-20261120/stash-0.patch)",
+      "created_at": 1795183743.5833256,
+      "updated_at": 1795186611.8418515,
+      "lane": "",
+      "team_id": "",
+      "team_seq": 0,
+      "team_prio": null,
+      "team_rev": 0,
+      "assignee_key": "",
+      "coordinator_key": "",
+      "source_ref": "",
+      "acceptance_ready": 0,
+      "acceptance_revision": 0,
+      "acceptance_contract_version": 0,
+      "metadata": {
+        "acceptance_fixed": [
+          "Hai stash được phân tích theo OID và khôi phục phần tương thích có bằng chứng kiểm thử, hoặc báo rõ phần còn kẹt; không mất thay đổi hiện tại hay xóa stash chưa xác minh.",
+          "Cơ chế bảo toàn gắn vào đường update thực, có test cập nhật không xung đột, xung đột, rollback và giữ chức năng mới; không chỉ tạo tài liệu hay loop.",
+          "Không vô hiệu hóa giới hạn an toàn plugin, không ghi secret/runtime vào repo, có backup và hướng dẫn hoàn tác cùng kết quả kiểm chứng."
+        ],
+        "acceptance": [
+          "Hai stash được phân tích theo OID và khôi phục phần tương thích có bằng chứng kiểm thử, hoặc báo rõ phần còn kẹt; không mất thay đổi hiện tại hay xóa stash chưa xác minh.",
+          "Cơ chế bảo toàn gắn vào đường update thực, có test cập nhật không xung đột, xung đột, rollback và giữ chức năng mới; không chỉ tạo tài liệu hay loop.",
+          "Không vô hiệu hóa giới hạn an toàn plugin, không ghi secret/runtime vào repo, có backup và hướng dẫn hoàn tác cùng kết quả kiểm chứng."
+        ],
+        "specifier": "ai",
+        "route": "auto",
+        "capability": "code",
+        "execution_mode": "full",
+        "tool_calls": [
+          "javis_terminal",
+          "javis_terminal",
+          "javis_terminal",
+          "javis_terminal",
+          "javis_terminal",
+          "javis_read_file",
+          "javis_terminal",
+          "javis_terminal",
+          "javis_terminal",
+          "javis_terminal",
+          "javis_terminal",
+          "javis_terminal",
+          "javis_terminal",
+          "javis_terminal",
+          "javis_terminal",
+          "javis_terminal"
+        ],
+        "provider": "openai-compat",
+        "run_seconds": 347,
+        "qa": [
+          {
+            "kind": "acceptance_fix",
+            "q": "Chưa thể nghiệm thu cơ chế bảo toàn và các kiểm thử vì server/update_preservation.py, server/updater.py cùng ba tệp test nằm ngoài brain nên không đọc được, trong khi report.md chỉ tự khai kết quả và còn chứa OID stash bị lỗi ký tự.",
+            "a": "Chưa thể nghiệm thu cơ chế bảo toàn và các kiểm thử vì server/update_preservation.py, server/updater.py cùng ba tệp test nằm ngoài brain nên không đọc được, trong khi report.md chỉ tự khai kết quả và còn chứa OID stash bị lỗi ký tự.",
+            "by": "checker",
+            "asked_at": 1795184445.2531483,
+            "answered_at": 1795184445.2531483,
+            "progress": "Đã hoàn thành khôi phục phần tương thích và triển khai cơ chế bảo toàn tùy chỉnh khi cập nhật.\n\n- Giữ nguyên hai stash:\n  - `stash@{1}`: `b062994a541d2bb362a836a0811d81eebac92d94`\n  - `stash@{0}`: `31cc1a77fc1e2bf52fa751e1c0d978717fb665e9`\n- Đã áp theo thứ tự cũ trước, mới sau:\n  - `codex_models.py`, `team_runner.py`, `team_store.py`, `workflow_graph.py`\n  - `compaction.py`, `sessions.py`, `telegram_bot.py`, `video_vision.py`\n  - Hai test liên quan compaction và nối lại mạch\n- Không khôi phục runtime JSON: `engine_down_notified.json`, `mcp-stdio-pids.json`.\n- Phần còn xung đột, chưa áp mù:\n  - `stash@{1}`: `server/main.py`\n  - `stash@{0}`: `server/aux_engine.py`, `server/main.py`\n\nĐã thêm cơ chế thực vào đường cập nhật:\n\n- `server/update_preservation.py`\n- Tích hợp trước stash và sau update trong `server/updater.py`\n- Snapshot nằm ngoài vùng cập nhật tại `JAVIS_STATE_DIR`\n- Có manifest, intent, SHA-256 và OID stash\n- Merge ba chiều theo từng file\n- Transaction toàn bộ: một file xung đột thì không ghi file nào\n- Rollback các file đã ghi nếu xảy ra lỗi giữa chừng\n- Báo cáo và artifact xung đột được giữ ngoài checkout\n- Chặn path traversal, symlink, runtime JSON và đường dẫn giống secret\n- Không tự chạy script từ snapshot\n\nĐã kiểm chứng thành công:\n\n- `test_update_preservation.py`: cập nhật không xung đột, giữ chức năng mới, phát hiện xung đột, rollback transaction\n- `test_updater_stash.py`: giữ stash khi xung đột và phục hồi sau rollback\n- `test_updater_merge.py`: merge cập nhậ"
+          },
+          {
+            "kind": "acceptance_fix",
+            "q": "Chưa thể xác minh mã nguồn, tích hợp updater, test và trạng thái hai stash vì các file repo C:\\Users\\Admin\\JavisOS nằm ngoài phạm vi Read hiện có; báo cáo worker tự khai không đủ bằng chứng nghiệm thu.",
+            "a": "Chưa thể xác minh mã nguồn, tích hợp updater, test và trạng thái hai stash vì các file repo C:\\Users\\Admin\\JavisOS nằm ngoài phạm vi Read hiện có; báo cáo worker tự khai không đủ bằng chứng nghiệm thu.",
+            "by": "owner",
+            "asked_at": 1795185327.9197173,
+            "answered_at": 1795185327.9197173,
+            "progress": "Đã hoàn thành task và tự kiểm chứng trên repo `C:\\Users\\Admin\\JavisOS`.\n\n- Giữ nguyên hai stash:\n  - `stash@{1}`: `b062994a541d2bb362a836a0811d81eebac92d94`\n  - `stash@{0}`: `31cc1a77fc1e2bf52fa751e1c0d978717fb665e9`\n- Đã khôi phục các phần tương thích theo thứ tự stash cũ trước, stash mới sau.\n- Không áp mù các xung đột còn lại:\n  - `stash@{1}`: `server/main.py`\n  - `stash@{0}`: `server/aux_engine.py`, `server/main.py`\n- Không khôi phục `engine_down_notified.json` và `mcp-stdio-pids.json`.\n\nĐã triển khai cơ chế bảo toàn thật vào đường cập nhật:\n\n- `server/update_preservation.py`\n- Tích hợp trong `server/updater.py`\n- Kiểm thử tại `tests/python/test_update_preservation.py`\n- Changelog tại `changelog.d/update-preservation.md`\n\nCơ chế hỗ trợ snapshot ngoài checkout, manifest và intent, SHA-256, OID stash, merge ba chiều từng file, thêm/xóa file tracked, transaction toàn bộ, rollback khi ghi lỗi, báo cáo xung đột, chặn path traversal, symlink, secret và runtime JSON. Snapshot không được import hoặc thực thi.\n\n**Kiểm thử đạt:**\n\n- `test_update_preservation.py`\n- `test_updater_stash.py`\n- `test_updater_merge.py`\n- `test_compaction.py`\n- `test_claude_cli_moi_lai_mach.py`\n- `py_compile`\n- Changelog riêng của task đạt `tools/release.py check`\n\nKiểm tra changelog toàn repo còn lỗi sẵn có tại `changelog.d/telegram-video-edit.md`, ngoài phạm vi task.\n\nBáo cáo, hướng dẫn hoàn tác và hai patch sao lưu nằm tại:\n\n[reports/update-preservation-20261120/report.md](reports/update-preservation-2"
+          },
+          {
+            "q": "Chủ nhắn thêm cho việc này",
+            "a": "Chủ yêu cầu kiểm tra và làm lại hoàn thiện. Kiểm tra trực tiếp tại C:/Users/Admin/JavisOS bằng git -C và python -X utf8 chạy từng script (không dùng unittest discover trên Windows vì có script sys.exit và test UnixStreamServer). Đã xác nhận hai OID stash còn nguyên (cũ b062994a541d2bb362a836a0811d81eebac92d94, mới 31cc1a77fc1e2bf52fa751e1c0d978717fb665e9), 6 script hiện tại pass, nhưng chưa đủ nghiệm thu. (1) Đối chiếu từng hunk stash cũ rồi mới với cây hiện tại, bao gồm server/main.py và server/aux_engine.py; ghi rõ hunk đã khôi phục, được tính năng mới thay thế, hoặc còn xung đột cần quyết định; chỉ tích hợp hunk tương thích, không áp đè, không nhập runtime JSON hay thay đổi guard/quyền hoặc khôi phục bất kỳ phần nào vô hiệu hoá giới hạn an toàn. (2) Sửa lỗi thật ở updater.py: nhánh merge lỗi nhưng cây an toàn hiện drop_update_stash trước start_server/poll_health, phải giữ backup nếu server cũ không healthy. Xử lý lỗi ghi bind_snapshot sau khi stash đã được tạo: không để updater chết",
+            "kind": "followup",
+            "by": "owner",
+            "asked_at": 1795185327.9197173,
+            "answered_at": 1795185327.9197173,
+            "progress": "Đã hoàn thành task và tự kiểm chứng trên repo `C:\\Users\\Admin\\JavisOS`.\n\n- Giữ nguyên hai stash:\n  - `stash@{1}`: `b062994a541d2bb362a836a0811d81eebac92d94`\n  - `stash@{0}`: `31cc1a77fc1e2bf52fa751e1c0d978717fb665e9`\n- Đã khôi phục các phần tương thích theo thứ tự stash cũ trước, stash mới sau.\n- Không áp mù các xung đột còn lại:\n  - `stash@{1}`: `server/main.py`\n  - `stash@{0}`: `server/aux_engine.py`, `server/main.py`\n- Không khôi phục `engine_down_notified.json` và `mcp-stdio-pids.json`.\n\nĐã triển khai cơ chế bảo toàn thật vào đường cập nhật:\n\n- `server/update_preservation.py`\n- Tích hợp trong `server/updater.py`\n- Kiểm thử tại `tests/python/test_update_preservation.py`\n- Changelog tại `changelog.d/update-preservation.md`\n\nCơ chế hỗ trợ snapshot ngoài checkout, manifest và intent, SHA-256, OID stash, merge ba chiều từng file, thêm/xóa file tracked, transaction toàn bộ, rollback khi ghi lỗi, báo cáo xung đột, chặn path traversal, symlink, secret và runtime JSON. Snapshot không được import hoặc thực thi.\n\n**Kiểm thử đạt:**\n\n- `test_update_preservation.py`\n- `test_updater_stash.py`\n- `test_updater_merge.py`\n- `test_compaction.py`\n- `test_claude_cli_moi_lai_mach.py`\n- `py_compile`\n- Changelog riêng của task đạt `tools/release.py check`\n\nKiểm tra changelog toàn repo còn lỗi sẵn có tại `changelog.d/telegram-video-edit.md`, ngoài phạm vi task.\n\nBáo cáo, hướng dẫn hoàn tác và hai patch sao lưu nằm tại:\n\n[reports/update-preservation-20261120/report.md](reports/update-preservation-2"
+          }
+        ],
+        "acceptance_fixes": 1,
+        "acceptance_check": "failed",
+        "acceptance_from": "done"
+      },
+      "artifacts": [],
+      "deps": [],
+      "log": [
+        {
+          "ts": "2026-11-20 21:09",
+          "msg": "created by chat"
+        },
+        {
+          "ts": "2026-11-20 21:09",
+          "msg": "claimed by worker:5904:57bfec9f"
+        },
+        {
+          "ts": "2026-11-20 21:11",
+          "msg": "capability=code"
+        },
+        {
+          "ts": "2026-11-20 21:11",
+          "msg": "claimed by worker:5904:67678b72"
+        },
+        {
+          "ts": "2026-11-20 21:20",
+          "msg": "Chưa thể nghiệm thu cơ chế bảo toàn và các kiểm thử vì server/update_preservation.py, server/updater.py cùng ba tệp test nằm ngoài brain nên không đọc được, trong khi report.md chỉ tự khai kết quả và còn chứa OID stash bị lỗi ký tự."
+        },
+        {
+          "ts": "2026-11-20 21:20",
+          "msg": "claimed by worker:5904:3a0ecd2d"
+        },
+        {
+          "ts": "2026-11-20 21:27",
+          "msg": "Chưa thể xác minh mã nguồn, tích hợp updater, test và trạng thái hai stash vì các file repo C:\\Users\\Admin\\JavisOS nằm ngoài phạm vi Read hiện có; báo cáo worker tự khai không đủ bằng chứng nghiệm thu."
+        },
+        {
+          "ts": "2026-11-20 21:35",
+          "msg": "Chưa thể xác minh mã nguồn, tích hợp updater, test và trạng thái hai stash vì các file repo C:\\Users\\Admin\\JavisOS nằm ngoài phạm vi Read hiện có; báo cáo worker tự khai không đủ bằng chứng nghiệm thu."
+        },
+        {
+          "ts": "2026-11-20 21:35",
+          "msg": "Chủ yêu cầu kiểm tra và làm lại hoàn thiện. Kiểm tra trực tiếp tại C:/Users/Admin/JavisOS bằng git -C và python -X utf8 chạy từng script (không dùng unittest discover trên Windows vì có script sys.exit và test UnixStreamServer). Đã xác nhận hai OID stash còn nguyên (cũ b062994a541d2bb362a836a0811d81eebac92d94, mới 31cc1a77fc1e2bf52fa751e1c0d978717fb665e9), 6 script hiện tại pass, nhưng chưa đủ nghiệm thu. (1) Đối chiếu từng hunk stash cũ rồi mới với cây hiện tại, bao gồm server/main.py và server"
+        },
+        {
+          "ts": "2026-11-20 21:35",
+          "msg": "claimed by worker:5904:d0bbf6ff"
+        },
+        {
+          "ts": "2026-11-20 21:50",
+          "msg": "server restarted"
+        },
+        {
+          "ts": "2026-11-20 21:50",
+          "msg": "claimed by worker:3980:4ee06ba8"
+        },
+        {
+          "ts": "2026-11-20 21:51",
+          "msg": "server restarted"
+        },
+        {
+          "ts": "2026-11-20 21:51",
+          "msg": "claimed by worker:4776:67a679a5"
+        },
+        {
+          "ts": "2026-11-20 21:56",
+          "msg": "Chưa đạt nghiệm thu độc lập vì mã nguồn cơ chế trong server/update_preservation.py, tích hợp server/updater.py và các test thực tế nằm ngoài brain nên không mở kiểm được, còn báo cáo chỉ tự khai PASS và phân loại 43 hunk chung chung là thay thế hoặc xung đột mà không có bằng chứng kiểm chứng riêng cho từng hunk."
+        }
+      ]
+    }
+  ],
+  "updated": 1795186611.943718
 }

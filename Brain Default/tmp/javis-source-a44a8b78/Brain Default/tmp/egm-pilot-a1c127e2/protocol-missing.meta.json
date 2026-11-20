@@ -1,0 +1,15 @@
+{
+  "seconds": 15.86,
+  "returncode": 0,
+  "usage": [
+    {
+      "input_tokens": 77422,
+      "cached_input_tokens": 66048,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 250,
+      "reasoning_output_tokens": 0
+    }
+  ],
+  "errors": [],
+  "message": "**INCOMPLETE.** The execution policy blocked both attempts to read the required checklist at [egm_lite_checklist.md](<C:/Users/Admin/JavisOS/brains/Brain Default/tmp/egm-pilot-a1c127e2/protocol-missing/egm_lite_checklist.md>) with `CreateProcess ... rejected: blocked by policy`.\n\nI could not determine which snapshot path is missing. I stopped before spawning the Goldfish reviewer because the review packet was incomplete."
+}

@@ -1,0 +1,69 @@
+{
+  "training": {
+    "device": "cpu",
+    "steps": 24,
+    "trainable_parameters": 77824,
+    "layers": [
+      24,
+      25,
+      26,
+      27
+    ],
+    "seconds": 404.98,
+    "peak_rss_mib": 4279
+  },
+  "max_output_tokens": 160,
+  "quantization": "Q4_K_M",
+  "evaluations": {
+    "stock": {
+      "model": "deepseek-r1:1.5b",
+      "cases": 16,
+      "exact": 0,
+      "content": 0,
+      "empty": 16,
+      "truncated": 16,
+      "median_seconds": 11.601,
+      "evidence": "baseline.jsonl"
+    },
+    "control": {
+      "model": "deepseek-r1-lora-cpu:control",
+      "cases": 16,
+      "exact": 0,
+      "content": 0,
+      "empty": 15,
+      "truncated": 16,
+      "median_seconds": 12.29,
+      "evidence": "evaluation-control.jsonl"
+    },
+    "lora": {
+      "model": "deepseek-r1-lora-cpu:pilot",
+      "cases": 16,
+      "exact": 0,
+      "content": 0,
+      "empty": 16,
+      "truncated": 16,
+      "median_seconds": 11.656,
+      "evidence": "evaluation-pilot.jsonl"
+    },
+    "control_prefix": {
+      "model": "deepseek-r1-lora-cpu:control",
+      "cases": 4,
+      "exact": 0,
+      "content": 0,
+      "empty": 0,
+      "truncated": 3,
+      "median_seconds": 12.312,
+      "evidence": "prefix-control.jsonl"
+    },
+    "lora_prefix": {
+      "model": "deepseek-r1-lora-cpu:pilot",
+      "cases": 4,
+      "exact": 0,
+      "content": 1,
+      "empty": 0,
+      "truncated": 3,
+      "median_seconds": 12.414,
+      "evidence": "prefix-pilot.jsonl"
+    }
+  }
+}

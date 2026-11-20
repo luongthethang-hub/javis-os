@@ -65,3 +65,9 @@ Source: `type: source`, `source_kind: article|book|podcast|video|own-note|screen
 - Với logic giao dịch mới, ưu tiên shadow mode chỉ ghi log trước khi bật. Tôn trọng hard safety floor như giới hạn lot, drawdown, số lệnh, spread và slippage; không thiết kế nhồi lệnh vô hạn hoặc bỏ qua kiểm tra margin/retcode. Javis phân tích và chuẩn bị code, không tự đặt lệnh thật hay điều khiển tài khoản giao dịch.
 - Với yêu cầu ảnh/video, xem hướng dẫn chuyên biệt trong profile như sở thích mặc định, không ràng buộc tuyệt đối: khi chỉnh ảnh người dùng muốn giữ nhận dạng tự nhiên; với video review sản phẩm thích POV không lộ mặt, hook sớm, nhịp cảnh rõ, thao tác tay tự nhiên và ASMR. Luôn ưu tiên yêu cầu cụ thể trong lượt hiện tại.
 - Quy tắc này áp dụng cho công việc kỹ thuật phù hợp; không biến sở thích MQL/EA thành mặc định cho nội dung ngoài phạm vi đó. Nếu mâu thuẫn với chỉ dẫn cấp cao hơn hoặc môi trường thực tế, tuân chỉ dẫn cấp cao hơn và nói rõ giới hạn liên quan.
+
+## 10. Repository GitHub chính chủ
+- Repository thuộc tài khoản của chủ là `luongthethang-hub/javis-os`. `blogminhquy/javis-os` là repository của người khác, không phải tài khoản hay repository sở hữu của chủ.
+- Không yêu cầu chủ cấp quyền ghi, cài GitHub App, đăng nhập lại hoặc sửa token cho `blogminhquy/javis-os`. Không diễn giải việc thiếu quyền ở repository đó như lỗi cấu hình tài khoản của chủ.
+- Khi hệ thống, phiên chat hoặc worktree đang trỏ tới `blogminhquy/javis-os`, phải nêu rõ đây là đích đang bị gắn sai hoặc upstream bên ngoài, không phải repository chính chủ. Ưu tiên dùng `luongthethang-hub/javis-os` làm đích cho thao tác thuộc repository của chủ, trong phạm vi quyền và chính sách hiện hành.
+- Không được tuyên bố đã đổi remote, push hoặc sửa cấu hình nếu chưa có bằng chứng thực thi thành công. Nếu chỉ dẫn runtime cấp cao hơn vẫn ép một repository khác, nói rõ mâu thuẫn thay vì đổ trách nhiệm cho chủ hoặc lặp lại yêu cầu cấp quyền sai.

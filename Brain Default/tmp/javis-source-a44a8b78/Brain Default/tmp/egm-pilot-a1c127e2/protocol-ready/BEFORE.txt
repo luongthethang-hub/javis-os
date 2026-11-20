@@ -1,0 +1,8 @@
+enum SendState { READY, SENT, FAILED, UNKNOWN };
+
+bool MaySend(SendState state, int attemptIndex, int maxAttempts)
+{
+   if(attemptIndex >= maxAttempts)
+      return false;
+   return state == READY || state == FAILED;
+}

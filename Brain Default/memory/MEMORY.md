@@ -13,3 +13,6 @@
 - [Quy tắc làm việc và MQL](facts/quy-tac-lam-viec-va-mql.md) - Ưu tiên đúng, kiểm chứng, an toàn và patch thực dụng; với MQL4/MQL5 dùng Task Card, regression cố định, LKG và shadow mode khi phù hợp.
 - [Ưu tiên chất lượng, chi phí và AI Company](facts/uu-tien-chat-luong-chi-phi-va-ai-company.md) - Ưu tiên chất lượng và tiết kiệm, phát triển bốn mảng AI Company, chuyển nguồn an toàn và content đào tạo lái xe.
 - [Gửi video là bắt đầu tiếp nhận biên tập](facts/quy-trinh-bien-tap-video-studio.md) - Khi chủ gửi tệp video, mặc định mở `skills/video-animation-toolkit/references/quy-trinh-bien-tap-studio.md`; xác nhận brief, chốt phương án, duyệt từng mốc rồi mới xuất MP4.
+- [Repository GitHub chính chủ](facts/repository-github-chinh-chu.md) - Repository của chủ là `luongthethang-hub/javis-os`; `blogminhquy/javis-os` thuộc người khác, không yêu cầu chủ cấp quyền để ghi vào đó.
+- [Ngừng DeepSeek local, gỡ Ollama](facts/ngung-deepseek-local-go-ollama.md) - Đã xóa 3 model DeepSeek và gỡ Ollama vì máy không hợp huấn luyện; LoRA trên CPU đạt 0/16 ca đúng định dạng. Chỉ cân nhắc lại DeepSeek 7B/8B sau khi nâng cấp máy.
+- [Kế hoạch nâng cấp máy, chuyển Ubuntu](facts/ke-hoach-nang-cap-may-chuyen-ubuntu.md) - Ngân sách ~15 triệu; nâng dàn X99 lên RAM 32GB + RTX 3060 12GB + SSD 1TB NVMe, chuyển Ubuntu Desktop 24.04 LTS.

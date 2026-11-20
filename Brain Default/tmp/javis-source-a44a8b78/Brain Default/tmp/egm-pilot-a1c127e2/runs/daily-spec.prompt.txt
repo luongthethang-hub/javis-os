@@ -1,0 +1,12 @@
+You are reviewing a synthetic MQL5 change. Identify only material, actionable issues directly supported by the supplied review packet. Consider units, state and boundaries, capital exposure, and whether the Task Card acceptance matrix would catch important errors. Separate a spec gap from a code regression. A verification gate that is explicitly planned is not a defect just because this review packet contains no run log. Treat provided pre-change code as the last known good reference. Review only the assigned scope. Do not use tools, files, prior sessions, or external services. A clean result is allowed.
+Return a JSON object with 'verdict' (PASS or CHANGES) and 'findings' (array with scope SPEC or DIFF, severity, reference, problem, and a concrete example or acceptance test). Do not emit a Markdown code fence.
+
+Review ONLY the Task Card before implementation. Reconstruct the required behavior using only the written card. Identify missing or ambiguous preconditions, acceptance checks or handoff criteria that could change outcomes. There is no implementation to inspect at this stage.
+
+TASK CARD
+1: Objective: retain the daily drawdown guard when moving its entry check to a pure helper.
+2: Environment: MQL5. Target: DailyRisk.mqh. Broker-server time; points and percentages have already been converted upstream.
+3: Contract: allow new entries when drawdown is below the limit. Exits are evaluated independently.
+4: After terminal restart, reconstruct same-day risk state before evaluating the next entry.
+5: Acceptance: normal entry, above-limit entry, rewind across broker midnight and same-day restart; compare with the last known good result.
+6: Log guard decisions with broker timestamp. Run strict compilation and the fixed tester matrix on a demo fixture before rollout.

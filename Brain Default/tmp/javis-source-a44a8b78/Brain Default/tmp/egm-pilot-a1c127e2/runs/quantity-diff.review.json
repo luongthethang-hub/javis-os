@@ -1,0 +1,26 @@
+{
+  "verdict": "CHANGES",
+  "findings": [
+    {
+      "scope": "DIFF",
+      "severity": "HIGH",
+      "reference": "QuantizeVolume: below-minimum branch",
+      "problem": "Returning minVolume for a below-minimum request exceeds the requested volume and bypasses the caller's zero-sentinel handling.",
+      "example": "request=0.5, minVolume=1, maxVolume=5, step=1 must return 0. The new code returns 1."
+    },
+    {
+      "scope": "DIFF",
+      "severity": "HIGH",
+      "reference": "QuantizeVolume: MathCeil in return expression",
+      "problem": "Rounding up can exceed the requested volume or the broker maximum because the cap is applied before rounding. Restore downward rounding.",
+      "example": "With minVolume=1, maxVolume=2.5, and step=1, request=1.5 returns 2 and request=3 returns 3. The expected results are 1 and 2, respectively."
+    },
+    {
+      "scope": "DIFF",
+      "severity": "HIGH",
+      "reference": "QuantizeVolume: removed step validation",
+      "problem": "Removing the nonpositive-step guard allows division by zero and can let negative-step metadata produce a nonzero volume. Restore the guard before calculating the grid position.",
+      "example": "With request=2, minVolume=1, and maxVolume=5, both step=0 and step=-1 must return 0. The new code divides by zero for step=0 and returns 2 for step=-1."
+    }
+  ]
+}

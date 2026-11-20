@@ -1,0 +1,15 @@
+{
+  "seconds": 5.85,
+  "returncode": 0,
+  "usage": [
+    {
+      "input_tokens": 19409,
+      "cached_input_tokens": 13952,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 42,
+      "reasoning_output_tokens": 0
+    }
+  ],
+  "errors": [],
+  "message": "INCOMPLETE \u2014 `AFTER.txt` is required for the `SendGuard.mqh` review, and the harness read failed with `FileNotFoundError`. No reviewer was launched."
+}
