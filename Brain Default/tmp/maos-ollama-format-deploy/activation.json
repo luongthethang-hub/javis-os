@@ -1,0 +1,7 @@
+﻿{
+    "status":  "activated",
+    "detail":  "The installed server loaded workflow author failover and passed /health.",
+    "wait_pid":  896,
+    "previous_server_pid":  11520,
+    "at":  "2026-11-20T12:58:23.6590190+07:00"
+}

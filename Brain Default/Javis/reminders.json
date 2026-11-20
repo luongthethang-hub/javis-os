@@ -4,7 +4,7 @@
       "id": "r_4830354778",
       "text": "Mỗi 4 giờ, thực hiện một lượt tự học theo cấu hình Tự học của Javis trên các cuộc trò chuyện mới kể từ lần chạy trước (tối đa 4 giờ gần nhất). Chỉ tổng hợp thông tin bền vững về người dùng/công việc vào Memory, kiến thức/quy trình tái sử dụng vào Wiki, và chỉ đề xuất cải thiện Skill/Agent/Workflow khi có bằng chứng lặp lại. Không tự ghi thay đổi, không tạo thông tin chưa được xác nhận, không lưu dữ liệu nhạy cảm, không sửa hoặc xóa kiến thức cũ, không nâng cấp mã nguồn, không đăng hay gửi nội dung ra ngoài. Trình bày kết quả để chủ duyệt; nếu không có gì mới thì báo ngắn gọn và dừng.",
       "mode": "task",
-      "due_at": 1795136400.0,
+      "due_at": 1795165200.0,
       "chat_id": "",
       "repeat_min": 0,
       "cron": "0 */4 * * *",
@@ -17,10 +17,10 @@
       "call": false,
       "created_by": "dashboard",
       "created_at": 1794936989.801824,
-      "fired_at": 1795122188.932804,
-      "result": "**Tự học 04:00 ngày 20/11 có 2 đề xuất chờ duyệt**, sau khi rà 10 tin nhắn mới trên web và Telegram.\n\n- **Memory:** Bổ sung quyết định bạn đã duyệt cho AI Company. Khi nguồn AI gặp lỗi, lưu tiến độ, chuyển có giới hạn sang nguồn đã được phép và giữ việc trong hàng đợi nếu chưa thể tiếp tục.\n- **Wiki:** Ghi quy trình bàn giao khi đổi model. Lưu mục tiêu, kết quả đã kiểm chứng và bước tiếp theo. Nếu một thao tác bị gián đoạn, kiểm tra xem nó đã hoàn tất chưa trước khi thử lại.\n\nQuy trình đã có trong tài liệu vận hành. Chuyển nguồn tự động vẫn cần kiểm chứng. Lượt này chỉ đọc, chưa có đủ bằng chứng lặp lại để đề xuất sửa kỹ năng, trợ lý hay quy trình.",
+      "fired_at": 1795150885.1039262,
+      "result": "Đang chạy lượt tự học định kỳ. Đọc các cuộc trò chuyện gần đây và trạng thái memory hiện tại.",
       "error": "",
-      "last_slot": 1795122000.0
+      "last_slot": 1795150800.0
     },
     {
       "id": "r_98304ae112",
@@ -65,5 +65,5 @@
       "error": ""
     }
   ],
-  "updated": 1795122188.932804
+  "updated": 1795150885.1039262
 }
