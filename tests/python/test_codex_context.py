@@ -60,7 +60,7 @@ with tempfile.TemporaryDirectory(prefix="javis-codex-context-") as tmp:
     store.clear_codex_thread_id(sid)
     check("đổi provider: vô hiệu hóa thread Codex stale",
           store.get_session(sid).get("codex_thread_id") is None)
-    store._conn.close()
+    store.close()
 
     # 2) Lượt mới và lượt resume dựng đúng argv theo CLI chính thức.
     cli = CodexCLI(cwd=tmp, model="gpt-test", instructions="Bạn là Javis.")
