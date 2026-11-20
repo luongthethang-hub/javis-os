@@ -35,9 +35,8 @@ from pathlib import Path
 from typing import Any, Awaitable, Callable, Iterable, Optional
 
 from config import STATE_DIR
-from update_state import release_repo
+from update_state import OFFICIAL_REPO as SOURCE_REPO, release_source
 
-SOURCE_REPO = "blogminhquy/javis-os"        # the repo every install updates from (updater.release_source)
 STORE_DIR = STATE_DIR / "self_upgrade"
 OWNER_SCHEDULED = ("kanban", "reminder")     # background work the owner set up runs with the owner's word
 MAX_CHARS = 200_000
@@ -344,23 +343,23 @@ def history(brain_root: str, limit: int = 10) -> list:
 # ── Javis's own code ───────────────────────────────────────────────────────────────────────────────────────────────
 
 def source_status(sid: str, brain_root: str) -> dict:
-    """Is GitHub connected, and is the official repo attached to this chat (with its worktree)?"""
+    """Is GitHub connected, and is the configured update repository attached to this chat?"""
     import github_repos
-    repo_name = release_repo()
+    repo_name, release_branch = release_source()
     st = github_repos.status()
     attached = None
     if sid:
         for r in github_repos.session_repos(sid, brain_root):
             if str(r.get("full_name") or "").lower() == repo_name.lower():
                 attached = r
-    return {"repo": repo_name, "connected": bool(st.get("connected")), "has_git": bool(st.get("has_git")),
-            "attached": attached}
+    return {"repo": repo_name, "release_branch": release_branch, "connected": bool(st.get("connected")),
+            "has_git": bool(st.get("has_git")), "attached": attached}
 
 
 def attach_source(sid: str, brain_root: str) -> dict:
-    """Attach the official repo to this chat next to whatever it already has. Returns its row (worktree, branch)."""
+    """Attach the configured update repository and use its release branch as the base."""
     import github_repos
-    repo_name = release_repo()
+    repo_name, release_branch = release_source()
     if not sid:
         raise ImproveError(_c("Chỉ gắn được trong một khung chat web (chưa rõ mã phiên).",
                               "Only inside a web chat (no session id)."))
@@ -379,6 +378,12 @@ def attach_source(sid: str, brain_root: str) -> dict:
     got = source_status(sid, brain_root)
     if not got["attached"]:
         raise ImproveError(_c("Gắn repository không thành công.", "Attaching the repository did not work."))
+    if release_branch != "main" and got["attached"].get("base_branch") != release_branch:
+        try:
+            github_repos.set_base(sid, brain_root, repo_name, release_branch)
+        except github_repos.RepoError as e:
+            raise ImproveError(str(e)) from e
+        got = source_status(sid, brain_root)
     if got["attached"].get("can_push") is False:
         got["note"] = _c("Token chỉ có quyền đọc repository này: Javis sửa được trên máy nhưng không đẩy, không mở PR được. "
                          "Cần quyền Contents và Pull requests ghi.", "The token can only read this repository: Javis can edit "

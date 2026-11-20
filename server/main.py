@@ -22972,7 +22972,12 @@ async def _chat_socket(ws):
                                           user_mid=int(row["user_mid"]), user_text=row["user_text"])
 
         try:
-            await _resume_cut_turns()
+            if not update_activity.blocked():
+                activity = update_activity.begin()
+                try:
+                    await _resume_cut_turns()
+                finally:
+                    update_activity.end(activity)
         except Exception as _e:  # noqa: BLE001 - a broken resume must never keep a page from connecting
             print(f"[turn resume] {type(_e).__name__}: {_e}", file=sys.stderr)
 
