@@ -18,3 +18,5 @@
 - [Repository GitHub chính chủ](facts/repository-github-chinh-chu.md) - Repository của chủ là `luongthethang-hub/javis-os`; `blogminhquy/javis-os` thuộc người khác, không yêu cầu chủ cấp quyền để ghi vào đó.
 - [Ngừng DeepSeek local, gỡ Ollama](facts/ngung-deepseek-local-go-ollama.md) - Đã xóa 3 model DeepSeek và gỡ Ollama vì máy không hợp huấn luyện; LoRA trên CPU đạt 0/16 ca đúng định dạng. Chỉ cân nhắc lại DeepSeek 7B/8B sau khi nâng cấp máy.
 - [Kế hoạch nâng cấp máy, chuyển Ubuntu](facts/ke-hoach-nang-cap-may-chuyen-ubuntu.md) - Ngân sách ~15 triệu; nâng dàn X99 lên RAM 32GB + RTX 3060 12GB + SSD 1TB NVMe, chuyển Ubuntu Desktop 24.04 LTS.
+- [Kích hoạt Antigravity CLI và cầu nối Second Brain](facts/kich-hoat-antigravity-cli-va-cau-noi-second-brain.md) - Đã kích hoạt Antigravity CLI và thiết lập bridge đọc/ghi Second Brain 2 chiều.
+- [Chiến lược Đồng tiến hóa Antigravity và Javis](facts/chien-luoc-dong-tien-hoa-antigravity-javis.md) - Chiến lược đồng tiến hóa và tái cấu trúc 4 nhóm làm việc giữa Antigravity và Javis.

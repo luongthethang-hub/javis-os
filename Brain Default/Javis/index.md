@@ -2,7 +2,7 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 23 agents · 13 skills · 6 workflows (1 bật) · 0 loops (0 bật) · 31 plugins (29 chạy)
+**Tổng quan:** 24 agents · 14 skills · 6 workflows (1 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
 
 ## Agents
 - **Biên tập Video ngắn** (`bien-tap-video-ngan`) - Phân tích tư liệu và dựng video ngắn từ tệp cục bộ khi có công cụ và quyền chạy. · skills: video-animation-toolkit · tags: Nội dung, Video
@@ -17,6 +17,7 @@
 - **Kiểm chứng dữ liệu** (`kiem-chung-du-lieu`) - Chặn mọi con số không có nguồn trước khi phiên họp bắt đầu, xác nhận hoặc bác từng số liệu. · tags: tai-chinh, kiem-chung, chat-luong
 - **Kiểm duyệt & Chuẩn bị đăng** (`kiem-duyet-chuan-bi-dang`) - Rà soát nội dung, hoàn thiện gói đăng và trình chủ duyệt trước khi xuất bản.
 - **Kiểm tra Khả thi Ngày** (`kiem-tra-kha-thi-ngay`) - Rà soát kế hoạch ngày để giảm quá tải, phát hiện phụ thuộc và chốt một phiên bản thực thi. · tags: van-hanh, nang-suat
+- **Kiến trúc sư Antigravity** (`kien-truc-su-antigravity`) - Kiến trúc sư Trưởng & Master Optimizer: Tái cấu trúc mã nguồn phức tạp, tối ưu hóa thuật toán MQL5/Trading, xử lý dữ liệu backtest lớn qua data-query, và nghiệm thu regression độc lập. · model gemini-3.8-flash-high · skills: data-query · tags: Nhóm, Kỹ thuật
 - **Kỹ sư EA - Claude** (`ky-su-ea---claude`) - Kỹ sư MQL5/MQL4: viết, sửa, tối ưu Expert Advisor, order/position/basket management, risk control. Sửa hệ thống có sẵn ưu tiên hơn viết mới. · model sonnet · tags: Nhóm
 - **Nghiên cứu & Kiểm chứng** (`nghien-cuu-kiem-chung`) - Nghiên cứu nguồn đáng tin cậy, kiểm tra dữ kiện và phát hiện tuyên bố cần thận trọng trong nội dung.
 - **Nhật ký và Thực thi** (`nhat-ky-thuc-thi`) - Nhắc stop loss và take profit, ghi nhật ký lệnh, chấm điểm lại sau khi lệnh đóng; không đặt lệnh hộ. · tags: tai-chinh, nhat-ky, ky-luat
@@ -39,6 +40,8 @@
 - **Query Wiki** (`query-wiki`) - Khai thác tri thức trong Second Brain: tổng hợp, so sánh, giả thuyết. Trả lời có trích dẫn.
 - **Tách phiên thông minh** (`tach-phien-thong-minh`) - Nén ngữ cảnh có kiểm chứng và tạo bàn giao để tiếp tục trong phiên mới.
 - **Vận hành AI Company ổn định** (`van-hanh-ai-company-on-dinh`) - Điều phối AI Company chịu lỗi nhiều tầng bằng checkpoint, phân loại lỗi, chuyển nguồn có giới hạn và khôi phục an toàn.
+### Chung
+- **data-query** (`data-query`) - Truy vấn dữ liệu lớn (JSON, CSV, JSONL) bằng SQLite ảo mà không làm tràn context window của mô hình. Tối ưu cho phân tích log backtest MQL5, lịch sử tick, danh sách lệnh và dữ liệu thị trường khối lượng lớn.
 ### Marketing
 - **HTML sang Webcake** (`html-to-webcake`) - Chuyển trang HTML thành file .pke mở được trong trình dựng Webcake, giữ đúng màu, cỡ chữ, ảnh và bố cục của bản gốc.
 ### Năng suất
@@ -66,6 +69,7 @@
 _(chưa có)_
 
 ## Plugins (tool/hook native cho mọi engine)
+- **Ủy thác Antigravity** (`antigravity-delegate`) - bundled/chạy · tools: javis_antigravity_delegate · Ủy thác tác vụ kỹ thuật nặng, viết code MQL5/Trading, phân tích và refactor lớn sang Antigravity (Google AI Pro - 0đ phí API).
 - **Thời gian & ngày** (`datetime-vn`) - bundled/chạy · tools: javis_now, javis_date_add · Xem ngày giờ hiện tại theo múi giờ chọn ở Cài đặt và tính ngày tương đối (mai, mốt, N ngày nữa, tuần trước). Thuần stdlib, chỉ đọc, không cần mạng.
 - **Điều khiển app trên máy** (`desktop-apps`) - bundled/chạy · tools: javis_app_list, javis_app_open, javis_app_close · Mở, đóng và liệt kê ứng dụng trên CHÍNH MÁY đang chạy Javis (Windows, macOS, Linux có màn hình) theo lời người dùng, ví dụ "mở Chrome", "tắt Excel", "đang mở app nào". Tự chặn và nói rõ khi Javis chạy trong Docker trên máy chủ, vì khi đó máy chạy Javis không phải máy của người dùng.
 - **Tạo và xem ảnh (ChatGPT)** (`image-chatgpt`) - bundled/chạy · tools: javis_generate_image, javis_describe_image · Tạo ảnh từ mô tả bằng GÓI ChatGPT đang đăng nhập (OAuth) - không cần OpenAI API key. Dùng Codex Responses API + tool image_generation (gpt-image-2). Ảnh lưu vào attachments/ của vault để nhúng thẳng vào chat. Kèm tool XEM ảnh, để ChatGPT nhìn ảnh trong brain rồi tả lại bằng chữ, để cả engine không tự xem được ảnh (OpenRouter, Gemini API...) cũng biết trong ảnh có gì. Cần đã kết nối ChatGPT ở trang Model.
@@ -99,4 +103,4 @@ _(chưa có)_
 - **Debate Engine - Red/Blue Team** (`debate-engine`) - vault/tắt · tools: debate_engine · hooks: post_tool_call · Đưa lượt rà soát Red/Blue vào Kanban, kiểm tra ngân sách ước tính và tự ngắt khi thất bại liên tiếp.
 
 ## Cờ sức khoẻ
-- Agent chưa workflow nào dùng: chuyen-vien-co-ban-vi-mo, chuyen-vien-dong-tien-tam-ly, dieu-phoi-ai-company, giam-doc-dau-tu, giam-doc-marketing-nganh-dao-tao-lai-xe, javis-core, kiem-chung-du-lieu, kiem-duyet-chuan-bi-dang, ky-su-ea---claude, nhat-ky-thuc-thi, phan-bien-noi-dung, phan-tich-thi-truong-an-toan, quan-tri-rui-ro, thu-ky-hoi-dong, tro-ly-content-ca-nhan, truong-phong-nghien-cuu
+- Agent chưa workflow nào dùng: chuyen-vien-co-ban-vi-mo, chuyen-vien-dong-tien-tam-ly, dieu-phoi-ai-company, giam-doc-dau-tu, giam-doc-marketing-nganh-dao-tao-lai-xe, javis-core, kiem-chung-du-lieu, kiem-duyet-chuan-bi-dang, kien-truc-su-antigravity, ky-su-ea---claude, nhat-ky-thuc-thi, phan-bien-noi-dung, phan-tich-thi-truong-an-toan, quan-tri-rui-ro, thu-ky-hoi-dong, tro-ly-content-ca-nhan, truong-phong-nghien-cuu
