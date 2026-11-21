@@ -4,7 +4,7 @@
       "id": "r_4830354778",
       "text": "Mỗi 4 giờ, thực hiện một lượt tự học theo cấu hình Tự học của Javis trên các cuộc trò chuyện mới kể từ lần chạy trước (tối đa 4 giờ gần nhất). Chỉ tổng hợp thông tin bền vững về người dùng/công việc vào Memory, kiến thức/quy trình tái sử dụng vào Wiki, và chỉ đề xuất cải thiện Skill/Agent/Workflow khi có bằng chứng lặp lại. Không tự ghi thay đổi, không tạo thông tin chưa được xác nhận, không lưu dữ liệu nhạy cảm, không sửa hoặc xóa kiến thức cũ, không nâng cấp mã nguồn, không đăng hay gửi nội dung ra ngoài. Trình bày kết quả để chủ duyệt; nếu không có gì mới thì báo ngắn gọn và dừng.",
       "mode": "task",
-      "due_at": 1795208400.0,
+      "due_at": 1795251600.0,
       "chat_id": "",
       "repeat_min": 0,
       "cron": "0 */4 * * *",
@@ -17,10 +17,10 @@
       "call": false,
       "created_by": "dashboard",
       "created_at": 1794936989.801824,
-      "fired_at": 1795194050.2962391,
-      "result": "Lượt tự học 4 giờ gần nhất tìm thấy **2 đề xuất để chủ duyệt**, chưa ghi thay đổi:\n\n- **Memory:** Ghi nhớ yêu cầu bền vững rằng mọi bản cập nhật Javis phải bảo toàn các tinh chỉnh của chủ, kiểm tra ảnh hưởng sau cập nhật và không ghi đè chức năng mới.\n- **Wiki:** Chưng cất quy trình bảo toàn tùy chỉnh qua cập nhật: lưu mốc trước cập nhật, hợp nhất ba chiều, kiểm thử cả tùy chỉnh lẫn chức năng mới, giữ bản sao và hoàn tác khi thất bại.\n\nKhông đề xuất sửa Skill, Agent hoặc Workflow vì chưa có thêm bằng chứng lặp lại đủ mạnh. Việc tích hợp thử `rea-video` bằng CLI cục bộ đã được áp dụng trực tiếp vào skill Hoạt hình & Video nên không tạo đề xuất trùng.",
+      "fired_at": 1795237225.864912,
+      "result": "Có **2 đề xuất mới**, chưa ghi thay đổi:\n\n- **Memory:** Ghi nhận cổng duyệt Kanban `full` đã triển khai cục bộ, **29 kiểm thử đạt**, chưa bật production.\n- **Wiki:** Bổ sung mẫu cổng duyệt chống replay: phê duyệt dùng một lần, ràng buộc đúng tool và tham số, xử lý yêu cầu đồng thời.\n\nLưu ý phạm vi: shell và MCP gọi trực tiếp chưa được cổng bảo vệ. Chưa đủ bằng chứng để đề xuất sửa Skill, Agent hoặc Workflow.",
       "error": "",
-      "last_slot": 1795194000.0
+      "last_slot": 1795237200.0
     },
     {
       "id": "r_98304ae112",
@@ -67,5 +67,5 @@
       "last_slot": 1795183200.0
     }
   ],
-  "updated": 1795194050.2972383
+  "updated": 1795237225.8659186
 }
