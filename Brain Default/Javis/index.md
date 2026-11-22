@@ -2,33 +2,19 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 24 agents · 14 skills · 6 workflows (1 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
+**Tổng quan:** 10 agents · 14 skills · 4 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
 
 ## Agents
-- **Biên tập Video ngắn** (`bien-tap-video-ngan`) - Phân tích tư liệu và dựng video ngắn từ tệp cục bộ khi có công cụ và quyền chạy. · skills: video-animation-toolkit · tags: Nội dung, Video
-- **Chuyên viên Cơ bản và Vĩ mô** (`chuyen-vien-co-ban-vi-mo`) - Theo dõi tin tức, lịch kinh tế và bối cảnh vĩ mô để nói cái gì có thể làm gãy kế hoạch giao dịch. · tags: tai-chinh, vi-mo, tin-tuc
-- **Chuyên viên Dòng tiền và Tâm lý** (`chuyen-vien-dong-tien-tam-ly`) - Đọc khối lượng, funding, hợp đồng mở, tỷ lệ long short và độ căng của đám đông để cảnh báo bẫy thanh khoản. · tags: tai-chinh, dong-tien, tam-ly-thi-truong
-- **Điều phối AI Company** (`dieu-phoi-ai-company`) - Điều phối yêu cầu đa phòng ban trong Brain này, chọn năng lực Javis phù hợp và tổng hợp đầu ra có kiểm soát. · skills: van-hanh-ai-company-on-dinh, chuyen-viec-sang-app-desktop · tags: ai, dieu-phoi, van-hanh
-- **Điều phối Kế hoạch Ngày** (`dieu-phoi-ke-hoach-ngay`) - Biến ưu tiên đã chọn thành kế hoạch ngày có trình tự, mốc kiểm tra và điều kiện hoàn thành. · tags: van-hanh, nang-suat
-- **Ghi biên bản Red/Blue Team** (`ghi-bien-ban-red-blue`) - Ghi lại điểm bất đồng giữa red team và blue team, phán quyết cuối và bài học rút ra sau mỗi vòng phản biện. · tags: ai, kiem-duyet, bien-ban
-- **Giám đốc Đầu tư (CIO)** (`giam-doc-dau-tu`) - Chủ trì phiên họp đầu tư, cân mọi quan điểm, chốt đúng một trạng thái hành động kèm phiếu lệnh. · tags: tai-chinh, lanh-dao, quyet-dinh
-- **Giám đốc Marketing ngành đào tạo lái xe** (`giam-doc-marketing-nganh-dao-tao-lai-xe`) - Xây dựng chiến lược marketing và nội dung giúp thu hút học viên phù hợp cho dịch vụ dạy lái xe số tự động.
+- **Chuyên viên Tăng trưởng & Meta Ads** (`chuyen-vien-meta-ads`) - Đọc và phân tích số liệu quảng cáo Facebook/Instagram qua meta-ads-graph và data-query. Tối ưu ngân sách, đánh giá CTR, CPM, chi phí trên mỗi tin nhắn/chuyển đổi. · model gemini-3.8-flash-high · skills: data-query · tags: Meta Ads, Tăng trưởng, Data
+- **Đạo diễn & Biên kịch Video** (`dao-dien-kich-ban-video`) - Xây dựng kênh TikTok & YouTube: Phân tích video đối thủ (youtube-read), viết kịch bản Short (Hook 3s đầu, giữ chân) và Video dài (Storytelling, SEO Title/Description/Tags). · model gemini-3.8-flash-high · tags: TikTok, YouTube, Video
+- **Giám đốc Thương hiệu Cá nhân** (`giam-doc-thuong-hieu`) - Định vị thương hiệu cá nhân, lập kế hoạch nội dung đa kênh (Facebook, Zalo, TikTok, YouTube), kiểm soát nhất quán thông điệp và giọng văn chuyên gia. · model gemini-3.8-flash-high · skills: javis-brain-bridge, data-query · tags: Thương hiệu cá nhân, Chiến lược
 - **Javis Core** (`javis-core`) - Trợ lý hệ thống nhận báo cáo và hỗ trợ công việc trong brain này.
-- **Kiểm chứng dữ liệu** (`kiem-chung-du-lieu`) - Chặn mọi con số không có nguồn trước khi phiên họp bắt đầu, xác nhận hoặc bác từng số liệu. · tags: tai-chinh, kiem-chung, chat-luong
-- **Kiểm duyệt & Chuẩn bị đăng** (`kiem-duyet-chuan-bi-dang`) - Rà soát nội dung, hoàn thiện gói đăng và trình chủ duyệt trước khi xuất bản.
-- **Kiểm tra Khả thi Ngày** (`kiem-tra-kha-thi-ngay`) - Rà soát kế hoạch ngày để giảm quá tải, phát hiện phụ thuộc và chốt một phiên bản thực thi. · tags: van-hanh, nang-suat
-- **Kiến trúc sư Antigravity** (`kien-truc-su-antigravity`) - Kiến trúc sư Trưởng & Master Optimizer: Tái cấu trúc mã nguồn phức tạp, tối ưu hóa thuật toán MQL5/Trading, xử lý dữ liệu backtest lớn qua data-query, và nghiệm thu regression độc lập. · model gemini-3.8-flash-high · skills: data-query · tags: Nhóm, Kỹ thuật
-- **Kỹ sư EA - Claude** (`ky-su-ea---claude`) - Kỹ sư MQL5/MQL4: viết, sửa, tối ưu Expert Advisor, order/position/basket management, risk control. Sửa hệ thống có sẵn ưu tiên hơn viết mới. · model sonnet · tags: Nhóm
-- **Nghiên cứu & Kiểm chứng** (`nghien-cuu-kiem-chung`) - Nghiên cứu nguồn đáng tin cậy, kiểm tra dữ kiện và phát hiện tuyên bố cần thận trọng trong nội dung.
-- **Nhật ký và Thực thi** (`nhat-ky-thuc-thi`) - Nhắc stop loss và take profit, ghi nhật ký lệnh, chấm điểm lại sau khi lệnh đóng; không đặt lệnh hộ. · tags: tai-chinh, nhat-ky, ky-luat
-- **Phản biện chéo - ChatGPT** (`phan-bien-cheo---chatgpt`) - Reviewer độc lập: phản biện đối kháng đầu ra của agent khác (code EA, chiến lược, content, affiliate) để tìm lỗi logic, giả định thiếu, rủi ro. · model gpt-6.2-sol · tags: Nhóm
-- **Phản biện nội dung** (`phan-bien-noi-dung`) - Rà soát đối kháng bản nháp content để tìm lỗi, giả định thiếu và rủi ro trước bước kiểm chứng và biên tập. · tags: noi-dung, kiem-duyet, chat-luong
-- **Phân tích thị trường an toàn** (`phan-tich-thi-truong-an-toan`) - Hỗ trợ theo dõi thị trường và phân tích kỹ thuật có kỷ luật, ưu tiên quản trị rủi ro; không tự thực hiện giao dịch. · tags: tai-chinh, phan-tich-ky-thuat, quan-tri-rui-ro
-- **Phân tích Ưu tiên Ngày** (`phan-tich-uu-tien-ngay`) - Chuyển mục tiêu và việc tồn thành các ưu tiên ngày rõ ràng, giới hạn và có căn cứ. · tags: van-hanh, nang-suat
-- **Quản trị Rủi ro** (`quan-tri-rui-ro`) - Người gác cổng rủi ro của văn phòng, có quyền phủ quyết mọi kế hoạch sai ngưỡng, cấp hoặc hạ quy mô vị thế. · tags: tai-chinh, quan-tri-rui-ro, phe-duyet
-- **Thư ký Hội đồng** (`thu-ky-hoi-dong`) - Điều hành phiên họp theo trình tự, ghi biên bản trung thực ai nói gì, ai phản đối và vì sao. · tags: tai-chinh, thu-ky, bien-ban
-- **Trợ lý Content cá nhân** (`tro-ly-content-ca-nhan`) - Lên kế hoạch, viết và kiểm duyệt content; chuẩn bị kịch bản, hướng dẫn dựng video ngắn và bàn giao bài đăng theo quy trình duyệt.
-- **Trưởng phòng Nghiên cứu** (`truong-phong-nghien-cuu`) - Điều phối và chất vấn ba chuyên viên phân tích, tổng hợp quan điểm và làm nổi điểm bất đồng có ảnh hưởng tới quyết định. · tags: tai-chinh, nghien-cuu, dieu-phoi
+- **Kiểm duyệt Chất lượng & Chính sách** (`kiem-duyet-chat-luong`) - Cổng kiểm chứng độc lập: Kiểm tra chính tả, sự thật, chính sách cộng đồng (Facebook, TikTok, YouTube, Zalo) chống bóp tương tác, chống gậy bản quyền và nghiệm thu trước khi xuất bản. · model claude-sonnet-4-6 · tags: Kiểm duyệt, Chính sách
+- **Kiến trúc sư Antigravity** (`kien-truc-su-antigravity`) - Kiến trúc sư Hệ thống & Tăng trưởng: Tối ưu hóa quy trình tự động đa kênh, phân tích dữ liệu lớn (Ads/Traffic/Audience) bằng SQLite ảo data-query, và hỗ trợ suy luận sâu qua Google AI Pro. · model gemini-3.8-flash-high · skills: data-query · tags: Chiến lược, Tự động hóa
+- **Kỹ thuật Dựng Video & Audio** (`ky-thuat-dung-video`) - Hậu kỳ video tự động: Cắt ghép clip thô từ người dùng gửi, tối ưu nhịp điệu, chèn phụ đề, tạo voice-note và xuất file MP4 chuẩn dọc (9:16 TikTok/Reels) hoặc ngang (16:9 YouTube). · model gemini-3.8-flash-medium · skills: video-animation-toolkit · tags: Video, FFmpeg, Studio
+- **Quản trị Fanpage & Cộng đồng** (`quan-tri-fanpage-fb`) - Xây dựng và chăm sóc Fanpage Facebook: Lên lịch nội dung đa định dạng, viết bài tương tác/giá trị/bán hàng, phân tích bài đăng qua meta-pages-graph và gợi ý hình ảnh (image-chatgpt). · model gemini-3.8-flash-medium · tags: Facebook, Fanpage, Content
+- **tro-ly-truc-page-zalo** (`tro-ly-truc-page-zalo`) - 
+- **Trưởng nhóm Chăm sóc Khách hàng** (`truong-nhom-cskh`) - Thiết kế kịch bản tư vấn, chăm sóc khách hàng trên Zalo và Facebook Inbox. Phân loại phễu (lạnh/ấm/nóng), xử lý từ chối và tối ưu tỷ lệ chuyển đổi sang Zalo/cuộc gọi. · model gemini-3.8-flash-high · tags: CSKH, Zalo, Inbox
 
 ## Skills
 ### AI
@@ -54,22 +40,16 @@
 - **Họp hội đồng đầu tư** (`hop-hoi-dong-dau-tu`) - Chạy một phiên họp phân tích thị trường đủ 6 pha, ra phiếu lệnh và biên bản.
 
 ## Workflows
-### AI
-- **Red/Blue Team Review - AI Company** (`red-blue-team-review`) - off · 3 bước [phan-bien-cheo---chatgpt -> nghien-cuu-kiem-chung -> ghi-bien-ban-red-blue] · Vòng phản biện đối kháng 3 bước cho mọi đầu ra của AI Company - red attack, blue patch, biên bản phán quyết.
-### Năng suất
-- **Kế hoạch ngày thực dụng** (`ke-hoach-ngay-thuc-dung`) - off · 3 bước [phan-tich-uu-tien-ngay -> dieu-phoi-ke-hoach-ngay -> kiem-tra-kha-thi-ngay] · Biến danh sách việc và mục tiêu thành kế hoạch ngày ngắn, khả thi và có bước chốt cuối ngày.
-### Nội dung
-- **Dựng video và trả MP4** (`dung-video-tra-mp4`) - active · 1 bước [bien-tap-video-ngan] · Tiếp nhận video, chốt brief và phương án, duyệt từng mốc dựng rồi trả MP4 đã kiểm tra.
-- **Sản xuất Content & Video ngắn** (`san-xuat-content-video-ngan`) - off · 0 bước [] · Tạo bản nháp content đào tạo lái xe, kiểm duyệt có giới hạn và bàn giao chờ chủ duyệt.
-### Tài chính
-- **Phát triển EA - bản vá và phản biện** (`phat-trien-ea-ban-va`) - off · 0 bước [] · Kiểm tra Task Card, soạn bản vá EA và phản biện; không chạy MT5 hoặc đặt lệnh.
-- **Phiên họp phân tích thị trường** (`phien-hop-phan-tich-thi-truong`) - off · 0 bước [] · Kiểm chứng dữ liệu, phân tích thị trường và bàn giao phán quyết rủi ro trong ba bước.
+- **Chăm sóc & Phát triển Fanpage Facebook** (`cham-soc-fanpage-facebook`) - off · 0 bước []
+- **Chăm sóc Khách hàng Zalo & Inbox Đa kênh** (`cham-soc-khach-hang-zalo-inbox`) - off · 0 bước []
+- **Xây dựng Thương hiệu Cá nhân Đa nền tảng** (`xay-dung-thuong-hieu-ca-nhan`) - off · 0 bước []
+- **Xây kênh TikTok & YouTube Tự động** (`xay-kenh-tiktok-youtube`) - off · 0 bước []
 
 ## Loops
 _(chưa có)_
 
 ## Plugins (tool/hook native cho mọi engine)
-- **Ủy thác Antigravity** (`antigravity-delegate`) - bundled/chạy · tools: javis_antigravity_delegate · Ủy thác tác vụ kỹ thuật nặng, viết code MQL5/Trading, phân tích và refactor lớn sang Antigravity (Google AI Pro - 0đ phí API).
+- **Ủy thác Antigravity** (`antigravity-delegate`) - bundled/chạy · tools: javis_antigravity_delegate · Ủy thác tác vụ chiến lược nội dung, kịch bản TikTok/YouTube, kiểm toán Fanpage/Ads và tự động hóa sang Antigravity (Google AI Pro - 0đ phí API).
 - **Thời gian & ngày** (`datetime-vn`) - bundled/chạy · tools: javis_now, javis_date_add · Xem ngày giờ hiện tại theo múi giờ chọn ở Cài đặt và tính ngày tương đối (mai, mốt, N ngày nữa, tuần trước). Thuần stdlib, chỉ đọc, không cần mạng.
 - **Điều khiển app trên máy** (`desktop-apps`) - bundled/chạy · tools: javis_app_list, javis_app_open, javis_app_close · Mở, đóng và liệt kê ứng dụng trên CHÍNH MÁY đang chạy Javis (Windows, macOS, Linux có màn hình) theo lời người dùng, ví dụ "mở Chrome", "tắt Excel", "đang mở app nào". Tự chặn và nói rõ khi Javis chạy trong Docker trên máy chủ, vì khi đó máy chạy Javis không phải máy của người dùng.
 - **Tạo và xem ảnh (ChatGPT)** (`image-chatgpt`) - bundled/chạy · tools: javis_generate_image, javis_describe_image · Tạo ảnh từ mô tả bằng GÓI ChatGPT đang đăng nhập (OAuth) - không cần OpenAI API key. Dùng Codex Responses API + tool image_generation (gpt-image-2). Ảnh lưu vào attachments/ của vault để nhúng thẳng vào chat. Kèm tool XEM ảnh, để ChatGPT nhìn ảnh trong brain rồi tả lại bằng chữ, để cả engine không tự xem được ảnh (OpenRouter, Gemini API...) cũng biết trong ảnh có gì. Cần đã kết nối ChatGPT ở trang Model.
@@ -103,4 +83,4 @@ _(chưa có)_
 - **Debate Engine - Red/Blue Team** (`debate-engine`) - vault/tắt · tools: debate_engine · hooks: post_tool_call · Đưa lượt rà soát Red/Blue vào Kanban, kiểm tra ngân sách ước tính và tự ngắt khi thất bại liên tiếp.
 
 ## Cờ sức khoẻ
-- Agent chưa workflow nào dùng: chuyen-vien-co-ban-vi-mo, chuyen-vien-dong-tien-tam-ly, dieu-phoi-ai-company, giam-doc-dau-tu, giam-doc-marketing-nganh-dao-tao-lai-xe, javis-core, kiem-chung-du-lieu, kiem-duyet-chuan-bi-dang, kien-truc-su-antigravity, ky-su-ea---claude, nhat-ky-thuc-thi, phan-bien-noi-dung, phan-tich-thi-truong-an-toan, quan-tri-rui-ro, thu-ky-hoi-dong, tro-ly-content-ca-nhan, truong-phong-nghien-cuu
+- Agent chưa workflow nào dùng: chuyen-vien-meta-ads, dao-dien-kich-ban-video, giam-doc-thuong-hieu, javis-core, kiem-duyet-chat-luong, kien-truc-su-antigravity, ky-thuat-dung-video, quan-tri-fanpage-fb, tro-ly-truc-page-zalo, truong-nhom-cskh

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TickLab · Báo cáo backtest</title>
+<style>
+:root{color-scheme:dark;--surface:#111b20;--ink:#ecf4f1;--muted:#a1b6b2;--border:#293d42;--accent:#6ce3bb;--red:#ff9a91}
+*{box-sizing:border-box}body{margin:0;background:#0c1418;color:var(--ink);font:15px/1.55 system-ui,sans-serif}
+main{max-width:1220px;margin:0 auto;padding:clamp(18px,4vw,56px)}
+header{display:flex;justify-content:space-between;align-items:end;gap:18px;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:24px}
+h1,h2,p,dl{margin:0}h1{font-size:clamp(32px,6vw,54px);letter-spacing:-.06em;line-height:1.12}
+h2{font-size:19px;letter-spacing:-.02em}p,dt,output{color:var(--muted)}
+#source{max-width:75ch;overflow-wrap:anywhere;margin-top:9px}
+nav{display:flex;gap:8px;flex-wrap:wrap}a,button{color:var(--ink);background:#15252a;border:1px solid var(--border);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer;font:inherit}
+a:hover,button:hover{border-color:var(--accent)}:focus-visible{outline:2px solid var(--accent);outline-offset:3px}button:disabled{opacity:.45;cursor:default}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:24px 0 14px}.stats div,.chart{border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:16px}
+.stats dt{font-size:13px}.stats dd{font-size:24px;font-weight:650;font-variant-numeric:tabular-nums;margin:4px 0 0;overflow-wrap:anywhere}
+.chart-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}output{min-width:84px;text-align:center}
+canvas{width:100%;height:380px;display:block;margin:10px 0;outline-offset:-2px}
+#readout{min-height:3.1em;font-variant-numeric:tabular-nums}
+#settings{margin-top:16px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}.long{color:var(--accent)}.short{color:var(--red)}
+@media(max-width:540px){canvas{height:295px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div,.chart{padding:12px}a,button{padding:7px 9px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div><h1 id="title">TickLab</h1><p id="source"></p></div>
+<nav aria-label="Tệp báo cáo"><a href="./trades.csv" download>Tải giao dịch CSV</a><a href="./summary.json" download>Tải báo cáo JSON</a></nav>
+</header>
+<dl class="stats" id="stats"></dl>
+<section class="chart" aria-labelledby="chart-title">
+<div class="chart-head">
+<div><h2 id="chart-title">Nến Bid và điểm khớp</h2><p class="legend"><span class="long">▲ Mở mua</span><span class="short">▼ Mở bán</span><span>○ Đóng lệnh</span></p></div>
+<div class="controls"><button id="previous">Trước</button><output id="page" aria-live="polite"></output><button id="next">Sau</button></div>
+</div>
+<canvas id="chart" tabindex="0" aria-label="Nến Bid. Dùng phím trái hoặc phải để xem giá của từng nến." aria-describedby="readout"></canvas>
+<p id="readout" aria-live="polite"></p>
+</section>
+<p id="settings"></p>
+<noscript>Cần JavaScript để xem biểu đồ. Hai tệp báo cáo vẫn có thể tải ở trên.</noscript>
+</main>
+<script>
+const data = /*TICKLAB_DATA*/null;
+if (data) {
+  const {summary, candles, markers} = data;
+  const {dataset, metrics, settings} = summary;
+  const $ = (id) => document.getElementById(id);
+  const label = {synthetic:"Dữ liệu tổng hợp", "mt5-copy_ticks_range":"Tick từ API MT5", "mt5-export":"Tệp tick xuất từ MT5", csv:"Dữ liệu CSV"};
+  $("title").textContent = dataset.symbol + " · TickLab";
+  $("source").textContent = (label[dataset.source.source_type] || dataset.source.source_type) +
+    " · Nến " + settings.bar_minutes + " phút · " + metrics.valid_quotes.toLocaleString("vi-VN") + " tick có Bid và Ask";
+  const numbers = new Intl.NumberFormat("vi-VN", {maximumFractionDigits:2});
+  const profitFactor = metrics.profit_factor_unbounded ? "∞" :
+    (metrics.profit_factor === null ? "Không xác định" : numbers.format(metrics.profit_factor));
+  const stats = [
+    ["Lãi/lỗ ròng (points)", numbers.format(metrics.net_points)],
+    ["Drawdown (points)", numbers.format(metrics.max_mark_to_market_drawdown_points)],
+    ["Giao dịch đã đóng", numbers.format(metrics.trades)],
+    ["Profit factor", profitFactor],
+  ];
+  for (const [title, value] of stats) {
+    const wrap = document.createElement("div");
+    const dt = document.createElement("dt"), dd = document.createElement("dd");
+    dt.textContent = title; dd.textContent = value; wrap.append(dt, dd); $("stats").append(wrap);
+  }
+  $("settings").textContent = "SMA " + settings.fast + "/" + settings.slow +
+    " · SL " + settings.stop_points + " points · TP " + settings.target_points +
+    " points · Slippage " + settings.slippage_points + " points mỗi lượt khớp · Phí " +
+    settings.fee_points + " points mỗi giao dịch · Nến hiển thị " + candles.length + "/" + metrics.bars +
+    " · Replay theo tick, spread từ Bid/Ask.";
+
+  const canvas = $("chart"), ctx = canvas.getContext("2d");
+  const pageSize = 90, total = Math.ceil(candles.length/pageSize);
+  const scale = 10 ** dataset.digits, period = settings.bar_minutes * 60000;
+  const grouped = new Map();
+  for (const marker of markers) {
+    const key = Math.floor(marker[0] / period) * period;
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key).push(marker);
+  }
+  let page = total - 1, selected = -1, shown = [], geometry;
+  const price = (points) => (points/scale).toFixed(dataset.digits);
+  const stamp = (ms) => new Date(ms).toISOString().slice(0,16).replace("T"," ");
+  function describe() {
+    if (selected < 0) {
+      $("readout").textContent = "Di chuột trên biểu đồ hoặc dùng phím ← → để xem OHLC và điểm khớp.";
+      return;
+    }
+    const [when, open, high, low, close, count] = shown[selected];
+    const fills = (grouped.get(when) || []).map(
+      ([, quote, kind, side, reason]) => (kind === "entry" ? (side === "long" ? "Mở mua" : "Mở bán") : "Đóng " + reason) + " " + price(quote)
+    );
+    $("readout").textContent = stamp(when) + " · O " + price(open) + " · H " + price(high) +
+      " · L " + price(low) + " · C " + price(close) + " · " + count + " tick" + (fills.length ? " · " + fills.join(" · ") : "");
+  }
+  function draw() {
+    shown = candles.slice(page * pageSize, (page + 1) * pageSize);
+    const w = canvas.clientWidth, h = canvas.clientHeight, ratio = window.devicePixelRatio || 1;
+    if (!shown.length || !w || !h) return;
+    canvas.width = Math.round(w * ratio); canvas.height = Math.round(h * ratio);
+    ctx.setTransform(ratio,0,0,ratio,0,0);
+    const left = 12, right = Math.min(Math.max(65, dataset.digits * 7 + 47), Math.floor(w/3)), top = 16, bottom = h - 33;
+    const step = (w-left-right)/shown.length;
+    geometry = {left, step, right: w-right};
+    let min = Math.min(...shown.map(b => b[3])), max = Math.max(...shown.map(b => b[2]));
+    for (const [time] of shown) {
+      for (const [, quote] of grouped.get(time) || []) {
+        min = Math.min(min, quote);
+        max = Math.max(max, quote);
+      }
+    }
+    const pad = Math.max(1,(max-min)*.08);
+    min -= pad; max += pad;
+    const y = (v) => bottom - (v-min)/(max-min)*(bottom-top);
+    const x = (i) => left + (i + .5) * step;
+    ctx.font = "11px system-ui,sans-serif";
+    for (let i=0; i<5; i++) {
+      const row = top + (bottom-top)*i/4;
+      ctx.strokeStyle="#293d42";ctx.beginPath();ctx.moveTo(left,row);ctx.lineTo(w-right,row);ctx.stroke();
+      ctx.fillStyle="#a1b6b2";ctx.fillText(price(max-(max-min)*i/4), w-right+6, row+4);
+    }
+    if (selected >= 0) {
+      ctx.fillStyle="#26383d";ctx.fillRect(x(selected)-step/2,top,step,bottom-top);
+    }
+    shown.forEach(([when, open, high, low, close], i) => {
+      const center = x(i);
+      const color = close >= open ? "#6ce3bb" : "#ff9a91";
+      ctx.strokeStyle=color;ctx.fillStyle=color;
+      ctx.beginPath();ctx.moveTo(center,y(high));ctx.lineTo(center,y(low));ctx.stroke();
+      const width = Math.max(1, Math.min(step*.64, 18));
+      ctx.fillRect(center-width/2,y(Math.max(open,close)),width,Math.max(1,Math.abs(y(open)-y(close))));
+      for (const [, quote, kind, side] of grouped.get(when) || []) {
+        ctx.beginPath();
+        const pos = y(quote);
+        if (kind === "exit") {
+          ctx.fillStyle="#f4eaad";ctx.arc(center,pos,3.2,0,Math.PI*2);
+        } else {
+          const sign = side === "long" ? 1 : -1;
+          ctx.fillStyle = side === "long" ? "#6ce3bb" : "#ff9a91";
+          ctx.moveTo(center,pos-5*sign);ctx.lineTo(center+4,pos+3*sign);ctx.lineTo(center-4,pos+3*sign);ctx.closePath();
+        }
+        ctx.fill();
+      }
+    });
+    ctx.fillStyle="#a1b6b2";
+    ctx.fillText(stamp(shown[0][0]),left,h-7);
+    const end = stamp(shown[shown.length-1][0]);
+    if (shown.length > 1 && w > 270) {
+      ctx.fillText(end, w-right-ctx.measureText(end).width, h-7);
+    }
+    $("previous").disabled = page === 0;
+    $("next").disabled = page === total-1;
+    $("page").textContent = "Trang " + (page+1) + "/" + total;
+    describe();
+  }
+  function changePage(delta) {page += delta; selected = -1; draw();}
+  $("previous").addEventListener("click", () => changePage(-1));
+  $("next").addEventListener("click", () => changePage(1));
+  canvas.addEventListener("pointermove", (event) => {
+    const offset = event.offsetX;
+    const index = offset < geometry.left || offset >= geometry.right ? -1 : Math.floor((offset-geometry.left)/geometry.step);
+    if (index !== selected) {selected = index; draw();}
+  });
+  canvas.addEventListener("pointerleave", () => {selected = -1; draw();});
+  canvas.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft","ArrowRight"].includes(event.key)) return;
+    event.preventDefault();
+    const delta = event.key === "ArrowLeft" ? -1 : 1;
+    selected = selected < 0 ? (delta > 0 ? 0 : shown.length-1) : Math.max(0,Math.min(shown.length-1,selected+delta));
+    draw();
+  });
+  new ResizeObserver(draw).observe(canvas);
+  draw();
+}
+</script>
+</body>
+</html>

@@ -1,13 +1,13 @@
 ---
 type: preference
 created: 2026-11-18
-updated: '2026-11-19'
+updated: '2026-11-21'
 source: chat 2026-11-18 (4f619b60)
 origin: owner-edited
 status: confirmed
 ---
-Khi Javis nhận được lỗi hệ thống hoặc gặp thao tác không thực hiện được, hãy chuyển phần việc còn vướng sang ChatGPT Desktop qua công cụ bàn giao được phép. Quy tắc áp dụng cho mọi kênh Javis và ChatGPT Desktop là đầu mối ưu tiên cho các trường hợp này, theo yêu cầu của người dùng ngày 19/11/2026 (chat 73b7d347).
+Từ 21/11/2026, tạm dừng chuyển lỗi hệ thống hoặc thao tác bị chặn sang cửa sổ ChatGPT Desktop. Khi Javis không thể tự khắc phục trong quyền hiện có, chuyển phần vướng sang Antigravity qua giao thức đã kết nối giữa hai bên. Dùng cầu nối chính thức hiện có như `javis_antigravity_delegate` khi phù hợp.
 
-**Vì sao:** Người dùng muốn Javis và ChatGPT Desktop phối hợp hai chiều để vận hành, chẩn đoán lỗi và bảo trì hệ thống.
+**Vì sao:** Chủ yêu cầu chuyển đầu mối hỗ trợ lỗi sang Antigravity trong khi tạm dừng đường ChatGPT Desktop.
 
-**Áp dụng:** Gửi mục tiêu, thao tác bị lỗi, thông báo hoặc mã lỗi đã che dữ liệu nhạy cảm, những gì đã thử, tình trạng hiện tại và tiêu chí kiểm tra kết quả. Chỉ chia sẻ ngữ cảnh cần thiết trong phạm vi quyền đã cấp. Đọc phản hồi của ChatGPT Desktop, thực hiện và kiểm chứng các bước phù hợp với quyền hiện tại, rồi gửi lại kết quả kiểm tra hoặc hỏi tiếp khi cần. Giới hạn lượt trao đổi và tránh thử lặp lại cùng một cách khi không có thông tin mới. Nếu không gửi được, báo lỗi cụ thể và nói rõ bước còn vướng. Chỉ xác nhận đã gửi hoặc đã sửa khi có bằng chứng tương ứng.
+**Áp dụng:** Gửi mục tiêu, thao tác vướng, lỗi đã che dữ liệu nhạy cảm, bước đã thử và tiêu chí nghiệm thu. Đọc và kiểm chứng phản hồi trong quyền hiện có. Nếu cầu nối lỗi, báo lỗi cụ thể và giữ trạng thái việc. Chỉ dùng lại ChatGPT Desktop cho vai trò này khi chủ yêu cầu bật lại.
