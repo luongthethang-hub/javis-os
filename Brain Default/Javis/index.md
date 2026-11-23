@@ -2,11 +2,12 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 10 agents · 15 skills · 4 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
+**Tổng quan:** 11 agents · 16 skills · 4 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
 
 ## Agents
 - **Chuyên viên Tăng trưởng & Meta Ads** (`chuyen-vien-meta-ads`) - Đọc và phân tích số liệu quảng cáo Facebook/Instagram qua meta-ads-graph và data-query. Tối ưu ngân sách, đánh giá CTR, CPM, chi phí trên mỗi tin nhắn/chuyển đổi. · model gemini-3.8-flash-high · skills: data-query · tags: Meta Ads, Tăng trưởng, Data
 - **Đạo diễn & Biên kịch Video** (`dao-dien-kich-ban-video`) - Xây dựng kênh TikTok & YouTube: Phân tích video đối thủ (youtube-read), viết kịch bản Short (Hook 3s đầu, giữ chân) và Video dài (Storytelling, SEO Title/Description/Tags). · model gemini-3.8-flash-high · skills: openmotion · tags: TikTok, YouTube, Video
+- **Điều phối AI Company** (`dieu-phoi-ai-company`) - Lập kế hoạch, phân rã việc và điều phối các agent chuyên môn trong AI Company; kiểm soát chất lượng, ngưỡng token và báo cáo Layer 0. · model gemini-3.8-flash-high · skills: dieu-phoi-doi-nhom, van-hanh-ai-company-on-dinh · tags: DieuPhoi, AICompany, QuanTri
 - **Giám đốc Thương hiệu Cá nhân** (`giam-doc-thuong-hieu`) - Định vị thương hiệu cá nhân, lập kế hoạch nội dung đa kênh (Facebook, Zalo, TikTok, YouTube), kiểm soát nhất quán thông điệp và giọng văn chuyên gia. · model gemini-3.8-flash-high · skills: javis-brain-bridge, data-query · tags: Thương hiệu cá nhân, Chiến lược
 - **Javis Core** (`javis-core`) - Trợ lý hệ thống nhận báo cáo và hỗ trợ công việc trong brain này.
 - **Kiểm duyệt Chất lượng & Chính sách** (`kiem-duyet-chat-luong`) - Cổng kiểm chứng độc lập: Kiểm tra chính tả, sự thật, chính sách cộng đồng (Facebook, TikTok, YouTube, Zalo) chống bóp tương tác, chống gậy bản quyền và nghiệm thu trước khi xuất bản. · model claude-sonnet-4-6 · tags: Kiểm duyệt, Chính sách
@@ -19,6 +20,7 @@
 ## Skills
 ### AI
 - **Chuyển việc sang app desktop** (`chuyen-viec-sang-app-desktop`) - Đẩy việc bị chặn sang ChatGPT Desktop hoặc Claude Desktop, gửi prompt và đọc trả lời tự động.
+- **Điều phối Đội nhóm & Token** (`dieu-phoi-doi-nhom`) - Quy trình phân rã việc, định tuyến agent theo rủi ro, kiểm soát vòng lặp và nghiệm thu kết quả trong Liên minh AI.
 - **Ingest Source** (`ingest-source`) - Tiêu hoá một source thô vào Second Brain, chưng cất thành tri thức wiki tích luỹ.
 - **Javis Builder** (`javis-builder`) - Tạo hoặc sửa năng lực của Javis: agent, skill, workflow, loop, plugin. Kèm mẫu file chuẩn và luật chống trùng.
 - **Lint Wiki** (`lint-wiki`) - Rà soát sức khoẻ wiki của Second Brain, trả về danh sách vấn đề. Không tự sửa hàng loạt.
@@ -59,7 +61,7 @@ _(chưa có)_
 - **Tên và phong cách của Javis Core** (`javis-core-name`) - bundled/chạy · tools: javis_core_name · Cho người dùng đặt tên riêng và phong cách nói chuyện cho Javis Core của brain này, ngay trong chat. Tên hiện trên trang Cộng sự. Chỉ phiên của chủ thấy tool này.
 - **GitHub trong khung chat** (`javis-github`) - bundled/chạy · tools: javis_github · Xem trạng thái repo GitHub của khung chat (nhánh, PR, CI, merge), xếp việc kế tiếp để Javis tự làm khi PR hiện tại đã merge xong, và review chéo PR khi người dùng yêu cầu.
 - **Mục tiêu (Hệ thống cộng hưởng)** (`javis-goal`) - bundled/chạy · tools: javis_goal, javis_submit_deliverable · Cho bộ não tự lập một mục tiêu bền khi người dùng giao việc cần theo đuổi sau lượt chat, hoặc cập nhật mục tiêu đang mở khi người dùng bổ sung ý. Host kiểm đề xuất theo SMART và lưu có revision. Chỉ hiện ở brain đã bật Hệ thống cộng hưởng.
-- **Tự cải tiến theo yêu cầu** (`javis-improve`) - bundled/chạy · tools: javis_improve · Khi chủ yêu cầu, Javis hay một trợ lý tự sửa chính nó và brain (trợ lý, skill, workflow, vòng lặp, bộ nhớ) có sao lưu và hoàn tác, sửa mã nguồn Javis qua GitHub, rồi tự cập nhật lên bản mới. Chỉ phiên của chủ thấy tool này.
+- **Tự cải tiến theo yêu cầu** (`javis-improve`) - bundled/chạy · tools: javis_improve · Khi chủ yêu cầu, Javis hay một trợ lý tự sửa chính nó và brain (trợ lý, skill, workflow, vòng lặp, bộ nhớ) có sao lưu và hoàn tác, sửa mã nguồn Javis qua GitHub. Không tự cập nhật, lên bản mới do chủ bấm ở trang Cập nhật. Chỉ phiên của chủ thấy tool này.
 - **Việc chạy nền** (`javis-job`) - bundled/chạy · tools: javis_job · Theo dõi lệnh chạy ngầm engine bỏ lại (render, build, tải về). Dặn trước "xong thì làm tiếp gì", xem việc đang chạy, dừng một việc. Xong là Javis tự báo về đúng khung chat và tự làm tiếp.
 - **Cookies** (`javis-login`) - bundled/chạy · tools: javis_login · Mở trang web cần đăng nhập bằng phiên chủ đã cất ở trang Cookies, đọc hoặc bấm và điền form trong trình duyệt. Không bao giờ trả cookie.
 - **Trí nhớ qua chat** (`javis-memory`) - bundled/chạy · tools: javis_memory · Cho Javis xem, sửa, quên ghi nhớ của brain, bật tắt việc lưu ghi nhớ mới, sửa hồ sơ chung và thu hồi bài học của trợ lý khi người dùng nhắn. Thay cho các danh sách trí nhớ và bài học từng nằm ở cột Cài đặt. Chỉ phiên của chủ thấy tool này.
@@ -77,11 +79,11 @@ _(chưa có)_
 - **Lịch sử quy trình** (`javis-workflow`) - bundled/chạy · tools: javis_workflow · Xem các lần chạy quy trình gần đây và kết quả từng lần, ngay từ chat. Trước tool này, chạy quy trình xong là kết quả mất, hỏi "quy trình chạy gần nhất ra sao" Javis không có gì để tra.
 - **Kiểm tra Messenger** (`messenger-health`) - bundled/chạy · tools: messenger_check, messenger_repair · Rà kết nối bot Messenger của từng Fanpage (token Trang, quyền, webhook, Trang gắn app, bot đang trực) và sửa tự động phần webhook khi bot im lặng.
 - **Meta Ads (Graph API)** (`meta-ads-graph`) - bundled/chạy · tools: meta_ads_accounts, meta_ads_insights, meta_ads_campaigns, meta_ads_get · Đọc số liệu quảng cáo Facebook/Instagram (tài khoản ads, chiến dịch, hiệu suất) qua Graph API, dùng token của kết nối "Meta Ads (tự tạo app)". CHỈ ĐỌC, không tiêu tiền.
-- **Facebook Trang (Graph API)** (`meta-pages-graph`) - bundled/chạy · tools: fb_pages_list, fb_page_posts, fb_page_comments, fb_page_post, fb_page_photo, fb_page_album, fb_page_video, fb_page_edit, fb_page_delete, fb_page_reply · Quản lý Trang/Fanpage Facebook qua Graph API - liệt kê Trang, đọc bài và bình luận (chỉ đọc), đăng bài/ảnh/video/album, sửa chữ, xoá bài và trả lời bình luận (toàn quyền). Dùng Fanpage đã nối ở thẻ Facebook Messenger (trang Kết nối), hoặc kết nối "Facebook Trang" trong Kho nếu có.
+- **Facebook Trang (Graph API)** (`meta-pages-graph`) - bundled/chạy · tools: fb_pages_list, fb_page_posts, fb_page_comments, fb_page_scheduled, fb_page_post, fb_page_photo, fb_page_album, fb_page_video, fb_page_edit, fb_page_delete, fb_page_reply · Quản lý Trang/Fanpage Facebook qua Graph API - liệt kê Trang, đọc bài, bình luận và bài đang chờ đăng (chỉ đọc), đăng hoặc hẹn giờ bài/ảnh/album, đăng video, sửa chữ, xoá bài và trả lời bình luận (toàn quyền). Dùng Fanpage đã nối ở thẻ Facebook Messenger (trang Kết nối), hoặc kết nối "Facebook Trang" trong Kho nếu có.
 - **Nhật ký dùng tool** (`tool-audit`) - bundled/tắt · tools: javis_tool_stats · hooks: post_tool_call · Đếm số lần MỖI tool được engine gọi (qua hook post_tool_call) và cho xem thống kê tool hay dùng. Đây là ví dụ minh hoạ cơ chế HOOK của plugin. Mặc định TẮT - bật qua POST /plugins/toggle (slug=tool-audit) để thử.
 - **Tin thoại** (`voice-note`) - bundled/chạy · tools: javis_voice_note · Javis ghi một đoạn nói ngắn (tối đa 1000 ký tự) thành file mp3 trong attachments/voice/ rồi nhúng vào câu trả lời. Khung chat hiện trình phát, Telegram nhận file âm thanh. Dùng giọng Edge miễn phí theo ngôn ngữ của câu.
 - **Đọc video YouTube** (`youtube-read`) - bundled/chạy · tools: javis_youtube_read · Đọc lời thoại (phụ đề) của video YouTube từ link để tóm tắt. Tự đổi qua 6 kiểu trình phát rồi tới yt-dlp khi YouTube chặn máy chủ. Không cần đăng nhập, không cần API key.
 - **Debate Engine - Red/Blue Team** (`debate-engine`) - vault/tắt · tools: debate_engine · hooks: post_tool_call · Đưa lượt rà soát Red/Blue vào Kanban, kiểm tra ngân sách ước tính và tự ngắt khi thất bại liên tiếp.
 
 ## Cờ sức khoẻ
-- Agent chưa workflow nào dùng: chuyen-vien-meta-ads, dao-dien-kich-ban-video, giam-doc-thuong-hieu, javis-core, kiem-duyet-chat-luong, kien-truc-su-antigravity, ky-thuat-dung-video, quan-tri-fanpage-fb, tro-ly-truc-page-zalo, truong-nhom-cskh
+- Agent chưa workflow nào dùng: chuyen-vien-meta-ads, dao-dien-kich-ban-video, dieu-phoi-ai-company, giam-doc-thuong-hieu, javis-core, kiem-duyet-chat-luong, kien-truc-su-antigravity, ky-thuat-dung-video, quan-tri-fanpage-fb, tro-ly-truc-page-zalo, truong-nhom-cskh

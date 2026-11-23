@@ -1,2 +1,0 @@
-# Installed guide
-guide content guide content guide content guide content guide content guide content guide content guide content guide content guide content guide content guide content guide content guide content guide content guide content guide content guide content guide content guide content 

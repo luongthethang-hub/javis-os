@@ -1,4 +1,26 @@
 {
-  "reminders": [],
-  "updated": 1795275863.9018726
+  "reminders": [
+    {
+      "id": "r_985c9cd87d",
+      "text": "Chay chu ky sang loc va tien hoa tri thuc toan Lien minh AI (dinh ky 8 gio)",
+      "mode": "task",
+      "due_at": 1795453200.0,
+      "chat_id": "-1004479278576",
+      "repeat_min": 0,
+      "cron": "0 */8 * * *",
+      "script": "",
+      "label": "",
+      "status": "pending",
+      "muc_quyen": "full",
+      "remember_last": false,
+      "speak": false,
+      "call": false,
+      "created_by": "user",
+      "created_at": 1795435011.8945584,
+      "fired_at": 0.0,
+      "result": "",
+      "error": ""
+    }
+  ],
+  "updated": 1795435011.8955898
 }

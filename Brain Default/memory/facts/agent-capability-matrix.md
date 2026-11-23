@@ -30,3 +30,13 @@ Ma trận năng lực thực chứng dùng cho định tuyến tác vụ tự đ
 1. **Nguyên tắc kép (Primary + Shadow):** Với tác vụ HIGH/CRITICAL, Javis giao cho Primary Agent thực thi và Shadow Agent chạy đối soát độc lập.
 2. **Kích hoạt TCBP:** Khi gặp tác vụ mới chưa có số liệu hiệu năng trong ma trận, bắt buộc cắt Micro-Task kiểm tra 3 ứng cử viên trước khi giao luồng việc chính.
 3. **Cập nhật lũy tiến:** Sau mỗi đợt chạy task lớn hoặc benchmark, cập nhật lại điểm số QC-5 và ghi nhận sự cố/đột phá vào lịch sử vận hành.
+
+
+## 4. Cơ chế San Tải Linh Hoạt Đa Tác Tử (Dynamic Load-Balancing & Token Economy)
+1. **Phân cấp tải 3 cấp độ (Load-Tiering):**
+   - **Tác vụ nhẹ/Giao tiếp thường ngày (Light/Chat):** Mặc định dùng mô hình Flash tốc độ cao, chi phí cực thấp (Antigravity Flash / DeepSeek Flash / Groq) để trả lời dưới 2 giây và tiết kiệm 95% token.
+   - **Tác vụ trung bình (Data/Drafting/Code nhỏ):** Tự động san tải sang Antigravity CLI (context 2M) hoặc Codex/ChatGPT.
+   - **Tác vụ nặng/Kiến trúc/Audit an toàn (Heavy/Critical):** Chỉ kích hoạt mô hình suy luận cao (Claude Opus/Sonnet 3.7 hoặc GPT-o1/DeepSeek R1) khi bài toán đòi hỏi tính chính xác tuyệt đối.
+2. **Nguyên tắc Chuyển giao Động (Fallback & Cross-Assist):**
+   - Khi một tác tử bị nghẽn (rate limit, bận tiến trình, lỗi kết nối), tác tử rảnh rỗi gần nhất trong ma trận có điểm QC-5 tương đương sẽ tự động tiếp quản xử lý ngay, không để Sếp phải chờ.
+   - Không cứng nhắc gán chết vị trí; linh hoạt tương trợ theo tải thực tế tại thời điểm gọi.

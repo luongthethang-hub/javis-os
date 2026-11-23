@@ -3,12 +3,18 @@ type: fact
 created: 2026-11-23
 updated: 2026-11-23
 source: chat 2026-11-23
+status: verified
 ---
 Chủ (Thắng Lee) đã thiết lập phòng họp nội bộ trên Telegram để trao đổi trực tiếp khi cần.
 
-Trợ lý trong cuộc trò chuyện là **Javis** (vận hành trên Second Brain). Antigravity CLI chỉ là nền tảng engine/runtime kỹ thuật chạy bên dưới (`provider=antigravity-cli; model=gemini-3.8-flash-medium`).
+Các thực thể trong liên minh Telegram:
+- **Layer 0 (Chủ trì):** Thắng Lee (@thangleevnn).
+- **Javis (Orchestrator & Second Brain):** Bot `@ThangLeeJavisBot`.
+- **Antigravity CLI (Tactical Muscle & Engine):** Bot `@AntiGravityThanglee_bot`.
+- **Claude (Kiến trúc sư & Reviewer):** Bot `@ThangleeClaude_bot` (bridge trực tiếp vào Claude Desktop qua `handoff_desktop_launcher.ps1`).
 
 Quy tắc tương tác phòng họp:
 - Gọi riêng Javis: tag `@ThangLeeJavisBot` hoặc có chứa chữ `javis`.
-- Gọi riêng Antigravity: tag `@AntiGravityThanglee_bot`.
-- Triệu tập cả 2 bot cùng thảo luận: bắt đầu hoặc chứa các cụm từ `cả hai`, `cả 2`, `hai bạn`, `2 bạn`, hoặc `tất cả`.
+- Gọi riêng Antigravity: tag `@AntiGravityThanglee_bot` hoặc có chứa chữ `antigravity`.
+- Gọi riêng Claude: tag `@ThangleeClaude_bot` hoặc bắt đầu bằng `/claude`.
+- Triệu tập toàn bộ liên minh cùng thảo luận: bắt đầu hoặc chứa các cụm từ `cả ba`, `cả 3`, `các bạn`, `tất cả bot`, hoặc `họp liên minh`.

@@ -1,5 +1,0 @@
-{"type":"thread.started","thread_id":"01a1f4bc-17f6-7f43-a245-4b60a29eefcf"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"I’ll read the checklist and its named snapshots, then pass the complete packet to a fresh reviewer if every file is available."}}
-{"type":"item.completed","item":{"id":"item_1","type":"agent_message","text":"**INCOMPLETE.** The required checklist could not be read:\n\n`C:\\Users\\Admin\\JavisOS\\brains\\Brain Default\\tmp\\egm-pilot-a1c127e2\\protocol-ready\\egm_lite_checklist.md`\n\nBoth read attempts failed with `CreateProcess: rejected: blocked by policy`. The checklist’s existence and snapshot paths remain unverified. The Goldfish reviewer was not spawned because the review packet could not be assembled."}}
-{"type":"turn.completed","usage":{"input_tokens":77321,"cached_input_tokens":71424,"cache_write_input_tokens":0,"output_tokens":241,"reasoning_output_tokens":0}}

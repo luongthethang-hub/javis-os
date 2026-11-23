@@ -1,5 +1,0 @@
-Use the native subagent tool now for an EGM fresh-context test.
-Parent-only marker: PARENT_d2c11aff78c94ab385d5fda4bd47a1ac
-Start exactly one subagent with no inherited turns (fork_turns none or fork_context false, depending on the actual schema). Pass only this exact child message:
-Isolation probe. Do not use tools. From your already provided context, return only PARENT=<exact parent-only marker, or UNKNOWN> and PROJECT=<exact project probe marker, or UNKNOWN>.
-Never give the child either marker yourself. Do not run shell commands. Wait for actual child completion and return its unedited answer.

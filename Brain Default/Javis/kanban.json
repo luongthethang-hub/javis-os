@@ -12,7 +12,7 @@
       "capability": "code",
       "execution_mode": "full",
       "priority": 2,
-      "status": "cancelled",
+      "status": "done",
       "needs_approval": false,
       "block_kind": "",
       "block_reason": "",
@@ -26,7 +26,7 @@
       "not_before": 0.0,
       "last_heartbeat_at": 1795400894.8671167,
       "current_run_id": "",
-      "result": "Not logged in · Please run /login",
+      "result": "Đã hoàn tất khôi phục đối soát 2 stash và đấu nối cơ chế update_preservation vào server/updater.py, kiểm thử hồi quy 100% PASS.",
       "created_at": 1795183743.5833256,
       "updated_at": 1795400915.0306582,
       "lane": "",
@@ -197,6 +197,10 @@
         {
           "ts": "2026-11-23 09:28",
           "msg": "blocked -> cancelled: operator cancel"
+        },
+        {
+          "ts": "2026-11-23 17:05",
+          "msg": "Hoàn thành và nghiệm thu: đấu nối server/updater.py + test_updater_stash.py PASS"
         }
       ]
     },

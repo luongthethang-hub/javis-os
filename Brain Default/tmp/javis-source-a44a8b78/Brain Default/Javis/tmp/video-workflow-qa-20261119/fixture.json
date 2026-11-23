@@ -1,1 +1,0 @@
-{"clips": [{"path": "Javis/tmp/video-workflow-qa-20261119/with-audio.mov", "start": 0.3, "end": 1.7}, {"path": "Javis/tmp/video-workflow-qa-20261119/without-audio.mp4", "start": 0.2, "end": 25}], "ratio": "1:1", "fit": "crop", "audio": "keep", "subtitles": "Javis/tmp/video-workflow-qa-20261119/quality.srt"}

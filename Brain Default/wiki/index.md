@@ -8,6 +8,7 @@ _(Chưa có trang wiki nào. Thả source vào `sources/` rồi bảo Javis "ti�
 - [[OpenMotion - Studio Dựng Video Bằng Mã]] - Nền tảng dịch ngược video mẫu, dựng motion graphics bằng mã và xuất MP4 chuẩn thương hiệu.
 
 ## Liên minh AI & Điều phối
+- [[quan-tri-doi-nhom-va-dieu-phoi-token]] - Quản trị đội nhóm, phân bổ nhiệm vụ theo rủi ro kỹ thuật, hồ sơ năng lực 10 trường và điều phối token trong Liên minh AI.
 - [[quy-chuan-kiem-tra-vi-mo-tcbp-benchmark-suite]] - Quy chuẩn kiểm tra vi mô 3 ứng cử viên (TCBP) và bộ bài test mẫu cho Lập trình hệ thống, Nghiên cứu dữ liệu và Sáng tạo nội dung.
 
 ## Tự học

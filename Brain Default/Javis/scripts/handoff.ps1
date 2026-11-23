@@ -1,4 +1,4 @@
-param(
+﻿param(
     [Parameter(Mandatory=$true)][ValidateSet('chatgpt','claude')][string]$App,
     [string]$Text = '',
     [string]$PromptFile = '',
@@ -204,12 +204,19 @@ while((Get-Date) -lt $deadline){
     $now=Get-Transcript $win
     if($now.Length -eq $lastLen){$stable++}else{$stable=0;$lastLen=$now.Length}
     Write-Output ("  ... " + $now.Length + " ky tu (on dinh=" + $stable + ")")
-    if($stable -ge 3 -and $now.Length -gt ($before.Length+30)){break}
+    $keyCheck=$body; if($keyCheck.Length -gt 30){$keyCheck=$keyCheck.Substring(0,30)}
+    if(($stable -ge 3 -and $now.Length -gt ($before.Length+30)) -or ($stable -ge 4 -and $now.IndexOf($keyCheck) -ge 0)){break}
 }
 $final=Get-Transcript $win
 $key=$body; if($key.Length -gt 40){$key=$key.Substring(0,40)}
 $idx=$final.LastIndexOf($key)
-if($idx -ge 0){ $answer=$final.Substring($idx+$key.Length) } else { $answer=$final.Substring($before.Length) }
+if($idx -ge 0){
+    $startPos = [Math]::Min($final.Length, $idx + $key.Length)
+    $answer = $final.Substring($startPos)
+} else {
+    $startPos = [Math]::Min($final.Length, $before.Length)
+    $answer = $final.Substring($startPos)
+}
 $answer=$answer.Trim()
 if($answer.Length -gt 9000){$answer=$answer.Substring($answer.Length-9000)}
 $outFile=Join-Path $PSScriptRoot ("handoff-$App-last.txt")
