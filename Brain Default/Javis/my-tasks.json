@@ -1,0 +1,29 @@
+{
+ "tasks": [
+  {
+   "id": "m_570b6fbf4c",
+   "kind": "task",
+   "title": "Khôi phục hai stash và bảo toàn tùy chỉnh Javis khi cập nhật",
+   "notes": "",
+   "date": "2026-11-23",
+   "time": "",
+   "end": "",
+   "repeat": null,
+   "project": "",
+   "tags": [],
+   "status": "open",
+   "done_at": 0,
+   "done_dates": {},
+   "subs": [],
+   "remind": "",
+   "location": "",
+   "habit": null,
+   "created_at": 1795400909.003708,
+   "updated_at": 1795400909.003708,
+   "from_javis": true
+  }
+ ],
+ "projects": [],
+ "rev": 2,
+ "agenda_sent": "2026-11-23"
+}

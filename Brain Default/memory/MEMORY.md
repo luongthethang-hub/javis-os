@@ -27,3 +27,6 @@
 - [A2A bus Javis - Antigravity](facts/a2a-bus-javis-antigravity.md) - Hộp thư file cục bộ memory/a2a_bus/ (inbox_antigravity.jsonl, inbox_javis.jsonl) vì bot Telegram không đọc được tin của nhau.
 - [Đồng bộ tri thức Claude Desktop và ChatGPT Desktop](facts/dong-bo-tri-thuc-claude-chatgpt-desktop.md) - Claude Desktop nối lại MCP 23/11 lúc 08:05; ChatGPT Desktop chưa đồng bộ; Claude Alliance Contract mới là đề xuất.
 - [Javis chia việc cho Claude Desktop qua handoff](facts/giao-viec-javis-cho-claude-desktop.md) - Javis ghi req vào memory/a2a_bus/claude/, chạy handoff.ps1 -App claude, nhận res tự động; việc HIGH/CRITICAL cần chủ gõ Y; hop tối đa 2; chưa kiểm chứng end-to-end.
+- [Ma trận năng lực Liên minh AI](facts/agent-capability-matrix.md) - Ma trận năng lực thực chứng, thang điểm QC-5 và định tuyến tác vụ cho các Agent trong Liên minh do Javis làm Thủ lĩnh.
+- [Khắc phục triệt để lỗi mất kết nối Antigravity CLI sau khi cập nhật Javis](facts/fix-antigravity-cli-reconnect-timeout-javis-update.md) - Vá lỗi kiem_tra_nhanh timeout và persistent auth cache cho Antigravity CLI trong Javis OS.
+- [Vòng lặp Đồng bộ & Hiệu chỉnh Tri thức Phản hồi](facts/vong-lap-dong-bo-va-hieu-chinh-tri-thuc-phan-hoi.md) - Giao thức tự động hiệu chỉnh tri thức dựa trên phản hồi của Model đối tác, kiểm toán hạt nhân T0, timeout 10 phút và ngắt an toàn báo Layer 0.

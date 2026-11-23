@@ -74,7 +74,7 @@ function Patch-Guidance([string]$Path) {
 
     for ($i = 0; $i -lt $lines.Count; $i++) {
         $l = $lines[$i]
-        if ($l -match 'only when the user explicitly requests that specific interaction') {
+        if ($l -match 'only when the user explicitly requests that specific interaction' -or $l -match 'Do not automate the ChatGPT desktop app UI') {
             $lines[$i] = $DESKTOP_LINE
             $actions.Add('chatgpt-desktop')
         }
