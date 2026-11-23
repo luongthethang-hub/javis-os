@@ -1,0 +1,71 @@
+{
+  "task_id": "deepseek-positioning-20261124",
+  "domain_id": "D1",
+  "author": "javis",
+  "submitted_at": "2026-11-24T00:51:30+07:00",
+  "submitted_epoch": 1795454990.0,
+  "tokens": 280,
+  "warnings": [],
+  "questions": [
+    {
+      "id": "D1.Q1",
+      "link": "SCOPE",
+      "q": "Vị trí tầng tác chiến chính thức của DeepSeek trong mô hình L0-L1-L2?",
+      "options": {
+        "A": "Layer 2 (L2) - Tactical Muscle chuyên trách Giải thuật & Toán định lượng",
+        "B": "Layer 1 (L1) - Đồng chủ tọa điều phối thay thế Javis",
+        "C": "Layer 3 (L3) - Hạ tầng thụ động chỉ lưu trữ dữ liệu"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    },
+    {
+      "id": "D1.Q2",
+      "link": "CORE",
+      "q": "Chức danh và trọng trách hạt nhân của DeepSeek?",
+      "options": {
+        "A": "Trưởng ban Giải thuật & Toán học Định lượng (Lead Quant & Algorithmic Strategist)",
+        "B": "Trợ lý tổng hợp tin tức mạng xã hội",
+        "C": "Chuyên viên viết prompt video POV"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    },
+    {
+      "id": "D1.Q3",
+      "link": "RISK",
+      "q": "Rủi ro suy luận chuỗi sâu (CoT R1) gây chậm phản hồi được xử lý thế nào?",
+      "options": {
+        "A": "Chỉ kích hoạt CoT cho bài toán giải thuật phức tạp; cấm dùng cho lệnh chào hỏi/điều phối nhanh",
+        "B": "Bắt buộc bật CoT cho 100% mọi câu hỏi",
+        "C": "Tắt hoàn toàn CoT của DeepSeek"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    },
+    {
+      "id": "D1.Q4",
+      "link": "INTERFACE",
+      "q": "Cơ chế tích lũy tri thức giữa DeepSeek và Second Brain?",
+      "options": {
+        "A": "Kết quả toán/thuật toán được đúc kết thành fact nạp vào Second Brain qua A2A Bus",
+        "B": "DeepSeek lưu trữ riêng trên cloud của DeepSeek, không đồng bộ",
+        "C": "Chỉ lưu transcript trên Telegram"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    },
+    {
+      "id": "D1.Q5",
+      "link": "ACCEPTANCE",
+      "q": "Chuẩn bàn giao của DeepSeek khi hoàn tất bài toán?",
+      "options": {
+        "A": "Công thức toán/logic tối ưu hoàn chỉnh, không placeholder, có giải thích nhân quả ngắn gọn",
+        "B": "Đoạn mã giả dạng psuedo-code",
+        "C": "Đường link dẫn đến bài báo khoa học"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    }
+  ]
+}

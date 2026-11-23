@@ -1,0 +1,16 @@
+{
+  "bot_token": "9215605178:AAFoOXqjWA3eVLc_PNUR2F2iH1ftoul-JIk",
+  "bot_username": "ThangleeClaude_bot",
+  "allowed_chat_id": 1894254685,
+  "server_port": 7777,
+  "app_dir": "C:\\Users\\Admin\\JavisOS",
+  "poll_interval_sec": 2,
+  "target_child_processes": [
+    "antigravity.exe",
+    "node.exe",
+    "node_repl.exe",
+    "ffmpeg.exe",
+    "ffprobe.exe",
+    "rea-video.exe"
+  ]
+}

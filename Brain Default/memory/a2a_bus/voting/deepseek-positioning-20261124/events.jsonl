@@ -1,0 +1,5 @@
+{"ts": "2026-11-24T00:28:47+07:00", "epoch": 1795454927.460771, "event": "SESSION_INIT", "data": {"task_id": "deepseek-positioning-20261124", "active_chair": "javis", "domains": ["D1", "D2", "D3"], "risk_tier": "HIGH"}}
+{"ts": "2026-11-24T00:28:47+07:00", "epoch": 1795454927.965849, "event": "AGENT_ACK", "data": {"agent": "antigravity"}}
+{"ts": "2026-11-24T00:28:48+07:00", "epoch": 1795454928.141249, "event": "SHEET_SUBMITTED", "data": {"domain_id": "D2", "author": "antigravity", "tokens": 422}}
+{"ts": "2026-11-24T00:52:06+07:00", "epoch": 1795456326.658472, "event": "CHAIR_FAILOVER", "data": {"from": "javis", "to": "antigravity", "reason": "ACK_TIMEOUT_5.0s", "ts": "2026-11-24T00:52:06+07:00", "epoch": 1795456326.658472}}
+{"ts": "2026-11-24T00:52:06+07:00", "epoch": 1795456326.658472, "event": "TALLY_COMPLETED", "data": {"final_state": "RECOMMENDED_LOCK", "chair": "antigravity", "voters": 7, "abstains": 0, "p3b_count": 0, "escalations": 0}}

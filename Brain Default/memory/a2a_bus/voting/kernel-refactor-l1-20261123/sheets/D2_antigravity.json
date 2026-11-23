@@ -1,0 +1,85 @@
+{
+  "task_id": "kernel-refactor-l1-20261123",
+  "domain_id": "D2",
+  "author": "antigravity",
+  "submitted_at": "2026-11-23T22:31:10+07:00",
+  "submitted_epoch": 1795447870.2542784,
+  "tokens": 439,
+  "warnings": [
+    "Bộ câu hỏi D2 đạt 439 tokens (khuyến nghị <= 350)."
+  ],
+  "questions": [
+    {
+      "id": "D2.Q1",
+      "link": "SCOPE",
+      "q": "Có nên nghiên cứu tái cấu trúc hạt nhân hệ thống ở giai đoạn này?",
+      "options": {
+        "A": "Không, giữ nguyên hạt nhân hiện hành",
+        "B": "Có, làm theo kiểu bọc ngoài (Wrapper/Adapter) giữ nguyên lõi ổn định",
+        "C": "Có, đập đi viết lại toàn bộ hạt nhân từ đầu (Full Rewrite)"
+      },
+      "owner_pick": "B",
+      "option_requires": {}
+    },
+    {
+      "id": "D2.Q2",
+      "link": "CORE",
+      "q": "Hình thái triển khai của lớp hạt nhân tinh gọn (Lean Core)?",
+      "options": {
+        "A": "Bọc công cụ hiện có (brain_bridge, iss, q5-voting, backup) qua CLI --json thống nhất",
+        "B": "Gộp toàn bộ code các dự án vào 1 server nguyên khối duy nhất",
+        "C": "Giữ script rời rạc, chỉ viết thêm quy tắc vào AGENTS.md"
+      },
+      "owner_pick": "A",
+      "option_requires": {
+        "A": {
+          "D2.Q1": [
+            "B"
+          ]
+        },
+        "B": {
+          "D2.Q1": [
+            "B",
+            "C"
+          ]
+        }
+      }
+    },
+    {
+      "id": "D2.Q3",
+      "link": "RISK",
+      "q": "Chốt bảo vệ chống gãy hệ thống khi thử nghiệm hạt nhân mới?",
+      "options": {
+        "A": "Ghi đè thẳng nếu kiểm tra cú pháp không lỗi",
+        "B": "Chạy song song Shadow Mode + snapshot tx_id hoàn tác 1 lệnh (rollback)",
+        "C": "Chỉ dựa vào bản sao lưu định kỳ cuối ngày"
+      },
+      "owner_pick": "B",
+      "option_requires": {}
+    },
+    {
+      "id": "D2.Q4",
+      "link": "INTERFACE",
+      "q": "Chuẩn đồng bộ tri thức giữa Hạt nhân mới và Second Brain?",
+      "options": {
+        "A": "Ghi thẳng vào MEMORY.md không cần kiểm duyệt",
+        "B": "Qua Knowledge Conflict Gate 4 bước + ghi nguyên tử + git commit",
+        "C": "Chỉ lưu cục bộ trong RAM phiên chạy"
+      },
+      "owner_pick": "B",
+      "option_requires": {}
+    },
+    {
+      "id": "D2.Q5",
+      "link": "ACCEPTANCE",
+      "q": "Cổng nghiệm thu Go-Live để cắt chuyển sang hạt nhân mới?",
+      "options": {
+        "A": "Pass 100% unit & Shadow Test, AGENTS.md <=20KB, latency <2s, L0 duyệt Y",
+        "B": "Chạy demo 1 lần không văng lỗi là bật chính thức",
+        "C": "Tự động bật sau 1 giờ chạy thử"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    }
+  ]
+}

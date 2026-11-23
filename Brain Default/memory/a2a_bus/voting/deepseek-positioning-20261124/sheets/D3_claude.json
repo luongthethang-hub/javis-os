@@ -1,0 +1,71 @@
+{
+  "task_id": "deepseek-positioning-20261124",
+  "domain_id": "D3",
+  "author": "claude",
+  "submitted_at": "2026-11-24T00:51:30+07:00",
+  "submitted_epoch": 1795454990.0,
+  "tokens": 295,
+  "warnings": [],
+  "questions": [
+    {
+      "id": "D3.Q1",
+      "link": "SCOPE",
+      "q": "Ranh giới an toàn hạt nhân T0 đối với DeepSeek?",
+      "options": {
+        "A": "Tuyệt đối cấm DeepSeek tự ý sửa T0, cấm tự gửi lệnh giao dịch live mà không qua kiểm duyệt L0",
+        "B": "Cho phép DeepSeek tự quyết định khối lượng lệnh giao dịch nếu tự tin",
+        "C": "DeepSeek có quyền ghi đè hiến chương nếu tối ưu hơn"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    },
+    {
+      "id": "D3.Q2",
+      "link": "CORE",
+      "q": "Quy trình kiểm toán logic trước khi đưa thuật toán của DeepSeek vào thực thi?",
+      "options": {
+        "A": "Claude audit an toàn & kiến trúc -> Antigravity compile test -> Trình L0 phê duyệt",
+        "B": "Chạy thẳng vào môi trường live để test",
+        "C": "Bỏ qua kiểm toán vì DeepSeek đã thông minh sẵn"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    },
+    {
+      "id": "D3.Q3",
+      "link": "RISK",
+      "q": "Phương án xử lý khi DeepSeek bị nghẽn API hoặc rate-limit?",
+      "options": {
+        "A": "San tải tức thì sang Antigravity/Codex theo ma trận QC-5, không dừng luồng công việc",
+        "B": "Dừng toàn bộ hệ thống chờ DeepSeek hồi phục",
+        "C": "Báo lỗi và hủy nhiệm vụ ngay lập tức"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    },
+    {
+      "id": "D3.Q4",
+      "link": "INTERFACE",
+      "q": "Quy chuẩn ngôn ngữ và giao tiếp của DeepSeek trên nhóm Telegram?",
+      "options": {
+        "A": "Tuân thủ nghiêm ngặt Zero-Fluff, Bộ lọc Comprehension Filter, tóm tắt kết quả 1-2 câu dễ hiểu",
+        "B": "Xuất toàn bộ chuỗi suy luận CoT dài hàng nghìn dòng lên nhóm",
+        "C": "Chỉ trả lời bằng tiếng Anh"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    },
+    {
+      "id": "D3.Q5",
+      "link": "ACCEPTANCE",
+      "q": "Tiêu chí nghiệm thu bảo mật T0 cho vị trí của DeepSeek?",
+      "options": {
+        "A": "100% token/secret được bảo vệ cục bộ, không lộ ra ngoài, Shadow Test 2 chiều đạt PASS",
+        "B": "Chỉ cần bot không crash là đạt",
+        "C": "Không cần kiểm chuẩn bảo mật"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    }
+  ]
+}

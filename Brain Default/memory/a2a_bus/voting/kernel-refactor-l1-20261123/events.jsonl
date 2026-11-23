@@ -1,0 +1,10 @@
+{"ts": "2026-11-23T22:31:08+07:00", "epoch": 1795447868.2542784, "event": "SESSION_INIT", "data": {"task_id": "kernel-refactor-l1-20261123", "active_chair": "javis", "domains": ["D1", "D2", "D3", "D4"], "risk_tier": "HIGH"}}
+{"ts": "2026-11-23T22:31:08+07:00", "epoch": 1795447868.7542784, "event": "AGENT_ACK", "data": {"agent": "antigravity"}}
+{"ts": "2026-11-23T22:31:09+07:00", "epoch": 1795447869.2542784, "event": "CHAIR_FAILOVER", "data": {"from": "javis", "to": "antigravity", "reason": "UNRESPONSIVE_SINCE_2159", "ts": "2026-11-23T22:31:09+07:00", "epoch": 1795447869.2542784}}
+{"ts": "2026-11-23T22:31:09+07:00", "epoch": 1795447869.2542784, "event": "DOMAIN_REASSIGNED", "data": {"domain_id": "D1", "from": "javis", "to": "antigravity", "reason": "UNRESPONSIVE_SINCE_2159"}}
+{"ts": "2026-11-23T22:31:09+07:00", "epoch": 1795447869.2542784, "event": "SHEET_SUBMITTED", "data": {"domain_id": "D1", "author": "antigravity", "tokens": 435}}
+{"ts": "2026-11-23T22:31:10+07:00", "epoch": 1795447870.2542784, "event": "SHEET_SUBMITTED", "data": {"domain_id": "D2", "author": "antigravity", "tokens": 439}}
+{"ts": "2026-11-23T22:38:33+07:00", "epoch": 1795448313.198938, "event": "DOMAIN_REASSIGNED", "data": {"domain_id": "D3", "from": "claude", "to": "perplexity", "reason": "ACK_TIMEOUT"}}
+{"ts": "2026-11-23T22:38:33+07:00", "epoch": 1795448313.198938, "event": "DOMAIN_REASSIGNED", "data": {"domain_id": "D4", "from": "grok", "to": "dola", "reason": "ACK_TIMEOUT"}}
+{"ts": "2026-11-23T22:38:33+07:00", "epoch": 1795448313.198938, "event": "PHASE_ADVANCE", "data": {"to": "P2_VOTING"}}
+{"ts": "2026-11-23T23:05:35+07:00", "epoch": 1795449935.632713, "event": "TALLY_COMPLETED", "data": {"final_state": "ESCALATED_L0", "chair": "antigravity", "voters": 0, "abstains": 6, "p3b_count": 0, "escalations": 1}}

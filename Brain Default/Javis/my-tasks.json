@@ -11,8 +11,8 @@
    "repeat": null,
    "project": "",
    "tags": [],
-   "status": "open",
-   "done_at": 0,
+   "status": "done",
+   "done_at": 1795454200.0,
    "done_dates": {},
    "subs": [],
    "remind": "",
@@ -24,6 +24,11 @@
   }
  ],
  "projects": [],
- "rev": 2,
- "agenda_sent": "2026-11-23"
+ "rev": 3,
+ "agenda_sent": "2026-11-23",
+ "clean": {
+  "days": {
+   "2026-11-23": "i"
+  }
+ }
 }

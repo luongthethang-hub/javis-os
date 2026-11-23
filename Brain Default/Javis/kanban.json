@@ -12,7 +12,7 @@
       "capability": "code",
       "execution_mode": "full",
       "priority": 2,
-      "status": "done",
+      "status": "cancelled",
       "needs_approval": false,
       "block_kind": "",
       "block_reason": "",
@@ -26,7 +26,7 @@
       "not_before": 0.0,
       "last_heartbeat_at": 1795400894.8671167,
       "current_run_id": "",
-      "result": "Đã hoàn tất khôi phục đối soát 2 stash và đấu nối cơ chế update_preservation vào server/updater.py, kiểm thử hồi quy 100% PASS.",
+      "result": "Not logged in · Please run /login",
       "created_at": 1795183743.5833256,
       "updated_at": 1795400915.0306582,
       "lane": "",
@@ -197,10 +197,6 @@
         {
           "ts": "2026-11-23 09:28",
           "msg": "blocked -> cancelled: operator cancel"
-        },
-        {
-          "ts": "2026-11-23 17:05",
-          "msg": "Hoàn thành và nghiệm thu: đấu nối server/updater.py + test_updater_stash.py PASS"
         }
       ]
     },
@@ -213,23 +209,23 @@
       "capability": "code",
       "execution_mode": "full",
       "priority": 2,
-      "status": "blocked",
+      "status": "cancelled",
       "needs_approval": false,
-      "block_kind": "transient",
-      "block_reason": "invalid model selection (--model \"gemini-4-hydrogen-medium\" --effort \"\"): model gemini-4-hydrogen-medium is not recognized as a known model or custom model in settings\nAvailable models:\n  Gemini 3.8 Flash (High)\n  Gemini 3.8 Flash (Medium)\n  Gemini 3.8 Flash (Low)\n  Claude Sonnet 4.6 (Thinking)\n  Claude Opus 4.6 (Thinking)\n  GPT-OSS 120B (Medium) | ClaudeSDK mất đăng nhập: Not logged in · Please run /login",
+      "block_kind": "cancelled",
+      "block_reason": "worker cancelled",
       "created_by": "chat",
       "chat_id": "",
       "idempotency_key": "",
-      "attempts": 5,
+      "attempts": 6,
       "max_attempts": 3,
       "claimed_by": "",
       "claim_expires_at": 0.0,
       "not_before": 0.0,
-      "last_heartbeat_at": 1795407924.6233728,
+      "last_heartbeat_at": 1795449169.353677,
       "current_run_id": "",
       "result": "Not logged in · Please run /login",
       "created_at": 1795400538.6995838,
-      "updated_at": 1795407924.6233728,
+      "updated_at": 1795449186.1637707,
       "lane": "",
       "team_id": "",
       "team_seq": 0,
@@ -326,9 +322,21 @@
         {
           "ts": "2026-11-23 11:25",
           "msg": "invalid model selection (--model \"gemini-4-hydrogen-medium\" --effort \"\"): model gemini-4-hydrogen-medium is not recognized as a known model or custom model in settings\nAvailable models:\n  Gemini 3.8 Flash (High)\n  Gemini 3.8 Flash (Medium)\n  Gemini 3.8 Flash (Low)\n  Claude Sonnet 4.6 (Thinking)\n  Claude Opus 4.6 (Thinking)\n  GPT-OSS 120B (Medium) | ClaudeSDK mất đăng nhập: Not logged in · Please run /login"
+        },
+        {
+          "ts": "2026-11-23 22:52",
+          "msg": "blocked -> ready: operator run"
+        },
+        {
+          "ts": "2026-11-23 22:52",
+          "msg": "claimed by worker:25936:e5e0a60a"
+        },
+        {
+          "ts": "2026-11-23 22:53",
+          "msg": "worker cancelled"
         }
       ]
     }
   ],
-  "updated": 1795407924.645209
+  "updated": 1795449186.1888003
 }

@@ -1,0 +1,73 @@
+{
+  "task_id": "deepseek-positioning-20261124",
+  "domain_id": "D2",
+  "author": "antigravity",
+  "submitted_at": "2026-11-24T00:28:48+07:00",
+  "submitted_epoch": 1795454928.141249,
+  "tokens": 422,
+  "warnings": [
+    "Bộ câu hỏi D2 đạt 422 tokens (khuyến nghị <= 350)."
+  ],
+  "questions": [
+    {
+      "id": "D2.Q1",
+      "link": "SCOPE",
+      "q": "Phạm vi tác vụ chính của DeepSeek trong Liên minh AI?",
+      "options": {
+        "A": "Toán định lượng, tối ưu thuật toán MQL5/xác suất, suy luận sâu (CoT)",
+        "B": "Thay thế Javis/Flash trả lời chat nhanh dưới 2 giây",
+        "C": "Chỉ làm dự phòng thụ động khi các bot khác lỗi"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    },
+    {
+      "id": "D2.Q2",
+      "link": "CORE",
+      "q": "Cách phối hợp giữa DeepSeek và Antigravity/Claude khi làm EA MQL5?",
+      "options": {
+        "A": "DeepSeek tự viết và deploy thẳng không cần kiểm duyệt",
+        "B": "DeepSeek thiết kế mô hình toán/tối ưu -> Antigravity code & test -> Claude audit",
+        "C": "Cả 3 cùng viết song song 3 bản độc lập rồi bỏ phiếu"
+      },
+      "owner_pick": "B",
+      "option_requires": {}
+    },
+    {
+      "id": "D2.Q3",
+      "link": "RISK",
+      "q": "Giới hạn an toàn bắt buộc đối với DeepSeek?",
+      "options": {
+        "A": "Cấm dùng cho phản hồi real-time <2s và cấm tự chốt lệnh tài chính đơn độc",
+        "B": "Không cần giới hạn, cho chạy mọi loại tác vụ",
+        "C": "Cấm truy cập dữ liệu backtest MQL5"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    },
+    {
+      "id": "D2.Q4",
+      "link": "INTERFACE",
+      "q": "Kênh giao nhận việc tiêu chuẩn của DeepSeek?",
+      "options": {
+        "A": "Gửi toàn bộ log thô qua Telegram nhóm",
+        "B": "Task Contract <= 3.000 tokens qua A2A Bus + lệnh /deepseek trên Telegram",
+        "C": "Chỉ trao đổi thủ công qua app Desktop"
+      },
+      "owner_pick": "B",
+      "option_requires": {}
+    },
+    {
+      "id": "D2.Q5",
+      "link": "ACCEPTANCE",
+      "q": "Tiêu chí E1 nghiệm thu DeepSeek vào đội hình chính thức?",
+      "options": {
+        "A": "Chỉ cần có Token là đạt",
+        "B": "Đã add vào Thắng Lee Group, pass test 2 chiều và hoàn thành 1 micro-task định lượng",
+        "C": "Chạy thử 7 ngày không cần kiểm chứng"
+      },
+      "owner_pick": "B",
+      "option_requires": {}
+    }
+  ]
+}

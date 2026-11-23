@@ -1,0 +1,92 @@
+{
+  "schema_version": "q5-cvm/1.0",
+  "task_id": "deepseek-positioning-20261124",
+  "title": "Định vị vai trò & tầng tác chiến cho DeepSeek (@DeepSeekThangLee_bot) trong Liên minh AI",
+  "context_summary": "Layer 0 đưa DeepSeek (@DeepSeekThangLee_bot) gia nhập Liên minh AI và yêu cầu toàn Liên minh biểu quyết Q5-CVM để đặt DeepSeek vào vị trí xứng đáng theo ma trận QC-5.",
+  "context_tokens": 52,
+  "risk_tier": "HIGH",
+  "state": "RECOMMENDED_LOCK",
+  "round_num": 1,
+  "max_rounds": 1,
+  "roster": [
+    "javis",
+    "antigravity",
+    "claude",
+    "grok",
+    "perplexity",
+    "dola",
+    "deepseek"
+  ],
+  "chair_order": [
+    "javis",
+    "antigravity",
+    "claude",
+    "grok",
+    "perplexity",
+    "dola",
+    "deepseek"
+  ],
+  "active_chair": "antigravity",
+  "chair_assigned_epoch": 1795456326.658472,
+  "chair_failovers": [
+    {
+      "from": "javis",
+      "to": "antigravity",
+      "reason": "ACK_TIMEOUT_5.0s",
+      "ts": "2026-11-24T00:52:06+07:00",
+      "epoch": 1795456326.658472
+    }
+  ],
+  "offline_agents": [
+    "javis"
+  ],
+  "domains": {
+    "D1": {
+      "domain_id": "D1",
+      "title": "Định vị Vai trò & Tầng tác chiến cho DeepSeek",
+      "owner": "javis",
+      "backup_owner": "antigravity",
+      "critical": true,
+      "active_owner": "javis",
+      "status": "SUBMITTED"
+    },
+    "D2": {
+      "domain_id": "D2",
+      "title": "Định tuyến San tải QC-5, Toán định lượng MQL5 & Chi phí Token",
+      "owner": "antigravity",
+      "backup_owner": "claude",
+      "critical": true,
+      "active_owner": "antigravity",
+      "status": "SUBMITTED"
+    },
+    "D3": {
+      "domain_id": "D3",
+      "title": "Kiểm toán An toàn T0, Giới hạn Độ trễ & Nghiệm thu Group",
+      "owner": "claude",
+      "backup_owner": "perplexity",
+      "critical": true,
+      "active_owner": "claude",
+      "status": "SUBMITTED"
+    }
+  },
+  "ttl": {
+    "ack_timeout_s": 5.0,
+    "p0_ttl_s": 10.0,
+    "p1_ttl_s": 60.0,
+    "p2_ttl_s": 45.0,
+    "p3_ttl_s": 20.0,
+    "p3b_ttl_s": 30.0,
+    "quorum_ratio": 0.6,
+    "quorum_min_votes": 3,
+    "max_sheet_tokens": 450,
+    "warn_sheet_tokens": 350,
+    "max_contract_tokens": 3000
+  },
+  "created_at": "2026-11-24T00:28:47+07:00",
+  "created_epoch": 1795454927.460771,
+  "phase_started_epoch": 1795454928.141249,
+  "p1_started_epoch": 1795454928.141249,
+  "p2_started_epoch": null,
+  "p3b_started_epoch": null,
+  "warnings": []
+}

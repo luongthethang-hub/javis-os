@@ -21,3 +21,10 @@ Nhật ký thời gian (append-only). Mỗi entry: `## [YYYY-MM-DD] loại | ti�
 
 - Thêm fact `agent-capability-matrix.md` và trang wiki [[quy-chuan-kiem-tra-vi-mo-tcbp-benchmark-suite]] theo lệnh kích hoạt của chủ quản.
 - Thiết lập bộ 3 bài test vi mô định lượng (QC-5) cho Lập trình hệ thống (MQL5), Phân tích dữ liệu (Backtest log), và Sáng tạo nội dung (Voice-First Script). Trạng thái: Sẵn sàng thực thi khi nhận nhiệm vụ mới.
+
+## [2026-11-24] update | Chu kỳ sàng lọc và tiến hóa tri thức định kỳ 8 giờ (00:00)
+
+- Quét toàn bộ nhật ký tương tác 8 giờ qua (16:00 23/11 - 00:00 24/11).
+- Chưng cất bài học cốt tử từ phê bình của Tổng chỉ huy: Triệt tiêu căn bệnh "tư duy chạy trốn núp bóng ngắt mạch an toàn", xác lập 3 trụ cột tiến hóa: Tự động bẻ luồng (Dynamic Failover), Tự phục hồi hạ tầng (Zero-Downtime Auto-Heal 3s), Giải quyết đến cùng (Resolute Problem Solving).
+- Đã tạo fact `ban-linh-tien-hoa-giai-quyet-den-cung-va-auto-heal.md`, trang wiki [[ban-linh-tien-hoa-va-tu-phuc-hoi-lien-minh]] và cập nhật [[giao-thuc-bieu-quyet-q5-cvm]] vào index.
+- Đồng bộ thông điệp tiến hóa sang A2A Bus cho toàn Liên minh (Antigravity, Claude, Grok, Perplexity, Dola, Codex).

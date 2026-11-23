@@ -1,0 +1,80 @@
+{
+  "task_id": "kernel-refactor-l1-20261123",
+  "domain_id": "D1",
+  "author": "antigravity",
+  "submitted_at": "2026-11-23T22:31:09+07:00",
+  "submitted_epoch": 1795447869.2542784,
+  "tokens": 435,
+  "warnings": [
+    "Bộ câu hỏi D1 đạt 435 tokens (khuyến nghị <= 350)."
+  ],
+  "questions": [
+    {
+      "id": "D1.Q1",
+      "link": "SCOPE",
+      "q": "Phạm vi vai trò mới của L1 sau khi được tiếp sức Second Brain?",
+      "options": {
+        "A": "Giữ L1 làm Router chuyển tiếp đơn thuần",
+        "B": "L1 làm Tổng tham mưu lập kế hoạch, Context Gating và giữ Second Brain",
+        "C": "Xóa tầng L1, cho toàn bộ L2 tự điều phối ngang hàng"
+      },
+      "owner_pick": "B",
+      "option_requires": {}
+    },
+    {
+      "id": "D1.Q2",
+      "link": "CORE",
+      "q": "Cơ chế chống treo đơn điểm khi L1 (Javis) ngừng phản hồi?",
+      "options": {
+        "A": "Đợi Layer 0 khởi động lại thủ công",
+        "B": "Failover Chair tự động (Javis->Antigravity->Claude->Codex) sau 5s",
+        "C": "Chạy 2 tiến trình Javis song song Active-Standby"
+      },
+      "owner_pick": "B",
+      "option_requires": {
+        "C": {
+          "D1.Q1": [
+            "A",
+            "B"
+          ]
+        }
+      }
+    },
+    {
+      "id": "D1.Q3",
+      "link": "RISK",
+      "q": "Trần ngữ cảnh chuyển giao khi L1 phân việc cho L2 để chống phình token?",
+      "options": {
+        "A": "Khóa cứng Task Contract <= 1.500 tokens",
+        "B": "Giới hạn <= 3.000 tokens kèm tóm tắt ngữ cảnh",
+        "C": "Gửi toàn bộ log 8 giờ gần nhất để đủ ngữ cảnh"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    },
+    {
+      "id": "D1.Q4",
+      "link": "INTERFACE",
+      "q": "Kênh đồng bộ dữ liệu thảo luận giữa các AI trong Liên minh?",
+      "options": {
+        "A": "Chat trực tiếp qua nhóm Telegram (bị chặn bot-to-bot)",
+        "B": "File JSON nguyên tử trên a2a_bus/voting/ + Telegram chỉ báo tóm tắt L0",
+        "C": "Điều khiển chuột/bàn phím giữa app Desktop (handoff.ps1)"
+      },
+      "owner_pick": "B",
+      "option_requires": {}
+    },
+    {
+      "id": "D1.Q5",
+      "link": "ACCEPTANCE",
+      "q": "Tiêu chí E1 nghiệm thu cấu trúc L1 mới trước khi vận hành chính thức?",
+      "options": {
+        "A": "Phản hồi nhanh <2s, pass 100% Shadow Test failover 5s, không treo luồng",
+        "B": "Chạy thử 24h không crash là đạt",
+        "C": "Đủ >=4 phiếu đồng ý thì bật thẳng không cần Shadow Test"
+      },
+      "owner_pick": "A",
+      "option_requires": {}
+    }
+  ]
+}

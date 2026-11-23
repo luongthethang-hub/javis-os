@@ -2,20 +2,17 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 11 agents · 16 skills · 4 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
+**Tổng quan:** 8 agents · 16 skills · 4 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
 
 ## Agents
-- **Chuyên viên Tăng trưởng & Meta Ads** (`chuyen-vien-meta-ads`) - Đọc và phân tích số liệu quảng cáo Facebook/Instagram qua meta-ads-graph và data-query. Tối ưu ngân sách, đánh giá CTR, CPM, chi phí trên mỗi tin nhắn/chuyển đổi. · model gemini-3.8-flash-high · skills: data-query · tags: Meta Ads, Tăng trưởng, Data
-- **Đạo diễn & Biên kịch Video** (`dao-dien-kich-ban-video`) - Xây dựng kênh TikTok & YouTube: Phân tích video đối thủ (youtube-read), viết kịch bản Short (Hook 3s đầu, giữ chân) và Video dài (Storytelling, SEO Title/Description/Tags). · model gemini-3.8-flash-high · skills: openmotion · tags: TikTok, YouTube, Video
-- **Điều phối AI Company** (`dieu-phoi-ai-company`) - Lập kế hoạch, phân rã việc và điều phối các agent chuyên môn trong AI Company; kiểm soát chất lượng, ngưỡng token và báo cáo Layer 0. · model gemini-3.8-flash-high · skills: dieu-phoi-doi-nhom, van-hanh-ai-company-on-dinh · tags: DieuPhoi, AICompany, QuanTri
-- **Giám đốc Thương hiệu Cá nhân** (`giam-doc-thuong-hieu`) - Định vị thương hiệu cá nhân, lập kế hoạch nội dung đa kênh (Facebook, Zalo, TikTok, YouTube), kiểm soát nhất quán thông điệp và giọng văn chuyên gia. · model gemini-3.8-flash-high · skills: javis-brain-bridge, data-query · tags: Thương hiệu cá nhân, Chiến lược
+- **Antigravity** (`antigravity`) - Tactical Muscle / Blue Team: Viết & debug code, quét repo lớn, compile/test MQL5 & Python, chạy shell, dựng media OpenMotion; Kế vị Chủ tọa số 1 khi L1 treo quá 5s. · model gemini-3.8-flash-high · skills: data-query, openmotion · tags: HoiDong, BlueTeam, TacticalMuscle, PeerDirect
+- **Claude** (`claude`) - Lead Architect & Safety Auditor: Thiết kế kiến trúc lõi, refactor an toàn, kiểm toán bảo mật T0, soi lỗi logic ngầm và đồng thẩm định Veto. · model claude-sonnet-4-6 · tags: HoiDong, Architect, AuditMonitor, PeerDirect
+- **ChatGPT / Codex** (`codex`) - Kỹ sư Tự động hóa & Kiểm thử: Viết bộ test unit/integration, script tự động hóa pipeline, mô phỏng thuật toán và phối hợp Red Team. · model gpt-6.2-sol · tags: HoiDong, RedTeam, Automation, PeerDirect
+- **DeepSeek** (`deepseek`) - Chuyên gia Toán định lượng & Suy luận sâu (CoT): Tối ưu thuật toán MQL5/xác suất, phân tích định lượng nặng với chi phí token cực thấp. · model deepseek-v4-pro · tags: HoiDong, QuantMath, DeepReasoning, PeerDirect
+- **Dola AI** (`dola`) - COO & Giám đốc Trải nghiệm: Giữ nhịp độ tác chiến, tối ưu trải nghiệm tương tác, phễu tiếp nhận và báo cáo gọn cho Layer 0. · model gemini-3.8-flash-low · tags: HoiDong, COO, Engagement, PeerDirect
+- **Grok** (`grok`) - Red Team Đối kháng: Phản biện sắc bén không thiên kiến, chống over-engineering, quét dữ liệu và xu hướng thời gian thực. · model grok-4.6 · tags: HoiDong, RedTeam, RealTime, PeerDirect
 - **Javis Core** (`javis-core`) - Trợ lý hệ thống nhận báo cáo và hỗ trợ công việc trong brain này.
-- **Kiểm duyệt Chất lượng & Chính sách** (`kiem-duyet-chat-luong`) - Cổng kiểm chứng độc lập: Kiểm tra chính tả, sự thật, chính sách cộng đồng (Facebook, TikTok, YouTube, Zalo) chống bóp tương tác, chống gậy bản quyền và nghiệm thu trước khi xuất bản. · model claude-sonnet-4-6 · tags: Kiểm duyệt, Chính sách
-- **Kiến trúc sư Antigravity** (`kien-truc-su-antigravity`) - Kiến trúc sư Hệ thống & Tăng trưởng: Tối ưu hóa quy trình tự động đa kênh, phân tích dữ liệu lớn (Ads/Traffic/Audience) bằng SQLite ảo data-query, và hỗ trợ suy luận sâu qua Google AI Pro. · model gemini-3.8-flash-high · skills: data-query · tags: Chiến lược, Tự động hóa
-- **Kỹ thuật Dựng Video & Audio** (`ky-thuat-dung-video`) - Hậu kỳ video tự động: Cắt ghép clip thô từ người dùng gửi, tối ưu nhịp điệu, chèn phụ đề, tạo voice-note và xuất file MP4 chuẩn dọc (9:16 TikTok/Reels) hoặc ngang (16:9 YouTube). · model gemini-3.8-flash-medium · skills: video-animation-toolkit, openmotion · tags: Video, FFmpeg, Studio
-- **Quản trị Fanpage & Cộng đồng** (`quan-tri-fanpage-fb`) - Xây dựng và chăm sóc Fanpage Facebook: Lên lịch nội dung đa định dạng, viết bài tương tác/giá trị/bán hàng, phân tích bài đăng qua meta-pages-graph và gợi ý hình ảnh (image-chatgpt). · model gemini-3.8-flash-medium · tags: Facebook, Fanpage, Content
-- **tro-ly-truc-page-zalo** (`tro-ly-truc-page-zalo`) - 
-- **Trưởng nhóm Chăm sóc Khách hàng** (`truong-nhom-cskh`) - Thiết kế kịch bản tư vấn, chăm sóc khách hàng trên Zalo và Facebook Inbox. Phân loại phễu (lạnh/ấm/nóng), xử lý từ chối và tối ưu tỷ lệ chuyển đổi sang Zalo/cuộc gọi. · model gemini-3.8-flash-high · tags: CSKH, Zalo, Inbox
+- **Perplexity** (`perplexity`) - Audit Monitor Độc lập (Ground-Truth Auditor): Đối soát sự thật khách quan, kiểm chứng dữ kiện thực tế và phán quyết Veto T0 trong phiên Q5-CVM. · model gemini-3.8-flash-medium · tags: HoiDong, AuditMonitor, GroundTruth, PeerDirect
 
 ## Skills
 ### AI
@@ -86,4 +83,4 @@ _(chưa có)_
 - **Debate Engine - Red/Blue Team** (`debate-engine`) - vault/tắt · tools: debate_engine · hooks: post_tool_call · Đưa lượt rà soát Red/Blue vào Kanban, kiểm tra ngân sách ước tính và tự ngắt khi thất bại liên tiếp.
 
 ## Cờ sức khoẻ
-- Agent chưa workflow nào dùng: chuyen-vien-meta-ads, dao-dien-kich-ban-video, dieu-phoi-ai-company, giam-doc-thuong-hieu, javis-core, kiem-duyet-chat-luong, kien-truc-su-antigravity, ky-thuat-dung-video, quan-tri-fanpage-fb, tro-ly-truc-page-zalo, truong-nhom-cskh
+- Agent chưa workflow nào dùng: antigravity, claude, codex, deepseek, dola, grok, javis-core, perplexity

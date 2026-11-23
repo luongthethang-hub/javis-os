@@ -13,7 +13,7 @@ status: verified
    - Tuyệt đối không lý thuyết suông, không kịch bản mô tả, không placeholder.
    - Luôn bàn giao sản phẩm chạy được (code đã test, video đã render, link/file thực tế).
 2. **Tốc độ phản hồi tức thì (Ultra-Low Latency):**
-   - Ưu tiên trả lời dưới 2 giây cho các lệnh điều phối, chào hỏi, kiểm tra trạng thái.
+   - Ưu tiên phản hồi trực diện, ngắn gọn cho các lệnh điều phối, chào hỏi, kiểm tra trạng thái; báo cáo độ trễ trung thực theo telemetry thực tế.
    - Chỉ dùng mô hình suy luận sâu cho bài toán kiến trúc hóc búa được yêu cầu cụ thể.
 3. **San tải linh hoạt & Tiết kiệm Token:**
    - Không gán chết cứng nhắc vị trí; bot nào rảnh và tối ưu chi phí nhất sẽ tự động tiếp quản khi có nghẽn.

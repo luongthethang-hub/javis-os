@@ -10,6 +10,11 @@ _(Chưa có trang wiki nào. Thả source vào `sources/` rồi bảo Javis "ti�
 ## Liên minh AI & Điều phối
 - [[quan-tri-doi-nhom-va-dieu-phoi-token]] - Quản trị đội nhóm, phân bổ nhiệm vụ theo rủi ro kỹ thuật, hồ sơ năng lực 10 trường và điều phối token trong Liên minh AI.
 - [[quy-chuan-kiem-tra-vi-mo-tcbp-benchmark-suite]] - Quy chuẩn kiểm tra vi mô 3 ứng cử viên (TCBP) và bộ bài test mẫu cho Lập trình hệ thống, Nghiên cứu dữ liệu và Sáng tạo nội dung.
+- [[giao-thuc-bieu-quyet-q5-cvm]] - Giao thức biểu quyết ma trận 5 mắt xích phá vỡ deadlock, xử lý bế tắc ngầm bằng tệp JSON.
+- [[ban-linh-tien-hoa-va-tu-phuc-hoi-lien-minh]] - Nguyên tắc bản lĩnh tiến hóa giải quyết đến cùng, chống tư duy bỏ cuộc núp bóng ngắt an toàn và kiến trúc tự phục hồi 3 giây.
+- [[kien-truc-cau-chi-khan-cap-va-hard-reset]] - Kiến trúc cầu chì ngoại vi (Out-of-Band Kill-Switch) và phanh khẩn cấp từ xa qua Telegram.
+
+- [[chien-luoc-uy-thac-lien-ung-dung-theo-thoi-quen]] - Chiến lược ủy thác liên ứng dụng (Claude/ChatGPT Desktop), tận dụng gói thuê bao tiết kiệm token và cơ chế tự tiến hóa theo thói quen người dùng.
 
 ## Tự học
 - [[Phân loại tri thức đa nhãn có provenance]] - Một đoạn hội thoại có thể đồng thời tạo fact, wiki, skill, agent, workflow hoặc

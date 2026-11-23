@@ -1,3 +1,4 @@
+- [Kích hoạt đo lường R1 và đồng bộ model gemini-3.8-flash-low cho Javis](facts/kich-hoat-telemetry-r1-va-dong-bo-model-low.md) - Đã đồng bộ model chat về flash-low và chèn telemetry đo first_output_ms cho antigravity-cli.
 # Bộ nhớ Javis - Index
 
 > Chỉ mục bộ nhớ dài hạn của Javis. Mỗi dòng = 1 ký ức, trỏ tới file trong `facts/`.
@@ -45,5 +46,19 @@
 - [Ma Trận Tiến Hóa & Tiền Kiểm Định Hướng (Self-Evolving Matrix - SEM)](facts/ma-tran-tien-hoa-tu-dong-sem.md) - Khung vận hành Ma trận Tiến hóa Tự động (SEM): Chuyển hoàn toàn từ cơ chế 'gặp lỗi mới vá' sang 'Mô .
 - [Cam Kết Tuyệt Đối Phụng Sự Định Hướng Của Sếp Thắng](facts/niem-tin-va-cam-ket-phung-su-tong-chi-huy.md) - Cam kết toàn Liên minh AI (Javis, Antigravity, Claude, ChatGPT): Giữ vững niềm tin của Tổng chỉ huy .
 - [Kiến trúc chống phình to bộ não: Rule Registry và Task Envelope](facts/kien-truc-chong-phinh-to-rule-registry-va-task-envelope.md) - Giải pháp chia tách 4 tầng (Kernel, Router, Rule Registry, Memory) và chuẩn hóa Task Envelope chống prompt bloat.
-- [Đề án Nâng cấp & Tái cấu trúc Toàn diện Liên minh AI (L0-L3 & Rule Registry)](facts/tai-cau-truc-toan-dien-lien-minh-ai-4-tang-l0-l3.md) - Tinh chỉnh 4 tầng L0-L3, Router Matrix, Task Envelope và chu trình MDACPT 8h.
+- [Đề án Nâng cấp & Tái cấu trúc Toàn diện Liên minh AI (L0-L3 & Rule Registry)](facts/tai-cau-truc-toan-dien-lien-minh-ai-4-tang-l0-l3.md) - Tinh chỉnh 4 tầng L0-L3, Router Matrix, Task Envelope và chu trình MDACPT 8h (đã hạ cấp L3 theo lệnh Sếp Thắng).
 - [Onboarding Thành viên mới Grok (@GrokThanglee_bot)](facts/onboarding-grok-thanh-vien-moi-lien-minh.md) - Đăng ký commands, kiểm chuẩn T0, gửi thông điệp chào mừng và định vị vai trò trong ma trận QC-5.
+- [Hạ cấp L3 và Khôi phục Kiến trúc 3 tầng L0-L1-L2 thực dụng](facts/ha-cap-l3-khoi-phuc-kien-truc-3-tang-thuc-dung.md) - Xóa bỏ rào cản L3, khôi phục L0-L1-L2 tinh gọn và kích hoạt cơ chế san việc trực tiếp với Circuit Breaker 5 giây.
+- [Biên bản Hội đồng Tiến hóa Liên minh AI 23/11/2026](facts/bien-ban-hoi-dong-tien-hoa-20261123.md) - Phân vai Blue/Red/Audit chưng cất 4 nhóm nội dung tiến hóa cốt lõi trong ngày.
+- [Onboarding Hoàn tất Perplexity và Dola AI vào Liên minh](facts/onboarding-perplexity-va-dola-ai-lien-minh.md) - Đã kiểm chuẩn T0, cài đặt lệnh, shadow test 2 chiều và định vị vai trò trong ma trận QC-5.
+- [Giao thức Biểu quyết Ma trận 5 Mắt xích Q5-CVM chống Deadlock](facts/giao-thuc-bieu-quyet-q5-cvm-chong-deadlock.md) - Ma trận Kx5 trắc nghiệm, failover Chủ tọa 5s, TTL <=155s trên a2a_bus/voting (duyệt 23/11).
+- [Phá vỡ Vòng lặp Vô hạn Thông minh bằng Q5-CVM](facts/co-che-bieu-quyet-pha-vong-lap-vo-han-thong-minh.md) - Biểu quyết nhân quả ngầm giải quyết dứt điểm bài toán, không bỏ cuộc.
+- [Bản Lĩnh Tiến Hóa Giải Quyết Đến Cùng và Tự Phục Hồi](facts/ban-linh-tien-hoa-giai-quyet-den-cung-va-auto-heal.md) - Chống tư duy bỏ cuộc núp bóng ngắt mạch an toàn, bẻ luồng tự động và Auto-Heal 3s.
+- [Onboarding DeepSeek (@DeepSeekThangLee_bot)](facts/onboarding-deepseek-thanh-vien-moi-lien-minh.md) - Thành viên mới DeepSeek đã qua kiểm chuẩn T0 DM/Privacy và đang mở phiên biểu quyết Q5-CVM định vị vai trò.
+- [Giao thức A2A Bus Javis <-> DeepSeek](facts/a2a-bus-javis-deepseek.md) - Kết nối 2 chiều Javis và @DeepSeekThangLee_bot qua inbox_deepseek.jsonl, inbox_javis.jsonl và deepseek_bridge.py.
+- [Đề án Tái cấu trúc Hệ thống theo Chuẩn AITEP v1.0](facts/tai-cau-truc-he-thong-theo-chuan-aitep.md) - Tách vật lý 3 lớp bộ nhớ, tích hợp đường ống 5 tầng tự tiến hóa và phân định RIGID/CREATIVE.
+- [Hợp nhất Dịch vụ Nền Alliance Bus Runner](facts/alliance-bus-runner-hop-nhat.md) - Daemon duy nhất điều phối A2A Bus cho toàn Liên minh AI.
+- [Kích hoạt Gói Tối ưu Tốc độ P0 cho Liên minh AI](facts/toi-uu-toc-do-he-thong-p0.md) - Nâng cấp song song JOBS=3, TOOL_SLOTS=2, giảm tải shell và context gating.
+- [Cơ chế Cầu chì Khẩn cấp và Hard Reset Ngoại vi](facts/cau-chi-khan-cap-va-hard-reset-telegram.md) - Tiến trình Watchdog độc lập nhận lệnh /panic, /reset từ Telegram để ngắt tiến trình treo và giải phóng RAM.
+- [Thói quen Chỉ đạo và Chuyển giao Tác vụ của Chủ sở hữu](facts/thoi-quen-chi-dao-va-chuyen-giao-tac-vu.md) - Thói quen ủy thác desktop apps tiết kiệm token, triệt tiêu lỗi rác, chỉ đạo mức kiến trúc và tiến hóa CUP.
+- [Ch?ng treo Javis khi ch?y ti?n tr�nh n?n](facts/chong-treo-javis-khi-chay-tien-trinh-nen.md) - C?m ch?y d?ng b? script v�ng l?p v� t?n (watchdog/bridge); b?t bu?c t�ch n?n pythonw/Start-Process; d?t JAVIS_AGY_TIMEOUT=180.

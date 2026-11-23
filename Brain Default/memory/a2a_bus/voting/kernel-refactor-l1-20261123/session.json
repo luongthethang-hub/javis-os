@@ -1,0 +1,104 @@
+{
+  "schema_version": "q5-cvm/1.0",
+  "task_id": "kernel-refactor-l1-20261123",
+  "title": "Tái cấu trúc Hạt nhân hệ thống (Core Kernel Refactoring) & Tái định vị L1",
+  "context_summary": "Layer 0 yêu cầu toàn Liên minh 6 AI thống nhất phương án tái định vị L1 và quyết định có nên nghiên cứu tái cấu trúc hạt nhân hệ thống hay không (tiếp nối phiên bị treo lúc 21:59 ngày 23/11 khi Javis ngừng phản hồi).",
+  "context_tokens": 68,
+  "risk_tier": "HIGH",
+  "state": "ESCALATED_L0",
+  "round_num": 1,
+  "max_rounds": 1,
+  "roster": [
+    "javis",
+    "antigravity",
+    "claude",
+    "grok",
+    "perplexity",
+    "dola"
+  ],
+  "chair_order": [
+    "javis",
+    "antigravity",
+    "claude",
+    "grok",
+    "perplexity",
+    "dola"
+  ],
+  "active_chair": "antigravity",
+  "chair_assigned_epoch": 1795447869.2542784,
+  "chair_failovers": [
+    {
+      "from": "javis",
+      "to": "antigravity",
+      "reason": "UNRESPONSIVE_SINCE_2159",
+      "ts": "2026-11-23T22:31:09+07:00",
+      "epoch": 1795447869.2542784
+    }
+  ],
+  "offline_agents": [
+    "javis",
+    "claude",
+    "grok"
+  ],
+  "domains": {
+    "D1": {
+      "domain_id": "D1",
+      "title": "Tái định vị L1 & Điều phối San tải",
+      "owner": "javis",
+      "backup_owner": "antigravity",
+      "critical": true,
+      "active_owner": "antigravity",
+      "status": "SUBMITTED",
+      "reassigned_epoch": 1795447869.2542784
+    },
+    "D2": {
+      "domain_id": "D2",
+      "title": "Kiến trúc Hạt nhân (Wrapper vs Rewrite) & Bus",
+      "owner": "antigravity",
+      "backup_owner": "claude",
+      "critical": true,
+      "active_owner": "antigravity",
+      "status": "SUBMITTED"
+    },
+    "D3": {
+      "domain_id": "D3",
+      "title": "Kiểm toán An toàn T0, Ngân sách Rule & Rollback",
+      "owner": "claude",
+      "backup_owner": "perplexity",
+      "critical": true,
+      "active_owner": "perplexity",
+      "status": "SKIPPED_TIMEOUT",
+      "reassigned_epoch": 1795448313.198938
+    },
+    "D4": {
+      "domain_id": "D4",
+      "title": "Red Team Độ trễ, Phễu L0 & Giám sát Vận hành",
+      "owner": "grok",
+      "backup_owner": "dola",
+      "critical": false,
+      "active_owner": "dola",
+      "status": "SKIPPED_TIMEOUT",
+      "reassigned_epoch": 1795448313.198938
+    }
+  },
+  "ttl": {
+    "ack_timeout_s": 5.0,
+    "p0_ttl_s": 10.0,
+    "p1_ttl_s": 60.0,
+    "p2_ttl_s": 45.0,
+    "p3_ttl_s": 20.0,
+    "p3b_ttl_s": 30.0,
+    "quorum_ratio": 0.6,
+    "quorum_min_votes": 3,
+    "max_sheet_tokens": 450,
+    "warn_sheet_tokens": 350,
+    "max_contract_tokens": 3000
+  },
+  "created_at": "2026-11-23T22:31:08+07:00",
+  "created_epoch": 1795447868.2542784,
+  "phase_started_epoch": 1795448313.198938,
+  "p1_started_epoch": 1795447869.2542784,
+  "p2_started_epoch": 1795448313.198938,
+  "p3b_started_epoch": null,
+  "warnings": []
+}
