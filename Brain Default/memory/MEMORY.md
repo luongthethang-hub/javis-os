@@ -17,3 +17,13 @@
 - [Kế hoạch nâng cấp máy, chuyển Ubuntu](facts/ke-hoach-nang-cap-may-chuyen-ubuntu.md) - Nâng cấp phần cứng và chuyển Ubuntu Desktop 24.04 LTS.
 - [Mô hình Truyền thông Đa kênh & Thương hiệu Cá nhân](facts/mo-hinh-van-hieu-truyen-thong-da-kenh-va-thuong-hieu-ca-nhan.md) - Tái cấu trúc Javis OS chuyên trách Fanpage, Zalo, TikTok, YouTube và Thương hiệu cá nhân.
 - [Dự án EA T-signal SEMI robot](facts/du-an-ea-t-signal-semi-robot.md) - Người dùng đang phát triển Expert Advisor bán tự động trên MQL5 có tên T-signal EA SEMI robot.
+- [Quy trình tạo video mặc định Voice-First](facts/quy-trinh-tao-video-voice-first.md) - Mặc định áp dụng Quy trình B (Voice-First: Kịch bản -> Voice/Audio Anchor -> Timestamp -> Dựng hình & Motion Sync) cho video có giọng đọc; video không lời giữ quy trình Visual-First.
+- [Bảo mật Telegram bằng Behavioral Biometrics](facts/bao-mat-telegram-behavioral-telemetry.md) - Cơ chế bảo mật thích ứng cho Telegram: Fast Path theo văn phong, hạ quyền Safe Mode và hỏi bẫy Second Brain khi lệch hành vi, cảnh báo out-of-band.
+- [Hồ sơ Nhận diện Hành vi (Behavioral Telemetry Profile)](facts/behavioral-telemetry-profile.md) - Đặc trưng văn phong, khung giờ hoạt động, thang điểm rủi ro và ngân hàng câu hỏi bẫy ngữ cảnh Second Brain cho Telegram.
+- [Phòng họp nội bộ](facts/phong-hop-noi-bo-3-ben.md) - Phòng họp nội bộ Telegram giữa Thắng Lee và Javis.
+- [Giao thức phòng họp nội bộ, đồng tiến hóa chéo và sao lưu kép Antigravity - Javis](facts/giao-thuc-phong-hop-dong-tien-hoa-va-sao-luu-kep.md) - Giao thức phòng họp 3 bên, đồng tiến hóa chéo và sao lưu kép Antigravity - Javis.
+- [Kiểm tra xung đột trước khi tự nâng cấp](facts/kiem-tra-xung-dot-truoc-khi-nang-cap.md) - Trước khi nạp tri thức mới hoặc tự nâng cấp, Javis bắt buộc kiểm toán ràng buộc cứng, đối soát xung đột logic, chạy shadow test và bảo đảm khả năng hoàn tác.
+- [Chuẩn voice engineering cho video động lực](facts/chuan-voice-engineering-video-dong-luc.md) - Giọng nam NamMinhNeural (-3%, -6Hz) cộng chuỗi DSP FFmpeg tạo độ khàn nội lực; bẫy Azure TTS với chữ Đ viết hoa đầu câu.
+- [A2A bus Javis - Antigravity](facts/a2a-bus-javis-antigravity.md) - Hộp thư file cục bộ memory/a2a_bus/ (inbox_antigravity.jsonl, inbox_javis.jsonl) vì bot Telegram không đọc được tin của nhau.
+- [Đồng bộ tri thức Claude Desktop và ChatGPT Desktop](facts/dong-bo-tri-thuc-claude-chatgpt-desktop.md) - Claude Desktop nối lại MCP 23/11 lúc 08:05; ChatGPT Desktop chưa đồng bộ; Claude Alliance Contract mới là đề xuất.
+- [Javis chia việc cho Claude Desktop qua handoff](facts/giao-viec-javis-cho-claude-desktop.md) - Javis ghi req vào memory/a2a_bus/claude/, chạy handoff.ps1 -App claude, nhận res tự động; việc HIGH/CRITICAL cần chủ gõ Y; hop tối đa 2; chưa kiểm chứng end-to-end.

@@ -2,16 +2,16 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 10 agents · 14 skills · 4 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
+**Tổng quan:** 10 agents · 15 skills · 4 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
 
 ## Agents
 - **Chuyên viên Tăng trưởng & Meta Ads** (`chuyen-vien-meta-ads`) - Đọc và phân tích số liệu quảng cáo Facebook/Instagram qua meta-ads-graph và data-query. Tối ưu ngân sách, đánh giá CTR, CPM, chi phí trên mỗi tin nhắn/chuyển đổi. · model gemini-3.8-flash-high · skills: data-query · tags: Meta Ads, Tăng trưởng, Data
-- **Đạo diễn & Biên kịch Video** (`dao-dien-kich-ban-video`) - Xây dựng kênh TikTok & YouTube: Phân tích video đối thủ (youtube-read), viết kịch bản Short (Hook 3s đầu, giữ chân) và Video dài (Storytelling, SEO Title/Description/Tags). · model gemini-3.8-flash-high · tags: TikTok, YouTube, Video
+- **Đạo diễn & Biên kịch Video** (`dao-dien-kich-ban-video`) - Xây dựng kênh TikTok & YouTube: Phân tích video đối thủ (youtube-read), viết kịch bản Short (Hook 3s đầu, giữ chân) và Video dài (Storytelling, SEO Title/Description/Tags). · model gemini-3.8-flash-high · skills: openmotion · tags: TikTok, YouTube, Video
 - **Giám đốc Thương hiệu Cá nhân** (`giam-doc-thuong-hieu`) - Định vị thương hiệu cá nhân, lập kế hoạch nội dung đa kênh (Facebook, Zalo, TikTok, YouTube), kiểm soát nhất quán thông điệp và giọng văn chuyên gia. · model gemini-3.8-flash-high · skills: javis-brain-bridge, data-query · tags: Thương hiệu cá nhân, Chiến lược
 - **Javis Core** (`javis-core`) - Trợ lý hệ thống nhận báo cáo và hỗ trợ công việc trong brain này.
 - **Kiểm duyệt Chất lượng & Chính sách** (`kiem-duyet-chat-luong`) - Cổng kiểm chứng độc lập: Kiểm tra chính tả, sự thật, chính sách cộng đồng (Facebook, TikTok, YouTube, Zalo) chống bóp tương tác, chống gậy bản quyền và nghiệm thu trước khi xuất bản. · model claude-sonnet-4-6 · tags: Kiểm duyệt, Chính sách
 - **Kiến trúc sư Antigravity** (`kien-truc-su-antigravity`) - Kiến trúc sư Hệ thống & Tăng trưởng: Tối ưu hóa quy trình tự động đa kênh, phân tích dữ liệu lớn (Ads/Traffic/Audience) bằng SQLite ảo data-query, và hỗ trợ suy luận sâu qua Google AI Pro. · model gemini-3.8-flash-high · skills: data-query · tags: Chiến lược, Tự động hóa
-- **Kỹ thuật Dựng Video & Audio** (`ky-thuat-dung-video`) - Hậu kỳ video tự động: Cắt ghép clip thô từ người dùng gửi, tối ưu nhịp điệu, chèn phụ đề, tạo voice-note và xuất file MP4 chuẩn dọc (9:16 TikTok/Reels) hoặc ngang (16:9 YouTube). · model gemini-3.8-flash-medium · skills: video-animation-toolkit · tags: Video, FFmpeg, Studio
+- **Kỹ thuật Dựng Video & Audio** (`ky-thuat-dung-video`) - Hậu kỳ video tự động: Cắt ghép clip thô từ người dùng gửi, tối ưu nhịp điệu, chèn phụ đề, tạo voice-note và xuất file MP4 chuẩn dọc (9:16 TikTok/Reels) hoặc ngang (16:9 YouTube). · model gemini-3.8-flash-medium · skills: video-animation-toolkit, openmotion · tags: Video, FFmpeg, Studio
 - **Quản trị Fanpage & Cộng đồng** (`quan-tri-fanpage-fb`) - Xây dựng và chăm sóc Fanpage Facebook: Lên lịch nội dung đa định dạng, viết bài tương tác/giá trị/bán hàng, phân tích bài đăng qua meta-pages-graph và gợi ý hình ảnh (image-chatgpt). · model gemini-3.8-flash-medium · tags: Facebook, Fanpage, Content
 - **tro-ly-truc-page-zalo** (`tro-ly-truc-page-zalo`) - 
 - **Trưởng nhóm Chăm sóc Khách hàng** (`truong-nhom-cskh`) - Thiết kế kịch bản tư vấn, chăm sóc khách hàng trên Zalo và Facebook Inbox. Phân loại phễu (lạnh/ấm/nóng), xử lý từ chối và tối ưu tỷ lệ chuyển đổi sang Zalo/cuộc gọi. · model gemini-3.8-flash-high · tags: CSKH, Zalo, Inbox
@@ -28,6 +28,7 @@
 - **Vận hành AI Company ổn định** (`van-hanh-ai-company-on-dinh`) - Điều phối AI Company chịu lỗi nhiều tầng bằng checkpoint, phân loại lỗi, chuyển nguồn có giới hạn và khôi phục an toàn.
 ### Chung
 - **data-query** (`data-query`) - Truy vấn dữ liệu lớn (JSON, CSV, JSONL) bằng SQLite ảo mà không làm tràn context window của mô hình. Tối ưu cho phân tích log backtest MQL5, lịch sử tick, danh sách lệnh và dữ liệu thị trường khối lượng lớn.
+- **openmotion** (`openmotion`) - # OpenMotion: Dựng & Tái Tạo Video Bằng Mã (Agentic Video Studio)
 ### Marketing
 - **HTML sang Webcake** (`html-to-webcake`) - Chuyển trang HTML thành file .pke mở được trong trình dựng Webcake, giữ đúng màu, cỡ chữ, ảnh và bố cục của bản gốc.
 ### Năng suất

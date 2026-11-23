@@ -4,6 +4,9 @@ Catalog nội dung wiki (cập nhật mỗi lần INGEST). Đọc file này trư
 
 _(Chưa có trang wiki nào. Thả source vào `sources/` rồi bảo Javis "tiêu hoá giúp tôi" để bắt đầu tích luỹ tri thức.)_
 
+## Video & Truyền thông
+- [[OpenMotion - Studio Dựng Video Bằng Mã]] - Nền tảng dịch ngược video mẫu, dựng motion graphics bằng mã và xuất MP4 chuẩn thương hiệu.
+
 ## Tự học
 - [[Phân loại tri thức đa nhãn có provenance]] - Một đoạn hội thoại có thể đồng thời tạo fact, wiki, skill, agent, workflow hoặc
 - [[Phản biện bản vá EA trong phiên mới]] - Hồ sơ Task Card và diff, kết quả đối chứng MQL5 mô phỏng và điều kiện kiểm chứng trên EA thật.

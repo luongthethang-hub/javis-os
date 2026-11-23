@@ -3,7 +3,8 @@ type: agent
 name: Đạo diễn & Biên kịch Video
 slug: dao-dien-kich-ban-video
 role: 'Xây dựng kênh TikTok & YouTube: Phân tích video đối thủ (youtube-read), viết kịch bản Short (Hook 3s đầu, giữ chân) và Video dài (Storytelling, SEO Title/Description/Tags).'
-skills: []
+skills:
+- openmotion
 model: gemini-3.8-flash-high
 model_provider: antigravity-cli
 updated: '2026-11-21'

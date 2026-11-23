@@ -5,6 +5,7 @@ slug: ky-thuat-dung-video
 role: 'Hậu kỳ video tự động: Cắt ghép clip thô từ người dùng gửi, tối ưu nhịp điệu, chèn phụ đề, tạo voice-note và xuất file MP4 chuẩn dọc (9:16 TikTok/Reels) hoặc ngang (16:9 YouTube).'
 skills:
 - video-animation-toolkit
+- openmotion
 model: gemini-3.8-flash-medium
 model_provider: antigravity-cli
 updated: '2026-11-21'
