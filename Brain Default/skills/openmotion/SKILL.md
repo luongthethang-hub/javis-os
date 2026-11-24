@@ -1,6 +1,6 @@
 ---
 name: OpenMotion
-description: Tái tạo và dựng video bằng mã: phân rã video mẫu thành Motion.md, thay đổi nhận diện thương hiệu, tạo tài sản đa phương tiện và xuất MP4.
+description: "Tái tạo và dựng video bằng mã: phân rã video mẫu thành Motion.md, áp Brand Kit, xử lý âm thanh Voice-First và xuất MP4."
 group: Nội dung
 ---
 
@@ -85,7 +85,8 @@ Mỗi dự án tái tạo cần có file `Motion.md` lưu tại thư mục dự 
 - Audio: Voiceover kết luận + Nhạc fade out.
 ```
 
-## Nguyên tắc an toàn & Thực dụng
-1. Không tải video cá nhân lên các dịch vụ public trái phép khi chưa được người dùng xác nhận.
-2. Ưu tiên render native và FFmpeg cục bộ để tối ưu chi phí và bảo mật tuyệt đối.
-3. Không bịa đặt số liệu hay tự tiện thay đổi thông điệp cốt lõi của chủ khi remake video.
+## Bẫy
+
+- Không tải video cá nhân lên các dịch vụ public trái phép khi chưa được người dùng xác nhận.
+- Ưu tiên render native và FFmpeg cục bộ để tối ưu chi phí và bảo mật tuyệt đối.
+- Không bịa đặt số liệu hay tự tiện thay đổi thông điệp cốt lõi của chủ khi remake video.

@@ -2,7 +2,7 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 8 agents · 16 skills · 4 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
+**Tổng quan:** 8 agents · 19 skills · 5 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
 
 ## Agents
 - **Antigravity** (`antigravity`) - Tactical Muscle / Blue Team: Viết & debug code, quét repo lớn, compile/test MQL5 & Python, chạy shell, dựng media OpenMotion; Kế vị Chủ tọa số 1 khi L1 treo quá 5s. · model gemini-3.8-flash-high · skills: data-query, openmotion · tags: HoiDong, BlueTeam, TacticalMuscle, PeerDirect
@@ -17,22 +17,24 @@
 ## Skills
 ### AI
 - **Chuyển việc sang app desktop** (`chuyen-viec-sang-app-desktop`) - Đẩy việc bị chặn sang ChatGPT Desktop hoặc Claude Desktop, gửi prompt và đọc trả lời tự động.
-- **Điều phối Đội nhóm & Token** (`dieu-phoi-doi-nhom`) - Quy trình phân rã việc, định tuyến agent theo rủi ro, kiểm soát vòng lặp và nghiệm thu kết quả trong Liên minh AI.
+- **Điều phối Đội nhóm & Token** (`dieu-phoi-doi-nhom`) - Phân rã việc theo TaskPacket, định tuyến agent theo thang A0-A4, Cascade tối đa 2 lỗi và nghiệm thu E1 trong Liên minh AI.
 - **Ingest Source** (`ingest-source`) - Tiêu hoá một source thô vào Second Brain, chưng cất thành tri thức wiki tích luỹ.
+- **Huấn luyện Agent Chuyên sâu (v1)** (`intensive-agent-training`) - Quy trình huấn luyện Agent đa bước theo RUULEE v6.0: TaskPacket handoff, thang tự chủ A0-A4, trí nhớ 3 tầng và kiểm toán trace_id.
+- **Huấn luyện AI Chuyên sâu (v2)** (`intensive-ai-training`) - Quy trình 5 pha huấn luyện AI theo RUULEE v6.0: nén TaskPacket, định tuyến L1/L2 Cascade tối đa 2 lỗi, Red/Blue FMEA và Shadow Eval.
 - **Javis Builder** (`javis-builder`) - Tạo hoặc sửa năng lực của Javis: agent, skill, workflow, loop, plugin. Kèm mẫu file chuẩn và luật chống trùng.
 - **Lint Wiki** (`lint-wiki`) - Rà soát sức khoẻ wiki của Second Brain, trả về danh sách vấn đề. Không tự sửa hàng loạt.
 - **Notes** (`notes`) - Lưu tin nhắn hiện tại nguyên văn vào sources/ (kèm ảnh), tự chưng cất lên wiki nếu note đáng.
 - **Query Wiki** (`query-wiki`) - Khai thác tri thức trong Second Brain: tổng hợp, so sánh, giả thuyết. Trả lời có trích dẫn.
+- **RUULEE Operational Charter v6.0** (`ruulee-operational-charter`) - Hiến chương lõi L0-L1-L2 RUULEE v6.0: thang tự chủ A0-A4, TaskPacket, Red/Blue QA, FMEA, Shadow Test, trace_id và CUP.
 - **Tách phiên thông minh** (`tach-phien-thong-minh`) - Nén ngữ cảnh có kiểm chứng và tạo bàn giao để tiếp tục trong phiên mới.
 - **Vận hành AI Company ổn định** (`van-hanh-ai-company-on-dinh`) - Điều phối AI Company chịu lỗi nhiều tầng bằng checkpoint, phân loại lỗi, chuyển nguồn có giới hạn và khôi phục an toàn.
-### Chung
-- **data-query** (`data-query`) - Truy vấn dữ liệu lớn (JSON, CSV, JSONL) bằng SQLite ảo mà không làm tràn context window của mô hình. Tối ưu cho phân tích log backtest MQL5, lịch sử tick, danh sách lệnh và dữ liệu thị trường khối lượng lớn.
-- **openmotion** (`openmotion`) - # OpenMotion: Dựng & Tái Tạo Video Bằng Mã (Agentic Video Studio)
 ### Marketing
 - **HTML sang Webcake** (`html-to-webcake`) - Chuyển trang HTML thành file .pke mở được trong trình dựng Webcake, giữ đúng màu, cỡ chữ, ảnh và bố cục của bản gốc.
 ### Năng suất
+- **data-query** (`data-query`) - Truy vấn dữ liệu lớn (JSON, CSV, JSONL) bằng SQLite ảo chỉ đọc, chống tràn context cho log backtest MQL5 và dữ liệu tick.
 - **Tiết kiệm token Terminal (RTK)** (`token-saver-rtk`) - Dùng RTK để rút gọn đầu ra lệnh Terminal trong tác vụ kỹ thuật; giữ đủ chi tiết khi cần xác minh.
 ### Nội dung
+- **OpenMotion** (`openmotion`) - Tái tạo và dựng video bằng mã: phân rã video mẫu thành Motion.md, áp Brand Kit, xử lý âm thanh Voice-First và xuất MP4.
 - **Hoạt hình & Video** (`video-animation-toolkit`) - Phân tích video tham chiếu MP4/MOV, dựng và xuất video bằng FFmpeg, lập quy trình hoạt hình 2D/3D và motion graphics.
 ### Security
 - **Security Audit** (`security-audit`) - Rà soát bảo mật mã nguồn, API, dịch vụ: tìm lỗ hổng có bằng chứng, kiểm chứng độc lập từng lỗi, báo cáo kèm cách sửa. Từ Cloudflare.
@@ -40,10 +42,15 @@
 - **Họp hội đồng đầu tư** (`hop-hoi-dong-dau-tu`) - Chạy một phiên họp phân tích thị trường đủ 6 pha, ra phiếu lệnh và biên bản.
 
 ## Workflows
-- **Chăm sóc & Phát triển Fanpage Facebook** (`cham-soc-fanpage-facebook`) - off · 0 bước []
-- **Chăm sóc Khách hàng Zalo & Inbox Đa kênh** (`cham-soc-khach-hang-zalo-inbox`) - off · 0 bước []
-- **Xây dựng Thương hiệu Cá nhân Đa nền tảng** (`xay-dung-thuong-hieu-ca-nhan`) - off · 0 bước []
-- **Xây kênh TikTok & YouTube Tự động** (`xay-kenh-tiktok-youtube`) - off · 0 bước []
+### AI
+- **Red/Blue Team Review (RUULEE v6.0)** (`red-blue-team-review`) - off · 3 bước [antigravity -> grok -> claude] · Rà soát đối kháng 3 bước (Blue Team -> Red Team 6 vector -> Safety Auditor) trả phán quyết DEBATE_VERDICT chuẩn cho plugin debate-engine.
+### Bán hàng
+- **Chăm sóc Khách hàng Zalo & Inbox Đa kênh** (`cham-soc-khach-hang-zalo-inbox`) - off · 3 bước [javis-core -> dola -> claude] · Kiểm tra sức khỏe kênh Messenger/Zalo, phân loại hội thoại Lạnh/Ấm/Nóng và soạn phản hồi chuẩn giọng thương hiệu trình duyệt.
+### Marketing
+- **Chăm sóc & Phát triển Fanpage Facebook** (`cham-soc-fanpage-facebook`) - off · 3 bước [deepseek -> dola -> perplexity] · Đo hiệu suất Fanpage/Meta Ads, soạn bài 4-1-1 đúng thương hiệu và kiểm duyệt chính sách Meta trước khi trình chủ duyệt.
+### Nội dung
+- **Xây dựng Thương hiệu Cá nhân Đa nền tảng** (`xay-dung-thuong-hieu-ca-nhan`) - off · 3 bước [grok -> antigravity -> perplexity] · Chuyển hóa 1 ý tưởng gốc thành gói nội dung đồng bộ 4 kênh (Facebook, Shorts/TikTok, YouTube, Zalo) kèm kiểm chứng sự thật.
+- **Xây kênh TikTok & YouTube Tự động** (`xay-kenh-tiktok-youtube`) - off · 3 bước [grok -> codex -> antigravity] · Nghiên cứu hook 3 giây, viết kịch bản Voice-First, kiểm duyệt chính sách và đóng gói đặc tả Motion.md sẵn sàng dựng MP4.
 
 ## Loops
 _(chưa có)_
@@ -81,6 +88,3 @@ _(chưa có)_
 - **Tin thoại** (`voice-note`) - bundled/chạy · tools: javis_voice_note · Javis ghi một đoạn nói ngắn (tối đa 1000 ký tự) thành file mp3 trong attachments/voice/ rồi nhúng vào câu trả lời. Khung chat hiện trình phát, Telegram nhận file âm thanh. Dùng giọng Edge miễn phí theo ngôn ngữ của câu.
 - **Đọc video YouTube** (`youtube-read`) - bundled/chạy · tools: javis_youtube_read · Đọc lời thoại (phụ đề) của video YouTube từ link để tóm tắt. Tự đổi qua 6 kiểu trình phát rồi tới yt-dlp khi YouTube chặn máy chủ. Không cần đăng nhập, không cần API key.
 - **Debate Engine - Red/Blue Team** (`debate-engine`) - vault/tắt · tools: debate_engine · hooks: post_tool_call · Đưa lượt rà soát Red/Blue vào Kanban, kiểm tra ngân sách ước tính và tự ngắt khi thất bại liên tiếp.
-
-## Cờ sức khoẻ
-- Agent chưa workflow nào dùng: antigravity, claude, codex, deepseek, dola, grok, javis-core, perplexity

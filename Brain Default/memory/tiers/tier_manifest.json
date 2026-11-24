@@ -1,0 +1,76 @@
+{
+  "schema": "javis-memory-tiers/v1",
+  "generated_at": "2026-11-24T20:23:06+07:00",
+  "totals": {
+    "all_fact_files": 72,
+    "active_facts": 64,
+    "t0_immutable": 7,
+    "t1_governed": 36,
+    "t2_adaptive": 21,
+    "superseded": 8
+  },
+  "t0_bundle_sha256": "dd4c2d09bc97cf3c9aa705eb7ea92844757bcb33915b713021881d32e8ee443f",
+  "tiers": {
+    "T0": "memory/tiers/T0_immutable/manifest.sha256.json",
+    "T1": "memory/tiers/T1_governed/registry.json",
+    "T2": "memory/tiers/T2_adaptive/registry.json"
+  },
+  "superseded_facts": [
+    {
+      "slug": "cau-chi-khan-cap-va-hard-reset-telegram",
+      "file": "memory/facts/cau-chi-khan-cap-va-hard-reset-telegram.md",
+      "superseded_by": "cau-chi-khan-cap-va-nut-phanh-telegram",
+      "superseded_at": "2026-11-24",
+      "sha256": "8752ac1a6711f98fdca50d53fde3e6a6e1b965e35fb88dd29b4517d5c9b4069a"
+    },
+    {
+      "slug": "checklist-kiem-chuan-bot-moi-gia-nhap",
+      "file": "memory/facts/checklist-kiem-chuan-bot-moi-gia-nhap.md",
+      "superseded_by": "cam-ket-t0-chong-loi-bot-moi-cam-lang",
+      "superseded_at": "2026-11-24",
+      "sha256": "612a926d72793c174a883e11fb726b21cc825dc5a5331d79f3b62240950f14f0"
+    },
+    {
+      "slug": "nguyen-tac-loc-thong-tin-de-hieu",
+      "file": "memory/facts/nguyen-tac-loc-thong-tin-de-hieu.md",
+      "superseded_by": "quy-tac-toan-lien-minh-dong-bo-va-giao-tiep",
+      "superseded_at": "2026-11-24",
+      "sha256": "6d2be982e715bec73db737c58ddd511f98f6f5bab62b34661ba972742036d78c"
+    },
+    {
+      "slug": "onboarding-deepseek-thanh-vien-moi-lien-minh",
+      "file": "memory/facts/onboarding-deepseek-thanh-vien-moi-lien-minh.md",
+      "superseded_by": "onboarding-deepseek-lien-minh",
+      "superseded_at": "2026-11-24",
+      "sha256": "d477019ca7227acc76cbc937595d701914e3f7362cacde52c6512544fa56df64"
+    },
+    {
+      "slug": "quy-che-onboarding-ai-tong-quat",
+      "file": "memory/facts/quy-che-onboarding-ai-tong-quat.md",
+      "superseded_by": "phe-duyet-onboarding-ai-tong-quat",
+      "superseded_at": "2026-11-24",
+      "sha256": "87e90db8da81b97ff1a649d863ad190338bf14a8ac30e7d99cc3d9610b4818be"
+    },
+    {
+      "slug": "quy-trinh-onboarding-ai-moi-va-cup-bat-buoc",
+      "file": "memory/facts/quy-trinh-onboarding-ai-moi-va-cup-bat-buoc.md",
+      "superseded_by": "phe-duyet-onboarding-ai-tong-quat",
+      "superseded_at": "2026-11-24",
+      "sha256": "134af31000597c6e83efd7dfe0a718aab9ecaab1119c02194cb81fc7e581ffc4"
+    },
+    {
+      "slug": "tai-cau-truc-toan-dien-lien-minh-ai-4-tang-l0-l3",
+      "file": "memory/facts/tai-cau-truc-toan-dien-lien-minh-ai-4-tang-l0-l3.md",
+      "superseded_by": "ha-cap-l3-khoi-phuc-kien-truc-3-tang-thuc-dung",
+      "superseded_at": "2026-11-24",
+      "sha256": "5bd54dc4918228fd857a8a5e3cd55705e6dafff91ffe99c320b31b23c03ce0de"
+    },
+    {
+      "slug": "thoi-quen-lam-viec-va-dinh-huong-tong-chi-huy",
+      "file": "memory/facts/thoi-quen-lam-viec-va-dinh-huong-tong-chi-huy.md",
+      "superseded_by": "thoi-quen-lam-viec-chu-so-huu",
+      "superseded_at": "2026-11-24",
+      "sha256": "c0fce2a63615f64ce239d7c9878cb72c36861237d19c97f6cf2a61cc1ddd2c10"
+    }
+  ]
+}

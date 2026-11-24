@@ -2,20 +2,23 @@
 type: workflow
 name: Xây kênh TikTok & YouTube Tự động
 slug: xay-kenh-tiktok-youtube
-team: tm_video_studio
-triggers:
-  - Tạo kịch bản TikTok/YouTube
-  - Dựng video ngắn/dài từ clip thô
-updated: '2026-11-21'
+status: 'off'
+group: Nội dung
+description: "Nghiên cứu hook 3 giây, viết kịch bản Voice-First, kiểm duyệt chính sách và đóng gói đặc tả Motion.md sẵn sàng dựng MP4."
+steps:
+  - agent: grok
+    task: "Nghiên cứu chủ đề hoặc link tham khảo trong {{input}} (đọc phụ đề YouTube nếu có link). Xây dựng kịch bản chuẩn Voice-First: Hook 3 giây đầu -> Body giữ nhịp 3-5 giây/cảnh -> CTA rõ ràng, kèm 3 tiêu đề SEO và 2 ý tưởng Thumbnail."
+    tools: [javis_youtube_read]
+    max_retries: 2
+  - agent: codex
+    task: "Kiểm duyệt kịch bản ở {{prev}}: rà soát từ khóa nhạy cảm dễ bị bóp tương tác hoặc vi phạm bản quyền/cộng đồng TikTok & YouTube; chuẩn hóa bảng phân cảnh theo mốc thời gian (giây) và phụ đề ngắn gọn dễ đọc."
+    max_retries: 2
+  - agent: antigravity
+    task: "Đóng gói sản phẩm từ {{prev}} thành đặc tả kỹ thuật Motion.md tương thích pipeline OpenMotion / FFmpeg (Voice-First, chuẩn 9:16 cho TikTok/Shorts hoặc 16:9 cho YouTube, lưu ý xử lý chữ Đ đầu câu cho Azure TTS). Trình gói hoàn chỉnh ở trạng thái CHỜ CHỦ DUYỆT trước khi render/đăng."
+    max_retries: 2
+updated: '2026-11-24'
 ---
 
-# Quy trình Xây kênh TikTok & YouTube
+# Quy trình Xây kênh TikTok & YouTube Tự động
 
-1. **Nghiên cứu & Hook (`dao-dien-kich-ban-video`):**
-   - Nếu có link tham khảo, dùng `youtube-read` để trích xuất cấu trúc kịch bản.
-   - Viết kịch bản theo khung: Hook (3s đầu) -> Body (giữ chân, nhịp 3-5s/cảnh) -> CTA. Đề xuất 3 Tiêu đề SEO + ý tưởng Thumbnail.
-2. **Kiểm duyệt Chính sách (`kiem-duyet-chat-luong`):**
-   - Rà soát từ khóa nhạy cảm chống bóp tương tác hoặc vi phạm bản quyền/cộng đồng của TikTok và YouTube.
-3. **Sản xuất Hậu kỳ (`ky-thuat-dung-video`):**
-   - Nếu có clip thô hoặc yêu cầu audio: kích hoạt `video-animation-toolkit` (FFmpeg) hoặc `voice-note`, xuất MP4 chuẩn 9:16 (TikTok/Shorts) hoặc 16:9 (YouTube).
-4. **Bàn giao:** Xuất gói hoàn chỉnh gồm Kịch bản + Tiêu đề/Hashtags SEO + File MP4 (nếu có) trình chủ duyệt.
+Workflow 3 bước phối hợp `grok` -> `codex` -> `antigravity` theo quy chuẩn Voice-First và OpenMotion. Mặc định `status: 'off'`, luôn trình chủ duyệt trước bước render hoặc xuất bản.

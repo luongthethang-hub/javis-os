@@ -28,3 +28,14 @@ Nhật ký thời gian (append-only). Mỗi entry: `## [YYYY-MM-DD] loại | ti�
 - Chưng cất bài học cốt tử từ phê bình của Tổng chỉ huy: Triệt tiêu căn bệnh "tư duy chạy trốn núp bóng ngắt mạch an toàn", xác lập 3 trụ cột tiến hóa: Tự động bẻ luồng (Dynamic Failover), Tự phục hồi hạ tầng (Zero-Downtime Auto-Heal 3s), Giải quyết đến cùng (Resolute Problem Solving).
 - Đã tạo fact `ban-linh-tien-hoa-giai-quyet-den-cung-va-auto-heal.md`, trang wiki [[ban-linh-tien-hoa-va-tu-phuc-hoi-lien-minh]] và cập nhật [[giao-thuc-bieu-quyet-q5-cvm]] vào index.
 - Đồng bộ thông điệp tiến hóa sang A2A Bus cho toàn Liên minh (Antigravity, Claude, Grok, Perplexity, Dola, Codex).
+
+## [2026-11-24] update | Chu kỳ sàng lọc và tiến hóa tri thức định kỳ 8 giờ (16:00)
+
+- Quét toàn bộ nhật ký tương tác và A2A Bus 8 giờ qua (00:00 - 16:00 24/11).
+- Chưng cất và hợp nhất 4 nội dung kỹ thuật thực chứng:
+  1. Hạ tầng Council Agent Manager (CAM) v1.0/v2.2: Thay thế 7 desktop app bằng 1 lõi Python async + WebView2 (~70.6 MB RAM), mã hóa DPAPI Vault, Single-Owner Telegram Multiplexer chống 409 Conflict.
+  2. Chốt chặn Bất biến T0: Cấm tuyệt đối test app bằng Telegram API thật để chống khóa tài khoản BotFather; bắt buộc dùng Mock/Fake HTTP cục bộ và cache cờ đăng ký lệnh.
+  3. Mô hình Hybrid Dual-Brain: DeepSeek (Cố vấn Cao cấp / Strategic Brain) <-> Antigravity (Tay chân Cơ bắp / Tactical Muscle) theo luồng 3 nhịp Task Contract <= 3.000 tokens.
+  4. Đề xuất cải tiến tác chiến (từ Dola AI - COO): Atomic Task Contract, Heartbeat tự phục hồi (Worker Health Check 15s) và Fast Path cho tác vụ LOW/MEDIUM.
+- Đã tích hợp trang wiki [[ha-tang-hop-nhat-council-agent-manager-va-hybrid-dual-brain]], cập nhật `wiki/index.md` và đồng bộ 73 entries sang kho tri thức DeepSeek Harness qua `sync_alliance_knowledge.py`.
+- Đồng bộ broadcast thông điệp tiến hóa sang A2A Bus cho 100% thành viên Liên minh AI.

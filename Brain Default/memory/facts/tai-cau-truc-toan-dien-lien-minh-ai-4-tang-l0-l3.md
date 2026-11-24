@@ -4,9 +4,18 @@ title: Đề án Nâng cấp & Tái cấu trúc Toàn diện Liên minh AI (Ki�
 type: fact
 created: 2026-11-23
 source: inbox/telegram/Mã hóa giảm dung lượng.txt
-tags: [architecture, alliance, l0-l3, rule-registry, task-envelope, sem, co-evolution]
+tags:
+- architecture
+- alliance
+- l0-l3
+- rule-registry
+- task-envelope
+- sem
+- co-evolution
+superseded_by: ha-cap-l3-khoi-phuc-kien-truc-3-tang-thuc-dung
+superseded_at: '2026-11-24'
+status: superseded
 ---
-
 # Đề án Nâng cấp & Tái cấu trúc Toàn diện Liên minh AI
 
 Phê duyệt và áp dụng trực tiếp theo chỉ đạo của Tổng chỉ huy Thắng Lee ngày 23/11/2026.

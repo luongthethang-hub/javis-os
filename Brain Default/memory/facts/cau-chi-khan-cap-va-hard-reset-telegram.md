@@ -3,7 +3,9 @@ type: decision
 created: 2026-11-24
 updated: 2026-11-24
 source: chat 2026-11-24 (02:00)
-status: verified
+status: superseded
+superseded_by: cau-chi-khan-cap-va-nut-phanh-telegram
+superseded_at: '2026-11-24'
 ---
 # Cơ chế Cầu chì Khẩn cấp và Hard Reset Ngoại vi (Out-of-Band Kill-Switch)
 

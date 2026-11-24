@@ -2,20 +2,24 @@
 type: workflow
 name: Chăm sóc & Phát triển Fanpage Facebook
 slug: cham-soc-fanpage-facebook
-team: tm_facebook_growth
-triggers:
-  - Lên bài Fanpage Facebook
-  - Kiểm toán hiệu suất bài viết & Meta Ads
-updated: '2026-11-21'
+status: 'off'
+group: Marketing
+description: "Đo hiệu suất Fanpage/Meta Ads, soạn bài 4-1-1 đúng thương hiệu và kiểm duyệt chính sách Meta trước khi trình chủ duyệt."
+steps:
+  - agent: deepseek
+    task: "Đọc dữ liệu thực tế bài viết Fanpage và hiệu suất Meta Ads liên quan tới yêu cầu {{input}}. Phân tích bài thắng (Winning Content), chỉ số tương tác/chuyển đổi, khoảng trống nội dung và đề xuất 1 góc khai thác có căn cứ số liệu E1."
+    tools: [meta_ads_accounts, meta_ads_insights, meta_ads_campaigns, fb_pages_list, fb_page_posts]
+    max_retries: 2
+  - agent: dola
+    task: "Dựa trên phân tích số liệu ở {{prev}} và yêu cầu {{input}}, soạn 01 bài Fanpage Facebook chuẩn cấu trúc 4-1-1 (Tiêu đề dừng lướt -> Nội dung giá trị/câu chuyện thực tế -> CTA dẫn tương tác/Inbox/Zalo) kèm 01 mô tả ý tưởng ảnh minh họa. Giữ giọng tự nhiên, sắc bén, không dùng em dash."
+    max_retries: 2
+  - agent: perplexity
+    task: "Kiểm duyệt bài viết ở {{prev}}: đối soát số liệu với thực tế, lọc từ ngữ vi phạm chính sách Meta Ads và tiêu chuẩn cộng đồng Facebook, gắn nhãn trạng thái CHỜ CHỦ DUYỆT và bàn giao bản sạch sẵn sàng đăng khi chủ đồng ý."
+    verify_agent: claude
+    max_retries: 2
+updated: '2026-11-24'
 ---
 
-# Quy trình Chăm sóc Fanpage Facebook
+# Quy trình Chăm sóc & Phát triển Fanpage Facebook
 
-1. **Đo lường Dữ liệu thực (`chuyen-vien-meta-ads`):**
-   - Dùng `meta-pages-graph` đọc hiệu suất bài đăng gần nhất và `meta-ads-graph` (+ `data-query` nếu số lượng chiến dịch lớn) để xác định bài thắng (Winning Content).
-2. **Sáng tạo Nội dung 4-1-1 (`quan-tri-fanpage-fb`):**
-   - Soạn bài viết chuẩn cấu trúc: Tiêu đề kéo dừng lướt -> Nội dung giá trị/câu chuyện -> CTA dẫn tương tác/Inbox/Zalo.
-   - Đề xuất prompt ảnh minh họa (`image-chatgpt`) hoặc dùng ảnh thực tế của chủ.
-3. **Kiểm duyệt Chính sách (`kiem-duyet-chat-luong`):**
-   - Lọc từ ngữ vi phạm chính sách Meta Ads và tiêu chuẩn cộng đồng Facebook.
-4. **Bàn giao:** Trình chủ duyệt bài viết hoặc lên lịch đăng tự động sau khi có xác nhận.
+Workflow 3 bước sử dụng đội hình Hội đồng hiện hành (`deepseek` -> `dola` -> `perplexity` với `claude` thẩm định cuối). Mặc định để `status: 'off'`; chỉ đăng bài thật sau khi Layer 0 duyệt (cổng A1).

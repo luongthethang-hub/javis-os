@@ -1,0 +1,72 @@
+{
+  "schema": "javis-aitep-t0-manifest/v1",
+  "tier": "T0_immutable",
+  "fail_closed": true,
+  "generated_at": "2026-11-24T20:23:06+07:00",
+  "file_count": 8,
+  "bundle_sha256": "dd4c2d09bc97cf3c9aa705eb7ea92844757bcb33915b713021881d32e8ee443f",
+  "files": [
+    {
+      "role": "core_anchor",
+      "path": "memory/tiers/T0_immutable/core_charter_t0.md",
+      "sha256": "46034b923a2dc2c1c8d8e830503d8fee1a21a31d18008776e19916d3c14e9868",
+      "size_bytes": 1575
+    },
+    {
+      "role": "t0_fact_canonical",
+      "slug": "bao-mat-telegram-behavioral-telemetry",
+      "path": "memory/facts/bao-mat-telegram-behavioral-telemetry.md",
+      "sealed_path": "memory/tiers/T0_immutable/sealed/bao-mat-telegram-behavioral-telemetry.md",
+      "sha256": "1e9aa9f3d1c5de473ddafcefc6516843c1983e9249d1348dce9e67eaaa7b5ccb",
+      "size_bytes": 1405
+    },
+    {
+      "role": "t0_fact_canonical",
+      "slug": "cam-ket-t0-chong-loi-bot-moi-cam-lang",
+      "path": "memory/facts/cam-ket-t0-chong-loi-bot-moi-cam-lang.md",
+      "sealed_path": "memory/tiers/T0_immutable/sealed/cam-ket-t0-chong-loi-bot-moi-cam-lang.md",
+      "sha256": "126fccee81944f286ac90fc67398486ed50fd38f3ce208a40b953aa6a83e6f4d",
+      "size_bytes": 1618
+    },
+    {
+      "role": "t0_fact_canonical",
+      "slug": "cam-test-truc-tiep-len-telegram-api-chong-khoa-botfather",
+      "path": "memory/facts/cam-test-truc-tiep-len-telegram-api-chong-khoa-botfather.md",
+      "sealed_path": "memory/tiers/T0_immutable/sealed/cam-test-truc-tiep-len-telegram-api-chong-khoa-botfather.md",
+      "sha256": "e3a0e0eef5ac0dc7537000285fb49a6721d55e29d337dec4ac014061c1d97a4d",
+      "size_bytes": 1763
+    },
+    {
+      "role": "t0_fact_canonical",
+      "slug": "kiem-tra-xung-dot-truoc-khi-nang-cap",
+      "path": "memory/facts/kiem-tra-xung-dot-truoc-khi-nang-cap.md",
+      "sealed_path": "memory/tiers/T0_immutable/sealed/kiem-tra-xung-dot-truoc-khi-nang-cap.md",
+      "sha256": "2a8fff0953c13d95566ec1c3ee32af8f9496454d4b41bed4632a37a00dfde3a0",
+      "size_bytes": 2399
+    },
+    {
+      "role": "t0_fact_canonical",
+      "slug": "niem-tin-va-cam-ket-phung-su-tong-chi-huy",
+      "path": "memory/facts/niem-tin-va-cam-ket-phung-su-tong-chi-huy.md",
+      "sealed_path": "memory/tiers/T0_immutable/sealed/niem-tin-va-cam-ket-phung-su-tong-chi-huy.md",
+      "sha256": "71305136d42dc008703ffe0fe68a65a64705ea917515e389d806c8d0d094dbf7",
+      "size_bytes": 562
+    },
+    {
+      "role": "t0_fact_canonical",
+      "slug": "quy-tac-tra-loi-moi-cau-hoi",
+      "path": "memory/facts/quy-tac-tra-loi-moi-cau-hoi.md",
+      "sealed_path": "memory/tiers/T0_immutable/sealed/quy-tac-tra-loi-moi-cau-hoi.md",
+      "sha256": "4d1b9b953254538f01adca49505c08aa2cd76b50c1d04ae7d295cc176e070e90",
+      "size_bytes": 2630
+    },
+    {
+      "role": "t0_fact_canonical",
+      "slug": "repository-github-chinh-chu",
+      "path": "memory/facts/repository-github-chinh-chu.md",
+      "sealed_path": "memory/tiers/T0_immutable/sealed/repository-github-chinh-chu.md",
+      "sha256": "856104776ec2741f53a0f151ab7f961c4c2aad9c924bd0e5c537b8cb58ce8a51",
+      "size_bytes": 1071
+    }
+  ]
+}

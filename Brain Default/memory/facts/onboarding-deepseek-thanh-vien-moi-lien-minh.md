@@ -4,10 +4,18 @@ title: Onboarding Thành viên mới DeepSeek (@DeepSeekThangLee_bot) vào Liên
 type: fact
 created: 2026-11-24
 updated: 2026-11-24
-tags: [alliance, deepseek, onboarding, telegram, qc-5, q5-cvm]
+tags:
+- alliance
+- deepseek
+- onboarding
+- telegram
+- qc-5
+- q5-cvm
 source: chat 2026-11-24 (1ea67e84)
+superseded_by: onboarding-deepseek-lien-minh
+superseded_at: '2026-11-24'
+status: superseded
 ---
-
 # Onboarding Thành viên mới DeepSeek (@DeepSeekThangLee_bot)
 
 Triển khai ngày 24/11/2026 theo Giao thức Kết nạp Đa tác tử (Mục 2.5) và Cam kết Hạt nhân T0.

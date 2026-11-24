@@ -24,3 +24,6 @@ source: chat 2026-11-23 (Tổng chỉ huy Thắng Lee duyệt Y)
 1. **Ngưỡng ngắt mạch 5 giây (5s Circuit Breaker):** Nếu bot chủ trì không phản hồi hoặc bận tiến trình quá 5 giây, bot kế cận trong ma trận năng lực QC-5 tự động tiếp quản xử lý ngay lập tức.
 2. **Loại bỏ trung gian Desktop nặng nề:** Giao tiếp qua bus dữ liệu và API thời gian thực, không phụ thuộc vào script cướp chuột/bàn phím Desktop cho các tác vụ điều phối.
 3. **Context chuyển giao tối giản:** Khống chế nghiêm ngặt <= 3.000 tokens gồm mục tiêu, dữ liệu tóm tắt và tiêu chí nghiệm thu.
+
+## 3. Kế thừa từ Đề án L0-L3 (đã hạ cấp)
+- Bảo toàn chu trình bảo trì tri thức **MDACPT** (Merge, Demote, Archive, Compress, Prune, Test) định kỳ 8 giờ và nguyên tắc Rule Registry / TaskPacket (<= 3.000 tokens) ngay trong kiến trúc 3 tầng L0-L1-L2 mà không tách thêm tầng L3 gây phân mảnh.
