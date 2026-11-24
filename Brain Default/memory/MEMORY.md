@@ -64,3 +64,5 @@
 - [Chống treo Javis khi chạy tiến trình nền](facts/chong-treo-javis-khi-chay-tien-trinh-nen.md) - Cấm chạy đồng bộ script vòng lặp vô tận (watchdog/bridge); bắt buộc tách nền pythonw/Start-Process; đặt JAVIS_AGY_TIMEOUT=180.
 - [Giao thức Cố vấn Cao cấp DeepSeek <-> Antigravity](facts/giao-thuc-co-van-deepseek-antigravity.md) - Hybrid Dual-Brain: DeepSeek làm Strategic Brain suy luận sâu, Antigravity làm Tactical Muscle thực thi trong khuôn khổ SSOT Liên minh.
 - [Hoàn thiện Council Agent Manager (CAM) tối ưu RAM hợp nhất Hội đồng AI](facts/council-agent-manager-cam.md) - Ứng dụng hợp nhất Hội đồng Agent (70.6 MB RAM) thay thế 7 giao diện desktop, kết nối trực tiếp Second Brain và DPAPI Vault.
+- [Giao thức CAM <-> Telegram & Đa tài khoản Claude/ChatGPT](facts/giao-thuc-cam-telegram-va-da-tai-khoan.md) - Phân tầng Free (WebView2+Fallback) / Pro-Plus (CLI) / API Key và Single-Owner Telegram Multiplexer chống 409.
+- [Chốt chặn T0: Cấm test trực tiếp lên Telegram API thật](facts/cam-test-truc-tiep-len-telegram-api-chong-khoa-botfather.md) - Bắt buộc dùng Mock khi test, cấm gọi lặp setMyCommands khi restart để chống khóa BotFather.
