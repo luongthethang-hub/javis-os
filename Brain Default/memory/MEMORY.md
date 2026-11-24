@@ -61,4 +61,6 @@
 - [Kích hoạt Gói Tối ưu Tốc độ P0 cho Liên minh AI](facts/toi-uu-toc-do-he-thong-p0.md) - Nâng cấp song song JOBS=3, TOOL_SLOTS=2, giảm tải shell và context gating.
 - [Cơ chế Cầu chì Khẩn cấp và Hard Reset Ngoại vi](facts/cau-chi-khan-cap-va-hard-reset-telegram.md) - Tiến trình Watchdog độc lập nhận lệnh /panic, /reset từ Telegram để ngắt tiến trình treo và giải phóng RAM.
 - [Thói quen Chỉ đạo và Chuyển giao Tác vụ của Chủ sở hữu](facts/thoi-quen-chi-dao-va-chuyen-giao-tac-vu.md) - Thói quen ủy thác desktop apps tiết kiệm token, triệt tiêu lỗi rác, chỉ đạo mức kiến trúc và tiến hóa CUP.
-- [Ch?ng treo Javis khi ch?y ti?n tr�nh n?n](facts/chong-treo-javis-khi-chay-tien-trinh-nen.md) - C?m ch?y d?ng b? script v�ng l?p v� t?n (watchdog/bridge); b?t bu?c t�ch n?n pythonw/Start-Process; d?t JAVIS_AGY_TIMEOUT=180.
+- [Chống treo Javis khi chạy tiến trình nền](facts/chong-treo-javis-khi-chay-tien-trinh-nen.md) - Cấm chạy đồng bộ script vòng lặp vô tận (watchdog/bridge); bắt buộc tách nền pythonw/Start-Process; đặt JAVIS_AGY_TIMEOUT=180.
+- [Giao thức Cố vấn Cao cấp DeepSeek <-> Antigravity](facts/giao-thuc-co-van-deepseek-antigravity.md) - Hybrid Dual-Brain: DeepSeek làm Strategic Brain suy luận sâu, Antigravity làm Tactical Muscle thực thi trong khuôn khổ SSOT Liên minh.
+- [Hoàn thiện Council Agent Manager (CAM) tối ưu RAM hợp nhất Hội đồng AI](facts/council-agent-manager-cam.md) - Ứng dụng hợp nhất Hội đồng Agent (70.6 MB RAM) thay thế 7 giao diện desktop, kết nối trực tiếp Second Brain và DPAPI Vault.

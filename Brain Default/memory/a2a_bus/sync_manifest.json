@@ -1,0 +1,69 @@
+{
+  "schema": "alliance-ssot-sync/2.0",
+  "synced_at": "2026-11-24T03:12:14+07:00",
+  "sync_hash": "478a9381cf6b",
+  "facts_count": 64,
+  "all_verified": true,
+  "targets": {
+    "javis_ssot": {
+      "path": "C:\\Users\\Admin\\JavisOS\\brains\\Brain Default\\memory\\ALLIANCE_KNOWLEDGE_SYNC.md",
+      "status": "MATCH",
+      "sync_hash": "478a9381cf6b",
+      "verified": "PASS"
+    },
+    "a2a_bus_ssot": {
+      "path": "C:\\Users\\Admin\\JavisOS\\brains\\Brain Default\\memory\\a2a_bus\\ALLIANCE_KNOWLEDGE_SYNC.md",
+      "status": "MATCH",
+      "sync_hash": "478a9381cf6b",
+      "verified": "PASS"
+    },
+    "grok_ssot": {
+      "path": "C:\\Users\\Admin\\.grok\\ALLIANCE_KNOWLEDGE_SYNC.md",
+      "status": "MATCH",
+      "sync_hash": "478a9381cf6b",
+      "verified": "PASS"
+    },
+    "deepseek_ssot": {
+      "path": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\deepseek_bridge\\ALLIANCE_KNOWLEDGE_SYNC.md",
+      "status": "MATCH",
+      "sync_hash": "478a9381cf6b",
+      "verified": "PASS"
+    },
+    "claude_global": {
+      "path": "C:\\Users\\Admin\\.claude\\CLAUDE.md",
+      "status": "MATCH",
+      "sync_hash": "478a9381cf6b",
+      "verified": "PASS"
+    },
+    "claude_javis_ws": {
+      "path": "C:\\Users\\Admin\\JavisOS\\CLAUDE.md",
+      "status": "MATCH",
+      "sync_hash": "478a9381cf6b",
+      "verified": "PASS"
+    },
+    "codex_global": {
+      "path": "C:\\Users\\Admin\\.codex\\AGENTS.md",
+      "status": "MATCH",
+      "sync_hash": "478a9381cf6b",
+      "verified": "PASS"
+    },
+    "grok_agents": {
+      "path": "C:\\Users\\Admin\\.grok\\AGENTS.md",
+      "status": "MATCH",
+      "sync_hash": "478a9381cf6b",
+      "verified": "PASS"
+    },
+    "antigravity_rules_1": {
+      "path": "C:\\Users\\Admin\\.gemini\\config\\plugins\\aio-engineer-profile\\rules\\alliance-knowledge-sync.md",
+      "status": "MATCH",
+      "sync_hash": "478a9381cf6b",
+      "verified": "PASS"
+    },
+    "antigravity_rules_2": {
+      "path": "D:\\AI AGENT\\Antigravity Project\\.agents\\rules\\alliance-knowledge-sync.md",
+      "status": "MATCH",
+      "sync_hash": "478a9381cf6b",
+      "verified": "PASS"
+    }
+  }
+}
