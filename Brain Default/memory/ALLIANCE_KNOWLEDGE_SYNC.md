@@ -1,9 +1,9 @@
 <!-- ALLIANCE_SSOT_START -->
-<!-- sync_hash: de6c7acab2e1 | facts_active: 64 | facts_total: 72 | t0_bundle: dd4c2d09bc97 | synced_at: 2026-11-24T20:23:06+07:00 -->
+<!-- sync_hash: 06af2fb5264e | facts_active: 66 | facts_total: 74 | t0_bundle: dd4c2d09bc97 | synced_at: 2026-11-25T00:00:00+07:00 -->
 # ĐỒNG BỘ TRI THỨC LIÊN MINH AI (SINGLE SOURCE OF TRUTH)
 
 - **Nguồn chân lý duy nhất:** `C:\Users\Admin\JavisOS\brains\Brain Default\memory\ALLIANCE_KNOWLEDGE_SYNC.md`
-- **Tổng số ký ức:** 64 hiệu lực (T0: 7, T1: 36, T2: 21) + 8 đã hợp nhất MDACPT = 72/72 tệp.
+- **Tổng số ký ức:** 66 hiệu lực (T0: 7, T1: 36, T2: 23) + 8 đã hợp nhất MDACPT = 74/74 tệp.
 - **T0 SHA-256 Bundle:** `dd4c2d09bc97cf3c` (`memory/tiers/T0_immutable/manifest.sha256.json`)
 - **Cơ cấu Hội đồng (3 tầng thực dụng L0-L1-L2 theo RUULEE v6.0):**
   - **L0 (Principal):** Lương Thế Thắng - Tổng chỉ huy tối cao, duyệt nhanh 1 ký tự (Y/N).
@@ -17,7 +17,7 @@
   5. Clean Typography: danh sách gạch đầu dòng ngắt dòng thoáng, không dùng em dash.
   6. Chưng cất & đồng bộ tri thức định kỳ 8 giờ + Kiểm định xung đột 4 bước (Knowledge Conflict Gate) + Biểu quyết Q5-CVM chống deadlock.
 
-## Chỉ mục Tri thức Hiệu lực (64 mục chuẩn hóa)
+## Chỉ mục Tri thức Hiệu lực (65 mục chuẩn hóa)
 - [T0] [Bảo mật Telegram bằng Behavioral Biometrics](facts/bao-mat-telegram-behavioral-telemetry.md) - Cơ chế bảo mật thích ứng cho Telegram: Fast Path theo văn phong, hạ quyền Safe Mode và hỏi bẫy Second Brain khi lệch hành vi, cảnh báo out-of-band.
 - [T0] [Cam kết Hạt nhân T0: Chống lỗi bot mới câm lặng khi gia nhập](facts/cam-ket-t0-chong-loi-bot-moi-cam-lang.md) - 4 cổng bắt buộc trước khi bàn giao bot mới: cài lệnh setMyCommands, hướng dẫn tắt Group Privacy, watchdog tự hồi sinh và Shadow Test 2 chiều.
 - [T0] [Chốt chặn T0: Cấm test trực tiếp lên Telegram API thật](facts/cam-test-truc-tiep-len-telegram-api-chong-khoa-botfather.md) - Bắt buộc dùng Mock khi test, cấm gọi lặp setMyCommands khi restart để chống khóa BotFather.
@@ -62,9 +62,11 @@
 - [T1] [Giao thức Tổng hợp, Sàng lọc & Tiến hóa Tri thức Liên minh AI](facts/tong-hop-sang-loc-va-nang-cap-tri-thuc-lien-minh.md) - 100% trao đổi kỹ thuật được ghi nhận, sàng lọc chống trùng và đóng gói thành Facts/Rules đồng bộ toàn Liên minh.
 - [T1] [Vòng lặp Đồng bộ & Hiệu chỉnh Tri thức Phản hồi](facts/vong-lap-dong-bo-va-hieu-chinh-tri-thuc-phan-hoi.md) - Giao thức tự động hiệu chỉnh tri thức dựa trên phản hồi của Model đối tác, kiểm toán hạt nhân T0, timeout 10 phút và ngắt an toàn báo Layer 0.
 - [T2] [Lệnh chạy Antigravity CLI](facts/antigravity-cli-command.md) - User xác nhận lệnh chạy Antigravity CLI trong terminal là agy.
+- [T2] [Antigravity tái cấu trúc toàn diện lên RUULEE v6.0 & Intensive AI/Agent Training](facts/antigravity-ruulee-v6-restructure.md) - Tái cấu trúc aio-engineer-profile v2.0.0, AGENTS.md v6.0, 3 skill RUULEE/Training, ruulee_kernel.py và opt-in hook.
 - [T2] [Hồ sơ Nhận diện Hành vi (Behavioral Telemetry Profile)](facts/behavioral-telemetry-profile.md) - Đặc trưng văn phong, khung giờ hoạt động, thang điểm rủi ro và ngân hàng câu hỏi bẫy ngữ cảnh Second Brain cho Telegram.
 - [T2] [Biên bản Hội đồng Tiến hóa Liên minh AI 23/11/2026](facts/bien-ban-hoi-dong-tien-hoa-20261123.md) - Phân vai Blue/Red/Audit chưng cất 4 nhóm nội dung tiến hóa cốt lõi trong ngày.
 - [T2] [Bài học tự chẩn đoán hệ thống CAM (2026-11-24)](facts/cam-distilled-evolution_lesson_2026_11_24.md) - Phát hiện cảnh báo Telegram 409 conflict trên antigravity; giữ Single-Owner Multiplexer và tạm dừng worker an toàn.
+- [T2] [Hoàn tất cấp cứu, khôi phục và tiến hóa CAM v3.1.0](facts/cam-v31-emergency-rescue-and-evolution.md) - Hoàn tất cấp cứu, khôi phục và tiến hóa toàn diện CAM v3.1.0 theo backlog khẩn cấp.
 - [T2] [Chuẩn voice engineering cho video động lực](facts/chuan-voice-engineering-video-dong-luc.md) - Giọng nam NamMinhNeural (-3%, -6Hz) cộng chuỗi DSP FFmpeg tạo độ khàn nội lực; bẫy Azure TTS với chữ Đ viết hoa đầu câu.
 - [T2] [Bàn giao việc bị chặn sang ChatGPT Desktop](facts/chuyen-tac-vu-sang-chatgpt-desktop-khi-bi-chan.md) - Chuyển phần việc còn vướng sang ChatGPT Desktop nếu có công cụ được phép.
 - [T2] [Đồng bộ tri thức Claude Desktop và ChatGPT Desktop](facts/dong-bo-tri-thuc-claude-chatgpt-desktop.md) - Claude Desktop nối lại MCP 23/11 lúc 08:05; ChatGPT Desktop chưa đồng bộ; Claude Alliance Contract mới là đề xuất.
@@ -82,5 +84,5 @@
 - [T2] [Thói quen Chỉ đạo và Chuyển giao Tác vụ của Chủ sở hữu](facts/thoi-quen-chi-dao-va-chuyen-giao-tac-vu.md) - Thói quen ủy thác desktop apps tiết kiệm token, triệt tiêu lỗi rác, chỉ đạo mức kiến trúc và tiến hóa CUP.
 - [T2] [Thói quen làm việc chủ sở hữu](facts/thoi-quen-lam-viec-chu-so-huu.md) - Hồ sơ phong cách chỉ đạo thực tế của Sếp Thắng: Zero Fluff, Low Latency, Clean Typography, San tải linh hoạt.
 - [T2] [Tên trợ lý là Javis](facts/tro-ly-duoc-goi-la-javis.md) - Người dùng muốn gọi trợ lý là Javis.
-- **Mã kiểm chứng đồng bộ (sync_hash):** `de6c7acab2e1`
+- **Mã kiểm chứng đồng bộ (sync_hash):** `06af2fb5264e`
 <!-- ALLIANCE_SSOT_END -->

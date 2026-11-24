@@ -6,8 +6,8 @@
     "episodic_lesson_decay_days": 30,
     "promotion_gate": "Shadow Test + CUP -> L0 approval"
   },
-  "generated_at": "2026-11-24T20:23:06+07:00",
-  "count": 21,
+  "generated_at": "2026-11-25T00:00:00+07:00",
+  "count": 23,
   "items": [
     {
       "slug": "antigravity-cli-command",
@@ -25,6 +25,23 @@
       "half_life_days": 45,
       "review_after": "2027-02-15",
       "confidence": 0.8
+    },
+    {
+      "slug": "antigravity-ruulee-v6-restructure",
+      "title": "Antigravity tái cấu trúc toàn diện lên RUULEE v6.0 & Intensive AI/Agent Training",
+      "summary": "Tái cấu trúc aio-engineer-profile v2.0.0, AGENTS.md v6.0, 3 skill RUULEE/Training, ruulee_kernel.py và opt-in hook.",
+      "tier": "T2",
+      "type": "system",
+      "file": "memory/facts/antigravity-ruulee-v6-restructure.md",
+      "created": "2026-11-24",
+      "updated": "2026-11-24",
+      "provenance": "antigravity-bridge (chat 2026-11-24 3171e303)",
+      "sha256": "b244868517bfab69a4abea522df813685b0daa4ae390ba61091d272245813edf",
+      "size_bytes": 864,
+      "decay_days": 90,
+      "half_life_days": 45,
+      "review_after": "2027-02-22",
+      "confidence": 0.9
     },
     {
       "slug": "behavioral-telemetry-profile",
@@ -76,6 +93,23 @@
       "half_life_days": 15,
       "review_after": "2026-12-24",
       "confidence": 0.8
+    },
+    {
+      "slug": "cam-v31-emergency-rescue-and-evolution",
+      "title": "Hoàn tất cấp cứu, khôi phục và tiến hóa CAM v3.1.0",
+      "summary": "Hoàn tất cấp cứu, khôi phục và tiến hóa toàn diện CAM v3.1.0 theo backlog khẩn cấp.",
+      "tier": "T2",
+      "type": "system",
+      "file": "memory/facts/cam-v31-emergency-rescue-and-evolution.md",
+      "created": "2026-11-24",
+      "updated": "2026-11-24",
+      "provenance": "antigravity-bridge",
+      "sha256": "186426ad19fa74611e8845ba6ff995409a7d2bc32487274613e69103a7751e10",
+      "size_bytes": 890,
+      "decay_days": 90,
+      "half_life_days": 45,
+      "review_after": "2027-02-22",
+      "confidence": 0.95
     },
     {
       "slug": "chuan-voice-engineering-video-dong-luc",

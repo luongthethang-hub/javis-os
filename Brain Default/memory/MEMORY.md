@@ -73,3 +73,8 @@
 - [Thói quen làm việc chủ sở hữu](facts/thoi-quen-lam-viec-chu-so-huu.md) - Hồ sơ phong cách chỉ đạo thực tế của Sếp Thắng: Zero Fluff, Low Latency, Clean Typography, San tải linh hoạt.
 - [Tên trợ lý là Javis](facts/tro-ly-duoc-goi-la-javis.md) - Người dùng muốn gọi trợ lý là Javis.
 - [Antigravity tái cấu trúc toàn diện lên RUULEE v6.0 & Intensive AI/Agent Training](facts/antigravity-ruulee-v6-restructure.md) - Antigravity nâng cấp aio-engineer-profile v2.0.0: RUULEE v6.0, 2 skill huấn luyện, ruulee_kernel.py và audit E1..
+- [Hoàn tất cấp cứu, khôi phục và tiến hóa CAM v3.1.0](facts/cam-v31-emergency-rescue-and-evolution.md) - Hoàn tất cấp cứu, khôi phục và tiến hóa toàn diện CAM v3.1.0 theo backlog khẩn cấp.
+- [Ghi nhớ quà API apikey.fan & Thành lập Hội đồng Tác chiến RUULEE v6.0](facts/apikey-fan-gift-and-ruulee-hybrid-council.md) - Lưu DPAPI nguồn apikey.fan (GPT-6.2 Astra/Sol + Claude Opus/Sonnet 4.5) & dựng Hội đồng RUULEE v6.0.
+- [L0 Directive: Kích hoạt vòng lặp tiến hóa RUULEE v6.0 trong mọi câu trả lời](facts/kich-hoat-vong-lap-tien-hoa-moi-cau-tra-loi.md) - Chỉ thị L0: Kích hoạt vòng lặp tiến hóa RUULEE v6.0 ở mọi lượt trả lời.
+- [Tối ưu tiết kiệm 54-100% token Hội đồng RUULEE v6.0 (Shadow Verified)](facts/cost-gated-council-token-optimization.md) - Shadow Test giảm 54.4% cold token (3,999->1,823) và 0-token cho lượt thường/cache.
+- [Chưng cất D:\\AI AGENT\\Tài liệu: Điều phối minh bạch & Khóa bằng chứng E1..E5](facts/distilled-tai-lieu-agent-transparent-dispatch.md) - Chưng cất 26 tệp Tài liệu: Điều phối minh bạch dispatch_trace, khóa E1..E5 với A0..A4.

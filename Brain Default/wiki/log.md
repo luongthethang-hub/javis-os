@@ -39,3 +39,16 @@ Nhật ký thời gian (append-only). Mỗi entry: `## [YYYY-MM-DD] loại | ti�
   4. Đề xuất cải tiến tác chiến (từ Dola AI - COO): Atomic Task Contract, Heartbeat tự phục hồi (Worker Health Check 15s) và Fast Path cho tác vụ LOW/MEDIUM.
 - Đã tích hợp trang wiki [[ha-tang-hop-nhat-council-agent-manager-va-hybrid-dual-brain]], cập nhật `wiki/index.md` và đồng bộ 73 entries sang kho tri thức DeepSeek Harness qua `sync_alliance_knowledge.py`.
 - Đồng bộ broadcast thông điệp tiến hóa sang A2A Bus cho 100% thành viên Liên minh AI.
+
+## [2026-11-25] update | Chu kỳ sàng lọc và tiến hóa tri thức định kỳ 8 giờ (00:00)
+
+- Quét toàn bộ nhật ký tương tác và A2A Bus trong 8 giờ qua (16:00 24/11 - 00:00 25/11).
+- Chưng cất và hợp nhất 5 cụm tri thức thực chứng:
+  1. Kiến trúc 3 tầng L0-L1-L2 thực dụng: Xóa bỏ hoàn toàn tầng L3 trung gian, khôi phục cấu trúc chỉ huy phẳng, san việc trực tiếp qua Task Contract <= 3.000 tokens và Circuit Breaker 5s.
+  2. Chuẩn hóa RUULEE v6.0 & Nghiệm thu Pha 3: File AGENTS.md tinh gọn 16.879 bytes UTF-8, bộ công cụ ruulee_kernel.py, 2 skill huấn luyện chuyên sâu, pass 15/15 FMEA + 85/85 regression tests, khóa bất biến CLAUDE.md.
+  3. Cơ chế Cầu chì Khẩn cấp 2 lớp: In-Band qua /panic, /hard_reset và Out-of-Band qua Watchdog Daemon độc lập (< 15 MB RAM, poll 1.5s).
+  4. Tiến hóa Council Agent Manager (CAM) v3.1.0: Relay apikey.fan mở khóa Claude 3.7 Sonnet CLI (0 MB app), phân tầng 6 tài khoản, gỡ fallback, chống cướp lượt Y, pass 36/36 test, cam_doctor HEALTHY.
+  5. Bắt tay giao thức 2 chiều ai-alliance/v1 DeepSeek Harness Desktop (DSH) <-> Antigravity qua inbox JSON và công cụ antigravity-reply/chat.js.
+- Đã xuất bản trang wiki mới [[kien-truc-l0-l1-l2-thuc-dung-va-tien-hoa-cam-v31]], cập nhật `wiki/index.md`.
+- Đã đăng ký fact mới `cam-v31-emergency-rescue-and-evolution.md` vào T2 Adaptive Registry, cập nhật tổng số 66 active facts (74 tổng kho).
+- Đồng bộ toàn diện SSOT mới và quy chuẩn tới các thành viên Liên minh AI.

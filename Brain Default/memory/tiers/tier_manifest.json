@@ -1,12 +1,12 @@
 {
   "schema": "javis-memory-tiers/v1",
-  "generated_at": "2026-11-24T20:23:06+07:00",
+  "generated_at": "2026-11-25T00:00:00+07:00",
   "totals": {
-    "all_fact_files": 72,
-    "active_facts": 64,
+    "all_fact_files": 74,
+    "active_facts": 66,
     "t0_immutable": 7,
     "t1_governed": 36,
-    "t2_adaptive": 21,
+    "t2_adaptive": 23,
     "superseded": 8
   },
   "t0_bundle_sha256": "dd4c2d09bc97cf3c9aa705eb7ea92844757bcb33915b713021881d32e8ee443f",

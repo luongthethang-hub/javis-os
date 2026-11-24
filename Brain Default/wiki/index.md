@@ -14,6 +14,7 @@ _(Chưa có trang wiki nào. Thả source vào `sources/` rồi bảo Javis "ti�
 - [[ban-linh-tien-hoa-va-tu-phuc-hoi-lien-minh]] - Nguyên tắc bản lĩnh tiến hóa giải quyết đến cùng, chống tư duy bỏ cuộc núp bóng ngắt an toàn và kiến trúc tự phục hồi 3 giây.
 - [[kien-truc-cau-chi-khan-cap-va-hard-reset]] - Kiến trúc cầu chì ngoại vi (Out-of-Band Kill-Switch) và phanh khẩn cấp từ xa qua Telegram.
 - [[ha-tang-hop-nhat-council-agent-manager-va-hybrid-dual-brain]] - Hạ tầng hợp nhất Council Agent Manager (CAM 70.6MB RAM), chốt chặn T0 chống khóa Telegram và mô hình tác chiến Hybrid Dual-Brain (DeepSeek - Antigravity).
+- [[kien-truc-l0-l1-l2-thuc-dung-va-tien-hoa-cam-v31]] - Kiến trúc 3 tầng L0-L1-L2 thực dụng, nghiệm thu Pha 3 chuẩn RUULEE v6.0, cầu chì Telegram 2 lớp, tiến hóa CAM v3.1.0 và bắt tay 2 chiều DeepSeek DSH.
 
 - [[chien-luoc-uy-thac-lien-ung-dung-theo-thoi-quen]] - Chiến lược ủy thác liên ứng dụng (Claude/ChatGPT Desktop), tận dụng gói thuê bao tiết kiệm token và cơ chế tự tiến hóa theo thói quen người dùng.
 
