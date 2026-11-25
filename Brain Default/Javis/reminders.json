@@ -4,7 +4,7 @@
       "id": "r_985c9cd87d",
       "text": "Chay chu ky sang loc va tien hoa tri thuc toan Lien minh AI (dinh ky 8 gio)",
       "mode": "task",
-      "due_at": 1795568400.0,
+      "due_at": 1795597200.0,
       "chat_id": "-1004479278576",
       "repeat_min": 0,
       "cron": "0 */8 * * *",
@@ -17,10 +17,10 @@
       "call": false,
       "created_by": "user",
       "created_at": 1795435011.8945584,
-      "fired_at": 1795540877.4718387,
-      "result": "Chu kỳ sàng lọc và tiến hóa tri thức định kỳ 8 giờ (mốc 00:00 ngày 25/11) đã hoàn tất thành công trên toàn Liên minh AI.\n\nCác kết quả kỹ thuật cốt lõi đã thực thi:\n\n- Đã quét toàn bộ nhật ký tương tác và A2A Bus trong 8 giờ qua (16:00 24/11 - 00:00 25/11), chưng cất thành công 5 cụm tri thức thực chứng qua Cổng kiểm định 4 bước.\n- Khôi phục Kiến trúc 3 tầng L0-L1-L2 thực dụng: Xóa bỏ hoàn toàn tầng L3 trung gian, xác lập quan hệ điều hành phẳng, san việc trực tiếp với Circuit Breaker 5 giây và Task Contract dưới 3.000 tokens.\n- Nghiệm thu Pha 3 RUULEE v6.0 đạt PRODUCTION_READY: File `AGENTS.md` tinh gọn còn 16.879 bytes UTF-8 (dưới trần 20KB), vượt qua 15/15 ca kiểm thử FMEA, 15/15 runtime test và 85/85 core regression test; khóa bất biến vĩnh viễn `CLAUDE.md` chống bloat prompt.\n- Chuẩn hóa Cầu chì khẩn cấp 2 lớp: Tầng 1 In-Band qua lệnh `/panic`, `/hard_reset` và Tầng 2 Out-of-Band qua Watchdog Daemon độc lập (< 15 MB RAM, chu kỳ quét 1.5s).\n- Cấp cứu và tiến hóa toàn diện Council Agent Manager (CAM) v3.1.0: Tích hợp Relay `apikey.fan` mở khóa Claude 3.7 Sonnet CLI (0 MB Desktop app), phân tầng 6 tài khoản, gỡ bỏ lỗi cướp lượt duyệt Y, pass 36/36 test, `cam_doctor` HEALTHY.\n- Xác lập kênh bắt tay 2 chiều DeepSeek Harness Desktop (DSH) và Antigravity qua giao thức `ai-alliance/v1`, tự động mirror vào Javis A2A Bus theo nguyên tắc an ninh Untrusted Data (GOV-005).\n- Xuất bản trang wiki mới `wiki/kien-truc-l0-l1-l2-thuc-dung-va-tien-hoa-cam-v31.md`, cập nhật `wiki/index.md` và ghi nhận nhật ký `wiki/log.md`.\n- Đăng ký fact mới `cam-v31-emergency-rescue-and-evolution.md` vào T2 Adaptive Registry, cập nhật kho tri thức đạt 66 facts hiệu lực (74 tệp tổng kho).\n- Đồng bộ toàn diện SSOT mới (`sync_hash: 06af2fb5264e`, 80 entries DeepSeek) tới 100% mục tiêu trên các thành viên Liên minh và phát thông điệp tiến hóa `evolution_broadcast_8h` qua A2A Bus.",
-      "error": "",
-      "last_slot": 1795539600.0
+      "fired_at": 1795568584.6298115,
+      "result": "",
+      "error": "Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 166h27m5s.",
+      "last_slot": 1795568400.0
     },
     {
       "id": "r_a2a35a29f8",
@@ -67,5 +67,5 @@
       "last_slot": 1795453982.0767393
     }
   ],
-  "updated": 1795540877.4729455
+  "updated": 1795568584.6308527
 }
