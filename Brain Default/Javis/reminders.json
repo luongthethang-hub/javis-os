@@ -4,7 +4,7 @@
       "id": "r_985c9cd87d",
       "text": "Chay chu ky sang loc va tien hoa tri thuc toan Lien minh AI (dinh ky 8 gio)",
       "mode": "task",
-      "due_at": 1795597200.0,
+      "due_at": 1795626000.0,
       "chat_id": "-1004479278576",
       "repeat_min": 0,
       "cron": "0 */8 * * *",
@@ -17,10 +17,10 @@
       "call": false,
       "created_by": "user",
       "created_at": 1795435011.8945584,
-      "fired_at": 1795568584.6298115,
-      "result": "",
-      "error": "Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 166h27m5s.",
-      "last_slot": 1795568400.0
+      "fired_at": 1795597593.900355,
+      "result": "Chu kỳ 08:00–16:00 ngày 25/11/2026 **chỉ chạy được ở chế độ kiểm tra**: đã sàng lọc thử 50 mục tri thức CAM, không ghi thêm mục nào.\n\nBản ghi Hội đồng v4 đã có ở Javis và Antigravity; chưa xác minh được bản tương ứng ở Claude và DeepSeek. Chu kỳ 8 giờ chưa hoàn tất vì tác vụ Windows không còn đăng ký và script gốc không còn ở đường dẫn cấu hình.",
+      "error": "",
+      "last_slot": 1795597200.0
     },
     {
       "id": "r_a2a35a29f8",
@@ -67,5 +67,5 @@
       "last_slot": 1795453982.0767393
     }
   ],
-  "updated": 1795568584.6308527
+  "updated": 1795597593.9013197
 }
