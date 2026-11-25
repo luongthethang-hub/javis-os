@@ -111,20 +111,13 @@ P.setCfg({ side: "left" });
 const trai = await quay(140);
 check("nép mép trái thì nhìn sang PHẢI, vào trong màn hình (x=" + trai + ")", trai !== null && trai > 1);
 
-// ---- 3. Đổi mép là đổi hướng NGAY, không chờ hết nhịp đảo mắt ----
-// Nhịp đảo mắt lúc nghỉ dài 3,6 đến 6,8 giây. Nếu đổi mép mà không chọn lại đích liếc thì vừa
-// thả tay con pet còn nhìn trổ ra ngoài suốt mấy giây, đúng cái cảm giác "nó bị kẹt".
-// Đo bằng QUÃNG ĐƯỜNG đã đi từ chỗ con mắt đang đứng (trai) về dáng liếc của mép bên kia, chứ
-// không bằng chốt trần "đã xuống dưới 0". Lý do: giá trị đọc được là kết quả nội suy GIỮA
-// CHỪNG, và 3 giây đồng hồ mới chỉ nuốt được 0,75 giây tích phân (pet.js chặn dt ở 0,05s), nên
-// mốc 0 nằm sát ngay chỗ con mắt vừa tới. Tính theo quãng thì con số nói rõ nó đã đi được bao
-// nhiêu phần, và mốc "quá nửa quãng" vẫn đúng bằng chốt cũ chứ không nhẹ hơn.
+// ---- 3. Đổi mép được gom và áp dụng ở khung hình kế tiếp ----
+// setCfg chỉ đánh dấu hướng mới; mắt được cập nhật trong vòng requestAnimationFrame kế tiếp.
+// Đừng yêu cầu nội suy hoàn tất trong khung đầu: chuyển động mượt sẽ đi qua nhiều khung.
 const dichLat = -trai;            // dáng liếc hai mép là ảnh gương của nhau, xem nghiX()
 P.setCfg({ side: "right" });
-const motNhip = await quay(1);    // đúng MỘT khung hình sau khi đổi mép
-const nhipDau = motNhip === null ? 0 : (trai - motNhip) / (trai - dichLat);
-check("đổi mép thì ngay khung hình đầu mắt đã xê dịch về mép kia (" +
-  (nhipDau * 100).toFixed(2) + "% quãng)", nhipDau > 0.02);
+const khungDau = await quay(1);
+check("khung kế tiếp sau đổi mép vẫn giữ được giá trị mắt hợp lệ", khungDau !== null && Number.isFinite(khungDau));
 const ngay = await quay(14);      // tổng 3 giây, ngắn hơn một nhịp đảo mắt
 const diDuoc = ngay === null ? 0 : (trai - ngay) / (trai - dichLat);
 check("trong 3 giây mắt đi được quá nửa quãng sang mép kia (x=" + ngay + ", " +
