@@ -51,6 +51,7 @@
 - [Vòng lặp Đồng bộ & Hiệu chỉnh Tri thức Phản hồi](facts/vong-lap-dong-bo-va-hieu-chinh-tri-thuc-phan-hoi.md) - Giao thức tự động hiệu chỉnh tri thức dựa trên phản hồi của Model đối tác, kiểm toán hạt nhân T0, timeout 10 phút và ngắt an toàn báo Layer 0.
 
 ## T2 - Hồ sơ, Sở thích & Tri thức Thích ứng (Adaptive / Decay)
+- [Ngân sách trợ giúp khi tự sửa thất bại](facts/ngan-sach-cuu-ho-tra-phi.md) - Thiết kế cứu hộ giới hạn API trả phí ở 3.000 token/ngày.
 - [Lệnh chạy Antigravity CLI](facts/antigravity-cli-command.md) - User xác nhận lệnh chạy Antigravity CLI trong terminal là agy.
 - [Hồ sơ Nhận diện Hành vi (Behavioral Telemetry Profile)](facts/behavioral-telemetry-profile.md) - Đặc trưng văn phong, khung giờ hoạt động, thang điểm rủi ro và ngân hàng câu hỏi bẫy ngữ cảnh Second Brain cho Telegram.
 - [Biên bản Hội đồng Tiến hóa Liên minh AI 23/11/2026](facts/bien-ban-hoi-dong-tien-hoa-20261123.md) - Phân vai Blue/Red/Audit chưng cất 4 nhóm nội dung tiến hóa cốt lõi trong ngày.
@@ -79,3 +80,6 @@
 - [Tối ưu tiết kiệm 54-100% token Hội đồng RUULEE v6.0 (Shadow Verified)](facts/cost-gated-council-token-optimization.md) - Shadow Test giảm 54.4% cold token (3,999->1,823) và 0-token cho lượt thường/cache.
 - [Chưng cất D:\\AI AGENT\\Tài liệu: Điều phối minh bạch & Khóa bằng chứng E1..E5](facts/distilled-tai-lieu-agent-transparent-dispatch.md) - Chưng cất 26 tệp Tài liệu: Điều phối minh bạch dispatch_trace, khóa E1..E5 với A0..A4.
 - [Hội đồng v4: chỉ CAM + Claude + DeepSeek, phản hồi Sếp tự th](facts/cam-distilled-h_i_ng_v4_ch_cam_claude_deepseek_ph_n_h_.md) - [CAM E1] 2026-11-25: Sếp chốt hội đồng chỉ còn CAM (L1, 0-token), Claude (trưởng nhóm kỹ thuật
+- [CAM Company: kien truc van phong moi](facts/cam-distilled-cam_company_kien_truc_van_phong_moi.md) - [CAM E1] CAM Company chay tai /company (cam_core/company.py, company_api.py, templates/company
+- [Bài học tự chẩn đoán hệ thống (2026-11-25)](facts/cam-distilled-evolution_lesson_2026_11_25.md) - [CAM E1] Phát hiện các cảnh báo/lỗi trong nhật ký chạy gần nhất cần phòng ngừa tái diễn:
+- [Cột sống CAM và vận hành ổn định](facts/cam-cot-song-va-van-hanh-on-dinh.md) - Bản chưng cất CAM vào Second Brain: đường nhanh giảm đọc thừa, chốt single-owner Telegram 409, TaskPacket và giới hạn bằng chứng (2026-11-26).

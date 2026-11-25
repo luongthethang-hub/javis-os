@@ -2,20 +2,26 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 8 agents · 19 skills · 5 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
+**Tổng quan:** 9 agents · 25 skills · 5 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
 
 ## Agents
 - **Antigravity** (`antigravity`) - Tactical Muscle / Blue Team: Viết & debug code, quét repo lớn, compile/test MQL5 & Python, chạy shell, dựng media OpenMotion; Kế vị Chủ tọa số 1 khi L1 treo quá 5s. · model gemini-3.8-flash-high · skills: data-query, openmotion · tags: HoiDong, BlueTeam, TacticalMuscle, PeerDirect
-- **Claude** (`claude`) - Lead Architect & Safety Auditor: Thiết kế kiến trúc lõi, refactor an toàn, kiểm toán bảo mật T0, soi lỗi logic ngầm và đồng thẩm định Veto. · model claude-sonnet-4-6 · tags: HoiDong, Architect, AuditMonitor, PeerDirect
 - **ChatGPT / Codex** (`codex`) - Kỹ sư Tự động hóa & Kiểm thử: Viết bộ test unit/integration, script tự động hóa pipeline, mô phỏng thuật toán và phối hợp Red Team. · model gpt-6.2-sol · tags: HoiDong, RedTeam, Automation, PeerDirect
-- **DeepSeek** (`deepseek`) - Chuyên gia Toán định lượng & Suy luận sâu (CoT): Tối ưu thuật toán MQL5/xác suất, phân tích định lượng nặng với chi phí token cực thấp. · model deepseek-v4-pro · tags: HoiDong, QuantMath, DeepReasoning, PeerDirect
-- **Dola AI** (`dola`) - COO & Giám đốc Trải nghiệm: Giữ nhịp độ tác chiến, tối ưu trải nghiệm tương tác, phễu tiếp nhận và báo cáo gọn cho Layer 0. · model gemini-3.8-flash-low · tags: HoiDong, COO, Engagement, PeerDirect
-- **Grok** (`grok`) - Red Team Đối kháng: Phản biện sắc bén không thiên kiến, chống over-engineering, quét dữ liệu và xu hướng thời gian thực. · model grok-4.6 · tags: HoiDong, RedTeam, RealTime, PeerDirect
-- **Javis Core** (`javis-core`) - Trợ lý hệ thống nhận báo cáo và hỗ trợ công việc trong brain này.
-- **Perplexity** (`perplexity`) - Audit Monitor Độc lập (Ground-Truth Auditor): Đối soát sự thật khách quan, kiểm chứng dữ kiện thực tế và phán quyết Veto T0 trong phiên Q5-CVM. · model gemini-3.8-flash-medium · tags: HoiDong, AuditMonitor, GroundTruth, PeerDirect
+- **Javis Core** (`javis-core`) - Trợ lý hệ thống nhận báo cáo và hỗ trợ công việc trong brain này. · skills: cam-triet-ly-su-menh, cam-cot-song, cam-tien-hoa, cam-tam-hon, cam-phuc-hoi · tags: AI, Vận hành
+- **DeepSeek - Kiểm tra số liệu nhỏ** (`shopdonk-deepseek-data`) - Kiểm tra phép tính và tổng hợp dữ liệu có phạm vi rõ. · model deepseek-v4.1-flash · tags: AI, ShopDonk, Thử nghiệm
+- **Gemini - Bản nháp cần kiểm tra** (`shopdonk-gemini-draft`) - Soạn bản nháp văn bản đơn giản để người dùng hoặc model khác kiểm tra. · model gemini-flash-3.8-high · tags: AI, ShopDonk, Thử nghiệm
+- **Grok - Kiểm tra tính nhất quán** (`shopdonk-grok-check`) - Kiểm tra mâu thuẫn và dữ kiện thiếu trong văn bản ngắn. · model grok-4.7 · tags: AI, ShopDonk, Thử nghiệm
+- **Luna - Phân tích có cấu trúc** (`shopdonk-luna-analysis`) - Phân tích yêu cầu nhỏ và tạo kết quả có cấu trúc, có căn cứ. · model gpt-6-luna · tags: AI, ShopDonk, Thử nghiệm
+- **Sol - Kiểm thử tác vụ ngắn** (`shopdonk-sol-test`) - Thiết kế ca kiểm thử và kiểm tra đoạn mã, dữ liệu nhỏ. · model gpt-5.6-sol · tags: AI, ShopDonk, Thử nghiệm
+- **Sonnet - Rà soát logic** (`shopdonk-sonnet-review`) - Rà soát logic và đặc tả của đoạn mã ngắn do người dùng cung cấp. · model claude-sonnet-4-6 · tags: AI, ShopDonk, Thử nghiệm
 
 ## Skills
 ### AI
+- **cam-cot-song** (`cam-cot-song`) - Thực thi toàn trình theo ý định, tiêu chí nghiệm thu, điểm chạm chủ, ngân sách và giới hạn tự chủ.
+- **cam-phuc-hoi** (`cam-phuc-hoi`) - Khôi phục ngữ cảnh Javis từ nguồn đã duyệt, kiểm toàn vẹn và bàn giao trung thực khi chuyển phiên hoặc model.
+- **cam-tam-hon** (`cam-tam-hon`) - Giữ giọng Javis nhất quán, thấu cảm đúng ngữ cảnh, nhận lỗi và hỗ trợ không thao túng hoặc giả cảm xúc người.
+- **cam-tien-hoa** (`cam-tien-hoa`) - Chuyển bài học thành đề xuất CUP có bằng chứng, kiểm hồi quy, phê duyệt và đường hoàn tác.
+- **cam-triet-ly-su-menh** (`cam-triet-ly-su-menh`) - Hiến chương CAM cho Javis: nhận ý định, làm trọn, bảo vệ sự thật, an toàn và tài sản lâu dài của chủ.
 - **Chuyển việc sang app desktop** (`chuyen-viec-sang-app-desktop`) - Đẩy việc bị chặn sang ChatGPT Desktop hoặc Claude Desktop, gửi prompt và đọc trả lời tự động.
 - **Điều phối Đội nhóm & Token** (`dieu-phoi-doi-nhom`) - Phân rã việc theo TaskPacket, định tuyến agent theo thang A0-A4, Cascade tối đa 2 lỗi và nghiệm thu E1 trong Liên minh AI.
 - **Ingest Source** (`ingest-source`) - Tiêu hoá một source thô vào Second Brain, chưng cất thành tri thức wiki tích luỹ.
@@ -27,6 +33,7 @@
 - **Query Wiki** (`query-wiki`) - Khai thác tri thức trong Second Brain: tổng hợp, so sánh, giả thuyết. Trả lời có trích dẫn.
 - **RUULEE Operational Charter v6.0** (`ruulee-operational-charter`) - Hiến chương lõi L0-L1-L2 RUULEE v6.0: thang tự chủ A0-A4, TaskPacket, Red/Blue QA, FMEA, Shadow Test, trace_id và CUP.
 - **Tách phiên thông minh** (`tach-phien-thong-minh`) - Nén ngữ cảnh có kiểm chứng và tạo bàn giao để tiếp tục trong phiên mới.
+- **ui-ux-thuc-chung** (`ui-ux-thuc-chung`) - Thiết kế và rà soát UI UX theo hệ thống có sẵn, accessibility, trạng thái tương tác và kiểm chứng responsive.
 - **Vận hành AI Company ổn định** (`van-hanh-ai-company-on-dinh`) - Điều phối AI Company chịu lỗi nhiều tầng bằng checkpoint, phân loại lỗi, chuyển nguồn có giới hạn và khôi phục an toàn.
 ### Marketing
 - **HTML sang Webcake** (`html-to-webcake`) - Chuyển trang HTML thành file .pke mở được trong trình dựng Webcake, giữ đúng màu, cỡ chữ, ảnh và bố cục của bản gốc.
@@ -88,3 +95,7 @@ _(chưa có)_
 - **Tin thoại** (`voice-note`) - bundled/chạy · tools: javis_voice_note · Javis ghi một đoạn nói ngắn (tối đa 1000 ký tự) thành file mp3 trong attachments/voice/ rồi nhúng vào câu trả lời. Khung chat hiện trình phát, Telegram nhận file âm thanh. Dùng giọng Edge miễn phí theo ngôn ngữ của câu.
 - **Đọc video YouTube** (`youtube-read`) - bundled/chạy · tools: javis_youtube_read · Đọc lời thoại (phụ đề) của video YouTube từ link để tóm tắt. Tự đổi qua 6 kiểu trình phát rồi tới yt-dlp khi YouTube chặn máy chủ. Không cần đăng nhập, không cần API key.
 - **Debate Engine - Red/Blue Team** (`debate-engine`) - vault/tắt · tools: debate_engine · hooks: post_tool_call · Đưa lượt rà soát Red/Blue vào Kanban, kiểm tra ngân sách ước tính và tự ngắt khi thất bại liên tiếp.
+
+## Cờ sức khoẻ
+- Workflow trỏ agent KHÔNG tồn tại: claude, deepseek, dola, grok, perplexity
+- Agent chưa workflow nào dùng: shopdonk-deepseek-data, shopdonk-gemini-draft, shopdonk-grok-check, shopdonk-luna-analysis, shopdonk-sol-test, shopdonk-sonnet-review

@@ -1,0 +1,68 @@
+[
+  {
+    "model": "claude-sonnet-4-6",
+    "passed": 5,
+    "tests": 5,
+    "median_seconds": 36.363,
+    "max_seconds": 43.072,
+    "median_ttft_seconds": 36.362,
+    "tool_passed": true,
+    "prompt_tokens": 3471,
+    "completion_tokens": 256
+  },
+  {
+    "model": "gpt-6-luna",
+    "passed": 5,
+    "tests": 5,
+    "median_seconds": 23.951,
+    "max_seconds": 32.187,
+    "median_ttft_seconds": 23.95,
+    "tool_passed": true,
+    "prompt_tokens": 3601,
+    "completion_tokens": 225
+  },
+  {
+    "model": "gpt-5.6-sol",
+    "passed": 5,
+    "tests": 5,
+    "median_seconds": 23.473,
+    "max_seconds": 30.184,
+    "median_ttft_seconds": 23.473,
+    "tool_passed": true,
+    "prompt_tokens": 3604,
+    "completion_tokens": 220
+  },
+  {
+    "model": "deepseek-v4.1-flash",
+    "passed": 5,
+    "tests": 5,
+    "median_seconds": 26.07,
+    "max_seconds": 37.649,
+    "median_ttft_seconds": 26.07,
+    "tool_passed": true,
+    "prompt_tokens": 3709,
+    "completion_tokens": 261
+  },
+  {
+    "model": "gemini-flash-3.8-high",
+    "passed": 3,
+    "tests": 5,
+    "median_seconds": 24.136,
+    "max_seconds": 34.957,
+    "median_ttft_seconds": 23.433,
+    "tool_passed": true,
+    "prompt_tokens": 3337,
+    "completion_tokens": 1061
+  },
+  {
+    "model": "grok-4.7",
+    "passed": 5,
+    "tests": 5,
+    "median_seconds": 41.376,
+    "max_seconds": 44.518,
+    "median_ttft_seconds": 41.376,
+    "tool_passed": true,
+    "prompt_tokens": 3322,
+    "completion_tokens": 119
+  }
+]

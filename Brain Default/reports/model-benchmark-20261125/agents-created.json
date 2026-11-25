@@ -1,0 +1,32 @@
+[
+  {
+    "path": "agents/shopdonk-sonnet-review.md",
+    "model": "claude-sonnet-4-6",
+    "name": "ShopDonk Sonnet - Rà soát logic"
+  },
+  {
+    "path": "agents/shopdonk-luna-analysis.md",
+    "model": "gpt-6-luna",
+    "name": "ShopDonk Luna - Phân tích có cấu trúc"
+  },
+  {
+    "path": "agents/shopdonk-sol-test.md",
+    "model": "gpt-5.6-sol",
+    "name": "ShopDonk Sol - Kiểm thử tác vụ ngắn"
+  },
+  {
+    "path": "agents/shopdonk-deepseek-data.md",
+    "model": "deepseek-v4.1-flash",
+    "name": "ShopDonk DeepSeek - Kiểm tra số liệu nhỏ"
+  },
+  {
+    "path": "agents/shopdonk-gemini-draft.md",
+    "model": "gemini-flash-3.8-high",
+    "name": "ShopDonk Gemini - Bản nháp cần kiểm tra"
+  },
+  {
+    "path": "agents/shopdonk-grok-check.md",
+    "model": "grok-4.7",
+    "name": "ShopDonk Grok - Kiểm tra tính nhất quán"
+  }
+]

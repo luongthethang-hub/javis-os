@@ -52,3 +52,20 @@ Nhật ký thời gian (append-only). Mỗi entry: `## [YYYY-MM-DD] loại | ti�
 - Đã xuất bản trang wiki mới [[kien-truc-l0-l1-l2-thuc-dung-va-tien-hoa-cam-v31]], cập nhật `wiki/index.md`.
 - Đã đăng ký fact mới `cam-v31-emergency-rescue-and-evolution.md` vào T2 Adaptive Registry, cập nhật tổng số 66 active facts (74 tổng kho).
 - Đồng bộ toàn diện SSOT mới và quy chuẩn tới các thành viên Liên minh AI.
+
+## [2026-11-26] ingest | Chưng cất Second Brain từ CAM và tối ưu vận hành
+
+- Nguồn: SEED tích hợp, năm skill cam-*, `Javis/scripts/cam_queue.py`, fact bài học Telegram 409, `standing-authorization.md`.
+- Thêm trang [[cot-song-cam-va-van-hanh-on-dinh]] và một dòng vào `wiki/index.md`.
+- Áp dụng vào skill đang dùng: `skills/cam-cot-song/SKILL.md` thêm mục Đường nhanh (#51); `skills/cam-tien-hoa/SKILL.md` thêm mục Tính ổn định vận hành (#52).
+- Chưa kiểm: hành vi model trên `acceptance-cases.jsonl`, nạp prompt phiên mới, và kết nối process worker vào hàng đợi.
+- Vá lỗi thật trong `Javis/scripts/cam_queue.py`: ticket `token_urlsafe` có thể bắt đầu bằng `-` làm `submit` hỏng; đổi sang `token_hex(24)`, giữ `cam_queue.py.bak-20261126`.
+- Kiểm lại: smoke 9 bước PASS; 200 vòng put/claim/submit 0 lỗi; 8 worker tranh một việc chỉ 1 thắng.
+- Đồng bộ mirror `.claude/skills/`: trước đó `cam-cot-song` và `cam-tien-hoa` lệch hash với `skills/`; đã chép bản đã duyệt sang, giữ `SKILL.md.bak-20261126`, hash hai bên bằng nhau.
+- Chưa gửi được thông báo vào chuông: công cụ hiện có chỉ cấu hình chế độ nhận, không tạo thông báo mới.
+
+## [2026-11-26] lint | Đối chiếu skill và mirror
+
+- Quét toàn bộ `skills/` và `.claude/skills/`: không có tệp chỉ tồn tại một bên, không thiếu thư mục.
+- Lệch nội dung đúng hai tệp `cam-cot-song/SKILL.md` và `cam-tien-hoa/SKILL.md`, nguyên nhân là hai lần sửa qua `javis_improve` chỉ ghi vào `skills/`. Đã đồng bộ.
+- Đề xuất còn mở: kiểm xem `javis_improve` có nên ghi luôn mirror để tránh lệch lần sau. Chưa sửa vì đó là mã server, ngoài phạm vi được phép.

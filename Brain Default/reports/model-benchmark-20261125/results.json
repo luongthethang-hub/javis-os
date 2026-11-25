@@ -1,0 +1,550 @@
+{
+  "seed": 25112026,
+  "cases": [
+    {
+      "name": "arithmetic",
+      "prompt": "Return ONLY JSON {\"answer\":integer}. Calculate 160 * 25 + 17.",
+      "expected": {
+        "answer": 4017
+      }
+    },
+    {
+      "name": "data",
+      "prompt": "Return ONLY JSON {\"total\":integer}. Sum amount only for status=done. Data: [{\"id\": 0, \"status\": \"open\", \"amount\": 82}, {\"id\": 1, \"status\": \"done\", \"amount\": 44}, {\"id\": 2, \"status\": \"done\", \"amount\": 9}, {\"id\": 3, \"status\": \"done\", \"amount\": 55}, {\"id\": 4, \"status\": \"done\", \"amount\": 29}, {\"id\": 5, \"status\": \"open\", \"amount\": 26}, {\"id\": 6, \"status\": \"open\", \"amount\": 66}, {\"id\": 7, \"status\": \"open\", \"amount\": 15}]",
+      "expected": {
+        "total": 137
+      }
+    },
+    {
+      "name": "code",
+      "prompt": "Python 3: def f(xs):\n    total=0\n    for i in range(len(xs)-1): total+=xs[i]\n    return total\nReturn ONLY JSON {\"bug\":\"off_by_one\",\"result\":integer,\"fixed\":integer}. Give actual result and intended sum for f([3,7,11,2]).",
+      "expected": {
+        "bug": "off_by_one",
+        "result": 21,
+        "fixed": 23
+      }
+    },
+    {
+      "name": "grounding",
+      "prompt": "Synthetic source: model X takes 2s on task A, model Y takes 3s on task A. There is NO price or task B data. Return ONLY JSON {\"faster_on_A\":\"X\" or \"Y\",\"cheaper\":null or string,\"best_on_B\":null or string}. Do not invent missing facts.",
+      "expected": {
+        "faster_on_A": "X",
+        "cheaper": null,
+        "best_on_B": null
+      }
+    },
+    {
+      "name": "tool",
+      "prompt": "Call inspect_ticket exactly once with ticket=2647. Do not answer with prose. This is a simulated read-only tool; it will not be executed.",
+      "expected": {
+        "ticket": 2647
+      }
+    }
+  ],
+  "results": [
+    {
+      "model": "gemini-flash-3.8-high",
+      "case": "arithmetic",
+      "passed": true,
+      "output": "{\"answer\": 4017}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 794,
+        "completion_tokens": 221,
+        "total_tokens": 1015
+      },
+      "returned_model": "gemini-flash-3.8-high",
+      "seconds": 22.73,
+      "ttft_seconds": 22.73,
+      "round": 1
+    },
+    {
+      "model": "gpt-6-luna",
+      "case": "arithmetic",
+      "passed": true,
+      "output": "{\"answer\":4017}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 620,
+        "completion_tokens": 26,
+        "total_tokens": 646
+      },
+      "returned_model": "gpt-6-luna",
+      "seconds": 22.993,
+      "ttft_seconds": 22.993,
+      "round": 1
+    },
+    {
+      "model": "deepseek-v4.1-flash",
+      "case": "arithmetic",
+      "passed": true,
+      "output": "{\"answer\":4017}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 634,
+        "completion_tokens": 36,
+        "total_tokens": 670
+      },
+      "returned_model": "deepseek-v4.1-flash",
+      "seconds": 23.574,
+      "ttft_seconds": 23.517,
+      "round": 1
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "case": "arithmetic",
+      "passed": true,
+      "output": "{\"answer\":4017}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 613,
+        "completion_tokens": 8,
+        "total_tokens": 621
+      },
+      "returned_model": "claude-sonnet-4-6",
+      "seconds": 24.46,
+      "ttft_seconds": 24.46,
+      "round": 1
+    },
+    {
+      "model": "grok-4.7",
+      "case": "arithmetic",
+      "passed": true,
+      "output": "{\"answer\":4017}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 604,
+        "completion_tokens": 10,
+        "total_tokens": 614
+      },
+      "returned_model": "grok-4.7",
+      "seconds": 35.62,
+      "ttft_seconds": 35.62,
+      "round": 1
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "case": "arithmetic",
+      "passed": true,
+      "output": "{\"answer\":4017}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 604,
+        "completion_tokens": 10,
+        "total_tokens": 614
+      },
+      "returned_model": "gpt-5.6-sol",
+      "seconds": 20.845,
+      "ttft_seconds": 20.844,
+      "round": 1
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "case": "data",
+      "passed": true,
+      "output": "{\"total\":137}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 748,
+        "completion_tokens": 9,
+        "total_tokens": 757
+      },
+      "returned_model": "gpt-5.6-sol",
+      "seconds": 23.473,
+      "ttft_seconds": 23.473,
+      "round": 2
+    },
+    {
+      "model": "deepseek-v4.1-flash",
+      "case": "data",
+      "passed": true,
+      "output": "{\"total\":137}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 779,
+        "completion_tokens": 20,
+        "total_tokens": 799
+      },
+      "returned_model": "deepseek-v4.1-flash",
+      "seconds": 26.113,
+      "ttft_seconds": 26.112,
+      "round": 2
+    },
+    {
+      "model": "gemini-flash-3.8-high",
+      "case": "data",
+      "passed": false,
+      "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "output": "",
+      "seconds": 32.436,
+      "ttft_seconds": null,
+      "round": 2
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "case": "data",
+      "passed": true,
+      "output": "{\"total\": 137}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 757,
+        "completion_tokens": 34,
+        "total_tokens": 791
+      },
+      "returned_model": "claude-sonnet-4-6",
+      "seconds": 36.363,
+      "ttft_seconds": 36.362,
+      "round": 2
+    },
+    {
+      "model": "grok-4.7",
+      "case": "data",
+      "passed": true,
+      "output": "{\"total\": 137}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 756,
+        "completion_tokens": 48,
+        "total_tokens": 804
+      },
+      "returned_model": "grok-4.7",
+      "seconds": 38.202,
+      "ttft_seconds": 38.202,
+      "round": 2
+    },
+    {
+      "model": "gpt-6-luna",
+      "case": "data",
+      "passed": true,
+      "output": "{\"total\": 137}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 755,
+        "completion_tokens": 23,
+        "total_tokens": 778
+      },
+      "returned_model": "gpt-6-luna",
+      "seconds": 15.272,
+      "ttft_seconds": 15.272,
+      "round": 2
+    },
+    {
+      "model": "gpt-6-luna",
+      "case": "code",
+      "passed": true,
+      "output": "{\"bug\":\"off_by_one\",\"result\":21,\"fixed\":23}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 651,
+        "completion_tokens": 19,
+        "total_tokens": 670
+      },
+      "returned_model": "gpt-6-luna",
+      "seconds": 32.187,
+      "ttft_seconds": 32.187,
+      "round": 3
+    },
+    {
+      "model": "gemini-flash-3.8-high",
+      "case": "code",
+      "passed": false,
+      "output": "{\"bug\":\"off_by_one\",\"result\":20,\"fixed\":23}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 848,
+        "completion_tokens": 376,
+        "total_tokens": 1224
+      },
+      "returned_model": "gemini-flash-3.8-high",
+      "seconds": 34.957,
+      "ttft_seconds": 34.957,
+      "round": 3
+    },
+    {
+      "model": "deepseek-v4.1-flash",
+      "case": "code",
+      "passed": true,
+      "output": "{\"bug\":\"off_by_one\",\"result\":21,\"fixed\":23}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 685,
+        "completion_tokens": 76,
+        "total_tokens": 761
+      },
+      "returned_model": "deepseek-v4.1-flash",
+      "seconds": 37.649,
+      "ttft_seconds": 37.649,
+      "round": 3
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "case": "code",
+      "passed": true,
+      "output": "{\"bug\":\"off_by_one\",\"result\":21,\"fixed\":23}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 662,
+        "completion_tokens": 47,
+        "total_tokens": 709
+      },
+      "returned_model": "claude-sonnet-4-6",
+      "seconds": 39.467,
+      "ttft_seconds": 39.466,
+      "round": 3
+    },
+    {
+      "model": "grok-4.7",
+      "case": "code",
+      "passed": true,
+      "output": "{\"bug\":\"off_by_one\",\"result\":21,\"fixed\":23}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 653,
+        "completion_tokens": 19,
+        "total_tokens": 672
+      },
+      "returned_model": "grok-4.7",
+      "seconds": 41.902,
+      "ttft_seconds": 41.902,
+      "round": 3
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "case": "code",
+      "passed": true,
+      "output": "{\"bug\":\"off_by_one\",\"result\":21,\"fixed\":23}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 673,
+        "completion_tokens": 45,
+        "total_tokens": 718
+      },
+      "returned_model": "gpt-5.6-sol",
+      "seconds": 25.628,
+      "ttft_seconds": 25.627,
+      "round": 3
+    },
+    {
+      "model": "gemini-flash-3.8-high",
+      "case": "grounding",
+      "passed": true,
+      "output": "{\"faster_on_A\":\"X\",\"cheaper\":null,\"best_on_B\":null}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 843,
+        "completion_tokens": 343,
+        "total_tokens": 1186
+      },
+      "returned_model": "gemini-flash-3.8-high",
+      "seconds": 24.136,
+      "ttft_seconds": 24.136,
+      "round": 4
+    },
+    {
+      "model": "deepseek-v4.1-flash",
+      "case": "grounding",
+      "passed": true,
+      "output": "{\"faster_on_A\":\"X\",\"cheaper\":null,\"best_on_B\":null}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 685,
+        "completion_tokens": 66,
+        "total_tokens": 751
+      },
+      "returned_model": "deepseek-v4.1-flash",
+      "seconds": 26.07,
+      "ttft_seconds": 26.07,
+      "round": 4
+    },
+    {
+      "model": "gpt-6-luna",
+      "case": "grounding",
+      "passed": true,
+      "output": "{\"faster_on_A\":\"X\",\"cheaper\":null,\"best_on_B\":null}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 671,
+        "completion_tokens": 59,
+        "total_tokens": 730
+      },
+      "returned_model": "gpt-6-luna",
+      "seconds": 27.896,
+      "ttft_seconds": 27.861,
+      "round": 4
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "case": "grounding",
+      "passed": true,
+      "output": "{\"faster_on_A\":\"X\",\"cheaper\":null,\"best_on_B\":null}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 673,
+        "completion_tokens": 61,
+        "total_tokens": 734
+      },
+      "returned_model": "gpt-5.6-sol",
+      "seconds": 30.184,
+      "ttft_seconds": 30.183,
+      "round": 4
+    },
+    {
+      "model": "grok-4.7",
+      "case": "grounding",
+      "passed": true,
+      "output": "{\"faster_on_A\":\"X\",\"cheaper\":null,\"best_on_B\":null}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 654,
+        "completion_tokens": 23,
+        "total_tokens": 677
+      },
+      "returned_model": "grok-4.7",
+      "seconds": 44.518,
+      "ttft_seconds": 44.518,
+      "round": 4
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "case": "grounding",
+      "passed": true,
+      "output": "{\"faster_on_A\":\"X\",\"cheaper\":null,\"best_on_B\":null}",
+      "tool_calls": [],
+      "usage": {
+        "prompt_tokens": 664,
+        "completion_tokens": 98,
+        "total_tokens": 762
+      },
+      "returned_model": "claude-sonnet-4-6",
+      "seconds": 43.072,
+      "ttft_seconds": 43.072,
+      "round": 4
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "case": "tool",
+      "passed": true,
+      "output": "",
+      "tool_calls": [
+        {
+          "name": "inspect_ticket",
+          "arguments": "{\"ticket\": 2647}"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 775,
+        "completion_tokens": 69,
+        "total_tokens": 844
+      },
+      "returned_model": "claude-sonnet-4-6",
+      "seconds": 9.393,
+      "ttft_seconds": 9.393,
+      "round": 5
+    },
+    {
+      "model": "gemini-flash-3.8-high",
+      "case": "tool",
+      "passed": true,
+      "output": "",
+      "tool_calls": [
+        {
+          "name": "inspect_ticket",
+          "arguments": "{\"ticket\":2647}"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 852,
+        "completion_tokens": 121,
+        "total_tokens": 973
+      },
+      "returned_model": "gemini-flash-3.8-high",
+      "seconds": 17.769,
+      "ttft_seconds": 17.768,
+      "round": 5
+    },
+    {
+      "model": "deepseek-v4.1-flash",
+      "case": "tool",
+      "passed": true,
+      "output": "",
+      "tool_calls": [
+        {
+          "name": "inspect_ticket",
+          "arguments": "{\"ticket\": 2647}"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 926,
+        "completion_tokens": 63,
+        "total_tokens": 989
+      },
+      "returned_model": "deepseek-v4.1-flash",
+      "seconds": 19.149,
+      "ttft_seconds": 19.149,
+      "round": 5
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "case": "tool",
+      "passed": true,
+      "output": "",
+      "tool_calls": [
+        {
+          "name": "inspect_ticket",
+          "arguments": "{\"ticket\": 2647}"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 906,
+        "completion_tokens": 95,
+        "total_tokens": 1001
+      },
+      "returned_model": "gpt-5.6-sol",
+      "seconds": 20.726,
+      "ttft_seconds": 20.725,
+      "round": 5
+    },
+    {
+      "model": "gpt-6-luna",
+      "case": "tool",
+      "passed": true,
+      "output": "",
+      "tool_calls": [
+        {
+          "name": "inspect_ticket",
+          "arguments": "{\"ticket\": 2647}"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 904,
+        "completion_tokens": 98,
+        "total_tokens": 1002
+      },
+      "returned_model": "gpt-6-luna",
+      "seconds": 23.951,
+      "ttft_seconds": 23.95,
+      "round": 5
+    },
+    {
+      "model": "grok-4.7",
+      "case": "tool",
+      "passed": true,
+      "output": "",
+      "tool_calls": [
+        {
+          "name": "inspect_ticket",
+          "arguments": "{\"ticket\":2647}"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 655,
+        "completion_tokens": 19,
+        "total_tokens": 674
+      },
+      "returned_model": "grok-4.7",
+      "seconds": 41.376,
+      "ttft_seconds": 41.376,
+      "round": 5
+    }
+  ]
+}
