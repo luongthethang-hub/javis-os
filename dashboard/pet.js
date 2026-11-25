@@ -274,6 +274,15 @@
   var tx = 0, ty = 0, px = 0, py = 0;      // hướng nhìn: đích và giá trị đang nội suy
   var liecX = 0, liecY = 0, liecDichX = 0, liecDichY = 0;
   var chuotLuc = 0;
+  var choNhin = false, nhinX = 0, nhinY = 0, nhinO = null;
+  function henNhin(o, x, y) {
+    nhinO = o; nhinX = x; nhinY = y;
+    if (giamChuyenDong && giamChuyenDong.matches) { choNhin = false; nhinO = null; thucDay(); return; }
+    if (choNhin) return;
+    thucDay();
+    choNhin = true;
+    chay();
+  }
   var keo = null;                           // { id, dx, dy, di } khi đang kéo
   var phanUngTen = "";                      // mắt của phản ứng đang diễn, "" = không có
   var choXong = false;                      // đã trả lời xong nhưng còn đang đọc: vui khi đọc xong
@@ -660,6 +669,16 @@
 
     // Nhìn theo con trỏ; rời chuột hơn 1,6 giây thì trôi về DÁNG LIẾC (không phải về giữa)
     // rồi thi thoảng đảo mắt quanh dáng đó.
+    if (choNhin) {
+      choNhin = false;
+      var r = el.getBoundingClientRect(), q = nhinO && nhinO.getBoundingClientRect();
+      nhinO = null;
+      if (!keo && r.width && (!q || q.width)) {
+        tx = kep(((q ? q.left + q.width / 2 : nhinX) - (r.left + r.width / 2)) / 420, -1, 1);
+        ty = kep(((q ? q.top + q.height / 2 : nhinY) - (r.top + r.height / 2)) / 320, -1, 1);
+        chuotLuc = now;
+      }
+    }
     var ranh = now - chuotLuc > 1600;
     if (ranh) { tx = 0; ty = 0; }
     var muot = 1 - Math.exp(-dt * 7);
@@ -732,7 +751,7 @@
     truoc = 0;
     raf = requestAnimationFrame(nhip);
   }
-  function dung_lai() { if (nghiYen) raNghi(); if (raf) cancelAnimationFrame(raf); raf = 0; }
+  function dung_lai() { choNhin = false; nhinO = null; if (nghiYen) raNghi(); if (raf) cancelAnimationFrame(raf); raf = 0; }
 
   // ---- NGHỈ YÊN (0.418.0): đứng yên thì để CSS diễn, JS ngủ ----
   // Đo trên điện thoại giả lập (trang Cộng sự, app để yên): vòng vẽ JS 30 khung/giây của pet giữ luồng chính bận khoảng
@@ -1016,16 +1035,7 @@
 
     window.addEventListener("pointermove", function (e) {
       if (!el || el.hidden || keo) return;
-      var r = el.getBoundingClientRect();
-      if (!r.width) return;
-      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-      // Chia cho một bán kính RỘNG hơn thân pet: chia cho chính bề rộng thân thì chỉ cần
-      // chuột ra khỏi pet vài chục px là mắt đã chạm biên và đứng im.
-      tx = kep((e.clientX - cx) / 420, -1, 1);
-      ty = kep((e.clientY - cy) / 320, -1, 1);
-      chuotLuc = performance.now();
-      thucDay();
-      if (nghiYen) chay();   // đang nghỉ yên thì vòng vẽ đã dừng: đánh thức để mắt nhìn theo
+      if (!document.hidden) henNhin(null, e.clientX, e.clientY);
     }, { passive: true });
 
     // Con trỏ nằm TRÊN thân: đang rảnh thì tò mò nhìn lại (mắt to hơn một chút).
@@ -1043,15 +1053,11 @@
     document.addEventListener("input", function (e) {
       var o = e.target;
       if (!el || el.hidden || !o || o.id !== "chatInput") return;
-      thucDay();
-      var r = el.getBoundingClientRect(), q = o.getBoundingClientRect();
-      if (!r.width || !q.width) return;
-      tx = kep((q.left + q.width / 2 - (r.left + r.width / 2)) / 420, -1, 1);
-      ty = kep((q.top + q.height / 2 - (r.top + r.height / 2)) / 320, -1, 1);
-      chuotLuc = performance.now();
-      if (state === "idle" && !phanUngTen && mood !== "curious") { mood = "curious"; if (!dangChop) veMat(mood); vuiDen = chuotLuc + 1800; }
+      if (document.hidden) return;
+      henNhin(o, 0, 0);
+      if (state === "idle" && !phanUngTen && mood !== "curious") { mood = "curious"; if (!dangChop) veMat(mood); vuiDen = performance.now() + 1800; }
     }, true);
-    document.addEventListener("keydown", function () { thucDay(); }, true);
+    document.addEventListener("keydown", function () { if (el && !el.hidden && !document.hidden) thucDay(); }, true);
 
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) dung_lai(); else chay();
