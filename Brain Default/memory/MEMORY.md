@@ -78,3 +78,4 @@
 - [L0 Directive: Kích hoạt vòng lặp tiến hóa RUULEE v6.0 trong mọi câu trả lời](facts/kich-hoat-vong-lap-tien-hoa-moi-cau-tra-loi.md) - Chỉ thị L0: Kích hoạt vòng lặp tiến hóa RUULEE v6.0 ở mọi lượt trả lời.
 - [Tối ưu tiết kiệm 54-100% token Hội đồng RUULEE v6.0 (Shadow Verified)](facts/cost-gated-council-token-optimization.md) - Shadow Test giảm 54.4% cold token (3,999->1,823) và 0-token cho lượt thường/cache.
 - [Chưng cất D:\\AI AGENT\\Tài liệu: Điều phối minh bạch & Khóa bằng chứng E1..E5](facts/distilled-tai-lieu-agent-transparent-dispatch.md) - Chưng cất 26 tệp Tài liệu: Điều phối minh bạch dispatch_trace, khóa E1..E5 với A0..A4.
+- [Hội đồng v4: chỉ CAM + Claude + DeepSeek, phản hồi Sếp tự th](facts/cam-distilled-h_i_ng_v4_ch_cam_claude_deepseek_ph_n_h_.md) - [CAM E1] 2026-11-25: Sếp chốt hội đồng chỉ còn CAM (L1, 0-token), Claude (trưởng nhóm kỹ thuật
