@@ -122,6 +122,14 @@ dongHo += 10;
 nghe.pointermove({ clientX: 300, clientY: 200 });
 check("a pointer move wakes it so the eyes follow", !!khungCho && !lop.has("pet-nghi"));
 
+let reads = 0;
+const rect = goc.getBoundingClientRect;
+goc.getBoundingClientRect = () => { reads++; return rect(); };
+for (let i = 0; i < 100; i++) nghe.pointermove({ clientX: i, clientY: 200 });
+check("pointer burst performs no synchronous layout reads (actual: " + reads + ")", reads === 0);
+chayKhung(1);
+check("one frame consumes the burst", reads === 1);
+
 const css = fs.readFileSync(path.join(root, "dashboard", "style.css"), "utf8");
 check("CSS: the petVanh animation is gone (nothing left to tick on every frame)", !/petVanh/.test(css));
 check("CSS: the resting glance moves in 10 steps (a smooth SVG transform transition relayouts every frame)",
