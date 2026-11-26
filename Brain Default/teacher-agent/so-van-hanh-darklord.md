@@ -34,3 +34,17 @@ Repo: D:\AI AGENT\council-agent-manager. Đo chỉ đọc bằng các hàm v1(qu
 - Lỗi 2 Sync_4h 0x800710E0: giả thuyết kích hoạt 17:34 khi chưa đăng nhập (InteractiveToken, không StartWhenAvailable, log Operational tắt). Chưa sửa; bàn giao cũ ghi L0 muốn TẮT Sync_4h lúc chữa, hiện vẫn BẬT.
 - Khối luật Phòng Giám Đốc: ghi vào ~/.codex/AGENTS.md và luật plugin aio-engineer-profile của agy bị chặn; DeepSeek không có file toàn cục ngoài ~/.dsh. Chưa sửa file nào.
 - Sổ Cái: goi:G1, goi:G5, goi:G6, su-co:bridge-telegram-chay-trung-20261126, su-co:sync4h-0x800710E0-20261126, ghi-chu:phong-giam-doc-khoi-luat-20261126.
+## 2026-11-26 22:45 (giờ VN)
+- L0 quyết (22:42) tắt Sync_4h đến khi chữa xong. Lệnh /DISABLE bị bộ lọc quyền Claude Code chặn; tác vụ vẫn BẬT, chờ L0 tự chạy. Cách lùi: /ENABLE. Sổ Cái: quyet-dinh:sync4h-tat-20261126.
+- Thử lại thợ 22:40: Codex vẫn token_revoked, dsh vẫn MISSING_CREDENTIAL; 2 app desktop đã cài nhưng chưa chạy.
+## 2026-11-26 22:55 (giờ VN) - soát chéo CAM OS v4 của Antigravity (thread tái cấu trúc)
+- HEAD d3c1b9d, 18 mục chưa commit (v4 của AG), nhánh feature/G1-fix-codex-security rỗng. CAM chạy PID 12272 từ 22:20 qua CAM_Headless_AutoStart.
+- Điểm: V1 13, V2 14, V3 11, V4 5 (ĐỎ), V5 8, V6 8, V7 2, UX 6, V8 ĐỎ. Tổng 67/100 (17:10 là 72).
+- Test bản sao D:\AI AGENT\cam-soat-v4-20261126: 142 passed. Tái hiện: Forge→pytest và /api/nano/dispatch task_runner VẪN chạy mã; PowerShell (...) và PATCH binary_path ĐÃ chặn; /api/cup/{id}/decide ghi được "L0 duyệt" giả.
+- Chi tiết: teacher-agent\soat-cheo-cam-v4-ag-20261126.md. Sổ Cái: do-dac:cam-os-2026-11-26-2255.
+## 2026-11-26 23:20 (giờ VN) - B2+B3 xong trên nhánh refactor/kernel-20261126 (AG soạn, Claude soát)
+- Nhánh: 6 commit chia việc v4 của AG + 1c91cc0 (TP-01: tắt Forge chạy lệnh, gỡ Nano task_runner) + d13fc2e (TP-02: X-CAM-Token, Host/Origin, mã phép L0 cho cup decide/purify/restore/xóa bộ não/khôi phục cloud). master vẫn d3c1b9d.
+- Test bản sao: 156 passed. Test mới đỏ trước vá (3 + 6). Tái hiện: 4/4 đường chạy mã tùy ý đã đóng; "L0 duyệt" giả qua API trả 403.
+- CAM thật bật lại 23:18 bằng run_cam_headless.bat trên nhánh mới: /api/health OK; POST không token 401, có token 200; Origin lạ 403; trang chủ có token và fetch từ giao diện vẫn chạy (200); nano task_runner trả "vai trò không hợp lệ".
+- Điểm ước: V1 14, V2 14, V3 11, V4 12 (VÀNG: 3 file docs/ sinh lại khi khởi động, việc tồn cũ), V5 12, V6 8, V7 2, UX 6 = 79/100. V8 ĐỎ (43 mục ngoài kế hoạch, chờ L0 duyệt v8_plan).
+- Còn lại: B1 (G5 + CAM_DATA_ROOT), B4 (CAM_POLICY=off, protected_paths, cổng L0, readiness), B5 (cổng S + bộ đếm chi phí). scripts/force_alliance_sync.py gọi POST không token sẽ bị 401, cần đọc vault/api_session.token.

@@ -209,7 +209,7 @@
       "capability": "code",
       "execution_mode": "full",
       "priority": 2,
-      "status": "cancelled",
+      "status": "archived",
       "needs_approval": false,
       "block_kind": "cancelled",
       "block_reason": "worker cancelled",
@@ -225,7 +225,7 @@
       "current_run_id": "",
       "result": "Not logged in · Please run /login",
       "created_at": 1795400538.6995838,
-      "updated_at": 1795449186.1637707,
+      "updated_at": 1795708386.1667094,
       "lane": "",
       "team_id": "",
       "team_seq": 0,
@@ -255,10 +255,6 @@
       "artifacts": [],
       "deps": [],
       "log": [
-        {
-          "ts": "2026-11-23 09:22",
-          "msg": "created by chat"
-        },
         {
           "ts": "2026-11-23 09:22",
           "msg": "claimed by worker:21384:05b48aab"
@@ -334,6 +330,10 @@
         {
           "ts": "2026-11-23 22:53",
           "msg": "worker cancelled"
+        },
+        {
+          "ts": "2026-11-26 22:53",
+          "msg": "cancelled -> archived: đã kết thúc quá 3 ngày"
         }
       ]
     },
@@ -902,5 +902,5 @@
       ]
     }
   ],
-  "updated": 1795660116.554309
+  "updated": 1795708386.197693
 }
