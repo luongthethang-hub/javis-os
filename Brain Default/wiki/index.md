@@ -18,6 +18,7 @@ _(Chưa có trang wiki nào. Thả source vào `sources/` rồi bảo Javis "ti�
 - [[kien-truc-l0-l1-l2-thuc-dung-va-tien-hoa-cam-v31]] - Kiến trúc 3 tầng L0-L1-L2 thực dụng, nghiệm thu Pha 3 chuẩn RUULEE v6.0, cầu chì Telegram 2 lớp, tiến hóa CAM v3.1.0 và bắt tay 2 chiều DeepSeek DSH.
 
 - [[chien-luoc-uy-thac-lien-ung-dung-theo-thoi-quen]] - Chiến lược ủy thác liên ứng dụng (Claude/ChatGPT Desktop), tận dụng gói thuê bao tiết kiệm token và cơ chế tự tiến hóa theo thói quen người dùng.
+- [[claude-desktop-du-an-cam-nhat-ky-2026-11]] - Nhật ký thực thi thật của Claude Desktop trong dự án CAM 25-26/11/2026: nối Claude/DeepSeek, tiết kiệm token bằng lõi phân tầng, đội săn lỗi, CAM v3.3.0 và Corporation v2.
 
 ## Tự học
 - [[Phân loại tri thức đa nhãn có provenance]] - Một đoạn hội thoại có thể đồng thời tạo fact, wiki, skill, agent, workflow hoặc

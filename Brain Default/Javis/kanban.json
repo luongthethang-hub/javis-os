@@ -12,7 +12,7 @@
       "capability": "code",
       "execution_mode": "full",
       "priority": 2,
-      "status": "cancelled",
+      "status": "archived",
       "needs_approval": false,
       "block_kind": "",
       "block_reason": "",
@@ -28,7 +28,7 @@
       "current_run_id": "",
       "result": "Not logged in · Please run /login",
       "created_at": 1795183743.5833256,
-      "updated_at": 1795400915.0306582,
+      "updated_at": 1795660116.549315,
       "lane": "",
       "team_id": "",
       "team_seq": 0,
@@ -119,10 +119,6 @@
       "deps": [],
       "log": [
         {
-          "ts": "2026-11-20 21:20",
-          "msg": "claimed by worker:5904:3a0ecd2d"
-        },
-        {
           "ts": "2026-11-20 21:27",
           "msg": "Chưa thể xác minh mã nguồn, tích hợp updater, test và trạng thái hai stash vì các file repo C:\\Users\\Admin\\JavisOS nằm ngoài phạm vi Read hiện có; báo cáo worker tự khai không đủ bằng chứng nghiệm thu."
         },
@@ -197,6 +193,10 @@
         {
           "ts": "2026-11-23 09:28",
           "msg": "blocked -> cancelled: operator cancel"
+        },
+        {
+          "ts": "2026-11-26 09:28",
+          "msg": "cancelled -> archived: đã kết thúc quá 3 ngày"
         }
       ]
     },
@@ -902,5 +902,5 @@
       ]
     }
   ],
-  "updated": 1795653553.747093
+  "updated": 1795660116.554309
 }

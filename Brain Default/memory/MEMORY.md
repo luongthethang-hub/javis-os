@@ -86,3 +86,4 @@
 - [Quy trình video ngắn 6 bước có vòng tiến hóa](facts/workflow-video-ngan-6-buoc-co-tien-hoa.md) - Thêm bước ghi vết mỗi lần chạy và bước chưng cất CUP, ngưỡng 2 log mới được đề xuất, không tự sửa workflow (2026-11-26).
 - [Kết quả nghiệm thu hành vi acceptance-cases](facts/nghiem-thu-hanh-vi-acceptance-cases-20261126.md) - 10/10 ca đạt sau khi chạy lại; ca CAM-05 lần đầu trả rỗng 44 giây, không kết luận sai từ một lần lỗi (2026-11-26).
 - [TaskPacket tiếng Anh và hàng đợi san việc](facts/chuan-taskpack-tieng-anh-va-hang-doi-san-viec.md) - Gói gọn tiếng Anh cộng tham chiếu SHA-256 giảm 79,6% token trên mẫu 3 tác vụ; cam_queue.py đã kiểm 8 worker tranh việc (2026-11-26).
+- [Tri thức Claude Desktop nạp vào não (dự án CAM)](facts/claude-desktop-tri-thuc-du-an-cam.md) - Đọc hội thoại thật Claude Desktop 25-26/11/2026, ingest thành source + wiki: nối Claude/DeepSeek, lõi phân tầng tiết kiệm 28-73% token, đội săn lỗi, CAM v3.3.0 (2026-11-26).

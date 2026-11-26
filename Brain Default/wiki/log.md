@@ -2,6 +2,11 @@
 
 Nhật ký thời gian (append-only). Mỗi entry: `## [YYYY-MM-DD] loại | tiêu đề` (loại: init/ingest/update/query/lint/migrate).
 
+## [2026-11-26] ingest | tri thức Claude Desktop (dự án CAM)
+
+- Nguồn: [[sources/Claude Desktop - Hoi dong CAM 2026-11-25.md]] (85 lượt user/assistant, trích từ ~/.claude/projects entrypoint=claude-desktop).
+- Tạo: [[claude-desktop-du-an-cam-nhat-ky-2026-11]].
+
 ## [2026-11-17] ingest | tự học từ chat
 
 Đã tạo:
