@@ -4,7 +4,7 @@
       "id": "r_985c9cd87d",
       "text": "Chay chu ky sang loc va tien hoa tri thuc toan Lien minh AI (dinh ky 8 gio)",
       "mode": "task",
-      "due_at": 1795654800.0,
+      "due_at": 1795683600.0,
       "chat_id": "-1004479278576",
       "repeat_min": 0,
       "cron": "0 */8 * * *",
@@ -17,10 +17,10 @@
       "call": false,
       "created_by": "user",
       "created_at": 1795435011.8945584,
-      "fired_at": 1795626320.53735,
-      "result": "Javis đã lưu 1 quyết định: khi không tự sửa được, hệ thống được dùng API trợ giúp trả phí tối đa 3.000 token/ngày. Đây là giới hạn thiết kế, chưa phải bộ đếm đang chạy.\n\nĐã xác minh bản sao trong kho DeepSeek. Chu kỳ này chưa đối chiếu được toàn bộ lịch sử Telegram hoặc xác nhận các thành viên còn lại đã nhận bản cập nhật.",
+      "fired_at": 1795655339.465586,
+      "result": "⚠ Đã chạy hết 60 vòng gọi tool cho lượt này nên phải dừng, câu trả lời ở trên có thể còn dở. Cách xử lý: nhắn \"làm tiếp\" để Javis chạy nốt phần còn lại, hoặc nâng trần bằng biến môi trường JAVIS_MAX_TOOL_ROUNDS_CODING (tối đa 2000, đặt 0 là không giới hạn) rồi khởi động lại Javis.",
       "error": "",
-      "last_slot": 1795626000.0
+      "last_slot": 1795654800.0
     },
     {
       "id": "r_a2a35a29f8",
@@ -67,5 +67,5 @@
       "last_slot": 1795453982.0767393
     }
   ],
-  "updated": 1795626320.537457
+  "updated": 1795655339.466593
 }

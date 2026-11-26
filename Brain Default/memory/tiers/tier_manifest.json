@@ -1,12 +1,12 @@
 {
   "schema": "javis-memory-tiers/v1",
-  "generated_at": "2026-11-25T00:00:00+07:00",
+  "generated_at": "2026-11-26T08:06:58+07:00",
   "totals": {
-    "all_fact_files": 74,
-    "active_facts": 66,
+    "all_fact_files": 86,
+    "active_facts": 78,
     "t0_immutable": 7,
     "t1_governed": 36,
-    "t2_adaptive": 23,
+    "t2_adaptive": 31,
     "superseded": 8
   },
   "t0_bundle_sha256": "dd4c2d09bc97cf3c9aa705eb7ea92844757bcb33915b713021881d32e8ee443f",
@@ -72,5 +72,11 @@
       "superseded_at": "2026-11-24",
       "sha256": "c0fce2a63615f64ce239d7c9878cb72c36861237d19c97f6cf2a61cc1ddd2c10"
     }
+  ],
+  "pending_t1_review": [
+    "apikey-fan-gift-and-ruulee-hybrid-council",
+    "cost-gated-council-token-optimization",
+    "distilled-tai-lieu-agent-transparent-dispatch",
+    "kich-hoat-vong-lap-tien-hoa-moi-cau-tra-loi"
   ]
 }

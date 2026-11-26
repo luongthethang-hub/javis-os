@@ -6,8 +6,8 @@
     "episodic_lesson_decay_days": 30,
     "promotion_gate": "Shadow Test + CUP -> L0 approval"
   },
-  "generated_at": "2026-11-25T00:00:00+07:00",
-  "count": 23,
+  "generated_at": "2026-11-26T08:06:58+07:00",
+  "count": 31,
   "items": [
     {
       "slug": "antigravity-cli-command",
@@ -78,6 +78,40 @@
       "confidence": 0.8
     },
     {
+      "slug": "cam-cot-song-va-van-hanh-on-dinh",
+      "title": "Cột sống CAM và vận hành ổn định",
+      "summary": "Bản chưng cất lớp CAM cho tra cứu nhanh. Chi tiết có citation tại `wiki/cot-song-cam-va-van-hanh-on-dinh.md`.",
+      "tier": "T2",
+      "type": "fact",
+      "file": "memory/facts/cam-cot-song-va-van-hanh-on-dinh.md",
+      "created": "2026-11-26",
+      "updated": "2026-11-26",
+      "provenance": "owner-request",
+      "sha256": "aabc99d25e37ca66b1972e5078f98f00e1a133e57396e8ebcbad8f4d9fb1a24a",
+      "size_bytes": 2403,
+      "decay_days": 90,
+      "half_life_days": 45,
+      "review_after": "2027-02-24",
+      "confidence": 0.8
+    },
+    {
+      "slug": "cam-distilled-cam_company_kien_truc_van_phong_moi",
+      "title": "CAM Company: kien truc van phong moi",
+      "summary": "--- slug: cam_company_kien_truc_van_phong_moi title: CAM Company: kien truc van phong moi evidence: E1 source: cam-team updated: 2026-11-25T21:18:52+07:00 tags: [cam-team] ---",
+      "tier": "T2",
+      "type": "fact",
+      "file": "memory/facts/cam-distilled-cam_company_kien_truc_van_phong_moi.md",
+      "created": "2026-11-25",
+      "updated": "2026-11-25",
+      "provenance": "agent",
+      "sha256": "a5645802b287114584978654f3c6eb81f33abf79ecf4212d06a5039856a54493",
+      "size_bytes": 1130,
+      "decay_days": 90,
+      "half_life_days": 45,
+      "review_after": "2027-02-23",
+      "confidence": 0.8
+    },
+    {
       "slug": "cam-distilled-evolution_lesson_2026_11_24",
       "title": "Bài học tự chẩn đoán hệ thống CAM (2026-11-24)",
       "summary": "Phát hiện cảnh báo Telegram 409 conflict trên antigravity; giữ Single-Owner Multiplexer và tạm dừng worker an toàn.",
@@ -92,6 +126,40 @@
       "decay_days": 30,
       "half_life_days": 15,
       "review_after": "2026-12-24",
+      "confidence": 0.8
+    },
+    {
+      "slug": "cam-distilled-evolution_lesson_2026_11_25",
+      "title": "Bài học tự chẩn đoán hệ thống (2026-11-25)",
+      "summary": "--- slug: evolution_lesson_2026_11_25 title: Bài học tự chẩn đoán hệ thống (2026-11-25) evidence: E1 source: cam-evolution-engine updated: 2026-11-25T21:37:18+07:00 tags: [evolution, zero-regression, ",
+      "tier": "T2",
+      "type": "fact",
+      "file": "memory/facts/cam-distilled-evolution_lesson_2026_11_25.md",
+      "created": "2026-11-26",
+      "updated": "2026-11-26",
+      "provenance": "agent",
+      "sha256": "55bc5a71e62fbb6597f223d49d5be1c24f320421314ba67787fa3861bc3a47ec",
+      "size_bytes": 1936,
+      "decay_days": 90,
+      "half_life_days": 45,
+      "review_after": "2027-02-24",
+      "confidence": 0.8
+    },
+    {
+      "slug": "cam-distilled-h_i_ng_v4_ch_cam_claude_deepseek_ph_n_h_",
+      "title": "Hội đồng v4: chỉ CAM + Claude + DeepSeek, phản hồi Sếp tự thành backlog",
+      "summary": "--- slug: h_i_ng_v4_ch_cam_claude_deepseek_ph_n_h_ title: Hội đồng v4: chỉ CAM + Claude + DeepSeek, phản hồi Sếp tự thành backlog evidence: E1 source: cam-team updated: 2026-11-25T11:07:18+07:00 tags:",
+      "tier": "T2",
+      "type": "fact",
+      "file": "memory/facts/cam-distilled-h_i_ng_v4_ch_cam_claude_deepseek_ph_n_h_.md",
+      "created": "2026-11-25",
+      "updated": "2026-11-25",
+      "provenance": "agent",
+      "sha256": "bade276f5f1bd1e62086d6a558ef5de672de4977ac29a7265495aa09074f5e04",
+      "size_bytes": 1454,
+      "decay_days": 90,
+      "half_life_days": 45,
+      "review_after": "2027-02-23",
       "confidence": 0.8
     },
     {
@@ -110,6 +178,23 @@
       "half_life_days": 45,
       "review_after": "2027-02-22",
       "confidence": 0.95
+    },
+    {
+      "slug": "chuan-taskpack-tieng-anh-va-hang-doi-san-viec",
+      "title": "chuan-taskpack-tieng-anh-va-hang-doi-san-viec",
+      "summary": "Chuẩn gói giao việc **TaskPacket v1 bằng tiếng Anh** và hàng đợi san việc cục bộ `Javis/scripts/cam_queue.py` đã được triển khai, kèm số đo thật.",
+      "tier": "T2",
+      "type": "decision",
+      "file": "memory/facts/chuan-taskpack-tieng-anh-va-hang-doi-san-viec.md",
+      "created": "2026-11-26",
+      "updated": "2026-11-26",
+      "provenance": "agent",
+      "sha256": "8dd6866cc8c680287f52325acbbaf6eb546bb0adc7217b57fbeb547a4497babd",
+      "size_bytes": 2223,
+      "decay_days": 90,
+      "half_life_days": 45,
+      "review_after": "2027-02-24",
+      "confidence": 0.8
     },
     {
       "slug": "chuan-voice-engineering-video-dong-luc",
@@ -194,6 +279,40 @@
       "decay_days": 90,
       "half_life_days": 45,
       "review_after": "2027-02-22",
+      "confidence": 0.8
+    },
+    {
+      "slug": "ngan-sach-cuu-ho-tra-phi",
+      "title": "Ngân sách trợ giúp khi tự sửa thất bại",
+      "summary": "**Vì sao:** Giới hạn chi phí tìm trợ giúp bên ngoài.",
+      "tier": "T2",
+      "type": "decision",
+      "file": "memory/facts/ngan-sach-cuu-ho-tra-phi.md",
+      "created": "2026-11-26",
+      "updated": "2026-11-26",
+      "provenance": "agent",
+      "sha256": "16b42fcdedfcbc5b07a0a7fce474045332baddec800960f1c76653b34df4413b",
+      "size_bytes": 626,
+      "decay_days": 90,
+      "half_life_days": 45,
+      "review_after": "2027-02-24",
+      "confidence": 0.8
+    },
+    {
+      "slug": "nghiem-thu-hanh-vi-acceptance-cases-20261126",
+      "title": "nghiem-thu-hanh-vi-acceptance-cases-20261126",
+      "summary": "Kết quả chạy bộ nghiệm thu hành vi `acceptance-cases.jsonl` (10 ca CAM-01..CAM-10) ngày 26/11/2026, ghi tại `memory/acceptance-log-20261126.jsonl`.",
+      "tier": "T2",
+      "type": "business",
+      "file": "memory/facts/nghiem-thu-hanh-vi-acceptance-cases-20261126.md",
+      "created": "2026-11-26",
+      "updated": "2026-11-26",
+      "provenance": "agent",
+      "sha256": "49daf9e2c9408772b495fc56c51cee16106af795c520cc1384977ff58746c2c1",
+      "size_bytes": 1447,
+      "decay_days": 90,
+      "half_life_days": 45,
+      "review_after": "2027-02-24",
       "confidence": 0.8
     },
     {
@@ -398,6 +517,23 @@
       "decay_days": 90,
       "half_life_days": 45,
       "review_after": "2027-02-15",
+      "confidence": 0.8
+    },
+    {
+      "slug": "workflow-video-ngan-6-buoc-co-tien-hoa",
+      "title": "workflow-video-ngan-6-buoc-co-tien-hoa",
+      "summary": "Quy trình `san-xuat-video-ngan-1-phut` được nâng từ 4 bước tĩnh lên **6 bước có vòng tiến hóa**, giữ `status: on`, nhóm Nội dung.",
+      "tier": "T2",
+      "type": "decision",
+      "file": "memory/facts/workflow-video-ngan-6-buoc-co-tien-hoa.md",
+      "created": "2026-11-26",
+      "updated": "2026-11-26",
+      "provenance": "agent",
+      "sha256": "49fb07b8dc4388e737c19ab5e9f9e3dd762b54f7d46d03f90e01413ff45235b7",
+      "size_bytes": 2058,
+      "decay_days": 90,
+      "half_life_days": 45,
+      "review_after": "2027-02-24",
       "confidence": 0.8
     }
   ]

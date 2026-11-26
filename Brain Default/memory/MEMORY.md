@@ -1,7 +1,7 @@
 # Bộ nhớ Javis - Index
 
 > Chỉ mục bộ nhớ dài hạn của Javis (phân tầng T0 / T1 / T2 theo AITEP v1.1.0 & RUULEE v6.0).
-> Tổng kho `facts/`: 72 tệp = **64 ký ức hiệu lực** + 8 tệp đã hợp nhất (`superseded_by`, giữ lịch sử). Manifest SHA-256 tại `memory/tiers/tier_manifest.json`.
+> Tổng kho `facts/`: 86 tệp = **78 ký ức hiệu lực** + 8 tệp đã hợp nhất (`superseded_by`, giữ lịch sử). Manifest SHA-256 tại `memory/tiers/tier_manifest.json`.
 
 ## T0 - Cốt lõi Bất biến (SHA-256 Sealed)
 - [Bảo mật Telegram bằng Behavioral Biometrics](facts/bao-mat-telegram-behavioral-telemetry.md) - Cơ chế bảo mật thích ứng cho Telegram: Fast Path theo văn phong, hạ quyền Safe Mode và hỏi bẫy Second Brain khi lệch hành vi, cảnh báo out-of-band.
@@ -83,3 +83,6 @@
 - [CAM Company: kien truc van phong moi](facts/cam-distilled-cam_company_kien_truc_van_phong_moi.md) - [CAM E1] CAM Company chay tai /company (cam_core/company.py, company_api.py, templates/company
 - [Bài học tự chẩn đoán hệ thống (2026-11-25)](facts/cam-distilled-evolution_lesson_2026_11_25.md) - [CAM E1] Phát hiện các cảnh báo/lỗi trong nhật ký chạy gần nhất cần phòng ngừa tái diễn:
 - [Cột sống CAM và vận hành ổn định](facts/cam-cot-song-va-van-hanh-on-dinh.md) - Bản chưng cất CAM vào Second Brain: đường nhanh giảm đọc thừa, chốt single-owner Telegram 409, TaskPacket và giới hạn bằng chứng (2026-11-26).
+- [Quy trình video ngắn 6 bước có vòng tiến hóa](facts/workflow-video-ngan-6-buoc-co-tien-hoa.md) - Thêm bước ghi vết mỗi lần chạy và bước chưng cất CUP, ngưỡng 2 log mới được đề xuất, không tự sửa workflow (2026-11-26).
+- [Kết quả nghiệm thu hành vi acceptance-cases](facts/nghiem-thu-hanh-vi-acceptance-cases-20261126.md) - 10/10 ca đạt sau khi chạy lại; ca CAM-05 lần đầu trả rỗng 44 giây, không kết luận sai từ một lần lỗi (2026-11-26).
+- [TaskPacket tiếng Anh và hàng đợi san việc](facts/chuan-taskpack-tieng-anh-va-hang-doi-san-viec.md) - Gói gọn tiếng Anh cộng tham chiếu SHA-256 giảm 79,6% token trên mẫu 3 tác vụ; cam_queue.py đã kiểm 8 worker tranh việc (2026-11-26).

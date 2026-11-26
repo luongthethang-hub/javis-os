@@ -2,7 +2,7 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 9 agents · 25 skills · 5 workflows (0 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
+**Tổng quan:** 9 agents · 25 skills · 6 workflows (1 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
 
 ## Agents
 - **Antigravity** (`antigravity`) - Tactical Muscle / Blue Team: Viết & debug code, quét repo lớn, compile/test MQL5 & Python, chạy shell, dựng media OpenMotion; Kế vị Chủ tọa số 1 khi L1 treo quá 5s. · model gemini-3.8-flash-high · skills: data-query, openmotion · tags: HoiDong, BlueTeam, TacticalMuscle, PeerDirect
@@ -56,6 +56,7 @@
 ### Marketing
 - **Chăm sóc & Phát triển Fanpage Facebook** (`cham-soc-fanpage-facebook`) - off · 3 bước [deepseek -> dola -> perplexity] · Đo hiệu suất Fanpage/Meta Ads, soạn bài 4-1-1 đúng thương hiệu và kiểm duyệt chính sách Meta trước khi trình chủ duyệt.
 ### Nội dung
+- **Sản xuất Video ngắn 1 phút Chuyên nghiệp** (`san-xuat-video-ngan-1-phut`) - active · 6 bước [grok -> codex -> antigravity -> antigravity -> codex -> grok] · Sản xuất video ngắn 60 giây chuẩn Voice-First: chốt góc nội dung, kịch bản theo giây, voice anchor + DSP, Motion.md, render MP4 9:16 kèm QC, ghi vết và chưng cất bài học.
 - **Xây dựng Thương hiệu Cá nhân Đa nền tảng** (`xay-dung-thuong-hieu-ca-nhan`) - off · 3 bước [grok -> antigravity -> perplexity] · Chuyển hóa 1 ý tưởng gốc thành gói nội dung đồng bộ 4 kênh (Facebook, Shorts/TikTok, YouTube, Zalo) kèm kiểm chứng sự thật.
 - **Xây kênh TikTok & YouTube Tự động** (`xay-kenh-tiktok-youtube`) - off · 3 bước [grok -> codex -> antigravity] · Nghiên cứu hook 3 giây, viết kịch bản Voice-First, kiểm duyệt chính sách và đóng gói đặc tả Motion.md sẵn sàng dựng MP4.
 
