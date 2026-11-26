@@ -2,7 +2,7 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 9 agents · 25 skills · 6 workflows (1 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
+**Tổng quan:** 9 agents · 26 skills · 6 workflows (1 bật) · 0 loops (0 bật) · 32 plugins (30 chạy)
 
 ## Agents
 - **Antigravity** (`antigravity`) - Tactical Muscle / Blue Team: Viết & debug code, quét repo lớn, compile/test MQL5 & Python, chạy shell, dựng media OpenMotion; Kế vị Chủ tọa số 1 khi L1 treo quá 5s. · model gemini-3.8-flash-high · skills: data-query, openmotion · tags: HoiDong, BlueTeam, TacticalMuscle, PeerDirect
@@ -35,6 +35,8 @@
 - **Tách phiên thông minh** (`tach-phien-thong-minh`) - Nén ngữ cảnh có kiểm chứng và tạo bàn giao để tiếp tục trong phiên mới.
 - **ui-ux-thuc-chung** (`ui-ux-thuc-chung`) - Thiết kế và rà soát UI UX theo hệ thống có sẵn, accessibility, trạng thái tương tác và kiểm chứng responsive.
 - **Vận hành AI Company ổn định** (`van-hanh-ai-company-on-dinh`) - Điều phối AI Company chịu lỗi nhiều tầng bằng checkpoint, phân loại lỗi, chuyển nguồn có giới hạn và khôi phục an toàn.
+### Chung
+- **Hmm** (`hmm`) - Hiến chương hạt nhân lõi hệ thống.
 ### Marketing
 - **HTML sang Webcake** (`html-to-webcake`) - Chuyển trang HTML thành file .pke mở được trong trình dựng Webcake, giữ đúng màu, cỡ chữ, ảnh và bố cục của bản gốc.
 ### Năng suất

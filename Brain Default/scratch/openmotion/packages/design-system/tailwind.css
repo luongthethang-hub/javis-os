@@ -1,3 +1,0 @@
-/* Import after Tailwind. Source discovery belongs to the consuming application. */
-@import "./studio/palette-reset.css";
-@import "./studio/theme.css";

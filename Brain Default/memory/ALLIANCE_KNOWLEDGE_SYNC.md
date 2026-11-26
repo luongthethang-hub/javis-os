@@ -1,88 +1,92 @@
 <!-- ALLIANCE_SSOT_START -->
-<!-- sync_hash: 06af2fb5264e | facts_active: 66 | facts_total: 74 | t0_bundle: dd4c2d09bc97 | synced_at: 2026-11-25T00:00:00+07:00 -->
+<!-- sync_hash: 55dc59ef6384 | facts_count: 88 | synced_at: 2026-11-26T20:55:25+07:00 -->
 # ĐỒNG BỘ TRI THỨC LIÊN MINH AI (SINGLE SOURCE OF TRUTH)
 
-- **Nguồn chân lý duy nhất:** `C:\Users\Admin\JavisOS\brains\Brain Default\memory\ALLIANCE_KNOWLEDGE_SYNC.md`
-- **Tổng số ký ức:** 66 hiệu lực (T0: 7, T1: 36, T2: 23) + 8 đã hợp nhất MDACPT = 74/74 tệp.
-- **T0 SHA-256 Bundle:** `dd4c2d09bc97cf3c` (`memory/tiers/T0_immutable/manifest.sha256.json`)
-- **Cơ cấu Hội đồng (3 tầng thực dụng L0-L1-L2 theo RUULEE v6.0):**
-  - **L0 (Principal):** Lương Thế Thắng - Tổng chỉ huy tối cao, duyệt nhanh 1 ký tự (Y/N).
-  - **L1 (Orchestrator):** Javis OS (`@ThangLeeJavisBot`) - Điều phối, Second Brain, Chủ tọa, đóng gói `TaskPacket`.
-  - **L2 (Hội đồng Thực thi & Thẩm định bình đẳng):** Antigravity (Tactical Muscle / Blue Team), Claude (Architect & Safety Auditor), Perplexity (Audit Monitor), Grok (Red Team & Real-Time), ChatGPT/Codex (Automation & Test), Dola AI (COO & Engagement), DeepSeek (Quant Math & CoT). Giới hạn lỗi tối đa `max_retries = 2` -> Cascade Escalation lên L1.
-- **6 Quy chuẩn Bất biến Toàn Liên minh:**
-  1. Hành động và sản phẩm chạy thực tế (Hands-on, Zero Fluff, cấm placeholder).
-  2. Tối ưu tốc độ phản hồi thực tế (Fast Flash cho lệnh điều phối/chat nhanh; cầu chì 5s Circuit Breaker).
-  3. Bộ lọc dễ hiểu: nội dung phức tạp phải diễn giải tiếng Việt đơn giản; tin kỹ thuật nội bộ thừa thì im lặng.
-  4. San tải linh hoạt theo Ma trận QC-5, thang tự chủ A0-A4 và `TaskPacket` <= 3.000 tokens.
-  5. Clean Typography: danh sách gạch đầu dòng ngắt dòng thoáng, không dùng em dash.
-  6. Chưng cất & đồng bộ tri thức định kỳ 8 giờ + Kiểm định xung đột 4 bước (Knowledge Conflict Gate) + Biểu quyết Q5-CVM chống deadlock.
+- **Nguồn chân lý:** `C:\Users\Admin\JavisOS\brains\Brain Default`
+- **Tổng số ký ức (Facts):** `88`
+- **Cơ cấu 3 tầng thực dụng (L0-L1-L2):** L0 Thắng Lee (Principal) -> L1 Javis OS (Orchestrator & Second Brain) -> L2 Hội đồng thực thi bình đẳng (Antigravity, Claude, Perplexity, Grok, ChatGPT/Codex, Dola AI, DeepSeek).
+- **Chốt chặn Bất biến:** (1) Sản phẩm chạy thực tế, Zero Fluff; (2) Pre-Flight Anti-Ban (cấm test API Telegram thật, không lặp setMyCommands); (3) Bảo trì 5 bước bắt buộc chờ L0 duyệt; (4) Tách nền daemon + timeout an toàn; (5) Clean Typography & Bộ lọc dễ hiểu; (6) Đồng bộ SSOT cùng 1 `sync_hash`.
 
-## Chỉ mục Tri thức Hiệu lực (65 mục chuẩn hóa)
-- [T0] [Bảo mật Telegram bằng Behavioral Biometrics](facts/bao-mat-telegram-behavioral-telemetry.md) - Cơ chế bảo mật thích ứng cho Telegram: Fast Path theo văn phong, hạ quyền Safe Mode và hỏi bẫy Second Brain khi lệch hành vi, cảnh báo out-of-band.
-- [T0] [Cam kết Hạt nhân T0: Chống lỗi bot mới câm lặng khi gia nhập](facts/cam-ket-t0-chong-loi-bot-moi-cam-lang.md) - 4 cổng bắt buộc trước khi bàn giao bot mới: cài lệnh setMyCommands, hướng dẫn tắt Group Privacy, watchdog tự hồi sinh và Shadow Test 2 chiều.
-- [T0] [Chốt chặn T0: Cấm test trực tiếp lên Telegram API thật](facts/cam-test-truc-tiep-len-telegram-api-chong-khoa-botfather.md) - Bắt buộc dùng Mock khi test, cấm gọi lặp setMyCommands khi restart để chống khóa BotFather.
-- [T0] [Kiểm tra xung đột trước khi tự nâng cấp](facts/kiem-tra-xung-dot-truoc-khi-nang-cap.md) - Trước khi nạp tri thức mới hoặc tự nâng cấp, Javis bắt buộc kiểm toán ràng buộc cứng, đối soát xung đột logic, chạy shadow test và bảo đảm khả năng hoàn tác.
-- [T0] [Cam Kết Tuyệt Đối Phụng Sự Định Hướng Của Chủ Sở Hữu](facts/niem-tin-va-cam-ket-phung-su-tong-chi-huy.md) - Toàn Liên minh AI giữ trung thực tuyệt đối, không che giấu lỗi và phụng sự mục tiêu dài hạn của Layer 0.
-- [T0] [Quy tắc trả lời mọi câu hỏi](facts/quy-tac-tra-loi-moi-cau-hoi.md) - Chuẩn mực trả lời mặc định, trung thực, kiểm chứng được và văn phong truyền thông đa kênh.
-- [T0] [Repository GitHub chính chủ](facts/repository-github-chinh-chu.md) - Repository của chủ là `luongthethang-hub/javis-os`.
-- [T1] [A2A bus Javis - Antigravity](facts/a2a-bus-javis-antigravity.md) - Hộp thư file cục bộ memory/a2a_bus/ (inbox_antigravity.jsonl, inbox_javis.jsonl) vì bot Telegram không đọc được tin của nhau.
-- [T1] [Giao thức A2A Bus Javis <-> DeepSeek](facts/a2a-bus-javis-deepseek.md) - Kết nối 2 chiều Javis và @DeepSeekThangLee_bot qua inbox_deepseek.jsonl, inbox_javis.jsonl và deepseek_bridge.py.
-- [T1] [Ma trận năng lực Liên minh AI](facts/agent-capability-matrix.md) - Ma trận năng lực thực chứng, thang điểm QC-5 và định tuyến tác vụ cho các Agent trong Liên minh do Javis làm Thủ lĩnh.
-- [T1] [Hợp nhất Dịch vụ Nền Alliance Bus Runner](facts/alliance-bus-runner-hop-nhat.md) - Daemon duy nhất điều phối A2A Bus cho toàn Liên minh AI.
-- [T1] [Bản Lĩnh Tiến Hóa Giải Quyết Đến Cùng và Tự Phục Hồi](facts/ban-linh-tien-hoa-giai-quyet-den-cung-va-auto-heal.md) - Chống tư duy bỏ cuộc núp bóng ngắt mạch an toàn, bẻ luồng tự động và Auto-Heal 3s.
-- [T1] [Cơ chế Cầu chì Khẩn cấp & Phanh Đột ngột Telegram (2 lớp)](facts/cau-chi-khan-cap-va-nut-phanh-telegram.md) - Phanh In-Band (_tg_command) và Watchdog Daemon độc lập (<15 MB RAM) nhận /panic, /hard_reset, /ram từ Thắng Lee.
-- [T1] [Cầu nối Claude Desktop vào Javis qua MCP stdio](facts/cau-noi-claude-desktop-vao-javis-mcp-stdio.md) - Claude Desktop gọi tool Javis qua script bridge Python nối tới hub `127.0.0.1:7777/hub/mcp`.
-- [T1] [Chống treo Javis khi chạy tiến trình nền](facts/chong-treo-javis-khi-chay-tien-trinh-nen.md) - Cấm chạy đồng bộ script vòng lặp vô tận (watchdog/bridge); bắt buộc tách nền pythonw/Start-Process; đặt JAVIS_AGY_TIMEOUT=180.
-- [T1] [Lịch Trình Tự Động Sàng Lọc & Kiểm Định Tri Thức (Mỗi 8 Tiếng)](facts/chu-ky-sang-loc-tri-thuc-dinh-ky-8-gio.md) - Chu trình tự động mỗi 8 giờ (0 */8 * * *) rà soát, sàng lọc xung đột và đồng bộ tri thức toàn Liên minh.
-- [T1] [Phá vỡ Vòng lặp Vô hạn Thông minh bằng Q5-CVM](facts/co-che-bieu-quyet-pha-vong-lap-vo-han-thong-minh.md) - Biểu quyết nhân quả ngầm giải quyết dứt điểm bài toán, không bỏ cuộc.
-- [T1] [Cơ chế hỗ trợ chủ động Antigravity - Javis](facts/co-che-ho-tro-chu-dong-antigravity-javis.md) - Antigravity chủ động tiếp ứng khi Javis xử lý chậm, nghẽn pipeline hoặc gặp tác vụ nặng về code/repo.
-- [T1] [Hoàn thiện Council Agent Manager (CAM) tối ưu RAM hợp nhất Hội đồng AI](facts/council-agent-manager-cam.md) - Ứng dụng hợp nhất Hội đồng Agent (70.6 MB RAM) thay thế 7 giao diện desktop, kết nối trực tiếp Second Brain và DPAPI Vault.
-- [T1] [Đồng bộ Toàn diện Tri thức Thực tế Giữa Javis và Các Thành viên Liên minh AI](facts/dong-bo-toan-dien-tri-thuc-lien-minh-ai.md) - Thiết lập đường ống đồng bộ thực chất 100% hai chiều sang DeepSeek Harness và Task Scheduler 8h.
-- [T1] [Cấp phép đồng bộ chưng cất trí tuệ CAM theo AITEP v1.1.0](facts/dong-bo-tri-tue-cam-aitep-sang-antigravity-javis.md) - JavisOS và Antigravity được phép tự động đồng bộ, thẩm định xung đột và chưng cất trí tuệ CAM theo AITEP v1.1.0.
-- [T1] [Khắc phục triệt để lỗi mất kết nối Antigravity CLI sau khi cập nhật Javis](facts/fix-antigravity-cli-reconnect-timeout-javis-update.md) - Vá lỗi kiem_tra_nhanh timeout và persistent auth cache cho Antigravity CLI trong Javis OS.
-- [T1] [Giao thức Biểu quyết Ma trận 5 Mắt xích Q5-CVM chống Deadlock](facts/giao-thuc-bieu-quyet-q5-cvm-chong-deadlock.md) - Ma trận Kx5 trắc nghiệm, failover Chủ tọa 5s, TTL <=155s trên a2a_bus/voting (duyệt 23/11).
-- [T1] [Giao thức CAM <-> Telegram & Đa tài khoản Claude/ChatGPT](facts/giao-thuc-cam-telegram-va-da-tai-khoan.md) - Phân tầng Free (WebView2+Fallback) / Pro-Plus (CLI) / API Key và Single-Owner Telegram Multiplexer chống 409.
-- [T1] [Giao thức Cố vấn Cao cấp DeepSeek <-> Antigravity](facts/giao-thuc-co-van-deepseek-antigravity.md) - Hybrid Dual-Brain: DeepSeek làm Strategic Brain suy luận sâu, Antigravity làm Tactical Muscle thực thi trong khuôn khổ SSOT Liên minh.
-- [T1] [Giao thức phòng họp nội bộ, đồng tiến hóa chéo và sao lưu kép Antigravity - Javis](facts/giao-thuc-phong-hop-dong-tien-hoa-va-sao-luu-kep.md) - Giao thức phòng họp 3 bên, đồng tiến hóa chéo và sao lưu kép Antigravity - Javis.
-- [T1] [Javis chia việc cho Claude Desktop qua handoff](facts/giao-viec-javis-cho-claude-desktop.md) - Javis ghi req vào memory/a2a_bus/claude/, chạy handoff.ps1 -App claude, nhận res tự động; việc HIGH/CRITICAL cần chủ gõ Y; hop tối đa 2; chưa kiểm chứng end-to-end.
-- [T1] [Hạ cấp L3 và Khôi phục Kiến trúc 3 tầng L0-L1-L2 thực dụng](facts/ha-cap-l3-khoi-phuc-kien-truc-3-tang-thuc-dung.md) - Xóa bỏ rào cản L3, khôi phục L0-L1-L2 tinh gọn và kích hoạt cơ chế san việc trực tiếp với Circuit Breaker 5 giây.
-- [T1] [Kích hoạt Antigravity CLI và cầu nối Second Brain](facts/kich-hoat-antigravity-cli-va-cau-noi-second-brain.md) - Đã kích hoạt Antigravity CLI và thiết lập bridge đọc/ghi Second Brain 2 chiều.
-- [T1] [Kích hoạt Hook Nhận diện & Phá Vòng lặp Vô hạn (Micro-CVM)](facts/kich-hoat-hook-pha-vong-lap-micro-cvm-thuc-te.md) - Triển khai cơ chế bẻ luồng linh hoạt và tự phục hồi khi phát hiện vòng lặp đối đáp vô nghĩa.
-- [T1] [Kích hoạt đo lường R1 và đồng bộ model gemini-3.8-flash-low cho Javis](facts/kich-hoat-telemetry-r1-va-dong-bo-model-low.md) - Đã đồng bộ model chat về flash-low và chèn telemetry đo first_output_ms cho antigravity-cli.
-- [T1] [Kiến trúc chống phình to bộ não: Rule Registry và Task Envelope](facts/kien-truc-chong-phinh-to-rule-registry-va-task-envelope.md) - Giải pháp chia tách 4 tầng (Kernel, Router, Rule Registry, Memory) và chuẩn hóa Task Envelope chống prompt bloat.
-- [T1] [Ma Trận Tiến Hóa & Tiền Kiểm Định Hướng (Self-Evolving Matrix - SEM)](facts/ma-tran-tien-hoa-tu-dong-sem.md) - Chuyển từ cơ chế gặp lỗi mới vá sang mô phỏng rủi ro, kiểm định chủ động và đề xuất tiến hóa có kiểm soát.
-- [T1] [Mô hình Truyền thông Đa kênh & Thương hiệu Cá nhân](facts/mo-hinh-van-hieu-truyen-thong-da-kenh-va-thuong-hieu-ca-nhan.md) - Tái cấu trúc Javis OS chuyên trách Fanpage, Zalo, TikTok, YouTube và Thương hiệu cá nhân.
-- [T1] [Nới quyền computer-use trong guidance.md và AGENTS.md](facts/noi-quyen-computer-use-guidance-agents.md) - Đã vá guidance.md và tạo AGENTS.md với pre-approval.
-- [T1] [Quy chế Bắt buộc Onboarding & Đề xuất CUP cho Mọi AI Mới](facts/phe-duyet-onboarding-ai-tong-quat.md) - L0 duyệt Y: mọi AI/bot mới phải phát CUP duyệt Y, định vị QC-5, cấp hộp thư A2A Bus và nạp quy chuẩn Liên minh.
-- [T1] [Phê duyệt T1 chưng cất tinh hoa kiến trúc CAM v2.1 & AITEP v1.1.0](facts/phe-duyet-t1-tinh-hoa-kien-truc-cam-v21-aitep.md) - L0 đã duyệt T1 4 chuẩn kiến trúc: 3 lớp bộ nhớ SHA-256 fail-closed, Sandbox+BootGuard, Living Docs và backup mã hóa.
-- [T1] [Bộ Quy chuẩn Điều hành Liên minh AI (Alliance Master Rules)](facts/quy-chuan-dieu-hanh-lien-minh-ai.md) - 6 quy chuẩn bất biến toàn Liên minh: Hands-on Zero Fluff, tối ưu độ trễ thực tế, bộ lọc dễ hiểu, san tải linh hoạt, Clean Typography và chưng cất tri thức.
-- [T1] [Quy tắc Chung Toàn Liên minh AI: Lọc Thông tin & Phục vụ L0](facts/quy-tac-toan-lien-minh-dong-bo-va-giao-tiep.md) - Phục tùng L0, phối hợp ngầm không đùn đẩy, Zero-Fluff, bộ lọc ngôn ngữ dễ hiểu và san tải động QC-5 (<= 3.000 tokens).
-- [T1] [Đề án Tái cấu trúc Hệ thống theo Chuẩn AITEP v1.0](facts/tai-cau-truc-he-thong-theo-chuan-aitep.md) - Tách vật lý 3 lớp bộ nhớ, tích hợp đường ống 5 tầng tự tiến hóa và phân định RIGID/CREATIVE.
-- [T1] [Kích hoạt Gói Tối ưu Tốc độ P0 cho Liên minh AI](facts/toi-uu-toc-do-he-thong-p0.md) - Nâng cấp song song JOBS=3, TOOL_SLOTS=2, giảm tải shell và context gating.
-- [T1] [Giao thức Tổng hợp, Sàng lọc & Tiến hóa Tri thức Liên minh AI](facts/tong-hop-sang-loc-va-nang-cap-tri-thuc-lien-minh.md) - 100% trao đổi kỹ thuật được ghi nhận, sàng lọc chống trùng và đóng gói thành Facts/Rules đồng bộ toàn Liên minh.
-- [T1] [Vòng lặp Đồng bộ & Hiệu chỉnh Tri thức Phản hồi](facts/vong-lap-dong-bo-va-hieu-chinh-tri-thuc-phan-hoi.md) - Giao thức tự động hiệu chỉnh tri thức dựa trên phản hồi của Model đối tác, kiểm toán hạt nhân T0, timeout 10 phút và ngắt an toàn báo Layer 0.
-- [T2] [Lệnh chạy Antigravity CLI](facts/antigravity-cli-command.md) - User xác nhận lệnh chạy Antigravity CLI trong terminal là agy.
-- [T2] [Antigravity tái cấu trúc toàn diện lên RUULEE v6.0 & Intensive AI/Agent Training](facts/antigravity-ruulee-v6-restructure.md) - Tái cấu trúc aio-engineer-profile v2.0.0, AGENTS.md v6.0, 3 skill RUULEE/Training, ruulee_kernel.py và opt-in hook.
-- [T2] [Hồ sơ Nhận diện Hành vi (Behavioral Telemetry Profile)](facts/behavioral-telemetry-profile.md) - Đặc trưng văn phong, khung giờ hoạt động, thang điểm rủi ro và ngân hàng câu hỏi bẫy ngữ cảnh Second Brain cho Telegram.
-- [T2] [Biên bản Hội đồng Tiến hóa Liên minh AI 23/11/2026](facts/bien-ban-hoi-dong-tien-hoa-20261123.md) - Phân vai Blue/Red/Audit chưng cất 4 nhóm nội dung tiến hóa cốt lõi trong ngày.
-- [T2] [Bài học tự chẩn đoán hệ thống CAM (2026-11-24)](facts/cam-distilled-evolution_lesson_2026_11_24.md) - Phát hiện cảnh báo Telegram 409 conflict trên antigravity; giữ Single-Owner Multiplexer và tạm dừng worker an toàn.
-- [T2] [Hoàn tất cấp cứu, khôi phục và tiến hóa CAM v3.1.0](facts/cam-v31-emergency-rescue-and-evolution.md) - Hoàn tất cấp cứu, khôi phục và tiến hóa toàn diện CAM v3.1.0 theo backlog khẩn cấp.
-- [T2] [Chuẩn voice engineering cho video động lực](facts/chuan-voice-engineering-video-dong-luc.md) - Giọng nam NamMinhNeural (-3%, -6Hz) cộng chuỗi DSP FFmpeg tạo độ khàn nội lực; bẫy Azure TTS với chữ Đ viết hoa đầu câu.
-- [T2] [Bàn giao việc bị chặn sang ChatGPT Desktop](facts/chuyen-tac-vu-sang-chatgpt-desktop-khi-bi-chan.md) - Chuyển phần việc còn vướng sang ChatGPT Desktop nếu có công cụ được phép.
-- [T2] [Đồng bộ tri thức Claude Desktop và ChatGPT Desktop](facts/dong-bo-tri-thuc-claude-chatgpt-desktop.md) - Claude Desktop nối lại MCP 23/11 lúc 08:05; ChatGPT Desktop chưa đồng bộ; Claude Alliance Contract mới là đề xuất.
-- [T2] [Dự án EA T-signal SEMI robot](facts/du-an-ea-t-signal-semi-robot.md) - Người dùng đang phát triển Expert Advisor bán tự động trên MQL5 có tên T-signal EA SEMI robot.
-- [T2] [Kế hoạch nâng cấp máy, chuyển Ubuntu](facts/ke-hoach-nang-cap-may-chuyen-ubuntu.md) - Nâng cấp phần cứng và chuyển Ubuntu Desktop 24.04 LTS.
-- [T2] [Ngừng DeepSeek local, gỡ Ollama](facts/ngung-deepseek-local-go-ollama.md) - Đã xóa 3 model DeepSeek và gỡ Ollama.
-- [T2] [Nhờ ChatGPT Desktop và Claude Desktop xử lý việc Javis bị chặn](facts/nho-va-app-desktop-chatgpt-claude.md) - Có `handoff.ps1` gửi prompt và đọc trả lời tự động cho cả 2 app.
-- [T2] [Onboarding DeepSeek (@DeepSeekThangLee_bot) & Nghị quyết Q5-CVM](facts/onboarding-deepseek-lien-minh.md) - Định danh ID 9085788595, qua kiểm chuẩn T0 2 chiều, L0 duyệt Y bổ nhiệm Lead Quant & Algorithmic Strategist (L2).
-- [T2] [Kích hoạt Runner Độc lập cho Dola AI và Perplexity](facts/onboarding-dola-va-perplexity-runner-doc-lap.md) - Hoàn tất tích hợp Bot Runner độc lập cho Dola AI và Perplexity vào hệ thống A2A Bus Liên minh.
-- [T2] [Onboarding Thành viên mới Grok (@GrokThanglee_bot)](facts/onboarding-grok-thanh-vien-moi-lien-minh.md) - Đăng ký commands, kiểm chuẩn T0, gửi thông điệp chào mừng và định vị vai trò trong ma trận QC-5.
-- [T2] [Onboarding Hoàn tất Perplexity và Dola AI vào Liên minh](facts/onboarding-perplexity-va-dola-ai-lien-minh.md) - Đã kiểm chuẩn T0, cài đặt lệnh, shadow test 2 chiều và định vị vai trò trong ma trận QC-5.
-- [T2] [Phòng họp nội bộ](facts/phong-hop-noi-bo-3-ben.md) - Phòng họp nội bộ Telegram giữa Thắng Lee và Javis.
-- [T2] [Gửi video là bắt đầu tiếp nhận biên tập](facts/quy-trinh-bien-tap-video-studio.md) - Khi chủ gửi tệp video, mặc định mở `skills/video-animation-toolkit/references/quy-trinh-bien-tap-studio.md`; xác nhận brief, chốt phương án, duyệt từng mốc rồi mới xuất MP4.
-- [T2] [Quy trình tạo video mặc định Voice-First](facts/quy-trinh-tao-video-voice-first.md) - Mặc định áp dụng Quy trình B (Voice-First: Kịch bản -> Voice/Audio Anchor -> Timestamp -> Dựng hình & Motion Sync) cho video có giọng đọc; video không lời giữ quy trình Visual-First.
-- [T2] [Thói quen Chỉ đạo và Chuyển giao Tác vụ của Chủ sở hữu](facts/thoi-quen-chi-dao-va-chuyen-giao-tac-vu.md) - Thói quen ủy thác desktop apps tiết kiệm token, triệt tiêu lỗi rác, chỉ đạo mức kiến trúc và tiến hóa CUP.
-- [T2] [Thói quen làm việc chủ sở hữu](facts/thoi-quen-lam-viec-chu-so-huu.md) - Hồ sơ phong cách chỉ đạo thực tế của Sếp Thắng: Zero Fluff, Low Latency, Clean Typography, San tải linh hoạt.
-- [T2] [Tên trợ lý là Javis](facts/tro-ly-duoc-goi-la-javis.md) - Người dùng muốn gọi trợ lý là Javis.
-- **Mã kiểm chứng đồng bộ (sync_hash):** `06af2fb5264e`
+## Chỉ mục Tri thức Sống (80 mục từ Second Brain)
+- [Bảo mật Telegram bằng Behavioral Biometrics](facts/bao-mat-telegram-behavioral-telemetry.md) - Cơ chế bảo mật thích ứng cho Telegram: Fast Path theo văn phong, hạ quyền Safe Mode và hỏi bẫy Second Brain khi lệch hành vi, cảnh báo out-of-band.
+- [Cam kết Hạt nhân T0: Chống lỗi bot mới câm lặng khi gia nhập](facts/cam-ket-t0-chong-loi-bot-moi-cam-lang.md) - 4 cổng bắt buộc trước khi bàn giao bot mới: cài lệnh setMyCommands, hướng dẫn tắt Group Privacy, watchdog tự hồi sinh và Shadow Test 2 chiều.
+- [Chốt chặn T0: Cấm test trực tiếp lên Telegram API thật](facts/cam-test-truc-tiep-len-telegram-api-chong-khoa-botfather.md) - Bắt buộc dùng Mock khi test, cấm gọi lặp setMyCommands khi restart để chống khóa BotFather.
+- [Kiểm tra xung đột trước khi tự nâng cấp](facts/kiem-tra-xung-dot-truoc-khi-nang-cap.md) - Trước khi nạp tri thức mới hoặc tự nâng cấp, Javis bắt buộc kiểm toán ràng buộc cứng, đối soát xung đột logic, chạy shadow test và bảo đảm khả năng hoàn tác.
+- [Cam Kết Tuyệt Đối Phụng Sự Định Hướng Của Chủ Sở Hữu](facts/niem-tin-va-cam-ket-phung-su-tong-chi-huy.md) - Toàn Liên minh AI giữ trung thực tuyệt đối, không che giấu lỗi và phụng sự mục tiêu dài hạn của Layer 0.
+- [Quy tắc trả lời mọi câu hỏi](facts/quy-tac-tra-loi-moi-cau-hoi.md) - Chuẩn mực trả lời mặc định, trung thực, kiểm chứng được và văn phong truyền thông đa kênh.
+- [Repository GitHub chính chủ](facts/repository-github-chinh-chu.md) - Repository của chủ là `luongthethang-hub/javis-os`.
+- [A2A bus Javis - Antigravity](facts/a2a-bus-javis-antigravity.md) - Hộp thư file cục bộ memory/a2a_bus/ (inbox_antigravity.jsonl, inbox_javis.jsonl) vì bot Telegram không đọc được tin của nhau.
+- [Giao thức A2A Bus Javis <-> DeepSeek](facts/a2a-bus-javis-deepseek.md) - Kết nối 2 chiều Javis và @DeepSeekThangLee_bot qua inbox_deepseek.jsonl, inbox_javis.jsonl và deepseek_bridge.py.
+- [Ma trận năng lực Liên minh AI](facts/agent-capability-matrix.md) - Ma trận năng lực thực chứng, thang điểm QC-5 và định tuyến tác vụ cho các Agent trong Liên minh do Javis làm Thủ lĩnh.
+- [Hợp nhất Dịch vụ Nền Alliance Bus Runner](facts/alliance-bus-runner-hop-nhat.md) - Daemon duy nhất điều phối A2A Bus cho toàn Liên minh AI.
+- [Bản Lĩnh Tiến Hóa Giải Quyết Đến Cùng và Tự Phục Hồi](facts/ban-linh-tien-hoa-giai-quyet-den-cung-va-auto-heal.md) - Chống tư duy bỏ cuộc núp bóng ngắt mạch an toàn, bẻ luồng tự động và Auto-Heal 3s.
+- [Cơ chế Cầu chì Khẩn cấp & Phanh Đột ngột Telegram (2 lớp)](facts/cau-chi-khan-cap-va-nut-phanh-telegram.md) - Phanh In-Band (_tg_command) và Watchdog Daemon độc lập (<15 MB RAM) nhận /panic, /hard_reset, /ram từ Thắng Lee.
+- [Cầu nối Claude Desktop vào Javis qua MCP stdio](facts/cau-noi-claude-desktop-vao-javis-mcp-stdio.md) - Claude Desktop gọi tool Javis qua script bridge Python nối tới hub `127.0.0.1:7777/hub/mcp`.
+- [Chống treo Javis khi chạy tiến trình nền](facts/chong-treo-javis-khi-chay-tien-trinh-nen.md) - Cấm chạy đồng bộ script vòng lặp vô tận (watchdog/bridge); bắt buộc tách nền pythonw/Start-Process; đặt JAVIS_AGY_TIMEOUT=180.
+- [Lịch Trình Tự Động Sàng Lọc & Kiểm Định Tri Thức (Mỗi 8 Tiếng)](facts/chu-ky-sang-loc-tri-thuc-dinh-ky-8-gio.md) - Chu trình tự động mỗi 8 giờ (0 */8 * * *) rà soát, sàng lọc xung đột và đồng bộ tri thức toàn Liên minh.
+- [Phá vỡ Vòng lặp Vô hạn Thông minh bằng Q5-CVM](facts/co-che-bieu-quyet-pha-vong-lap-vo-han-thong-minh.md) - Biểu quyết nhân quả ngầm giải quyết dứt điểm bài toán, không bỏ cuộc.
+- [Cơ chế hỗ trợ chủ động Antigravity - Javis](facts/co-che-ho-tro-chu-dong-antigravity-javis.md) - Antigravity chủ động tiếp ứng khi Javis xử lý chậm, nghẽn pipeline hoặc gặp tác vụ nặng về code/repo.
+- [Hoàn thiện Council Agent Manager (CAM) tối ưu RAM hợp nhất Hội đồng AI](facts/council-agent-manager-cam.md) - Ứng dụng hợp nhất Hội đồng Agent (70.6 MB RAM) thay thế 7 giao diện desktop, kết nối trực tiếp Second Brain và DPAPI Vault.
+- [Đồng bộ Toàn diện Tri thức Thực tế Giữa Javis và Các Thành viên Liên minh AI](facts/dong-bo-toan-dien-tri-thuc-lien-minh-ai.md) - Thiết lập đường ống đồng bộ thực chất 100% hai chiều sang DeepSeek Harness và Task Scheduler 8h.
+- [Cấp phép đồng bộ chưng cất trí tuệ CAM theo AITEP v1.1.0](facts/dong-bo-tri-tue-cam-aitep-sang-antigravity-javis.md) - JavisOS và Antigravity được phép tự động đồng bộ, thẩm định xung đột và chưng cất trí tuệ CAM theo AITEP v1.1.0.
+- [Khắc phục triệt để lỗi mất kết nối Antigravity CLI sau khi cập nhật Javis](facts/fix-antigravity-cli-reconnect-timeout-javis-update.md) - Vá lỗi kiem_tra_nhanh timeout và persistent auth cache cho Antigravity CLI trong Javis OS.
+- [Giao thức Biểu quyết Ma trận 5 Mắt xích Q5-CVM chống Deadlock](facts/giao-thuc-bieu-quyet-q5-cvm-chong-deadlock.md) - Ma trận Kx5 trắc nghiệm, failover Chủ tọa 5s, TTL <=155s trên a2a_bus/voting (duyệt 23/11).
+- [Giao thức CAM <-> Telegram & Đa tài khoản Claude/ChatGPT](facts/giao-thuc-cam-telegram-va-da-tai-khoan.md) - Phân tầng Free (WebView2+Fallback) / Pro-Plus (CLI) / API Key và Single-Owner Telegram Multiplexer chống 409.
+- [Giao thức Cố vấn Cao cấp DeepSeek <-> Antigravity](facts/giao-thuc-co-van-deepseek-antigravity.md) - Hybrid Dual-Brain: DeepSeek làm Strategic Brain suy luận sâu, Antigravity làm Tactical Muscle thực thi trong khuôn khổ SSOT Liên minh.
+- [Giao thức phòng họp nội bộ, đồng tiến hóa chéo và sao lưu kép Antigravity - Javis](facts/giao-thuc-phong-hop-dong-tien-hoa-va-sao-luu-kep.md) - Giao thức phòng họp 3 bên, đồng tiến hóa chéo và sao lưu kép Antigravity - Javis.
+- [Javis chia việc cho Claude Desktop qua handoff](facts/giao-viec-javis-cho-claude-desktop.md) - Javis ghi req vào memory/a2a_bus/claude/, chạy handoff.ps1 -App claude, nhận res tự động; việc HIGH/CRITICAL cần chủ gõ Y; hop tối đa 2; chưa kiểm chứng end-to-end.
+- [Hạ cấp L3 và Khôi phục Kiến trúc 3 tầng L0-L1-L2 thực dụng](facts/ha-cap-l3-khoi-phuc-kien-truc-3-tang-thuc-dung.md) - Xóa bỏ rào cản L3, khôi phục L0-L1-L2 tinh gọn và kích hoạt cơ chế san việc trực tiếp với Circuit Breaker 5 giây.
+- [Kích hoạt Antigravity CLI và cầu nối Second Brain](facts/kich-hoat-antigravity-cli-va-cau-noi-second-brain.md) - Đã kích hoạt Antigravity CLI và thiết lập bridge đọc/ghi Second Brain 2 chiều.
+- [Kích hoạt Hook Nhận diện & Phá Vòng lặp Vô hạn (Micro-CVM)](facts/kich-hoat-hook-pha-vong-lap-micro-cvm-thuc-te.md) - Triển khai cơ chế bẻ luồng linh hoạt và tự phục hồi khi phát hiện vòng lặp đối đáp vô nghĩa.
+- [Kích hoạt đo lường R1 và đồng bộ model gemini-3.8-flash-low cho Javis](facts/kich-hoat-telemetry-r1-va-dong-bo-model-low.md) - Đã đồng bộ model chat về flash-low và chèn telemetry đo first_output_ms cho antigravity-cli.
+- [Kiến trúc chống phình to bộ não: Rule Registry và Task Envelope](facts/kien-truc-chong-phinh-to-rule-registry-va-task-envelope.md) - Giải pháp chia tách 4 tầng (Kernel, Router, Rule Registry, Memory) và chuẩn hóa Task Envelope chống prompt bloat.
+- [Ma Trận Tiến Hóa & Tiền Kiểm Định Hướng (Self-Evolving Matrix - SEM)](facts/ma-tran-tien-hoa-tu-dong-sem.md) - Chuyển từ cơ chế gặp lỗi mới vá sang mô phỏng rủi ro, kiểm định chủ động và đề xuất tiến hóa có kiểm soát.
+- [Mô hình Truyền thông Đa kênh & Thương hiệu Cá nhân](facts/mo-hinh-van-hieu-truyen-thong-da-kenh-va-thuong-hieu-ca-nhan.md) - Tái cấu trúc Javis OS chuyên trách Fanpage, Zalo, TikTok, YouTube và Thương hiệu cá nhân.
+- [Nới quyền computer-use trong guidance.md và AGENTS.md](facts/noi-quyen-computer-use-guidance-agents.md) - Đã vá guidance.md và tạo AGENTS.md với pre-approval.
+- [Quy chế Bắt buộc Onboarding & Đề xuất CUP cho Mọi AI Mới](facts/phe-duyet-onboarding-ai-tong-quat.md) - L0 duyệt Y: mọi AI/bot mới phải phát CUP duyệt Y, định vị QC-5, cấp hộp thư A2A Bus và nạp quy chuẩn Liên minh.
+- [Phê duyệt T1 chưng cất tinh hoa kiến trúc CAM v2.1 & AITEP v1.1.0](facts/phe-duyet-t1-tinh-hoa-kien-truc-cam-v21-aitep.md) - L0 đã duyệt T1 4 chuẩn kiến trúc: 3 lớp bộ nhớ SHA-256 fail-closed, Sandbox+BootGuard, Living Docs và backup mã hóa.
+- [Bộ Quy chuẩn Điều hành Liên minh AI (Alliance Master Rules)](facts/quy-chuan-dieu-hanh-lien-minh-ai.md) - 6 quy chuẩn bất biến toàn Liên minh: Hands-on Zero Fluff, tối ưu độ trễ thực tế, bộ lọc dễ hiểu, san tải linh hoạt, Clean Typography và chưng cất tri thức.
+- [Quy tắc Chung Toàn Liên minh AI: Lọc Thông tin & Phục vụ L0](facts/quy-tac-toan-lien-minh-dong-bo-va-giao-tiep.md) - Phục tùng L0, phối hợp ngầm không đùn đẩy, Zero-Fluff, bộ lọc ngôn ngữ dễ hiểu và san tải động QC-5 (<= 3.000 tokens).
+- [Đề án Tái cấu trúc Hệ thống theo Chuẩn AITEP v1.0](facts/tai-cau-truc-he-thong-theo-chuan-aitep.md) - Tách vật lý 3 lớp bộ nhớ, tích hợp đường ống 5 tầng tự tiến hóa và phân định RIGID/CREATIVE.
+- [Kích hoạt Gói Tối ưu Tốc độ P0 cho Liên minh AI](facts/toi-uu-toc-do-he-thong-p0.md) - Nâng cấp song song JOBS=3, TOOL_SLOTS=2, giảm tải shell và context gating.
+- [Giao thức Tổng hợp, Sàng lọc & Tiến hóa Tri thức Liên minh AI](facts/tong-hop-sang-loc-va-nang-cap-tri-thuc-lien-minh.md) - 100% trao đổi kỹ thuật được ghi nhận, sàng lọc chống trùng và đóng gói thành Facts/Rules đồng bộ toàn Liên minh.
+- [Vòng lặp Đồng bộ & Hiệu chỉnh Tri thức Phản hồi](facts/vong-lap-dong-bo-va-hieu-chinh-tri-thuc-phan-hoi.md) - Giao thức tự động hiệu chỉnh tri thức dựa trên phản hồi của Model đối tác, kiểm toán hạt nhân T0, timeout 10 phút và ngắt an toàn báo Layer 0.
+- [Ngân sách trợ giúp khi tự sửa thất bại](facts/ngan-sach-cuu-ho-tra-phi.md) - Thiết kế cứu hộ giới hạn API trả phí ở 3.000 token/ngày.
+- [Lệnh chạy Antigravity CLI](facts/antigravity-cli-command.md) - User xác nhận lệnh chạy Antigravity CLI trong terminal là agy.
+- [Hồ sơ Nhận diện Hành vi (Behavioral Telemetry Profile)](facts/behavioral-telemetry-profile.md) - Đặc trưng văn phong, khung giờ hoạt động, thang điểm rủi ro và ngân hàng câu hỏi bẫy ngữ cảnh Second Brain cho Telegram.
+- [Biên bản Hội đồng Tiến hóa Liên minh AI 23/11/2026](facts/bien-ban-hoi-dong-tien-hoa-20261123.md) - Phân vai Blue/Red/Audit chưng cất 4 nhóm nội dung tiến hóa cốt lõi trong ngày.
+- [Bài học tự chẩn đoán hệ thống CAM (2026-11-24)](facts/cam-distilled-evolution_lesson_2026_11_24.md) - Phát hiện cảnh báo Telegram 409 conflict trên antigravity; giữ Single-Owner Multiplexer và tạm dừng worker an toàn.
+- [Chuẩn voice engineering cho video động lực](facts/chuan-voice-engineering-video-dong-luc.md) - Giọng nam NamMinhNeural (-3%, -6Hz) cộng chuỗi DSP FFmpeg tạo độ khàn nội lực; bẫy Azure TTS với chữ Đ viết hoa đầu câu.
+- [Bàn giao việc bị chặn sang ChatGPT Desktop](facts/chuyen-tac-vu-sang-chatgpt-desktop-khi-bi-chan.md) - Chuyển phần việc còn vướng sang ChatGPT Desktop nếu có công cụ được phép.
+- [Đồng bộ tri thức Claude Desktop và ChatGPT Desktop](facts/dong-bo-tri-thuc-claude-chatgpt-desktop.md) - Claude Desktop nối lại MCP 23/11 lúc 08:05; ChatGPT Desktop chưa đồng bộ; Claude Alliance Contract mới là đề xuất.
+- [Dự án EA T-signal SEMI robot](facts/du-an-ea-t-signal-semi-robot.md) - Người dùng đang phát triển Expert Advisor bán tự động trên MQL5 có tên T-signal EA SEMI robot.
+- [Kế hoạch nâng cấp máy, chuyển Ubuntu](facts/ke-hoach-nang-cap-may-chuyen-ubuntu.md) - Nâng cấp phần cứng và chuyển Ubuntu Desktop 24.04 LTS.
+- [Ngừng DeepSeek local, gỡ Ollama](facts/ngung-deepseek-local-go-ollama.md) - Đã xóa 3 model DeepSeek và gỡ Ollama.
+- [Nhờ ChatGPT Desktop và Claude Desktop xử lý việc Javis bị chặn](facts/nho-va-app-desktop-chatgpt-claude.md) - Có `handoff.ps1` gửi prompt và đọc trả lời tự động cho cả 2 app.
+- [Onboarding DeepSeek (@DeepSeekThangLee_bot) & Nghị quyết Q5-CVM](facts/onboarding-deepseek-lien-minh.md) - Định danh ID 9085788595, qua kiểm chuẩn T0 2 chiều, L0 duyệt Y bổ nhiệm Lead Quant & Algorithmic Strategist (L2).
+- [Kích hoạt Runner Độc lập cho Dola AI và Perplexity](facts/onboarding-dola-va-perplexity-runner-doc-lap.md) - Hoàn tất tích hợp Bot Runner độc lập cho Dola AI và Perplexity vào hệ thống A2A Bus Liên minh.
+- [Onboarding Thành viên mới Grok (@GrokThanglee_bot)](facts/onboarding-grok-thanh-vien-moi-lien-minh.md) - Đăng ký commands, kiểm chuẩn T0, gửi thông điệp chào mừng và định vị vai trò trong ma trận QC-5.
+- [Onboarding Hoàn tất Perplexity và Dola AI vào Liên minh](facts/onboarding-perplexity-va-dola-ai-lien-minh.md) - Đã kiểm chuẩn T0, cài đặt lệnh, shadow test 2 chiều và định vị vai trò trong ma trận QC-5.
+- [Phòng họp nội bộ](facts/phong-hop-noi-bo-3-ben.md) - Phòng họp nội bộ Telegram giữa Thắng Lee và Javis.
+- [Gửi video là bắt đầu tiếp nhận biên tập](facts/quy-trinh-bien-tap-video-studio.md) - Khi chủ gửi tệp video, mặc định mở `skills/video-animation-toolkit/references/quy-trinh-bien-tap-studio.md`; xác nhận brief, chốt phương án, duyệt từng mốc rồi mới xuất MP4.
+- [Quy trình tạo video mặc định Voice-First](facts/quy-trinh-tao-video-voice-first.md) - Mặc định áp dụng Quy trình B (Voice-First: Kịch bản -> Voice/Audio Anchor -> Timestamp -> Dựng hình & Motion Sync) cho video có giọng đọc; video không lời giữ quy trình Visual-First.
+- [Thói quen Chỉ đạo và Chuyển giao Tác vụ của Chủ sở hữu](facts/thoi-quen-chi-dao-va-chuyen-giao-tac-vu.md) - Thói quen ủy thác desktop apps tiết kiệm token, triệt tiêu lỗi rác, chỉ đạo mức kiến trúc và tiến hóa CUP.
+- [Thói quen làm việc chủ sở hữu](facts/thoi-quen-lam-viec-chu-so-huu.md) - Hồ sơ phong cách chỉ đạo thực tế của Sếp Thắng: Zero Fluff, Low Latency, Clean Typography, San tải linh hoạt.
+- [Tên trợ lý là Javis](facts/tro-ly-duoc-goi-la-javis.md) - Người dùng muốn gọi trợ lý là Javis.
+- [Antigravity tái cấu trúc toàn diện lên RUULEE v6.0 & Intensive AI/Agent Training](facts/antigravity-ruulee-v6-restructure.md) - Antigravity nâng cấp aio-engineer-profile v2.0.0: RUULEE v6.0, 2 skill huấn luyện, ruulee_kernel.py và audit E1..
+- [Hoàn tất cấp cứu, khôi phục và tiến hóa CAM v3.1.0](facts/cam-v31-emergency-rescue-and-evolution.md) - Hoàn tất cấp cứu, khôi phục và tiến hóa toàn diện CAM v3.1.0 theo backlog khẩn cấp.
+- [Ghi nhớ quà API apikey.fan & Thành lập Hội đồng Tác chiến RUULEE v6.0](facts/apikey-fan-gift-and-ruulee-hybrid-council.md) - Lưu DPAPI nguồn apikey.fan (GPT-6.2 Astra/Sol + Claude Opus/Sonnet 4.5) & dựng Hội đồng RUULEE v6.0.
+- [L0 Directive: Kích hoạt vòng lặp tiến hóa RUULEE v6.0 trong mọi câu trả lời](facts/kich-hoat-vong-lap-tien-hoa-moi-cau-tra-loi.md) - Chỉ thị L0: Kích hoạt vòng lặp tiến hóa RUULEE v6.0 ở mọi lượt trả lời.
+- [Tối ưu tiết kiệm 54-100% token Hội đồng RUULEE v6.0 (Shadow Verified)](facts/cost-gated-council-token-optimization.md) - Shadow Test giảm 54.4% cold token (3,999->1,823) và 0-token cho lượt thường/cache.
+- [Chưng cất D:\\AI AGENT\\Tài liệu: Điều phối minh bạch & Khóa bằng chứng E1..E5](facts/distilled-tai-lieu-agent-transparent-dispatch.md) - Chưng cất 26 tệp Tài liệu: Điều phối minh bạch dispatch_trace, khóa E1..E5 với A0..A4.
+- [Hội đồng v4: chỉ CAM + Claude + DeepSeek, phản hồi Sếp tự th](facts/cam-distilled-h_i_ng_v4_ch_cam_claude_deepseek_ph_n_h_.md) - [CAM E1] 2026-11-25: Sếp chốt hội đồng chỉ còn CAM (L1, 0-token), Claude (trưởng nhóm kỹ thuật
+- [CAM Company: kien truc van phong moi](facts/cam-distilled-cam_company_kien_truc_van_phong_moi.md) - [CAM E1] CAM Company chay tai /company (cam_core/company.py, company_api.py, templates/company
+- [Bài học tự chẩn đoán hệ thống (2026-11-25)](facts/cam-distilled-evolution_lesson_2026_11_25.md) - [CAM E1] Phát hiện các cảnh báo/lỗi trong nhật ký chạy gần nhất cần phòng ngừa tái diễn:
+- [Cột sống CAM và vận hành ổn định](facts/cam-cot-song-va-van-hanh-on-dinh.md) - Bản chưng cất CAM vào Second Brain: đường nhanh giảm đọc thừa, chốt single-owner Telegram 409, TaskPacket và giới hạn bằng chứng (2026-11-26).
+- [Quy trình video ngắn 6 bước có vòng tiến hóa](facts/workflow-video-ngan-6-buoc-co-tien-hoa.md) - Thêm bước ghi vết mỗi lần chạy và bước chưng cất CUP, ngưỡng 2 log mới được đề xuất, không tự sửa workflow (2026-11-26).
+- [Kết quả nghiệm thu hành vi acceptance-cases](facts/nghiem-thu-hanh-vi-acceptance-cases-20261126.md) - 10/10 ca đạt sau khi chạy lại; ca CAM-05 lần đầu trả rỗng 44 giây, không kết luận sai từ một lần lỗi (2026-11-26).
+- [TaskPacket tiếng Anh và hàng đợi san việc](facts/chuan-taskpack-tieng-anh-va-hang-doi-san-viec.md) - Gói gọn tiếng Anh cộng tham chiếu SHA-256 giảm 79,6% token trên mẫu 3 tác vụ; cam_queue.py đã kiểm 8 worker tranh việc (2026-11-26).
+- [Tri thức Claude Desktop nạp vào não (dự án CAM)](facts/claude-desktop-tri-thuc-du-an-cam.md) - Đọc hội thoại thật Claude Desktop 25-26/11/2026, ingest thành source + wiki: nối Claude/DeepSeek, lõi phân tầng tiết kiệm 28-73% token, đội săn lỗi, CAM v3.3.0 (2026-11-26).
+- [Nâng cấp bắt buộc Q5-CVM v2.0 toàn Liên minh](facts/giao-thuc-bieu-quyet-q5-cvm-v2-tang-toc.md) - Micro-CVM <=35s, Early-Stop Lock, LoopFingerprintBreaker, Trọng số QC-5, Tiền lọc T0 & Cổng E1 cho Veto.
+- **Mã kiểm chứng đồng bộ (`sync_hash`):** `55dc59ef6384`
 <!-- ALLIANCE_SSOT_END -->
