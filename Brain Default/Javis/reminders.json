@@ -70,7 +70,7 @@
       "id": "r_91928d833e",
       "text": "[Tự động vận hành Darklord] Định kỳ quét sức khỏe V1-V8 CAM OS và đồng bộ tri thức Liên minh",
       "mode": "notify",
-      "due_at": 1795746840.0,
+      "due_at": 1795775640.0,
       "chat_id": "1894254685",
       "repeat_min": 240,
       "cron": "",
@@ -83,10 +83,10 @@
       "call": false,
       "created_by": "user",
       "created_at": 1795701768.9411306,
-      "fired_at": 1795732466.141511,
+      "fired_at": 1795761260.1165855,
       "result": "",
       "error": "",
-      "last_slot": 1795732440.0
+      "last_slot": 1795761240.0
     },
     {
       "id": "r_b09331ebb6",
@@ -114,7 +114,7 @@
       "id": "r_2578bb2598",
       "text": "[Kiem tra tien trinh bot & A2A Bus] Tu dong kiem tra cac bot va don dep hang doi A2A bi ket",
       "mode": "notify",
-      "due_at": 1795757400.0,
+      "due_at": 1795779000.0,
       "chat_id": "1894254685",
       "repeat_min": 0,
       "cron": "30 */6 * * *",
@@ -127,11 +127,11 @@
       "call": false,
       "created_by": "user",
       "created_at": 1795716526.4348826,
-      "fired_at": 1795735804.3218093,
+      "fired_at": 1795757410.5638547,
       "result": "",
       "error": "",
-      "last_slot": 1795735800.0
+      "last_slot": 1795757400.0
     }
   ],
-  "updated": 1795741739.4538872
+  "updated": 1795761260.1165855
 }

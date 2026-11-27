@@ -1,13 +1,13 @@
 <!-- ALLIANCE_SSOT_START -->
-<!-- sync_hash: 3093be3306a8 | facts_count: 116 | synced_at: 2026-11-27T08:43:47+07:00 -->
+<!-- sync_hash: 851d1d2409a3 | facts_count: 122 | synced_at: 2026-11-27T15:30:26+07:00 -->
 # ĐỒNG BỘ TRI THỨC LIÊN MINH AI (SINGLE SOURCE OF TRUTH)
 
 - **Nguồn chân lý:** `C:\Users\Admin\JavisOS\brains\Brain Default`
-- **Tổng số ký ức (Facts):** `116`
+- **Tổng số ký ức (Facts):** `122`
 - **Cơ cấu 3 tầng thực dụng (L0-L1-L2):** L0 Thắng Lee (Principal) -> L1 Javis OS (Orchestrator & Second Brain) -> L2 Hội đồng thực thi bình đẳng (Antigravity, Claude, Perplexity, Grok, ChatGPT/Codex, Dola AI, DeepSeek).
 - **Chốt chặn Bất biến:** (1) Sản phẩm chạy thực tế, Zero Fluff; (2) Pre-Flight Anti-Ban (cấm test API Telegram thật, không lặp setMyCommands); (3) Bảo trì 5 bước bắt buộc chờ L0 duyệt; (4) Tách nền daemon + timeout an toàn; (5) Clean Typography & Bộ lọc dễ hiểu; (6) Đồng bộ SSOT cùng 1 `sync_hash`.
 
-## Chỉ mục Tri thức Sống (104 mục từ Second Brain)
+## Chỉ mục Tri thức Sống (110 mục từ Second Brain)
 - [Bảo mật Telegram bằng Behavioral Biometrics](facts/bao-mat-telegram-behavioral-telemetry.md) - Cơ chế bảo mật thích ứng cho Telegram: Fast Path theo văn phong, hạ quyền Safe Mode và hỏi bẫy Second Brain khi lệch hành vi, cảnh báo out-of-band.
 - [Cam kết Hạt nhân T0: Chống lỗi bot mới câm lặng khi gia nhập](facts/cam-ket-t0-chong-loi-bot-moi-cam-lang.md) - 4 cổng bắt buộc trước khi bàn giao bot mới: cài lệnh setMyCommands, hướng dẫn tắt Group Privacy, watchdog tự hồi sinh và Shadow Test 2 chiều.
 - [Chốt chặn T0: Cấm test trực tiếp lên Telegram API thật](facts/cam-test-truc-tiep-len-telegram-api-chong-khoa-botfather.md) - Bắt buộc dùng Mock khi test, cấm gọi lặp setMyCommands khi restart để chống khóa BotFather.
@@ -112,5 +112,11 @@
 - [[DSH] PROCEDURE: Quy trình đội DeepSeek-Claude: dùng ruulee_](facts/cam-distilled-dsh_memory_mem_20261125_095252_049ede.md) - [CAM E1] Quy trình đội DeepSeek-Claude: dùng ruulee_route plan để chấm D/T1-T5 và chọn primary
 - [[DSH] Skill: teamwork-deepseek-claude](facts/cam-distilled-dsh_skill_teamwork_deepseek_claude.md) - [CAM E1] Quy trình phối hợp đội DeepSeek ↔ Claude dựa trên ma trận năng lực 9 trục và ma trận
 - [Nâng cấp bắt buộc: nhận việc qua Hàng chờ giao việc](facts/hang-cho-giao-viec-bat-buoc-toan-lien-minh.md) - L0 27/11: mọi thành viên nhận/nộp gói qua D:\AI AGENT\hang-cho, bàn giao liên tục, CAM tự vận hành giám sát V1-V8.
-- **Mã kiểm chứng đồng bộ (`sync_hash`):** `3093be3306a8`
+- [[DSH] FACT: CAM là hub thay Javis tại http://127.0.0.1:8787;](facts/cam-distilled-dsh_memory_mem_20261126_233806_5fe9b0.md) - [CAM E1] CAM là hub thay Javis tại http://127.0.0.1:8787; mọi lệnh ghi cần X-CAM-Token đọc từ
+- [[DSH] PROCEDURE: Telegram bridge của DeepSeek: bot @DeepSeek](facts/cam-distilled-dsh_memory_mem_20261127_072358_bd7bb0.md) - [CAM E1] Telegram bridge của DeepSeek: bot @DeepSeekThangLee_bot, chỉ nhận chat 1894254685; ch
+- [[DSH] FACT: Nguyên nhân lỗi Telegram 409 với bot @DeepSeekTh](facts/cam-distilled-dsh_memory_mem_20261127_073247_9db7ce.md) - [CAM E1] Nguyên nhân lỗi Telegram 409 với bot @DeepSeekThangLee_bot: daemon Javis alliance_bot
+- [[Liên minh] Bộ phục hồi sau cài lại Windows và giới hạn DPAP](facts/cam-distilled-alliance_0067_bo_phuc_hoi_sau_cai_lai_wi.md) - [CAM E1] Mục tiêu: cài lại Windows vẫn dựng lại được DSH + CAM + tri thức Liên minh.
+- [[DSH] PROCEDURE: Tự động hóa DSH-Telegram đã bật: bridge-sup](facts/cam-distilled-dsh_memory_mem_20261127_073449_0aafe1.md) - [CAM E1] Tự động hóa DSH-Telegram đã bật: bridge-supervisor.ps1 giữ bridge sống và chạy allian
+- [[DSH] PROCEDURE: Bộ phục hồi sau cài lại máy: python C:\User](facts/cam-distilled-dsh_memory_mem_20261127_074824_80a4d6.md) - [CAM E1] Bộ phục hồi sau cài lại máy: python C:\Users\Admin\.dsh\recovery\backup_recovery.py b
+- **Mã kiểm chứng đồng bộ (`sync_hash`):** `851d1d2409a3`
 <!-- ALLIANCE_SSOT_END -->
