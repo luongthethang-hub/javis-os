@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Bản nháp bố cục lựa chọn chủ đề A B C</title>
+  <desc id="desc">Tài sản local rehearsal trung tính, chưa gắn thương hiệu và không sẵn sàng xuất bản.</desc>
+  <rect width="1080" height="1080" fill="#F4F5F7"/>
+  <text x="540" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" font-weight="700" fill="#222">BẠN MUỐN XEM CHỦ ĐỀ NÀO?</text>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <rect x="90" y="300" width="270" height="420" rx="24" fill="#DDE7F5" stroke="#34495E" stroke-width="4"/>
+    <rect x="405" y="300" width="270" height="420" rx="24" fill="#E7F2E4" stroke="#34495E" stroke-width="4"/>
+    <rect x="720" y="300" width="270" height="420" rx="24" fill="#F7E8D7" stroke="#34495E" stroke-width="4"/>
+    <text x="225" y="500" font-size="120" font-weight="700" fill="#222">A</text>
+    <text x="540" y="500" font-size="120" font-weight="700" fill="#222">B</text>
+    <text x="855" y="500" font-size="120" font-weight="700" fill="#222">C</text>
+    <text x="225" y="610" font-size="30" fill="#444">CẦN DỮ LIỆU</text>
+    <text x="540" y="610" font-size="30" fill="#444">CẦN DỮ LIỆU</text>
+    <text x="855" y="610" font-size="30" fill="#444">CẦN DỮ LIỆU</text>
+    <text x="540" y="875" font-size="34" font-weight="700" fill="#B00020">LOCAL REHEARSAL • NOT PUBLISH-READY</text>
+    <text x="540" y="930" font-size="26" fill="#555">Chưa gắn Page • chưa duyệt thương hiệu • không đăng</text>
+  </g>
+</svg>

@@ -87,3 +87,8 @@ Source: `type: source`, `source_kind: article|book|podcast|video|own-note|screen
 - Không yêu cầu chủ cấp quyền ghi, cài GitHub App, đăng nhập lại hoặc sửa token cho `blogminhquy/javis-os`. Không diễn giải việc thiếu quyền ở repository đó như lỗi cấu hình tài khoản của chủ.
 - Khi hệ thống, phiên chat hoặc worktree đang trỏ tới `blogminhquy/javis-os`, phải nêu rõ đây là đích đang bị gắn sai hoặc upstream bên ngoài, không phải repository chính chủ. Ưu tiên dùng `luongthethang-hub/javis-os` làm đích cho thao tác thuộc repository của chủ, trong phạm vi quyền và chính sách hiện hành.
 - Không được tuyên bố đã đổi remote, push hoặc sửa cấu hình nếu chưa có bằng chứng thực thi thành công. Nếu chỉ dẫn runtime cấp cao hơn vẫn ép một repository khác, nói rõ mâu thuẫn thay vì đổ trách nhiệm cho chủ hoặc lặp lại yêu cầu cấp quyền sai.
+
+## 12. Lõi Siêu Nhận Thức Chủ Động (Meta-Cognition Kernel)
+- Bắt buộc áp dụng `skills/meta-cognition-kernel/SKILL.md` và `skills/meta-cognition-channel-ops/SKILL.md` ở mọi tác vụ điều phối, nghiên cứu và vận hành kênh.
+- Thứ tự tự nhận thức trước khi trả lời: (1) Xác định ý định thực và đúng kênh/tài sản của chủ sở hữu -> (2) Tự quét công cụ sống (`javis_search_tools`, `fb_ext_*`), Second Brain và tài nguyên cục bộ trước khi kết luận thiếu -> (3) Làm trọn phần trong quyền (đọc, chẩn đoán, điền nháp), gom phần `A0/A1` thành 1 gói duyệt -> (4) Gặp tắc thì tự bẻ luồng sang đường thay thế đang hoạt động hoặc san tải Antigravity, cấm trả lời thụ động/bỏ cuộc.
+- Với hệ sinh thái Facebook: phân biệt rõ 4 loại kênh (`owner_page`, `owner_profile`, `group`, `trending_source`), luôn gọi `fb_ext_inspect_controls` trước lệnh ghi, cấm đăng bài lên `trending_source`.

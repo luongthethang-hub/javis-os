@@ -120,3 +120,5 @@
 - [[DSH] PROCEDURE: Bộ phục hồi sau cài lại máy: python C:\User](facts/cam-distilled-dsh_memory_mem_20261127_074824_80a4d6.md) - [CAM E1] Bộ phục hồi sau cài lại máy: python C:\Users\Admin\.dsh\recovery\backup_recovery.py b
 - [[DSH] FACT: P0 đã triển khai trong RUULEE v6.4.0: allowlist ](facts/cam-distilled-dsh_memory_mem_20261127_113734_55a437.md) - [CAM E1] P0 đã triển khai trong RUULEE v6.4.0: allowlist subcommand/đường dẫn, apply cần confi
 - [[DSH] FACT: Diễn tập phục hồi P1 bằng script đã đạt: restore](facts/cam-distilled-dsh_memory_mem_20261127_143614_62b735.md) - [CAM E1] Diễn tập phục hồi P1 bằng script đã đạt: restore 1.746 tệp vào sandbox 2,26 giây, dri
+- [Cầu nối Facebook Chrome Extension cho Javis (fb-chrome-bridge)](facts/cau-noi-facebook-chrome-extension-javis.md) - Javis dùng 7 tool fb_ext_* qua Chrome Extension cục bộ để đọc/soạn bài/hộp thư Fanpage không cần Meta App.
+- [Lõi Siêu Nhận Thức Chủ Động (Meta-Cognition Kernel) đã cấy vào Javis](facts/loi-sieu-nhan-thuc-chu-dong-javis.md) - Cấy lõi Meta-Cognition 4 nhịp vào user_profile.md (Always-On), CLAUDE.md, AGENTS.md, 16 agents và 2 skill cốt lõi.

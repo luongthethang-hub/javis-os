@@ -2,25 +2,29 @@
 
 > Tự sinh từ file - ĐỪNG sửa tay. Chỉ mục mọi năng lực của Javis trong brain này để bất kỳ AI/engine đọc 1 chỗ là hiểu Javis làm được gì. Song song `wiki/index.md` (tri thức).
 
-**Tổng quan:** 16 agents · 27 skills · 7 workflows (1 bật) · 0 loops (0 bật) · 32 plugins (31 chạy)
+**Tổng quan:** 20 agents · 30 skills · 8 workflows (1 bật) · 0 loops (0 bật) · 33 plugins (32 chạy)
 
 ## Agents
-- **Bác sĩ Prompt & Workflow** (`bac-si-prompt-workflow-2`) - Tái cấu trúc system prompt của trợ lý và chuẩn hóa mục tiêu hoạt động của team. · model claude-sonnet-4-6 · tags: Nhóm
-- **Bác sĩ Prompt & Workflow** (`bac-si-prompt-workflow`) - Tái cấu trúc system prompt của trợ lý và chuẩn hóa mục tiêu hoạt động của team. · model claude-sonnet-4-6 · tags: Nhóm
-- **Bác sĩ Thẩm định & Kiểm thử Độc lập** (`bac-si-tham-dinh-kiem-thu-doc-lap-2`) - Thiết kế ca test độc lập, chạy đối soát regression và nghiệm thu chất lượng trước khi cập nhật. · model gpt-5.6-sol · skills: cam-tien-hoa · tags: Nhóm
-- **Bác sĩ Thẩm định & Kiểm thử Độc lập** (`bac-si-tham-dinh-kiem-thu-doc-lap`) - Thiết kế ca test độc lập, chạy đối soát regression và nghiệm thu chất lượng trước khi cập nhật. · model gpt-5.6-sol · tags: Nhóm
-- **Javis Core** (`javis-core`) - Trợ lý hệ thống nhận báo cáo và hỗ trợ công việc trong brain này. · skills: cam-triet-ly-su-menh, cam-cot-song, cam-tien-hoa, cam-tam-hon, cam-phuc-hoi, javis-builder, dieu-phoi-doi-nhom, tach-phien-thong-minh, hmm, token-saver-rtk, van-hanh-ai-company-on-dinh, chuyen-viec-sang-app-desktop · tags: AI, Vận hành
-- **Kiểm định vận hành độc lập** (`kiem-dinh-van-hanh-doc-lap`) - Đánh giá chất lượng, an toàn và tuân thủ trước khi đề nghị mở rộng tự động hóa. · skills: cam-tien-hoa, cam-triet-ly-su-menh · tags: Nhóm
-- **Kiến trúc sư quy trình liên đội** (`kien-truc-su-quy-trinh-lien-doi`) - Thiết kế giao diện bàn giao, nguồn ngữ cảnh và quyền công cụ cho từng đội mới. · skills: cam-triet-ly-su-menh · tags: Nhóm
-- **DeepSeek - Kiểm tra số liệu nhỏ** (`shopdonk-deepseek-data`) - Kiểm tra phép tính và tổng hợp dữ liệu có phạm vi rõ. · model deepseek-v4.1-flash · tags: AI, ShopDonk, Thử nghiệm
-- **Gemini - Bản nháp cần kiểm tra** (`shopdonk-gemini-draft`) - Soạn bản nháp văn bản đơn giản để người dùng hoặc model khác kiểm tra. · model gemini-flash-3.8-high · tags: AI, ShopDonk, Thử nghiệm
-- **Grok - Kiểm tra tính nhất quán** (`shopdonk-grok-check`) - Kiểm tra mâu thuẫn và dữ kiện thiếu trong văn bản ngắn. · model grok-4.7 · tags: AI, ShopDonk, Thử nghiệm
-- **Luna - Phân tích có cấu trúc** (`shopdonk-luna-analysis`) - Phân tích yêu cầu nhỏ và tạo kết quả có cấu trúc, có căn cứ. · model gpt-6-luna · tags: AI, ShopDonk, Thử nghiệm
-- **Sol - Kiểm thử tác vụ ngắn** (`shopdonk-sol-test`) - Thiết kế ca kiểm thử và kiểm tra đoạn mã, dữ liệu nhỏ. · model gpt-5.6-sol · tags: AI, ShopDonk, Thử nghiệm
-- **Sonnet - Rà soát logic** (`shopdonk-sonnet-review`) - Rà soát logic và đặc tả của đoạn mã ngắn do người dùng cung cấp. · model claude-sonnet-4-6 · tags: AI, ShopDonk, Thử nghiệm
-- **Trưởng ban vận hành liên đội** (`truong-ban-van-hanh-lien-doi`) - Chuyển mục tiêu kinh doanh thành bàn giao có người chịu trách nhiệm và báo cáo quyết định. · skills: cam-triet-ly-su-menh · tags: Nhóm
-- **Trưởng hội chẩn Doctor Agent** (`truong-hoi-chan-doctor-agent-2`) - Chẩn đoán hệ thống, đánh giá năng lực đội ngũ và chốt phương án nâng cấp prompt/mục tiêu. · skills: cam-tien-hoa · tags: Nhóm
-- **Trưởng hội chẩn Doctor Agent** (`truong-hoi-chan-doctor-agent`) - Chẩn đoán hệ thống, đánh giá năng lực đội ngũ và chốt phương án nâng cấp prompt/mục tiêu. · tags: Nhóm
+- **Bác sĩ Prompt & Workflow** (`bac-si-prompt-workflow-2`) - Tái cấu trúc system prompt của trợ lý và chuẩn hóa mục tiêu hoạt động của team. · model claude-sonnet-4-6 · skills: cam-tien-hoa, cam-triet-ly-su-menh, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **Bác sĩ Prompt & Workflow** (`bac-si-prompt-workflow`) - Tái cấu trúc system prompt của trợ lý và chuẩn hóa mục tiêu hoạt động của team. · model claude-sonnet-4-6 · skills: cam-tien-hoa, cam-triet-ly-su-menh, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **Bác sĩ Thẩm định & Kiểm thử Độc lập** (`bac-si-tham-dinh-kiem-thu-doc-lap-2`) - Thiết kế ca test độc lập, chạy đối soát regression và nghiệm thu chất lượng trước khi cập nhật. · model gpt-5.6-sol · skills: cam-tien-hoa, cam-triet-ly-su-menh, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **Bác sĩ Thẩm định & Kiểm thử Độc lập** (`bac-si-tham-dinh-kiem-thu-doc-lap`) - Thiết kế ca test độc lập, chạy đối soát regression và nghiệm thu chất lượng trước khi cập nhật. · model gpt-5.6-sol · skills: cam-tien-hoa, cam-triet-ly-su-menh, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **Chuyên gia Đo lường Facebook** (`chuyen-gia-do-luong-facebook`) - Thiết kế KPI và phân tích hiệu quả nội dung từ nguồn kiểm chứng được. · skills: meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **Chuyên gia Kênh & Kết nối Facebook** (`chuyen-gia-kenh-ket-noi-facebook`) - Xác minh Fanpage, URL/ID, nguồn dữ liệu và tình trạng Chrome Bridge. · skills: meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **Chuyên gia Nội dung & Cộng đồng Facebook** (`chuyen-gia-noi-dung-cong-dong-facebook`) - Lập lịch nội dung nháp, phân loại Inbox/bình luận và soạn phản hồi. · skills: meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **Javis Core** (`javis-core`) - Tổng điều phối Siêu nhận thức & Trợ lý điều hành chủ động cho toàn bộ hệ sinh thái của chủ sở hữu. · skills: cam-triet-ly-su-menh, cam-cot-song, cam-tien-hoa, cam-tam-hon, cam-phuc-hoi, javis-builder, dieu-phoi-doi-nhom, tach-phien-thong-minh, token-saver-rtk, van-hanh-ai-company-on-dinh, chuyen-viec-sang-app-desktop, meta-cognition-kernel, meta-cognition-channel-ops · tags: AI, Vận hành
+- **Kiểm định vận hành độc lập** (`kiem-dinh-van-hanh-doc-lap`) - Đánh giá chất lượng, an toàn và tuân thủ trước khi đề nghị mở rộng tự động hóa. · skills: cam-tien-hoa, cam-triet-ly-su-menh, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **Kiến trúc sư quy trình liên đội** (`kien-truc-su-quy-trinh-lien-doi`) - Thiết kế giao diện bàn giao, nguồn ngữ cảnh và quyền công cụ cho từng đội mới. · skills: cam-triet-ly-su-menh, cam-tien-hoa, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **DeepSeek - Kiểm tra số liệu nhỏ** (`shopdonk-deepseek-data`) - Kiểm tra phép tính và tổng hợp dữ liệu có phạm vi rõ. · model deepseek-v4.1-flash · skills: toan-tinh-toan-kiem-tra, cam-triet-ly-su-menh, cam-cot-song, cam-phuc-hoi, cam-tien-hoa, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: AI, ShopDonk, Thử nghiệm
+- **Gemini - Bản nháp cần kiểm tra** (`shopdonk-gemini-draft`) - Soạn bản nháp văn bản đơn giản để người dùng hoặc model khác kiểm tra. · model gemini-flash-3.8-high · skills: cam-triet-ly-su-menh, cam-cot-song, cam-phuc-hoi, cam-tien-hoa, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: AI, ShopDonk, Thử nghiệm
+- **Grok - Kiểm tra tính nhất quán** (`shopdonk-grok-check`) - Kiểm tra mâu thuẫn và dữ kiện thiếu trong văn bản ngắn. · model grok-4.7 · skills: cam-triet-ly-su-menh, cam-cot-song, cam-phuc-hoi, cam-tien-hoa, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: AI, ShopDonk, Thử nghiệm
+- **Luna - Phân tích có cấu trúc** (`shopdonk-luna-analysis`) - Phân tích yêu cầu nhỏ và tạo kết quả có cấu trúc, có căn cứ. · model gpt-6-luna · skills: cam-tien-hoa, cam-triet-ly-su-menh, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: AI, ShopDonk, Thử nghiệm
+- **Sol - Kiểm thử tác vụ ngắn** (`shopdonk-sol-test`) - Thiết kế ca kiểm thử và kiểm tra đoạn mã, dữ liệu nhỏ. · model gpt-5.6-sol · skills: cam-tien-hoa, cam-triet-ly-su-menh, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: AI, ShopDonk, Thử nghiệm
+- **Sonnet - Rà soát logic** (`shopdonk-sonnet-review`) - Rà soát logic và đặc tả của đoạn mã ngắn do người dùng cung cấp. · skills: cam-tien-hoa, cam-triet-ly-su-menh, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: AI, ShopDonk, Thử nghiệm
+- **Trưởng ban vận hành liên đội** (`truong-ban-van-hanh-lien-doi`) - Chuyển mục tiêu kinh doanh thành bàn giao có người chịu trách nhiệm và báo cáo quyết định. · skills: cam-triet-ly-su-menh, cam-tien-hoa, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **Trưởng hội chẩn Doctor Agent** (`truong-hoi-chan-doctor-agent-2`) - Chẩn đoán hệ thống, đánh giá năng lực đội ngũ và chốt phương án nâng cấp prompt/mục tiêu. · skills: cam-tien-hoa, cam-triet-ly-su-menh, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **Trưởng hội chẩn Doctor Agent** (`truong-hoi-chan-doctor-agent`) - Chẩn đoán hệ thống, đánh giá năng lực đội ngũ và chốt phương án nâng cấp prompt/mục tiêu. · skills: cam-tien-hoa, cam-triet-ly-su-menh, cam-phuc-hoi, cam-cot-song, cam-tam-hon, meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
+- **Trưởng nhóm Chăm sóc Facebook** (`truong-nhom-cham-soc-facebook`) - Điều phối vận hành Fanpage, ưu tiên công việc và bàn giao một báo cáo cho chủ. · skills: meta-cognition-kernel, meta-cognition-channel-ops · tags: Nhóm
 
 ## Skills
 ### AI
@@ -38,6 +42,7 @@
 - **Lint Wiki** (`lint-wiki`) - Rà soát sức khoẻ wiki của Second Brain, trả về danh sách vấn đề. Không tự sửa hàng loạt.
 - **Notes** (`notes`) - Lưu tin nhắn hiện tại nguyên văn vào sources/ (kèm ảnh), tự chưng cất lên wiki nếu note đáng.
 - **Query Wiki** (`query-wiki`) - Khai thác tri thức trong Second Brain: tổng hợp, so sánh, giả thuyết. Trả lời có trích dẫn.
+- **Quy trình nghiệm thu bắt buộc** (`quy-trinh-nghiem-thu-bat-buoc`) - Bàn giao và nghiệm thu độc lập mọi đầu việc của nhóm trước khi chốt hoặc chuyển tiếp.
 - **RUULEE Operational Charter v6.0** (`ruulee-operational-charter`) - Hiến chương lõi L0-L1-L2 RUULEE v6.0: thang tự chủ A0-A4, TaskPacket, Red/Blue QA, FMEA, Shadow Test, trace_id và CUP.
 - **Tách phiên thông minh** (`tach-phien-thong-minh`) - Nén ngữ cảnh có kiểm chứng và tạo bàn giao để tiếp tục trong phiên mới.
 - **Toán tính toán và kiểm tra** (`toan-tinh-toan-kiem-tra`) - Kiểm tra phép tính ma trận, xác suất, ML và trạng thái lượng tử bằng script, trả kết quả kèm công thức.
@@ -45,6 +50,8 @@
 - **Vận hành AI Company ổn định** (`van-hanh-ai-company-on-dinh`) - Điều phối AI Company chịu lỗi nhiều tầng bằng checkpoint, phân loại lỗi, chuyển nguồn có giới hạn và khôi phục an toàn.
 ### Chung
 - **Hmm** (`hmm`) - Hiến chương hạt nhân lõi hệ thống.
+- **meta-cognition-channel-ops** (`meta-cognition-channel-ops`) - # Meta-Cognition Channel Operations (4 Loại Kênh & 4 Pha Tự Nhận Thức)
+- **meta-cognition-kernel** (`meta-cognition-kernel`) - Lõi Siêu Nhận Thức Chủ Động (Meta-Cognition Kernel) của Javis OS. Tự nhận diện ý định thật & kênh/tài sản chủ sở hữu, chủ động quét công cụ và nguồn lực trước khi hỏi, thực thi trọn phần trong quyền, tự bẻ luồng khi gặp lỗi và không bao giờ trả lời thụ động hay bỏ cuộc.
 ### Marketing
 - **HTML sang Webcake** (`html-to-webcake`) - Chuyển trang HTML thành file .pke mở được trong trình dựng Webcake, giữ đúng màu, cỡ chữ, ảnh và bố cục của bản gốc.
 ### Năng suất
@@ -70,6 +77,8 @@
 - **Sản xuất Video ngắn 1 phút Chuyên nghiệp** (`san-xuat-video-ngan-1-phut`) - active · 6 bước [grok -> codex -> antigravity -> antigravity -> codex -> grok] · Sản xuất video ngắn 60 giây chuẩn Voice-First: chốt góc nội dung, kịch bản theo giây, voice anchor + DSP, Motion.md, render MP4 9:16 kèm QC, ghi vết và chưng cất bài học.
 - **Xây dựng Thương hiệu Cá nhân Đa nền tảng** (`xay-dung-thuong-hieu-ca-nhan`) - off · 3 bước [grok -> antigravity -> perplexity] · Chuyển hóa 1 ý tưởng gốc thành gói nội dung đồng bộ 4 kênh (Facebook, Shorts/TikTok, YouTube, Zalo) kèm kiểm chứng sự thật.
 - **Xây kênh TikTok & YouTube Tự động** (`xay-kenh-tiktok-youtube`) - off · 3 bước [grok -> codex -> antigravity] · Nghiên cứu hook 3 giây, viết kịch bản Voice-First, kiểm duyệt chính sách và đóng gói đặc tả Motion.md sẵn sàng dựng MP4.
+### Vận hành
+- **Nghiệm thu bắt buộc trước khi chốt việc** (`nghiem-thu-bat-buoc`) - off · 3 bước [truong-ban-van-hanh-lien-doi -> kiem-dinh-van-hanh-doc-lap -> truong-ban-van-hanh-lien-doi] · Chuẩn hóa bàn giao, kiểm định độc lập và chặn chuyển bước khi chưa đạt tiêu chí.
 
 ## Loops
 _(chưa có)_
@@ -106,8 +115,9 @@ _(chưa có)_
 - **Nhật ký dùng tool** (`tool-audit`) - bundled/chạy · tools: javis_tool_stats · hooks: post_tool_call · Đếm số lần MỖI tool được engine gọi (qua hook post_tool_call) và cho xem thống kê tool hay dùng. Đây là ví dụ minh hoạ cơ chế HOOK của plugin. Mặc định TẮT - bật qua POST /plugins/toggle (slug=tool-audit) để thử.
 - **Tin thoại** (`voice-note`) - bundled/chạy · tools: javis_voice_note · Javis ghi một đoạn nói ngắn (tối đa 1000 ký tự) thành file mp3 trong attachments/voice/ rồi nhúng vào câu trả lời. Khung chat hiện trình phát, Telegram nhận file âm thanh. Dùng giọng Edge miễn phí theo ngôn ngữ của câu.
 - **Đọc video YouTube** (`youtube-read`) - bundled/chạy · tools: javis_youtube_read · Đọc lời thoại (phụ đề) của video YouTube từ link để tóm tắt. Tự đổi qua 6 kiểu trình phát rồi tới yt-dlp khi YouTube chặn máy chủ. Không cần đăng nhập, không cần API key.
+- **Facebook Chrome Bridge** (`fb-chrome-bridge`) - user/chạy · tools: fb_ext_status, fb_ext_discover_pages, fb_ext_discover_groups, fb_ext_scan_trending, fb_ext_inspect_controls, fb_ext_channel_registry, fb_ext_open_url, fb_ext_read_page, fb_ext_read_inbox, fb_ext_draft_post, fb_ext_comment_post, fb_ext_reply_inbox · Điều khiển và nghiên cứu toàn bộ hệ sinh thái Facebook của chủ sở hữu theo Meta-Cognition: Fanpage (owner_page), Trang cá nhân (owner_profile), Nhóm Facebook (group) và Tài khoản/Bài viết đang lên xu hướng (trending_source, chỉ đọc), có Chế độ An toàn & Anti-Ban.
 - **Debate Engine - Red/Blue Team** (`debate-engine`) - vault/tắt · tools: debate_engine · hooks: post_tool_call · Đưa lượt rà soát Red/Blue vào Kanban, kiểm tra ngân sách ước tính và tự ngắt khi thất bại liên tiếp.
 
 ## Cờ sức khoẻ
 - Workflow trỏ agent KHÔNG tồn tại: antigravity, claude, codex, deepseek, dola, grok, perplexity
-- Agent chưa workflow nào dùng: bac-si-prompt-workflow, bac-si-prompt-workflow-2, bac-si-tham-dinh-kiem-thu-doc-lap, bac-si-tham-dinh-kiem-thu-doc-lap-2, kiem-dinh-van-hanh-doc-lap, kien-truc-su-quy-trinh-lien-doi, shopdonk-deepseek-data, shopdonk-gemini-draft, shopdonk-grok-check, shopdonk-luna-analysis, shopdonk-sol-test, shopdonk-sonnet-review, truong-ban-van-hanh-lien-doi, truong-hoi-chan-doctor-agent, truong-hoi-chan-doctor-agent-2
+- Agent chưa workflow nào dùng: bac-si-prompt-workflow, bac-si-prompt-workflow-2, bac-si-tham-dinh-kiem-thu-doc-lap, bac-si-tham-dinh-kiem-thu-doc-lap-2, chuyen-gia-do-luong-facebook, chuyen-gia-kenh-ket-noi-facebook, chuyen-gia-noi-dung-cong-dong-facebook, kien-truc-su-quy-trinh-lien-doi, shopdonk-deepseek-data, shopdonk-gemini-draft, shopdonk-grok-check, shopdonk-luna-analysis, shopdonk-sol-test, shopdonk-sonnet-review, truong-hoi-chan-doctor-agent, truong-hoi-chan-doctor-agent-2, truong-nhom-cham-soc-facebook

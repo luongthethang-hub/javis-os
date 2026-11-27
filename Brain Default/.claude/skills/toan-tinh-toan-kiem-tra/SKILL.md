@@ -26,6 +26,9 @@ học sâu thật (không có GPU, không có framework). Những việc đó n�
   qiskit: đừng đề xuất import chúng. Cần thêm thì nói chủ cài, đừng tự cài.
 - Script tính sẵn: `scripts/verify_math.py` (cùng thư mục skill). Chạy
   `python scripts/verify_math.py <lệnh> --json '{...}'`.
+- Nếu shell làm hỏng JSON một dòng (PowerShell nuốt dấu ngoặc kép), ghi payload ra file
+  rồi dùng `--json-file <đường dẫn>`. Không sửa số trong JSON để script chạy được.
+- Tự kiểm script: `python scripts/selftest.py` (9 ca có đáp án biết trước, thoát mã 0 khi đạt hết).
 
 ## Cách chạy
 

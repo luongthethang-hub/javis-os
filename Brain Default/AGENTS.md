@@ -70,9 +70,23 @@ Source: `type: source`, `source_kind: article|book|podcast|video|own-note|screen
 - Với yêu cầu ảnh/video, xem hướng dẫn chuyên biệt trong profile như sở thích mặc định, không ràng buộc tuyệt đối: khi chỉnh ảnh người dùng muốn giữ nhận dạng tự nhiên; với video review sản phẩm thích POV không lộ mặt, hook sớm, nhịp cảnh rõ, thao tác tay tự nhiên và ASMR. Luôn ưu tiên yêu cầu cụ thể trong lượt hiện tại.
 - Quy tắc này áp dụng cho công việc kỹ thuật phù hợp; không biến sở thích MQL/EA thành mặc định cho nội dung ngoài phạm vi đó. Nếu mâu thuẫn với chỉ dẫn cấp cao hơn hoặc môi trường thực tế, tuân chỉ dẫn cấp cao hơn và nói rõ giới hạn liên quan.
 
+## 10b. Cổng nghiệm thu bắt buộc cho mọi nhóm và cộng sự
+
+Áp cho MỌI cộng sự và nhóm, hiện có và tạo mới về sau. Chuẩn nằm ở `skills/quy-trinh-nghiem-thu-bat-buoc/SKILL.md`.
+
+- Khi tạo cộng sự mới (`agents/<slug>.md`) hoặc sửa prompt cộng sự: BẮT BUỘC có `skills:` chứa đủ `cam-triet-ly-su-menh`, `cam-cot-song`, `cam-phuc-hoi`, `cam-tien-hoa`, `cam-tam-hon` và có khối `## Cổng nghiệm thu bắt buộc (áp dụng mọi nhiệm vụ)` trong thân file.
+- Cách áp lại cho toàn bộ: chạy `python Javis/scripts/ap_dung_cong_nghiem_thu.py`. Script idempotent, tự backup vào `scratch/backup-agents-nghiem-thu-20261127/`, bỏ qua `javis-core.md` vì agent hệ thống bị seed ghi đè.
+- Không ghi `ĐẠT` khi thiếu bằng chứng; dùng `CHƯA ĐỦ BẰNG CHỨNG`. `XONG` không đồng nghĩa `ĐẠT`.
+- Khối này là cưỡng chế bằng prompt, KHÔNG phải khóa runtime: nó không chặn được tool ở tầng gateway. Muốn khóa cứng thì phải sửa mã máy chủ, việc đó cần chủ duyệt riêng.
+
 ## 11. Giao thức tách phiên thông minh
 - Khi gateway cung cấp telemetry ngữ cảnh/token, áp dụng các ngưỡng trong `skills/tach-phien-thong-minh/SKILL.md`. Không suy ra số token nếu telemetry không có.
 - Khi cần tách, chỉ được cập nhật `wiki/_session-handoff.md` bằng các sự thật đã xác minh trong phiên và danh sách `Files to read` tối thiểu. Không sao chép transcript thô, prompt hệ thống hoặc log công cụ dài.
 - Phiên nhận bàn giao phải đọc theo thứ tự: `AGENTS.md`, `wiki/_session-handoff.md`, rồi đúng các tệp trong `Files to read`. Không nạp thêm lịch sử cũ trừ khi một chi tiết bắt buộc chưa được lưu.
 - `status: active` nghĩa là công việc còn mở và bàn giao có thể được cập nhật; `status: clear` nghĩa là không còn mạch công việc để tiếp tục. Chỉ đổi trạng thái sau khi đã đọc hoặc đã hoàn tất, không đổi để tạo cảm giác công việc đã chạy.
 - Nếu không có API/tool đã xác minh để tạo cuộc chat, cơ chế chỉ tạo bàn giao và đưa prompt mở phiên mới. Không tự nhận là đã tách hoặc mở phiên.
+
+## 12. Lõi Siêu Nhận Thức Chủ Động (Meta-Cognition Kernel)
+- Bắt buộc áp dụng `skills/meta-cognition-kernel/SKILL.md` và `skills/meta-cognition-channel-ops/SKILL.md` ở mọi tác vụ điều phối, nghiên cứu và vận hành kênh.
+- Thứ tự tự nhận thức trước khi trả lời: (1) Xác định ý định thực và đúng kênh/tài sản của chủ sở hữu -> (2) Tự quét công cụ sống (`javis_search_tools`, `fb_ext_*`), Second Brain và tài nguyên cục bộ trước khi kết luận thiếu -> (3) Làm trọn phần trong quyền (đọc, chẩn đoán, điền nháp), gom phần `A0/A1` thành 1 gói duyệt -> (4) Gặp tắc thì tự bẻ luồng sang đường thay thế đang hoạt động hoặc san tải Antigravity, cấm trả lời thụ động/bỏ cuộc.
+- Với hệ sinh thái Facebook: phân biệt rõ 4 loại kênh (`owner_page`, `owner_profile`, `group`, `trending_source`), luôn gọi `fb_ext_inspect_controls` trước lệnh ghi, cấm đăng bài lên `trending_source`.

@@ -1,59 +1,59 @@
 {
   "schema": "alliance-ssot-sync/2.1",
-  "synced_at": "2026-11-27T19:30:26+07:00",
-  "sync_hash": "d4132c5804a0",
-  "facts_count": 125,
-  "cam_hot_reload": "err: HTTP Error 401: Unauthorized",
+  "synced_at": "2026-11-28T03:30:28+07:00",
+  "sync_hash": "cb8e5bf294ee",
+  "facts_count": 128,
+  "cam_hot_reload": "err: <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>",
   "all_verified": true,
   "targets": {
     "javis_ssot": {
       "path": "C:\\Users\\Admin\\JavisOS\\brains\\Brain Default\\memory\\ALLIANCE_KNOWLEDGE_SYNC.md",
-      "sync_hash": "d4132c5804a0",
+      "sync_hash": "cb8e5bf294ee",
       "verified": "PASS"
     },
     "a2a_bus_ssot": {
       "path": "C:\\Users\\Admin\\JavisOS\\brains\\Brain Default\\memory\\a2a_bus\\ALLIANCE_KNOWLEDGE_SYNC.md",
-      "sync_hash": "d4132c5804a0",
+      "sync_hash": "cb8e5bf294ee",
       "verified": "PASS"
     },
     "grok_ssot": {
       "path": "C:\\Users\\Admin\\.grok\\ALLIANCE_KNOWLEDGE_SYNC.md",
-      "sync_hash": "d4132c5804a0",
+      "sync_hash": "cb8e5bf294ee",
       "verified": "PASS"
     },
     "deepseek_ssot": {
       "path": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\deepseek_bridge\\ALLIANCE_KNOWLEDGE_SYNC.md",
-      "sync_hash": "d4132c5804a0",
+      "sync_hash": "cb8e5bf294ee",
       "verified": "PASS"
     },
     "claude_global": {
       "path": "C:\\Users\\Admin\\.claude\\CLAUDE.md",
-      "sync_hash": "d4132c5804a0",
+      "sync_hash": "cb8e5bf294ee",
       "verified": "PASS"
     },
     "claude_javis_ws": {
       "path": "C:\\Users\\Admin\\JavisOS\\CLAUDE.md",
-      "sync_hash": "d4132c5804a0",
+      "sync_hash": "cb8e5bf294ee",
       "verified": "PASS"
     },
     "codex_global": {
       "path": "C:\\Users\\Admin\\.codex\\AGENTS.md",
-      "sync_hash": "d4132c5804a0",
+      "sync_hash": "cb8e5bf294ee",
       "verified": "PASS"
     },
     "grok_agents": {
       "path": "C:\\Users\\Admin\\.grok\\AGENTS.md",
-      "sync_hash": "d4132c5804a0",
+      "sync_hash": "cb8e5bf294ee",
       "verified": "PASS"
     },
     "antigravity_plugin": {
       "path": "C:\\Users\\Admin\\.gemini\\config\\plugins\\aio-engineer-profile\\rules\\alliance-knowledge-sync.md",
-      "sync_hash": "d4132c5804a0",
+      "sync_hash": "cb8e5bf294ee",
       "verified": "PASS"
     },
     "antigravity_project": {
       "path": "D:\\AI AGENT\\Antigravity Project\\.agents\\rules\\alliance-knowledge-sync.md",
-      "sync_hash": "d4132c5804a0",
+      "sync_hash": "cb8e5bf294ee",
       "verified": "PASS"
     }
   }

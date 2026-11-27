@@ -922,7 +922,113 @@
           "msg": "Bản lộ trình không tồn tại trong não: `teacher-agent/lich/lo-trinh-30-ngay-v1.md` không có, báo cáo chỉ có phần mở đầu Tuần 1 rồi cắt, nên không kiểm được đủ 4 tuần, cặp model làm/kiểm khác hãng, điểm chạm chủ và 5-7 việc định kỳ có bước nạp/ghi trạng thái."
         }
       ]
+    },
+    {
+      "id": "t_fa7dae992ca3",
+      "brain_root": "C:\\Users\\Admin\\JavisOS\\brains\\Brain Default",
+      "title": "Điều tra sự cố Facebook Chrome Bridge",
+      "intent": "TaskPacket A3/LOW, trace_id=fb-bridge-20261128-0305, max_retries=2. Investigate two symptoms read-only: (1) fb_ext_discover_pages(auto_open_directory=false) returned UNKNOWN_ACTION: discover_pages even though fb_ext_status reported connected=true; compare exposed tool, server dispatch, and installed extension action handlers/versions if accessible. (2) Earlier automatic selection used /pages/?category=your_pages; explicit navigation succeeded to https://www.facebook.com/groups/712410908881271 but fb_ext_read_page(url, limit=5) returned ok=true, same URL, posts_count=0. Distinguish wrong-tab routing from Group vs Fanpage support, DOM selectors, load timing, and permissions. Use authorized capabilities only. If doing browser checks avoid concurrent tab navigation and verify URL; read only content already accessible in the current session. Do not modify files, settings, accounts, or safety mode; do not post, message, bypass access controls, or report secrets. If a permitted compatible read yields posts from that exact Group, summarize up to five newest verifiably ordered posts in Vietnamese; do not guess ordering or fill missing posts. Report evidence, missing access, and proposed remediation in Vietnamese.",
+      "route": "auto",
+      "capability": "mcp-read",
+      "execution_mode": "suggest",
+      "priority": 2,
+      "status": "done",
+      "needs_approval": false,
+      "block_kind": "",
+      "block_reason": "",
+      "created_by": "chat",
+      "chat_id": "web:73b7d347c5d946dbb39d1beff8b90c5a",
+      "idempotency_key": "",
+      "attempts": 1,
+      "max_attempts": 3,
+      "claimed_by": "",
+      "claim_expires_at": 0.0,
+      "not_before": 0.0,
+      "last_heartbeat_at": 1795810107.462819,
+      "current_run_id": "",
+      "result": "**Kết luận: `discover_pages` hiện hoạt động, còn đọc Group trả 0 bài dù DOM có 4 `article`. Lỗi Group nghiêng mạnh về thiếu hỗ trợ hoặc sai selector, không phải quyền truy cập hay sai tab trong lần đọc URL tường minh.**\n\n### Kết quả kiểm định\n\n| Ca | Phiên bản/đầu vào | Kỳ vọng | Thực tế và bằng chứng | Kết quả |\n|---|---|---|---|---|\n| FB-01 | `fb_ext_discover_pages(auto_open_directory=false)` | Handler nhận lệnh | Trả danh sách 3 tab, nhận đúng Group và 1 Page trong ngữ cảnh. Tool hiện được MCP công bố. E1: kết quả gọi trực tiếp. | ĐẠT tại thời điểm kiểm |\n| FB-02 | `fb_ext_read_page(Group URL, limit=5)` | Đọc tối đa 5 bài | URL trả về đúng Group, đúng tên, nhưng `posts_count=0`. E1. | KHÔNG ĐẠT |\n| FB-03 | `fb_ext_inspect_controls()` trên cùng Group | Xác nhận nội dung hiện diện | Đúng URL và tên Group, `articles_on_screen=4`, không có cảnh báo tư cách Trang. E1. | ĐẠT |\n| FB-04 | `fb_ext_read_page(limit=5)` không truyền URL | Đọc tab Facebook đang hoạt động | Đọc `https://business.facebook.com/latest/home`, không phải Group đang hoạt động trước đó. E1. | KHÔNG ĐẠT về định tuyến ngầm |\n\n### Nguyên nhân và giả thuyết\n\n**Đã xác nhận**\n\n- Triệu chứng `UNKNOWN_ACTION: discover_pages` không còn tái hiện. Exposed tool và handler hiện tương thích, vì lệnh đã chạy thành công.\n- Lần đọc URL tường minh không bị sai tab: kết quả trả đúng `https://www.facebook.com/groups/712410908881271`.\n- Group đã tải nội dung mà phiên hiện tại được phép xem: bộ soi DOM thấy **4 `article`**.\n- `fb_ext_read_page` vẫn trả 0 bài. Do đó zero-post đã được tái hiện trực tiếp.\n- Đọc không truyền URL có thể chọn Meta Business Suite thay vì tab Group. Đây là lỗi hoặc hành vi định tuyến ngầm riêng, không giải thích lần đọc URL tường minh.\n- Mô tả chính thức của `fb_ext_read_page` chỉ cam kết đọc **Fanpage**, không nêu hỗ trợ Facebook Group.\n\n**Nguyên nhân có xác suất cao**\n\n- E3: parser của `read_page` dùng selector hoặc cấu trúc dành cho Fanpage, không nhận các `article` của Group.\n- E3: `discover_pages` trước đây gặp lệch phiên bản giữa plugin và extension service worker, hoặc extension chưa reload sau cập nhật.\n\n**Chưa đủ bằng chứng**\n\n- Không đọc được trực tiếp `manifest.json`, mã dispatch, action handlers hoặc log vì chúng nằm ngoài pinned brain.\n- Bản ghi trong Second Brain nói plugin `v1.2.0`, extension `v1.1.0`, nhưng đây là tài liệu ngày 27/11, mức E2, không chứng minh phiên bản đang chạy.\n- Load timing chưa được loại trừ hoàn toàn. Tuy nhiên, việc thấy 4 `article` làm giả thuyết “trang chưa tải” yếu hơn lỗi selector.\n- Không thấy bằng chứng về thiếu quyền. Nội dung Group và 4 phần tử bài viết đã hiện trong phiên hiện tại.\n\nKhông có tóm tắt bài viết vì công cụ không trích xuất được bài nào. Không suy đoán thứ tự hoặc nội dung.\n\n### Bản sửa giới hạn được đề nghị\n\n1. Tách action `read_group` hoặc bổ sung nhánh URL `/groups/`, dùng selector Group và chờ ổn định DOM có giới hạn thời gian.\n2. Khi có `url`, khóa kết quả vào tab vừa điều hướng và xác minh URL chuẩn hóa trước khi đọc. Khi không có URL, ưu tiên tab active thay vì tab Facebook bất kỳ.\n3. Đồng bộ capability negotiation giữa plugin và extension: trả `extension_version`, `plugin_version`, `supported_actions`; action thiếu phải báo phiên bản hai phía.\n\nKiểm hồi quy bắt buộc:\n\n- Group URL tường minh: đúng URL, phát hiện bài, không đổi tab ngoài ý muốn.\n- Fanpage URL tường minh: không làm hỏng parser hiện có.\n- `discover_pages(false)`: handler tồn tại và không tự mở directory.\n- Extension cũ với plugin mới: trả lỗi phiên bản rõ ràng thay vì `UNKNOWN_ACTION`.\n- Trang có `article` nhưng parser trả 0: log selector count và timeout, không ghi nội dung nhạy cảm.\n\n**Trạng thái:** `CHƯA ĐỦ BẰNG CHỨNG` cho nguyên nhân phiên bản; `KHÔNG ĐẠT` cho đọc Group và định tuyến không URL. Chủ xử lý là nhóm duy trì `fb-chrome-bridge`; thử lại sau khi có version handshake và ca Group riêng.\n\nKhông tạo hoặc sửa file, thiết lập, tài khoản hay nội dung Facebook. Kiểm chứng bằng các lệnh đọc trực tiếp `status`, `discover_pages`, `read_page` và `inspect_controls`.",
+      "created_at": 1795809985.2787356,
+      "updated_at": 1795810107.462819,
+      "lane": "",
+      "team_id": "",
+      "team_seq": 0,
+      "team_prio": null,
+      "team_rev": 0,
+      "assignee_key": "",
+      "coordinator_key": "",
+      "source_ref": "",
+      "acceptance_ready": 0,
+      "acceptance_revision": 0,
+      "acceptance_contract_version": 0,
+      "metadata": {
+        "acceptance_fixed": [
+          "Separate verified symptoms, confirmed causes, and unresolved hypotheses.",
+          "Provide version, handler, or log evidence for discovery if accessible; otherwise name missing evidence.",
+          "Explain whether Group reading is supported and whether zero posts is reproducible; include only verified summaries if readable.",
+          "Recommend a bounded fix and regression checks for explicit Group URL, Fanpage, and discovery; apply no changes."
+        ],
+        "acceptance": [
+          "Separate verified symptoms, confirmed causes, and unresolved hypotheses.",
+          "Provide version, handler, or log evidence for discovery if accessible; otherwise name missing evidence.",
+          "Explain whether Group reading is supported and whether zero posts is reproducible; include only verified summaries if readable.",
+          "Recommend a bounded fix and regression checks for explicit Group URL, Fanpage, and discovery; apply no changes."
+        ],
+        "specifier": "ai",
+        "agent": {
+          "slug": "kiem-dinh-van-hanh-doc-lap",
+          "name": "Kiểm định vận hành độc lập",
+          "key": "ag_19618f171157ebd8"
+        },
+        "route": "auto",
+        "capability": "mcp-read",
+        "execution_mode": "suggest",
+        "tool_calls": [
+          "javis_search_tools",
+          "javis_search_tools",
+          "javis_read_file",
+          "javis_run_tool",
+          "javis_run_tool",
+          "javis_run_tool",
+          "javis_run_tool",
+          "javis_run_tool",
+          "javis_run_tool",
+          "javis_read_file",
+          "javis_read_file",
+          "javis_read_file",
+          "javis_read_file",
+          "javis_run_tool",
+          "javis_run_tool"
+        ],
+        "provider": "openai-compat",
+        "model": "gpt-5.6-sol",
+        "acceptance_check": "ai",
+        "run_seconds": 100
+      },
+      "artifacts": [],
+      "deps": [],
+      "log": [
+        {
+          "ts": "2026-11-28 03:06",
+          "msg": "created by chat"
+        },
+        {
+          "ts": "2026-11-28 03:06",
+          "msg": "claimed by worker:19416:25cb4fb9"
+        },
+        {
+          "ts": "2026-11-28 03:06",
+          "msg": "capability=mcp-read"
+        },
+        {
+          "ts": "2026-11-28 03:06",
+          "msg": "claimed by worker:19416:a7a590e4"
+        },
+        {
+          "ts": "2026-11-28 03:08",
+          "msg": "done"
+        }
+      ]
     }
   ],
-  "updated": 1795789248.953519
+  "updated": 1795810107.5107958
 }

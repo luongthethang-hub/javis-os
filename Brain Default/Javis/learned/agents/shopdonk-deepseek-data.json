@@ -1,0 +1,34 @@
+{
+ "agent": {
+  "slug": "shopdonk-deepseek-data"
+ },
+ "judge": {},
+ "kind": "agent",
+ "lessons": [
+  {
+   "created_at": 1795792628.4608836,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "dm",
+   "source": "self",
+   "status": "active",
+   "text": "Khi gắn kỹ năng mới vào hồ sơ vai, phải kèm bộ ca tự kiểm có đáp án biết trước và chạy thật, vì lần này 3 lỗi serialize chỉ lộ ra khi chạy 9 ca chứ không lộ khi đọc code."
+  },
+  {
+   "created_at": 1795792628.488275,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "dm",
+   "source": "self",
+   "status": "active",
+   "text": "Trên Windows PowerShell, JSON một dòng qua `--json` bị phá dấu ngoặc kép; ghi payload ra tệp và thêm cờ `--json-file` thay vì sửa số liệu."
+  }
+ ],
+ "presentation": [],
+ "updated": "2026-11-27T15:19:10Z",
+ "version": 1
+}
