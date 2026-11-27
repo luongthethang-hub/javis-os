@@ -1,0 +1,23 @@
+{
+ "agent": {
+  "slug": "shopdonk-grok-check"
+ },
+ "judge": {},
+ "kind": "agent",
+ "lessons": [
+  {
+   "created_at": 1795786681.2310154,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Team Social",
+   "source": "self",
+   "status": "active",
+   "text": "Khi kiểm tra bản nháp fanpage, ngoài việc tìm thông tin bịa còn phải bắt các khẳng định tuyệt đối (\"an toàn tuyệt đối\", \"luôn có\") và cam kết thay chủ (\"cam kết không phát sinh phí\") vì chúng tạo rủi ro pháp lý dù không có số liệu cụ thể."
+  }
+ ],
+ "presentation": [],
+ "updated": "2026-11-27T13:39:08Z",
+ "version": 1
+}

@@ -1,0 +1,23 @@
+{
+ "agent": {
+  "slug": "shopdonk-gemini-draft"
+ },
+ "judge": {},
+ "kind": "agent",
+ "lessons": [
+  {
+   "created_at": 1795785146.0377214,
+   "kind": "method",
+   "revoke_reason": "",
+   "revoked_at": null,
+   "revoked_by": "",
+   "scope": "team-name:Team Social",
+   "source": "self",
+   "status": "active",
+   "text": "Luôn lưu các bản nháp nội dung dài vào file markdown trong scratch và đánh dấu rõ nhãn CHỜ DUYỆT cùng các trường placeholder để đồng đội dễ kiểm tra tính nhất quán."
+  }
+ ],
+ "presentation": [],
+ "updated": "2026-11-27T13:19:08Z",
+ "version": 1
+}
