@@ -4,7 +4,7 @@
       "id": "r_985c9cd87d",
       "text": "Chay chu ky sang loc va tien hoa tri thuc toan Lien minh AI (dinh ky 8 gio)",
       "mode": "task",
-      "due_at": 1795741200.0,
+      "due_at": 1795770000.0,
       "chat_id": "-1004479278576",
       "repeat_min": 0,
       "cron": "0 */8 * * *",
@@ -17,10 +17,10 @@
       "call": false,
       "created_by": "user",
       "created_at": 1795435011.8945584,
-      "fired_at": 1795713116.3453622,
-      "result": "Đã rà **64 bản ghi Telegram của Javis và 12 bản ghi A2A** trong 8 giờ. Không nạp fact mới hay chạy đồng bộ ghi.\n\nCả 10 bản SSOT trên đĩa giống nhau, nhưng còn thiếu 6 mục đã có trong chỉ mục Second Brain. Kho DeepSeek thiếu 9 tệp fact.\n\nKhông tìm thấy tác vụ Windows 8h đã ghi trong tài liệu. Tác vụ **`CAM_AITEP_Alliance_Sync_4h` vẫn bật dù đã có quyết định tạm dừng**, và lịch kế tiếp ghi **01:34 ngày 27/11/2026**. Chưa đổi cấu hình lịch.",
+      "fired_at": 1795741739.4529018,
+      "result": "Kỳ sàng lọc 8 giờ xác minh **10/10 bản SSOT trên đĩa khớp**, nhưng **3 mục tri thức chưa có trong chỉ mục**. Không thêm mục trùng hoặc áp dụng nâng cấp.\n\nManifest lúc 07:39 ghi CAM hot-reload lỗi HTTP 401. Ưu tiên kiểm tra quyền nạp lại của CAM và đối soát 3 mục trước khi đồng bộ lại.\n\n[Báo cáo kiểm chứng](reports/sang-loc-tri-thuc-lien-minh-2026-11-27-0803.md)",
       "error": "",
-      "last_slot": 1795712400.0
+      "last_slot": 1795741200.0
     },
     {
       "id": "r_a2a35a29f8",
@@ -70,7 +70,7 @@
       "id": "r_91928d833e",
       "text": "[Tự động vận hành Darklord] Định kỳ quét sức khỏe V1-V8 CAM OS và đồng bộ tri thức Liên minh",
       "mode": "notify",
-      "due_at": 1795732440.0,
+      "due_at": 1795746840.0,
       "chat_id": "1894254685",
       "repeat_min": 240,
       "cron": "",
@@ -83,10 +83,10 @@
       "call": false,
       "created_by": "user",
       "created_at": 1795701768.9411306,
-      "fired_at": 1795718054.943983,
+      "fired_at": 1795732466.141511,
       "result": "",
       "error": "",
-      "last_slot": 1795718040.0
+      "last_slot": 1795732440.0
     },
     {
       "id": "r_b09331ebb6",
@@ -114,7 +114,7 @@
       "id": "r_2578bb2598",
       "text": "[Kiem tra tien trinh bot & A2A Bus] Tu dong kiem tra cac bot va don dep hang doi A2A bi ket",
       "mode": "notify",
-      "due_at": 1795735800.0,
+      "due_at": 1795757400.0,
       "chat_id": "1894254685",
       "repeat_min": 0,
       "cron": "30 */6 * * *",
@@ -127,10 +127,11 @@
       "call": false,
       "created_by": "user",
       "created_at": 1795716526.4348826,
-      "fired_at": 0.0,
+      "fired_at": 1795735804.3218093,
       "result": "",
-      "error": ""
+      "error": "",
+      "last_slot": 1795735800.0
     }
   ],
-  "updated": 1795719619.2606604
+  "updated": 1795741739.4538872
 }

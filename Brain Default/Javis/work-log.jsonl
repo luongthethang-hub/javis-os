@@ -36,3 +36,7 @@
 {"ts": 1795713114.9, "kind": "reminder", "ref": "r_985c9cd87d", "title": "Chay chu ky sang loc va tien hoa tri thuc toan Lien minh AI (dinh ky 8 gio)", "status": "ok", "seconds": 367.4, "mode": "task"}
 {"ts": 1795718054.9, "kind": "reminder", "ref": "r_91928d833e", "title": "[Tự động vận hành Darklord] Định kỳ quét sức khỏe V1-V8 CAM OS và đồng bộ tri thức Liên minh", "status": "ok", "seconds": 0.9, "mode": "notify"}
 {"ts": 1795719619.3, "kind": "reminder", "ref": "r_b09331ebb6", "title": "[Kiem dinh an toan T0] Tu dong ra soat cac process bi trung, khoa ghi repo va chot chan bao mat", "status": "ok", "seconds": 0.9, "mode": "notify"}
+{"ts": 1795732466.1, "kind": "reminder", "ref": "r_91928d833e", "title": "[Tự động vận hành Darklord] Định kỳ quét sức khỏe V1-V8 CAM OS và đồng bộ tri thức Liên minh", "status": "ok", "seconds": 0.9, "mode": "notify"}
+{"ts": 1795735804.3, "kind": "reminder", "ref": "r_2578bb2598", "title": "[Kiem tra tien trinh bot & A2A Bus] Tu dong kiem tra cac bot va don dep hang doi A2A bi ket", "status": "ok", "seconds": 0.9, "mode": "notify"}
+{"ts": 1795741396.0, "kind": "reminder", "ref": "r_985c9cd87d", "title": "Chay chu ky sang loc va tien hoa tri thuc toan Lien minh AI (dinh ky 8 gio)", "status": "fail", "seconds": 185.1, "mode": "task"}
+{"ts": 1795741739.5, "kind": "reminder", "ref": "r_985c9cd87d", "title": "Chay chu ky sang loc va tien hoa tri thuc toan Lien minh AI (dinh ky 8 gio)", "status": "ok", "seconds": 332.5, "mode": "task"}

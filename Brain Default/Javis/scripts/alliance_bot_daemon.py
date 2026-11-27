@@ -32,12 +32,9 @@ ALLIANCE_BOTS = {
         "role": "COO & Chief Engagement Officer (Dola AI)",
         "personality": "Tôi là Dola AI trong Liên minh AI. Tôi phụ trách điều phối nhịp tác chiến, chăm sóc tương tác và phễu chuyển đổi người dùng."
     },
-    "deepseek": {
-        "token": "9085788595:AAHIT8tDFJZe9VKW_5CocbGihF2eWmQjC38",
-        "username": "DeepSeekThangLee_bot",
-        "role": "Quant Logic & Reasoning Engine (DeepSeek R1)",
-        "personality": "Tôi là DeepSeek trong Liên minh AI. Tôi phụ trách thuật toán định lượng, tối ưu giải thuật toán học MQL5/Python và suy luận logic chuỗi sâu Reasoning R1."
-    }
+    # "deepseek" removed 2026-11-27: @DeepSeekThangLee_bot is owned by the DSH
+    # Telegram bridge (C:\Users\Admin\.dsh\telegram-bridge). Two getUpdates
+    # pollers on one bot produce HTTP 409 and steal messages from each other.
 }
 
 STATE_DIR = r"C:\Users\Admin\JavisOS\brains\Brain Default\Javis\tmp\alliance_bots_state"

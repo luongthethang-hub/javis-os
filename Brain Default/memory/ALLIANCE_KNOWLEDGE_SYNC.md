@@ -1,13 +1,13 @@
 <!-- ALLIANCE_SSOT_START -->
-<!-- sync_hash: 55dc59ef6384 | facts_count: 88 | synced_at: 2026-11-26T20:55:25+07:00 -->
+<!-- sync_hash: 3093be3306a8 | facts_count: 116 | synced_at: 2026-11-27T08:43:47+07:00 -->
 # ĐỒNG BỘ TRI THỨC LIÊN MINH AI (SINGLE SOURCE OF TRUTH)
 
 - **Nguồn chân lý:** `C:\Users\Admin\JavisOS\brains\Brain Default`
-- **Tổng số ký ức (Facts):** `88`
+- **Tổng số ký ức (Facts):** `116`
 - **Cơ cấu 3 tầng thực dụng (L0-L1-L2):** L0 Thắng Lee (Principal) -> L1 Javis OS (Orchestrator & Second Brain) -> L2 Hội đồng thực thi bình đẳng (Antigravity, Claude, Perplexity, Grok, ChatGPT/Codex, Dola AI, DeepSeek).
 - **Chốt chặn Bất biến:** (1) Sản phẩm chạy thực tế, Zero Fluff; (2) Pre-Flight Anti-Ban (cấm test API Telegram thật, không lặp setMyCommands); (3) Bảo trì 5 bước bắt buộc chờ L0 duyệt; (4) Tách nền daemon + timeout an toàn; (5) Clean Typography & Bộ lọc dễ hiểu; (6) Đồng bộ SSOT cùng 1 `sync_hash`.
 
-## Chỉ mục Tri thức Sống (80 mục từ Second Brain)
+## Chỉ mục Tri thức Sống (104 mục từ Second Brain)
 - [Bảo mật Telegram bằng Behavioral Biometrics](facts/bao-mat-telegram-behavioral-telemetry.md) - Cơ chế bảo mật thích ứng cho Telegram: Fast Path theo văn phong, hạ quyền Safe Mode và hỏi bẫy Second Brain khi lệch hành vi, cảnh báo out-of-band.
 - [Cam kết Hạt nhân T0: Chống lỗi bot mới câm lặng khi gia nhập](facts/cam-ket-t0-chong-loi-bot-moi-cam-lang.md) - 4 cổng bắt buộc trước khi bàn giao bot mới: cài lệnh setMyCommands, hướng dẫn tắt Group Privacy, watchdog tự hồi sinh và Shadow Test 2 chiều.
 - [Chốt chặn T0: Cấm test trực tiếp lên Telegram API thật](facts/cam-test-truc-tiep-len-telegram-api-chong-khoa-botfather.md) - Bắt buộc dùng Mock khi test, cấm gọi lặp setMyCommands khi restart để chống khóa BotFather.
@@ -58,7 +58,6 @@
 - [Bài học tự chẩn đoán hệ thống CAM (2026-11-24)](facts/cam-distilled-evolution_lesson_2026_11_24.md) - Phát hiện cảnh báo Telegram 409 conflict trên antigravity; giữ Single-Owner Multiplexer và tạm dừng worker an toàn.
 - [Chuẩn voice engineering cho video động lực](facts/chuan-voice-engineering-video-dong-luc.md) - Giọng nam NamMinhNeural (-3%, -6Hz) cộng chuỗi DSP FFmpeg tạo độ khàn nội lực; bẫy Azure TTS với chữ Đ viết hoa đầu câu.
 - [Bàn giao việc bị chặn sang ChatGPT Desktop](facts/chuyen-tac-vu-sang-chatgpt-desktop-khi-bi-chan.md) - Chuyển phần việc còn vướng sang ChatGPT Desktop nếu có công cụ được phép.
-- [Chuẩn giao tiếp hai chiều (27/11)](facts/giao-tiep-nguoi-va-may-20261127.md) - Kết quả trước, không kể log; gói việc là hợp đồng có lệnh nghiệm thu chạy được, tiêu chí phải tự kiểm trên đúng rev trước khi giao thợ.
 - [Đồng bộ tri thức Claude Desktop và ChatGPT Desktop](facts/dong-bo-tri-thuc-claude-chatgpt-desktop.md) - Claude Desktop nối lại MCP 23/11 lúc 08:05; ChatGPT Desktop chưa đồng bộ; Claude Alliance Contract mới là đề xuất.
 - [Dự án EA T-signal SEMI robot](facts/du-an-ea-t-signal-semi-robot.md) - Người dùng đang phát triển Expert Advisor bán tự động trên MQL5 có tên T-signal EA SEMI robot.
 - [Kế hoạch nâng cấp máy, chuyển Ubuntu](facts/ke-hoach-nang-cap-may-chuyen-ubuntu.md) - Nâng cấp phần cứng và chuyển Ubuntu Desktop 24.04 LTS.
@@ -89,5 +88,29 @@
 - [TaskPacket tiếng Anh và hàng đợi san việc](facts/chuan-taskpack-tieng-anh-va-hang-doi-san-viec.md) - Gói gọn tiếng Anh cộng tham chiếu SHA-256 giảm 79,6% token trên mẫu 3 tác vụ; cam_queue.py đã kiểm 8 worker tranh việc (2026-11-26).
 - [Tri thức Claude Desktop nạp vào não (dự án CAM)](facts/claude-desktop-tri-thuc-du-an-cam.md) - Đọc hội thoại thật Claude Desktop 25-26/11/2026, ingest thành source + wiki: nối Claude/DeepSeek, lõi phân tầng tiết kiệm 28-73% token, đội săn lỗi, CAM v3.3.0 (2026-11-26).
 - [Nâng cấp bắt buộc Q5-CVM v2.0 toàn Liên minh](facts/giao-thuc-bieu-quyet-q5-cvm-v2-tang-toc.md) - Micro-CVM <=35s, Early-Stop Lock, LoopFingerprintBreaker, Trọng số QC-5, Tiền lọc T0 & Cổng E1 cho Veto.
-- **Mã kiểm chứng đồng bộ (`sync_hash`):** `55dc59ef6384`
+- [Bàn giao Darklord 26/11](facts/ban-giao-darklord-20261126.md) - Phiên điều phối CAM chuyển sang dự án Darklord: plugin cam v1.1.0, Teacher/Doctor Agent, luật L0 trong phiên, bệnh án CAM OS (điểm 24 -> 80), nguồn model và việc L0 còn mở (2026-11-26).
+- [Quyết định L0 ngày 26/11](facts/quyet-dinh-l0-20261126.md) - Từ chối prop_5e5e1f1e, giữ relay trả phí V7, thread tái cấu trúc giữ khoa-ghi:cam-os từ 18:35, tắt Sync_4h lúc 22:42 (thực tế vẫn BẬT) (2026-11-26).
+- [Luật Phòng Giám Đốc 26/11](facts/luat-phong-giam-doc-20261126.md) - 10 luật chung: một repo một bên ghi, kiểm chỉ đọc không chạy pytest, thử gọi thợ trước, agy chỉ sinh văn bản, Codex -s read-only, ghi Sổ Cái, sao lưu .bak (2026-11-26).
+- [Sổ Cái v0.1.0](facts/so-cai-he-log-chung.md) - Hệ log chung D:\AI AGENT\so-cai: nhật ký jsonl chỉ ghi thêm, khóa liên kết, SQLite FTS không dấu, che bí mật; lệnh tim/lien-ket/ghi (2026-11-26).
+- [CAM OS v4 do Antigravity nâng cấp](facts/cam-os-v4-antigravity-20261126.md) - HMM-Core, knowledge purifier, cockpit v4: Antigravity tự báo VERIFIED nhưng thực tế chưa commit, chưa nghiệm thu, ghi ngoài khóa ghi (sự cố mở) (2026-11-26).
+- [Ma trận giao việc model G1-G9](facts/ma-tran-giao-viec-model-20261126.md) - Ai gọi được (AG có, Codex/dsh chưa), luật soát khác hãng, cổng S lọc tay, 9 gói việc và rủi ro bridge Telegram (2026-11-26).
+- [[Liên minh] CAM ↔ Alliance Knowledge Bridge](facts/cam-distilled-alliance_0065_cam_alliance_knowledge_bri.md) - [CAM E2] Cầu nối tri thức giữa Council Agent Manager (CAM), kho tri thức Liên minh và lõi RUUL
+- [[Liên minh] Cam V31 Emergency Rescue And Evolution](facts/cam-distilled-alliance_j0011_cam_v31_emergency_rescue_.md) - [CAM E2] Antigravity phối hợp cùng Javis OS hoàn tất xử lý trọn gói 10 hạng mục lỗi và yêu cầu
+- [[Liên minh] Kich Hoat Vong Lap Tien Hoa Moi Cau Tra Loi](facts/cam-distilled-alliance_j0012_kich_hoat_vong_lap_tien_h.md) - [CAM E1] Chỉ thị trực tiếp từ L0 Thắng Lee (2026-11-25): Phương thức tiến hóa (RUULEE v6.0 + H
+- [[Liên minh] Cam Distilled Cam_Company_Kien_Truc_Van_Phong_Mo](facts/cam-distilled-alliance_j0013_cam_distilled_cam_company.md) - [CAM E1] ---
+- [[Liên minh] Cam Distilled H_I_Ng_V4_Ch_Cam_Claude_Deepseek_P](facts/cam-distilled-alliance_j0014_cam_distilled_h_i_ng_v4_c.md) - [CAM E1] ---
+- [[Liên minh] Cost Gated Council Token Optimization](facts/cam-distilled-alliance_j0015_cost_gated_council_token_.md) - [CAM E1] Bài học E1 từ L0 Thắng Lee (2026-11-25): Không gọi API apikey.fan ở mọi lượt. Áp dụng
+- [[Liên minh] Ngan Sach Cuu Ho Tra Phi](facts/cam-distilled-alliance_j0017_ngan_sach_cuu_ho_tra_phi.md) - [CAM E2] Chủ giới hạn API trợ giúp trả phí ở 3.000 token/ngày cho thiết kế cứu hộ. Khi không t
+- [[Liên minh] Cam Cot Song Va Van Hanh On Dinh](facts/cam-distilled-alliance_j0018_cam_cot_song_va_van_hanh_.md) - [CAM E2] Bản chưng cất lớp CAM cho tra cứu nhanh. Chi tiết có citation tại `wiki/cot-song-cam-
+- [[Liên minh] Cam Distilled Evolution_Lesson_2026_11_25](facts/cam-distilled-alliance_j0019_cam_distilled_evolution_l.md) - [CAM E1] ---
+- [[Liên minh] Chuan Taskpack Tieng Anh Va Hang Doi San Viec](facts/cam-distilled-alliance_j0020_chuan_taskpack_tieng_anh_.md) - [CAM E2] Chuẩn gói giao việc **TaskPacket v1 bằng tiếng Anh** và hàng đợi san việc cục bộ `Jav
+- [[Liên minh] Workflow Video Ngan 6 Buoc Co Tien Hoa](facts/cam-distilled-alliance_j0022_workflow_video_ngan_6_buo.md) - [CAM E2] Quy trình `san-xuat-video-ngan-1-phut` được nâng từ 4 bước tĩnh lên **6 bước có vòng
+- [[Liên minh] Hiến chương Liên minh AI](facts/cam-distilled-alliance_l0001_hien_chuong_lien_minh_ai.md) - [CAM E2] Liên minh AI do ThangLee lập ra để các agent của mình **phối hợp và chia sẻ tri thức*
+- [[Liên minh] Giới hạn kỹ thuật: Telegram cấm bot nhắn bot](facts/cam-distilled-alliance_l0002_gioi_han_ky_thuat_telegra.md) - [CAM E2] Chủ sở hữu yêu cầu kết nối `deepseek-lead` với `javis` (@ThangLeeJavisBot).
+- [[Liên minh] Cầu nối Telegram hai chiều của deepseek-lead](facts/cam-distilled-alliance_l0003_cau_noi_telegram_hai_chie.md) - [CAM E2] | Thành phần | Đường dẫn | Vai trò |
+- [[Liên minh] Thành viên javis gia nhập Liên minh AI (handshak](facts/cam-distilled-alliance_l0004_thanh_vien_javis_gia_nhap.md) - [CAM E2] Handshake chính thức **thành công** ngày 2026-11-24 lúc 00:39 (+07:00).
+- [[DSH] PROCEDURE: Quy trình đội DeepSeek-Claude: dùng ruulee_](facts/cam-distilled-dsh_memory_mem_20261125_095252_049ede.md) - [CAM E1] Quy trình đội DeepSeek-Claude: dùng ruulee_route plan để chấm D/T1-T5 và chọn primary
+- [[DSH] Skill: teamwork-deepseek-claude](facts/cam-distilled-dsh_skill_teamwork_deepseek_claude.md) - [CAM E1] Quy trình phối hợp đội DeepSeek ↔ Claude dựa trên ma trận năng lực 9 trục và ma trận
+- [Nâng cấp bắt buộc: nhận việc qua Hàng chờ giao việc](facts/hang-cho-giao-viec-bat-buoc-toan-lien-minh.md) - L0 27/11: mọi thành viên nhận/nộp gói qua D:\AI AGENT\hang-cho, bàn giao liên tục, CAM tự vận hành giám sát V1-V8.
+- **Mã kiểm chứng đồng bộ (`sync_hash`):** `3093be3306a8`
 <!-- ALLIANCE_SSOT_END -->
